@@ -1,0 +1,218 @@
+%%________________________________________________________________________
+%% LEIM | PROJETO
+%% Ego Fractum
+%% Duarte Fonseca (50825) | Gabriel Teixeira (51692)
+%%________________________________________________________________________
+
+
+
+%%________________________________________________________________________
+%% para usar comentários no texto
+%% e.g., \comment{isto é um comentário}
+%%________________________________________________________________________
+\long\def\comment#1{}
+
+
+
+%%________________________________________________________________________
+%% para definir a capa
+%%________________________________________________________________________
+\newcommand{\fazerCapa}{
+\thispagestyle{empty}
+\begin{titlepage}
+    \centering
+    \includegraphics[scale=.5]{Imagens/isel_logo_simple.png} \\
+    \vspace{.5cm}
+    {\textbf{Instituto Superior de Engenharia de Lisboa (ISEL)}} \\
+    \vspace{0.2cm}
+    {Departamento de Engenharia Informática (DEI) \par}
+    \vspace{0.3cm}
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{c}
+        \hline
+        {\small LEIM} \\
+        {\small Licenciatura em Engenharia Informática e Multimédia} \\
+        {\small Unidade Curricular de Projeto} \\
+        \hline
+        \end{tabular}
+    \end{table}
+    \vspace{0.5cm}
+    \Large \textbf{\textit{Ego Fractum}}
+    \vspace{0.5cm}
+    \setlength{\unitlength}{1cm}
+   \begin{picture}(13, 4)(0, 0)
+      \linethickness{0.1pt}
+      \put(0,0){\framebox(13,4){
+      \small (eventual) imagem ilustrativa do trabalho -- 
+      \textit{dimensão}: até 13cm x 4cm
+      }}
+   \end{picture}
+    \normalsize
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{lr}
+        \\
+        Duarte Fonseca & (50825) \\
+        \\
+        Gabriel Teixeira & (51692) \\
+        \\
+        \end{tabular} \par
+        \begin{tabular}{lr}
+        \\ \\
+        \multicolumn{2}{c}{{Orientadores}} \\
+        \hline
+        \\
+        \textit{Professor Doutor} & Rui Jesus \\
+        \\
+        \textit{Professora} & Letícia Lucas \\
+        \\
+        \hline
+        \\ \\ \\
+        \multicolumn{2}{c}{{Julho, 2026}}
+        \end{tabular}
+    \end{table}
+\end{titlepage}
+\newpage
+\setcounter{page}{0}
+\normalsize
+}
+
+
+
+%%________________________________________________________________________
+%% para colocar, no índice, Capítulos não numerados
+%%________________________________________________________________________
+\newcommand{\noNumChapterInIndex}[1]
+   {
+   \chapter*{#1}
+   \addcontentsline{toc}{chapter}{#1}
+   }
+
+\newcommand{\myPrefaceChapter}[1]
+   {
+   \noNumChapterInIndex{#1}
+   }
+
+
+
+%%________________________________________________________________________
+%% para a dedicatória
+%%________________________________________________________________________
+\newenvironment{myDedication}
+   {
+   \chapter*{\null}
+   \begin{flushright}
+   \em\null\vskip1in
+   }
+   {
+   \vfill\end{flushright}
+   }
+
+
+
+%%________________________________________________________________________
+%% Para colocar as listas de conteúdos (índice, Tabelas e Figuras)
+%% como entrada no índice
+%%________________________________________________________________________
+\newcommand{\myTocXX}[2]
+   {
+   \chapter*{#1\@mkboth{Conteúdo}{CONTENTS}}
+   \addcontentsline{toc}{chapter}{#1}
+   \@starttoc{#2}
+   }
+
+\newcommand{\myTableOfContents}
+   { \myTocXX{Índice}{toc} }
+
+\newcommand{\myListOfTables}
+   { \myTocXX{Lista de Tabelas}{lot} }
+
+\newcommand{\myListOfFigures}
+   { \myTocXX{Lista de Figuras}{lof} }
+
+\newcommand{\myListOfListings}
+   {
+   \chapter*{Lista de Códigos}
+   \addcontentsline{toc}{chapter}{Lista de Códigos}
+   \lstlistoflistings
+   }
+
+
+
+%%________________________________________________________________________
+%% Para o comando "\thebibliography" gerar uma entrada no índice
+%%________________________________________________________________________
+\let\@myTheBibliography\thebibliography
+\renewcommand{\thebibliography}[1]
+   {
+   \@myTheBibliography{#1}
+   \addcontentsline{toc}{chapter}{Bibliografia}
+   }
+
+
+
+%%________________________________________________________________________
+%% Para definir o estilo para o cabeçalho e para a nota de rodapé
+%%________________________________________________________________________
+\newcommand{\myPageStyle}
+   {
+   \pagestyle{fancy}
+   \fancypagestyle{plain}
+       {
+       \fancyhead{}
+       \renewcommand{\headrulewidth}{0pt}
+       }
+   \fancyhf{}
+   \fancyhead[LE,RO]{\thepage}
+   \fancyhead[LO]{\nouppercase{\rightmark}}
+   \fancyhead[RE]{\nouppercase{\leftmark}}
+   \addtolength{\headheight}{0.5pt}
+   \setlength{\headheight}{15pt}
+   }
+
+
+
+%%________________________________________________________________________
+%% Renomeações para português
+%%________________________________________________________________________
+\addto\captionsportuguese{
+    \renewcommand{\contentsname}{Índice}
+    \renewcommand{\bibname}{Bibliografia}
+    \renewcommand{\proofname}{Prova}
+    \renewcommand{\chaptername}{Capítulo}
+    \renewcommand{\appendixname}{Anexo}
+    \renewcommand{\lstlistingname}{Código}
+    \renewcommand{\lstlistlistingname}{Lista de Códigos}
+}
+
+\renewcommand{\chaptermark}[1]{%
+  \markboth{\chaptername\ \thechapter.\ #1}{}}
+
+
+
+%%________________________________________________________________________
+%% alguns aspetos adicionais
+%%________________________________________________________________________
+\newcommand{\plicas}[1]{`{#1}'}
+\newcommand{\aspas}[1]{``{#1}''}
+
+\newcommand{\versus}{\plicas{versus}}
+\newcommand{\aPriori}{\plicas{a priori}}
+\newcommand{\cf}{cf.}
+\newcommand{\eg}{e.g.}
+\newcommand{\ie}{i.e.}
+\newcommand{\etAl}{et al.}
+
+
+
+%%________________________________________________________________________
+%% Espaçamento de Linhas
+%%________________________________________________________________________
+\newlength{\defbaselineskip}
+\setlength{\defbaselineskip}{\baselineskip}
+\newcommand{\setlinespacing}[1]
+           {\setlength{\baselineskip}{#1 \defbaselineskip}}
+\newcommand{\doublespacing}{\setlength{\baselineskip}
+                           {2.0 \defbaselineskip}}
+\newcommand{\singlespacing}{\setlength{\baselineskip}{\defbaselineskip}}
