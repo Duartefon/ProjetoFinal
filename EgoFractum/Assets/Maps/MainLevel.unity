@@ -9051,6 +9051,7 @@ GameObject:
   - component: {fileID: 530773418}
   - component: {fileID: 530773417}
   - component: {fileID: 530773416}
+  - component: {fileID: 530773421}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -9160,6 +9161,19 @@ RectTransform:
   m_AnchoredPosition: {x: 15.5, y: 16.5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &530773421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530773415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d142e8abc0a880245a199af92c2d55d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuManager
+  mainLevel: MainLevel
 --- !u!43 &553633148
 Mesh:
   m_ObjectHideFlags: 0
@@ -33943,7 +33957,7 @@ GameObject:
   - component: {fileID: 1775449974}
   - component: {fileID: 1775449973}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34012,7 +34026,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1775449974}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 530773421}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: OnPlayButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1775449974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40011,7 +40037,7 @@ GameObject:
   - component: {fileID: 1937585078}
   - component: {fileID: 1937585077}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40080,7 +40106,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1937585078}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 530773421}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: OnQuit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1937585078
 MonoBehaviour:
   m_ObjectHideFlags: 0
