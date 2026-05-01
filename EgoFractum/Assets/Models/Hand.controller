@@ -76,7 +76,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Pinky
     m_Mirror: 0
-  m_BlendParameter: Pinky
+  m_BlendParameter: Index
   m_BlendParameterY: Blend
   m_MinThreshold: 0
   m_MaxThreshold: 1
@@ -168,7 +168,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -8669264494812242528}
-    m_Position: {x: 20.599976, y: 215.08188, z: 0}
+    m_Position: {x: 20, y: 210, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -263,9 +263,33 @@ AnimatorController:
   m_Name: Hand
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Pinky
+  - m_Name: Thumb
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: Index
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: Middle
     m_Type: 1
     m_DefaultFloat: 1
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: Ring
+    m_Type: 1
+    m_DefaultFloat: 1
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: Pinky
+    m_Type: 1
+    m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
@@ -376,7 +400,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Pinky
     m_Mirror: 0
-  m_BlendParameter: Pinky
+  m_BlendParameter: Ring
   m_BlendParameterY: Blend
   m_MinThreshold: 0
   m_MaxThreshold: 1
@@ -407,7 +431,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Pinky
     m_Mirror: 0
-  m_BlendParameter: Pinky
+  m_BlendParameter: Middle
   m_BlendParameterY: Blend
   m_MinThreshold: 0
   m_MaxThreshold: 1
@@ -438,7 +462,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Pinky
     m_Mirror: 0
-  m_BlendParameter: Pinky
+  m_BlendParameter: Thumb
   m_BlendParameterY: Blend
   m_MinThreshold: 0
   m_MaxThreshold: 1
