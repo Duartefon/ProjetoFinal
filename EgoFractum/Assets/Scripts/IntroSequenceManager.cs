@@ -39,21 +39,21 @@ public class IntroSequenceManager : MonoBehaviour
 
     private IEnumerator PlayIntroSequence()
     {
+        Debug.Log("I'M starting to fade");
         LockMovement(true);
-        leftHandModel.SetActive(false);
-        rightHandModel.SetActive(false);
-        yield return StartCoroutine(FadeUI(blackScreen, 255f));
-
-        yield return new WaitForSeconds(1f);
+       leftHandModel.SetActive(false);
+       rightHandModel.SetActive(false);
+    
         yield return StartCoroutine(FadeText(quoteText, 1f));
         yield return new WaitForSeconds(quoteStayTime);
-        yield return StartCoroutine(FadeText(quoteText, 0f));
+        yield return StartCoroutine(FadeText(quoteText, -0.01f));
+     
 
         yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(FadeUI(blackScreen, 0f));
         //introAudio.Play();
         
 
-        yield return StartCoroutine(FadeUI(blackScreen, 1f));
 
         leftHandModel.SetActive(true);
         rightHandModel.SetActive(true);
@@ -82,6 +82,7 @@ public class IntroSequenceManager : MonoBehaviour
         {
             c.a = Mathf.MoveTowards(c.a, targetAlpha, fadeSpeed * Time.deltaTime);
             img.color = c;
+            Debug.Log($"imgColorTarget: {c.a} imgColorActual {img.color.a}");
             yield return null;
         }
     }

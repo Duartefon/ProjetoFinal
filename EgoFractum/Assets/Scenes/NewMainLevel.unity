@@ -3835,7 +3835,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6862835014607177292, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8260570746176586277, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_Name
@@ -3880,6 +3880,10 @@ PrefabInstance:
     - target: {fileID: 8260570746176586278, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8721194703924008800, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: fadeSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8721194703924008800, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: introAudio
