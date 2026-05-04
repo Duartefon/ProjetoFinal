@@ -7,7 +7,8 @@ namespace Player
         [Header("Player Settings")]
         [SerializeField] float walkSpeed = 4f;
         [SerializeField] float sensitivity = 1f;
-
+        [SerializeField] float playerHeight = 1.9f;
+        [SerializeField] float gravity = 10;    
 
         [Header("View Bobbing")]
         [SerializeField] private float bobFrequency = 3f;
@@ -19,6 +20,7 @@ namespace Player
         private Vector3 cameraDefaultLocalPos;
         private InputManager playerInput;
         private CharacterController _characterController;
+        private CapsuleCollider _collider;
         private Camera _camera;
         private float xRotation, yRotation;
         private float currentSpeed;
@@ -27,7 +29,16 @@ namespace Player
         void Start()
         {
             _characterController = GetComponent<CharacterController>();
+            _collider = GetComponent<CapsuleCollider>();
             _camera = GetComponentInChildren<Camera>();
+
+            _collider.height = playerHeight;
+            _collider.center = new Vector3(0, playerHeight * 0.5f, 0);
+
+            _characterController.height = playerHeight;
+            _characterController.center = new Vector3(0, playerHeight * 0.5f, 0);
+
+            _camera.transform.localPosition = new Vector3(0, playerHeight, 0);
 
             Cursor.lockState = CursorLockMode.Locked;
             currentSpeed = walkSpeed;
@@ -54,6 +65,8 @@ namespace Player
             Vector3 right = transform.right;
             Vector3 movDir = forward * vertical + right * horizontal;
             Vector3 move = movDir * currentSpeed;
+
+            move.y -= gravity;
 
             _characterController.Move(move * Time.deltaTime);
         }
