@@ -495,10 +495,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4496295732481442045, guid: e4f332aea9a46b34bab01d9d6d17f588, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8112553083573430171}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8298045291338814966, guid: e4f332aea9a46b34bab01d9d6d17f588, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7260279815072854341}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4f332aea9a46b34bab01d9d6d17f588, type: 3}
 --- !u!4 &1256309124599846501 stripped
 Transform:
@@ -535,27 +532,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7277802327528778795, guid: e4f332aea9a46b34bab01d9d6d17f588, type: 3}
   m_PrefabInstance: {fileID: 111434857209173971}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8260570746176586277 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8298045291338814966, guid: e4f332aea9a46b34bab01d9d6d17f588, type: 3}
-  m_PrefabInstance: {fileID: 111434857209173971}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7260279815072854341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8260570746176586277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7237de53fa9c4345bc69a37d584a95c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FootStepSoundManager
-  player: {fileID: 3678103039266226322}
-  delayBetweenSteps: 0.65
-  footStepsSource: {fileID: 7253190602539643862}
-  velocityToTriggerStepSound: 0
 --- !u!4 &8260570746176586278 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8298045291338814965, guid: e4f332aea9a46b34bab01d9d6d17f588, type: 3}
@@ -579,7 +555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2128212389589049030, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7
+      value: -1.65
       objectReference: {fileID: 0}
     - target: {fileID: 2128212389589049030, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
       propertyPath: m_LocalPosition.z
@@ -614,19 +590,73 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2953049632125414502, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953049632125414502, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
+      propertyPath: Pan2D
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953049632125414502, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
+      propertyPath: m_Volume
+      value: 0.353
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953049632125414502, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
       propertyPath: m_Resource
       value: 
       objectReference: {fileID: 8300000, guid: cd0240d2e8f0d774eb140e4344aad7f2, type: 3}
+    - target: {fileID: 2953049632125414502, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
+      propertyPath: MaxDistance
+      value: 0.7161609
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953049632125414502, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
+      propertyPath: MinDistance
+      value: 0.18095887
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953049632125414502, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953049632125414502, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
+      propertyPath: BypassReverbZones
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1789620068247378947, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8766065124969793699}
   m_SourcePrefab: {fileID: 100100000, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
 --- !u!4 &5898371318599319926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2128212389589049030, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
   m_PrefabInstance: {fileID: 5499973293991354288}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6090508724424065971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1789620068247378947, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
+  m_PrefabInstance: {fileID: 5499973293991354288}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8766065124969793699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6090508724424065971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7237de53fa9c4345bc69a37d584a95c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootStepSoundManager
+  player: {fileID: 3678103039266226322}
+  delayBetweenSteps: 0.65
+  footStepsSource: {fileID: 7253190602539643862}
+  velocityToTriggerStepSound: 2.5
+  earOffset: 0.7
+  pitch: 1.5
 --- !u!82 &7253190602539643862 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2953049632125414502, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}

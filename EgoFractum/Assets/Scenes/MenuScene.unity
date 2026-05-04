@@ -776,33 +776,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9032923193805083585, guid: baab92163440ba44dafc3b2a648a5bf1, type: 3}
   m_PrefabInstance: {fileID: 373091223}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &396363975 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6090508724424065971, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
-  m_PrefabInstance: {fileID: 979972527}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &396363976 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 7253190602539643862, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
-  m_PrefabInstance: {fileID: 979972527}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &396363978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396363975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7237de53fa9c4345bc69a37d584a95c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FootStepSoundManager
-  player: {fileID: 708421631}
-  delayBetweenSteps: 0.65
-  footStepsSource: {fileID: 396363976}
-  velocityToTriggerStepSound: 2.5
-  pitch: 1.25
 --- !u!1001 &475768710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -864,11 +837,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7765312254584034590, guid: cfbf3b8be2cfebd4b8ecd38068ac95c8, type: 3}
   m_PrefabInstance: {fileID: 475768710}
-  m_PrefabAsset: {fileID: 0}
---- !u!143 &708421631 stripped
-CharacterController:
-  m_CorrespondingSourceObject: {fileID: 3678103039266226322, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
-  m_PrefabInstance: {fileID: 979972527}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &712531963
 GameObject:
@@ -1493,26 +1461,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5898371318599319926, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253190602539643862, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
-      propertyPath: Loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253190602539643862, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
-      propertyPath: m_Volume
-      value: 0.599
-      objectReference: {fileID: 0}
-    - target: {fileID: 7253190602539643862, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7260279815072854341, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
-      propertyPath: velocityToTriggerStepSound
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8260570746176586277, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_Name
       value: VrPlayer
@@ -1557,14 +1505,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7260279815072854341, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6090508724424065971, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 396363978}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
 --- !u!1001 &1117083158
 PrefabInstance:
