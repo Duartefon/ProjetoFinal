@@ -9,9 +9,7 @@ public class FuseScript : MonoBehaviour
     {
         if (other.CompareTag("Fuse") && !fuseInserted)
         {
-            // quando o fusivel entra no trigger da snap
-            other.transform.position = this.transform.position;
-            other.transform.rotation = this.transform.rotation;
+
 
             // tira se a fisica para nao cair
 
@@ -22,6 +20,18 @@ public class FuseScript : MonoBehaviour
                 rb.angularVelocity = Vector3.zero;
                 rb.isKinematic = true;
             }
+
+            //var interactable = vai buscar o interactable do fusivel
+            //if (interactable != null)
+                // desliga o interactable
+
+            // quando o fusivel entra no trigger da snap
+            // para  as coords focarem certas ele tem de ficar filho do gerador
+
+            other.transform.parent = this.transform.parent;
+            other.transform.position = this.transform.position;
+            other.transform.rotation = this.transform.rotation;
+
 
             fuseInserted = true;
             generator.AddFuse();

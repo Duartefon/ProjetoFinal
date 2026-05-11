@@ -15,4 +15,10 @@ public class GeneratorScript : MonoBehaviour
     {
         
     }
+
+    public void AddFuse()
+    {
+        // idk
+        // gerador fica pronto para a cena da voltagem
+    }
 }
