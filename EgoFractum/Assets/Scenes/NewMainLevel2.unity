@@ -2152,11 +2152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c405a124cbce6d745938b29c49345c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!4 &274531440 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4975353060584476999, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
-  m_PrefabInstance: {fileID: 566461161241538221}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &280576798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2288,7 +2283,7 @@ GameObject:
   - component: {fileID: 293140866}
   - component: {fileID: 293140865}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: VoltageLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2302,12 +2297,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 293140863}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.726, y: 1.39, z: -1.094}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 23.854, y: -10.611376, z: -28.123999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 274531440}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &293140865
 MonoBehaviour:
@@ -14309,10 +14304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4975353060584476999, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 293140864}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5640707488047827965, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
       insertIndex: -1
@@ -15085,5 +15077,6 @@ SceneRoots:
   - {fileID: 1491383192}
   - {fileID: 2098468703}
   - {fileID: 138923834}
+  - {fileID: 293140864}
   - {fileID: 1599901383}
   - {fileID: 2048915147}
