@@ -651,12 +651,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7237de53fa9c4345bc69a37d584a95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FootStepSoundManager
-  player: {fileID: 3678103039266226322}
   delayBetweenSteps: 0.65
   footStepsSource: {fileID: 7253190602539643862}
   velocityToTriggerStepSound: 2.5
+  volume: 0.05
   earOffset: 0.7
-  pitch: 1.5
+  maxPitch: 0
+  player: {fileID: 3678103039266226322}
 --- !u!82 &7253190602539643862 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2953049632125414502, guid: b14b52f2045817449a9fbf2843adfe40, type: 3}
