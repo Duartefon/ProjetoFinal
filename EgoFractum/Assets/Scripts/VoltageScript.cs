@@ -10,6 +10,7 @@ public class VoltageScript : MonoBehaviour
     [Header("References")]
     public TMP_Text voltageText;
     public Light screenLight;
+    public GeneratorScript generator;
 
     [Header("Light Settings")]
     public float maxLightIntensity = 0.25f;
@@ -39,36 +40,49 @@ public class VoltageScript : MonoBehaviour
     }
     void Update()
     {
-
-        if (voltage != previousVoltage)
+        if (generator.isOn)
         {
-            if (voltage == goodVoltage)
-                BeepSuccess();
+            voltageText.enabled = true;
+            screenLight.enabled = true;
+
+            generator.SetVoltage(voltage);
+
+            if (voltage != previousVoltage)
+            {
+                if (voltage == goodVoltage)
+                    BeepSuccess();
+                else
+                    Beep();
+
+                previousVoltage = voltage;
+            }
+
+            Color targetColor;
+            if (voltage <= goodVoltage)
+            {
+                targetColor = Color.Lerp(lowVoltageColor, goodVoltageColor,
+                    Mathf.InverseLerp(0, goodVoltage, voltage));
+            }
             else
-                Beep();
+            {
+                targetColor = Color.Lerp(goodVoltageColor, mediumVoltageColor,
+                    Mathf.InverseLerp(goodVoltage, maxVoltage, voltage));
+            }
 
-            previousVoltage = voltage;
+            voltageText.color = targetColor;
+            screenLight.color = targetColor;
+            voltageText.text = $"{voltage}V";
+
+            if (voltage < lowVoltage)
+            {
+                Pulse();
+            }
         }
-
-        Color targetColor;
-        if (voltage <= goodVoltage)
+         else
         {
-            targetColor = Color.Lerp(lowVoltageColor, goodVoltageColor,
-                Mathf.InverseLerp(0, goodVoltage, voltage));
-        }
-        else
-        {
-            targetColor = Color.Lerp(goodVoltageColor, mediumVoltageColor,
-                Mathf.InverseLerp(goodVoltage, maxVoltage, voltage));
-        }
-
-        voltageText.color = targetColor;
-        screenLight.color = targetColor;
-        voltageText.text = $"{voltage}V";
-
-        if (voltage < lowVoltage)
-        {
-            Pulse();
+            voltageText.enabled = false;
+            screenLight.enabled = false;
+            voltageText.text = "0V";
         }
     }
     void Pulse()

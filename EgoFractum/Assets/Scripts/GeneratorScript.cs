@@ -9,7 +9,7 @@ public class GeneratorScript : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponentInChildren<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,5 +25,10 @@ public class GeneratorScript : MonoBehaviour
     {
         // idk
         // gerador fica pronto para a cena da voltagem
+    }
+
+    public void SetVoltage(float voltage)
+    {
+        // 600V
     }
 }
