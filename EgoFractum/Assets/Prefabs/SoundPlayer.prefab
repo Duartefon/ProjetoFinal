@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2128212389589049030}
   - component: {fileID: 2953049632125414502}
+  - component: {fileID: 6984548850623826139}
   m_Layer: 0
   m_Name: SoundPlayer
   m_TagString: Untagged
@@ -43,23 +44,23 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 329068250119213315, guid: c1ac0e85cec2f70428f89bfcc44c2efb, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 91d8c322eabc6df4684076bb4a141a64, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Resource: {fileID: 8300000, guid: cd0240d2e8f0d774eb140e4344aad7f2, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.12
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 3.745843
-  MaxDistance: 23.843771
-  Pan2D: 0
+  MinDistance: 0.18095887
+  MaxDistance: 0.7161609
+  Pan2D: -1
   rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
-  BypassReverbZones: 0
+  BypassReverbZones: 1
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -98,7 +99,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.377
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -138,3 +139,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6984548850623826139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789620068247378947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7237de53fa9c4345bc69a37d584a95c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootStepSoundManager
+  player: {fileID: 0}
+  delayBetweenSteps: 0.65
+  footStepsSource: {fileID: 2953049632125414502}
+  velocityToTriggerStepSound: 2.5
+  earOffset: 0.7
+  pitch: 1.5
