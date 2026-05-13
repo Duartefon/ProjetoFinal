@@ -25,6 +25,8 @@ AvatarMask:
     m_Weight: 1
   - m_Path: Armature/L_Wrist/L_IndexMetacarpal/L_IndexProximal/L_IndexIntermediate/L_IndexDistal/L_IndexTip
     m_Weight: 1
+  - m_Path: Armature/L_Wrist/L_IndexMetacarpal/L_IndexProximal/L_IndexIntermediate/L_IndexDistal/L_IndexTip/L_IndexTip_end
+    m_Weight: 1
   - m_Path: Armature/L_Wrist/L_LittleMetacarpal
     m_Weight: 0
   - m_Path: Armature/L_Wrist/L_LittleMetacarpal/L_LittleProximal
@@ -34,6 +36,8 @@ AvatarMask:
   - m_Path: Armature/L_Wrist/L_LittleMetacarpal/L_LittleProximal/L_LittleIntermediate/L_LittleDistal
     m_Weight: 0
   - m_Path: Armature/L_Wrist/L_LittleMetacarpal/L_LittleProximal/L_LittleIntermediate/L_LittleDistal/L_LittleTip
+    m_Weight: 0
+  - m_Path: Armature/L_Wrist/L_LittleMetacarpal/L_LittleProximal/L_LittleIntermediate/L_LittleDistal/L_LittleTip/L_LittleTip_end
     m_Weight: 0
   - m_Path: Armature/L_Wrist/L_MiddleMetacarpal
     m_Weight: 0
@@ -45,7 +49,11 @@ AvatarMask:
     m_Weight: 0
   - m_Path: Armature/L_Wrist/L_MiddleMetacarpal/L_MiddleProximal/L_MiddleIntermediate/L_MiddleDistal/L_MiddleTip
     m_Weight: 0
+  - m_Path: Armature/L_Wrist/L_MiddleMetacarpal/L_MiddleProximal/L_MiddleIntermediate/L_MiddleDistal/L_MiddleTip/L_MiddleTip_end
+    m_Weight: 0
   - m_Path: Armature/L_Wrist/L_Palm
+    m_Weight: 0
+  - m_Path: Armature/L_Wrist/L_Palm/L_Palm_end
     m_Weight: 0
   - m_Path: Armature/L_Wrist/L_RingMetacarpal
     m_Weight: 0
@@ -57,6 +65,8 @@ AvatarMask:
     m_Weight: 0
   - m_Path: Armature/L_Wrist/L_RingMetacarpal/L_RingProximal/L_RingIntermediate/L_RingDistal/L_RingTip
     m_Weight: 0
+  - m_Path: Armature/L_Wrist/L_RingMetacarpal/L_RingProximal/L_RingIntermediate/L_RingDistal/L_RingTip/L_RingTip_end
+    m_Weight: 0
   - m_Path: Armature/L_Wrist/L_ThumbMetacarpal
     m_Weight: 0
   - m_Path: Armature/L_Wrist/L_ThumbMetacarpal/L_ThumbProximal
@@ -65,5 +75,11 @@ AvatarMask:
     m_Weight: 0
   - m_Path: Armature/L_Wrist/L_ThumbMetacarpal/L_ThumbProximal/L_ThumbDistal/L_ThumbTip
     m_Weight: 0
-  - m_Path: HandModel
+  - m_Path: Armature/L_Wrist/L_ThumbMetacarpal/L_ThumbProximal/L_ThumbDistal/L_ThumbTip/L_ThumbTip_end
+    m_Weight: 0
+  - m_Path: Plane005.001
+    m_Weight: 0
+  - m_Path: "Plane005.001/B\xE9zierCurve"
+    m_Weight: 0
+  - m_Path: "Plane005.001/B\xE9zierCurve.001"
     m_Weight: 0

@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
+
+[RequireComponent(typeof(Animator))]
 public class HandAnimator : MonoBehaviour
 {
     
@@ -28,7 +30,7 @@ public class HandAnimator : MonoBehaviour
         Ring,
         Pinky
     }
-
+    
 
 
     private void Update()
