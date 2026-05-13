@@ -21,15 +21,15 @@ MonoBehaviour:
     m_Value: 0.82
   intensity:
     m_OverrideState: 1
-    m_Value: 2.78
+    m_Value: 0.29
   scatter:
     m_OverrideState: 1
-    m_Value: 0.432
+    m_Value: 0.686
   clamp:
     m_OverrideState: 1
     m_Value: 65472
   tint:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {r: 0.32871437, g: 1, b: 0, a: 1}
   highQualityFiltering:
     m_OverrideState: 1
@@ -44,11 +44,11 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 6
   dirtTexture:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {fileID: 0}
     dimension: 1
   dirtIntensity:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 2.23
 --- !u!114 &-2703399790315695335
 MonoBehaviour:
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ChromaticAberration
-  active: 1
+  active: 0
   intensity:
     m_OverrideState: 1
     m_Value: 0.549

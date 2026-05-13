@@ -76,6 +76,8 @@ public class VoltageScript : MonoBehaviour
             if (voltage < lowVoltage)
             {
                 Pulse();
+            } else {
+                screenLight.intensity = maxLightIntensity;
             }
         }
          else
