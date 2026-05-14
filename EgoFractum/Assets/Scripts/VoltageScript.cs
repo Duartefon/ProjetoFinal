@@ -110,4 +110,10 @@ public class VoltageScript : MonoBehaviour
             audioSource.PlayOneShot(beepSuccessSound);
         }
     }
+
+    public void SetVoltage(float voltage)
+    {
+        if(generator.isOn)
+            this.voltage = voltage;
+    }
 }
