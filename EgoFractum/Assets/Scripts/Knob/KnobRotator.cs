@@ -2,9 +2,7 @@
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
-namespace LevelUP.Dial
-{
-    public class Rotator : MonoBehaviour
+ public class KnobRotator : MonoBehaviour
     {
         [SerializeField] Transform linkedDial;
         [SerializeField] private int snapRotationAmount = 25;
@@ -67,14 +65,13 @@ namespace LevelUP.Dial
         {
             if (shouldGetHandRotation)
             {
-                var rotationAngle = GetInteractorRotation(); //gets the current controller angle
+                var rotationAngle = GetInteractorRotation(); //pega na rotação do controller
                 GetRotationDistance(rotationAngle);
             }
         }
 
         public float GetInteractorRotation() => interactor.GetComponent<Transform>().eulerAngles.z;
 
-        #region TheMath!
         private void GetRotationDistance(float currentAngle)
         {
             if (!requiresStartAngle)
@@ -83,7 +80,7 @@ namespace LevelUP.Dial
 
                 if (angleDifference > angleTolerance)
                 {
-                    if (angleDifference > 270f) //checking to see if the user has gone from 0-360 - a very tiny movement but will trigger the angletolerance
+                    if (angleDifference > 270f) //para ver se ja passou do 0-360
                     {
                         float angleCheck;
 
@@ -133,7 +130,6 @@ namespace LevelUP.Dial
                 startAngle = currentAngle;
             }
         }
-        #endregion
 
         private float CheckAngle(float currentAngle, float startAngle) => (360f - currentAngle) + startAngle;
 
@@ -142,9 +138,6 @@ namespace LevelUP.Dial
             linkedDial.localEulerAngles = new Vector3(linkedDial.localEulerAngles.x+ snapRotationAmount,
                                                       linkedDial.localEulerAngles.y,
                                                       linkedDial.localEulerAngles.z );
-
-            if (TryGetComponent<IDial>(out IDial dial))
-                dial.DialChanged(linkedDial.localEulerAngles.z);
 
             if (voltageController != null)
                 voltageController.SetVoltage(Mathf.Clamp(voltageController.voltage + snapRotationAmount, 0f, voltageController.maxVoltage));
@@ -156,11 +149,8 @@ namespace LevelUP.Dial
                                                       linkedDial.localEulerAngles.y,
                                                       linkedDial.localEulerAngles.z);
 
-            if (TryGetComponent<IDial>(out IDial dial))
-                dial.DialChanged(linkedDial.localEulerAngles.z);
-
             if (voltageController != null)
                 voltageController.SetVoltage(Mathf.Clamp(voltageController.voltage - snapRotationAmount, 0f, voltageController.maxVoltage));
         }
     }
-}
+
