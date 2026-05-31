@@ -10,7 +10,6 @@ public class LightFlicker : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float stability = 0.7f;
     [SerializeField] private float smoothSpeed = 18f;// quao rapido a intensidade se ajusta ao valor alvo
-
                                                     // maior = mais rapido, menor = mais suave
 
     [Header("Burst Settings")]
