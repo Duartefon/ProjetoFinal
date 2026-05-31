@@ -11,22 +11,18 @@ public class FootStepSoundManager : MonoBehaviour
     public float maxPitch = 1.5f;
     private float timeLastStep = 0;
     private float timestamp;
+    public AudioClip normalStepSound, metalStepSound;
 
     [Header("Player")]
     public CharacterController player;
-
     private bool boolAux = false;
-    private float panStereoAux = 1f;
+
     void Start()
     {
         footStepsSource.volume = volume;
-
         player = GetComponentInParent<CharacterController>();
-
         if (player == null)
-        {
-            Debug.LogError($"Não existe CharactterController no parent: {gameObject.transform.parent.name}");
-        }
+            Debug.LogError($"Não existe CharacterController no parent: {gameObject.transform.parent.name}");
     }
 
     void Update()
@@ -38,17 +34,26 @@ public class FootStepSoundManager : MonoBehaviour
         {
             timeLastStep = Time.fixedTime;
 
-            //Debug.Log($"timeStamp: {timestamp}, 
-            // curenttime: {timeLastStep + delayBetweenSteps} ");
-
+            footStepsSource.clip = IsOnMetal() ? metalStepSound : normalStepSound;
             footStepsSource.pitch = Random.Range(1, maxPitch);
-            footStepsSource.volume = Random.Range(volume*0.5f, volume*1.2f);
+            footStepsSource.volume = Random.Range(volume * 0.5f, volume * 1.2f);
             boolAux = !boolAux;
-            footStepsSource.panStereo = boolAux ? -1 + earOffset : 1 - earOffset; // * (panStereoAux + earOffset);   
+            footStepsSource.panStereo = boolAux ? -1 + earOffset : 1 - earOffset;
             footStepsSource.Play();
-
-            //Debug.Log($"Velocity {player.velocity.magnitude } ");
-            //   footStepsSource.panStereo =
         }
     }
+
+    private bool IsOnMetal()
+{
+    int metalLayer = LayerMask.NameToLayer("Metal");
+    if (Physics.Raycast(player.transform.position, Vector3.down, out RaycastHit hit, 2f))
+    {
+        bool onMetal = hit.collider.gameObject.layer == metalLayer;
+        Debug.DrawRay(player.transform.position, Vector3.down * 2f, onMetal ? Color.yellow : Color.red);
+        return onMetal;
+    }
+
+    Debug.DrawRay(player.transform.position, Vector3.down * 2f, Color.red);
+    return false;
+}
 }

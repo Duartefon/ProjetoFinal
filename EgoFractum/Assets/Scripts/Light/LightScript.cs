@@ -6,12 +6,12 @@ using UnityEngine;
 * Para além disso, existe uma probabilidade de cada luz falhar, ou seja, de não acender quando o gerador é ligado.
 * O script vai ser colocado em cada luz do mapa.
 */
-
 public class LightScript : MonoBehaviour
 {
     private GeneratorScript generatorScript; // Referência ao script do gerador
     private Light[] lightComponents; // Cada luz tem dois componentes light
     private bool isOn = false; // Estado da luz
+    private bool isPendingOn = false; // Se a luz está à espera de acender
     private static float failProbability = 0.2f; // Probabilidade de falha de cada luz
 
     [Header("Materials")]
@@ -21,56 +21,81 @@ public class LightScript : MonoBehaviour
     [Header("Light Mesh")]
     public MeshRenderer lightMesh; // Mesh da luz para mudar o material
 
+    [Header("Audio")]
+    private AudioSource audioSource;
+    public AudioClip lightBuzz, lightOnSound, lightOffSound;
+
     void Start()
     {
         generatorScript = GameObject.FindWithTag("Generator").GetComponent<GeneratorScript>();
         lightComponents = GetComponentsInChildren<Light>();
+        audioSource = GetComponentInChildren<AudioSource>();
     }
-
 
     void Update()
     {
-        if(generatorScript.isOn && !isOn) // Se o gerador estiver ligado e a luz estiver desligada
+        if (generatorScript.isOn && !isOn && !isPendingOn) // Se o gerador estiver ligado e a luz estiver desligada
         {
+            isPendingOn = true;
             float delay = Random.Range(0.5f, 2f); // Gerar um delay aleatório entre 0.5 e 2 segundos
             Invoke("TurnOnLight", delay); // Chamar a função para ligar a luz após o delay
         }
-        else if(!generatorScript.isOn && isOn) {
+        else if (!generatorScript.isOn && isOn)
+        {
             TurnOffLight();
         }
 
-        if(isOn)
+        if (isOn)
         {
             lightMesh.material = onMaterial;
+            if (audioSource != null && !audioSource.isPlaying)
+            {
+                audioSource.clip = lightBuzz;
+                audioSource.loop = true;
+                audioSource.Play();
+            }
         }
         else
         {
             lightMesh.material = offMaterial;
+            if (audioSource != null && audioSource.isPlaying)
+                audioSource.Stop();
         }
     }
 
     private void TurnOnLight()
     {
-        if(Random.value > failProbability)
+        isPendingOn = false;
+
+        if (Random.value > failProbability)
         {
-            foreach(Light light in lightComponents)
-            {
+            foreach (Light light in lightComponents)
                 light.enabled = true;
+
+            if (audioSource != null)
+            {
+                audioSource.pitch = Random.Range(0.9f, 1f);
+                audioSource.PlayOneShot(lightOnSound);
             }
+
             isOn = true;
         }
         else
         {
-            Debug.Log("A luz falhou ao ligar!");
+            Debug.Log("A luz falhou ao ligar!"); // Manter o log de falha para debug
         }
     }
 
     private void TurnOffLight()
     {
-        foreach(Light light in lightComponents)
-        {
-            light.enabled = false;
-        }
+        CancelInvoke("TurnOnLight"); // Cancelar qualquer Invoke pendente
+        isPendingOn = false;
         isOn = false;
+
+        foreach (Light light in lightComponents)
+            light.enabled = false;
+
+        if (audioSource != null)
+            audioSource.PlayOneShot(lightOffSound);
     }
 }
