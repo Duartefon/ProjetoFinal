@@ -40,7 +40,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749572962915607916}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 0.98271334, b: 0.5518868, a: 1}
@@ -136,6 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5657330069907487311}
+  - component: {fileID: 6391941209786818047}
   m_Layer: 0
   m_Name: WallLight
   m_TagString: Untagged
@@ -161,6 +162,21 @@ Transform:
   - {fileID: 1471624124721819464}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6391941209786818047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6589211627875029640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 538acf3dc004a7e4aa4e63125447d7a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  onMaterial: {fileID: 2100000, guid: 5d11f64f3cb796744bddca30cae79ea3, type: 2}
+  offMaterial: {fileID: 2100000, guid: 845d516de84fb0b488e82878b68d6a28, type: 2}
+  lightMesh: {fileID: 0}
 --- !u!1 &6730871502159983159
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +217,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6730871502159983159}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 1, g: 0.98271334, b: 0.5518868, a: 1}
@@ -344,6 +360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: industrial_light (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5100068591777345685, guid: 3184b271b3f98dc4a9aac9d4ba7fdcc0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 845d516de84fb0b488e82878b68d6a28, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

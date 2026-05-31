@@ -720,6 +720,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Generator
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
+      propertyPath: m_TagString
+      value: Generator
+      objectReference: {fileID: 0}
     - target: {fileID: 1355214454996083995, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1066,10 +1070,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
-  m_Height: 3.44
+  m_Radius: 0.33
+  m_Height: 4.42
   m_Direction: 2
-  m_Center: {x: 0.03, y: 0.2783762, z: 2.99}
+  m_Center: {x: 0.01, y: 0.2783762, z: 3.0803266}
 --- !u!4 &4975353060584476999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
@@ -1132,7 +1136,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.055408124, y: 0.24667966, z: 0.25518742}
-  m_Center: {x: 0.000000006486055, y: -7.731978e-16, z: 0.10881985}
+  m_Center: {x: -0.0000019008626, y: -7.731978e-16, z: 0.10881985}
 --- !u!54 &5404379501449924163
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1373,8 +1377,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.03144149, y: 0.038124003, z: 0.0889948}
-  m_Center: {x: -0.0000009757748, y: -6.6045824e-10, z: 0.06455302}
+  m_Size: {x: 0.023264542, y: 0.023264542, z: 0.09726508}
+  m_Center: {x: 0.0000000017015724, y: -4.056863e-16, z: 0.05709433}
 --- !u!1 &9158124026577778096 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4440136938205496092, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
