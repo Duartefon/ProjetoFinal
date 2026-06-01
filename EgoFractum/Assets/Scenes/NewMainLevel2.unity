@@ -9008,6 +9008,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8204784693380098592, guid: 54e6b97ab5260f44b9213591789523e0, type: 3}
+      propertyPath: m_StepOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9149100241184382003, guid: 54e6b97ab5260f44b9213591789523e0, type: 3}
       propertyPath: metalStepSound
       value: 
@@ -12146,7 +12150,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -25352,6 +25356,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 3b4a4c3accfab104a96604d7039854b0, type: 2}
+    - target: {fileID: 7186786452238677497, guid: 2b701c60c1bc9124e937bd3730530b78, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 663a0ca20eda0404f88fbc26c026c980, type: 2}
     - target: {fileID: 8477019803501967012, guid: 2b701c60c1bc9124e937bd3730530b78, type: 3}
       propertyPath: m_Name
       value: Elevator
