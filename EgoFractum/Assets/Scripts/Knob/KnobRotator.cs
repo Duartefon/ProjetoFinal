@@ -10,6 +10,10 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
         [SerializeField] private GameObject RighthandModel;
         [SerializeField] private GameObject LefthandModel;
         [SerializeField] bool shouldUseDummyHands;
+        
+        [Header("Audio")]
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip rotationSound;
 
         private XRBaseInteractor interactor;
         private float startAngle;
@@ -23,6 +27,15 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
         {
             grabInteractor.selectEntered.AddListener(GrabbedBy);
             grabInteractor.selectExited.AddListener(GrabEnd);
+
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+                audioSource.playOnAwake = false;
+                audioSource.clip = rotationSound;
+                audioSource.spatialBlend = 1f;
+                audioSource.volume = 0.5f;
+            }
         }
         private void OnDisable()
         {
@@ -141,7 +154,10 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
             if (voltageController != null)
                 voltageController.SetVoltage(Mathf.Clamp(voltageController.voltage + snapRotationAmount, 0f, voltageController.maxVoltage));
+
+            audioSource.Play();
         }
+
 
         private void RotateDialAntiClockwise()
         {
@@ -151,6 +167,8 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
             if (voltageController != null)
                 voltageController.SetVoltage(Mathf.Clamp(voltageController.voltage - snapRotationAmount, 0f, voltageController.maxVoltage));
+
+            audioSource.Play();
         }
     }
 

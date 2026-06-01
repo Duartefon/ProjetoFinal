@@ -74,16 +74,23 @@ public class LightScript : MonoBehaviour
 
             if (audioSource != null)
             {
-                audioSource.pitch = Random.Range(0.9f, 1f);
+                audioSource.pitch = Random.Range(0.75f, 0.85f);
                 audioSource.PlayOneShot(lightOnSound);
             }
-
-            isOn = true;
         }
         else
         {
-            Debug.Log("A luz falhou ao ligar!"); // Manter o log de falha para debug
+            // se a luz falhar vai tocar um som de faisca e vai se adicionar
+            // o script LightFlicker para criar um efeito de luz a falhar
+            /*
+            foreach (Light light in lightComponents) {
+                light.gameObject.AddComponent<LightFlicker>();
+            }
+            */
+        
         }
+
+        isOn = true;
     }
 
     private void TurnOffLight()
