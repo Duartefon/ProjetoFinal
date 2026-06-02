@@ -12154,8 +12154,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.4070246, y: 1.522094, z: 6.5259323}
-  m_Center: {x: 0, y: 0.74749625, z: -0}
+  m_Size: {x: 2.4070246, y: 0.4946642, z: 5.300917}
+  m_Center: {x: 0, y: 0.23378134, z: -0}
 --- !u!114 &1068073046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16279,18 +16279,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fog Variant (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 3375314994582686213, guid: 1e74f36497664b64ea5337f140a5d2ea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3375314994582686213, guid: 1e74f36497664b64ea5337f140a5d2ea, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.719
-      objectReference: {fileID: 0}
-    - target: {fileID: 3375314994582686213, guid: 1e74f36497664b64ea5337f140a5d2ea, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.16
-      objectReference: {fileID: 0}
     - target: {fileID: 5358881457955431034, guid: 1e74f36497664b64ea5337f140a5d2ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.7990103
@@ -16330,30 +16318,6 @@ PrefabInstance:
     - target: {fileID: 5358881457955431034, guid: 1e74f36497664b64ea5337f140a5d2ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871579309813762839, guid: 1e74f36497664b64ea5337f140a5d2ea, type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: 14.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871579309813762839, guid: 1e74f36497664b64ea5337f140a5d2ea, type: 3}
-      propertyPath: ShapeModule.m_Scale.z
-      value: 36.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871579309813762839, guid: 1e74f36497664b64ea5337f140a5d2ea, type: 3}
-      propertyPath: InitialModule.maxNumParticles
-      value: 2500
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871579309813762839, guid: 1e74f36497664b64ea5337f140a5d2ea, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871579309813762839, guid: 1e74f36497664b64ea5337f140a5d2ea, type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6871579309813762839, guid: 1e74f36497664b64ea5337f140a5d2ea, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19466,10 +19430,6 @@ PrefabInstance:
     - target: {fileID: 1677103516487281156, guid: d4a40bb6b68427d4c970a577a4b48dc7, type: 3}
       propertyPath: m_Name
       value: HVAC (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3561321183791308939, guid: d4a40bb6b68427d4c970a577a4b48dc7, type: 3}
-      propertyPath: playOnAwake
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5566314625436265890, guid: d4a40bb6b68427d4c970a577a4b48dc7, type: 3}
       propertyPath: m_LocalPosition.x
