@@ -29,18 +29,19 @@
 \chapter{Resumo}
 
 Este trabalho apresenta o desenvolvimento de um jogo em realidade virtual focado 
-na interação tridimensional. O objetivo principal é explorar formas mais naturais 
-de interação pessoa-máquina através do rastreio de movimentos reais.
+na interação tridimensional. O objetivo principal é explorar formas de 
+interação alternativas às conventionais, aproveitando movimentos reais.
 \par
 A motivação surge da reduzida exploração desta área no ensino superior, apesar 
 do seu potencial e crescente relevância no mundo da multimédia.
 \par
 A solução proposta consiste num jogo de exploração baseado na resolução de 
 puzzles. O jogador interage diretamente com objetos do ambiente para progredir. 
-A narrativa é revelada de forma gradual, de forma a incentivar a descoberta e 
-o envolvimento do utilizador.
+A narrativa é revelada de forma gradual, de maneira a incentivar a descoberta e 
+o envolvimento do jogador.
 \par
-O sistema foi desenvolvido com o motor de jogo Unity~\cite{unity} e o \textit{toolkit} de interação XR~\cite{xr}. 
+O sistema foi desenvolvido com o motor de jogo Unity~\cite{unity} com recurso ao 
+\textit{toolkit} de interação XR~\cite{xr}. 
 Foi adotada uma abordagem iterativa, com prototipagem, implementação e 
 testes sucessivos. Todos os elementos gráficos foram criados de raiz.
 \par
@@ -48,7 +49,8 @@ Os principais contributos incluem um sistema de interação tridimensional basea
 em movimentos reais, um ambiente imersivo orientado a puzzles e a integração de 
 elementos narrativos no processo de progressão.
 \par
-A avaliação incluiu testes funcionais e análise da experiência do utilizador. 
+A avaliação incluiu testes funcionais e análise da experiência do utilizador 
+a partir do padrão \texttt{GUESS-18}~\cite{guess18}. 
 Foram considerados aspetos como usabilidade, imersão e intuitividade. 
 Os resultados mostram \dots
 \par
@@ -67,7 +69,7 @@ education, despite its potential and growing relevance in the multimedia field.
 The proposed solution consists of an exploration-based game centered on puzzle 
 solving. The player interacts directly with objects in the environment to progress. The narrative is revealed gradually, encouraging discovery and user engagement.
 \par
-The system was developed using the Unity game engine and the OpenXR toolkit. 
+The system was developed using the Unity~\cite{unity} game engine and the XR Interaction Toolkit~\cite{xr}. 
 An iterative approach was adopted, including prototyping, implementation, and 
 successive testing phases. All graphical assets were created from scratch.
 \par
@@ -107,7 +109,7 @@ It is concluded that the adopted approach is \dots
 \cleardoublepage
 \chapter{Introdução}
 \label{ch:introducao}
-Neste projeto foi desenvolvido e testado um jogo em realidade virtual, 
+Neste projeto, foi desenvolvido e testado um jogo em realidade virtual, 
 com o objetivo de explorar formas alternativas de interação pessoa-máquina. 
 Em particular, procurou-se investigar a interação tridimensional baseada no 
 rastreio de movimentos reais, uma abordagem ainda pouco explorada quando 
@@ -129,11 +131,11 @@ promover simultaneamente o envolvimento do utilizador e a construção de uma
 narrativa implícita.
 \par
 A implementação foi realizada utilizando o motor de jogo Unity, 
-em conjunto com o \textit{toolkit} OpenXR, permitindo compatibilidade com 
-diferentes dispositivos de realidade virtual e garantindo flexibilidade no 
+em conjunto com o \textit{toolkit} de interação XR, o que permite compatibilidade com 
+diferentes dispositivos de realidade virtual e oferece alguma flexibilidade no 
 desenvolvimento. Todos os elementos gráficos, tanto 2D como 3D, 
-foram desenvolvidos de raiz com recurso a ferramentas como Blender e Aseprite, 
-para garantir a coerência visual e o controlo total sobre os ativos utilizados.
+foram desenvolvidos de raiz com recurso a ferramentas, como o Blender e Aseprite, 
+para garantir a coerência visual e o controlo total sobre a estética do jogo.
 \par
 Como principais contributos deste trabalho destacam-se: (i) o desenvolvimento de 
 um sistema de interação tridimensional baseado em movimentos reais; 
@@ -144,7 +146,7 @@ de prototipagem, implementação e teste, para  validar as decisões tomadas e
 ajustar o sistema com base nos resultados obtidos.
 \par
 A validação do sistema incluiu testes funcionais e avaliações da experiência do 
-utilizador, com foco na usabilidade, imersão e intuitividade da interação.
+utilizador a partir do padrão \texttt{GUESS-18}~\cite{guess18}, com foco na usabilidade, imersão e intuitividade da interação.
 Os resultados obtidos indicam que a abordagem adotada contribui positivamente 
 para a experiência global, embora também revelem limitações que abrem caminho 
 para trabalho futuro.
@@ -158,20 +160,101 @@ O presente relatório encontra-se organizado da seguinte forma: \dots
 \chapter{Trabalhos Relacionados}
 \label{ch:trab-relacionados}
 
+% Ghost Town
+% Half Life: Alyx
+
 \cleardoublepage
 \chapter{Modelo Proposto}
 \label{ch:modelo-proposto}
 \section{Requisitos}
 \section{Fundamentos}
+
+% NOTA PARA A ESCRITA DOS FUNDAMENTOS:
+% - Foco: TEORIA E CONCEITOS ABSTRATOS.
+% - O que escrever aqui:
+%   1. Princípios VR: Explicar o que é 6 DoF, Imersão e Mapeamento Natural.
+%   2. Arquitetura XR: Explicar o conceito teórico de Interactor vs Interactable.
+%   3. Game Design: Falar sobre a Teoria de Flow e Narrativa Ambiental.
+% -!!! NÃO falar do código próprio nem de assets específicos aqui !!!
+
+
+% Pequeno parágrafo introdutório
+Nesta secção são apresentados os conceitos teóricos e 
+tecnológicos que servem de base para o desenvolvimento do modelo 
+proposto, englobando os princípios de interação em realidade virtual, 
+a arquitetura do ecossistema XR e as teorias de design de jogos aplicadas.
+
+\subsection{Interação Tridimensional e Presença em \texttt{VR}}
+% Escrevemos sobre 6 DoF, mapeamento natural e o sentimento de presença.
+
+\subsection{O Modelo Interactor-Interactable (Unity XR)}
+% Explicamos o fundamento lógico de como o Unity abstrai as mãos e os objetos.
+
+\subsection{Design de Puzzles e Narrativa Ambiental}
+% Explicamos a teoria por trás da criação de puzzles intuitivos e imersivos
 \section{Abordagem}
+Durante o desenvolvimento do projeto, foi adotada uma abordagem
+iterativa com diversas partes distintas: prototipagem, implementação e testes.
+Esta abordagem permitiu-nos avaliar as decisões tomadas e ajustar o sistema ao
+longo do desenvolvimento, podendo sempre voltar atrás para corrigir erros ou 
+funcionalidades mal implementadas.
 
 \cleardoublepage
 \chapter{Implementação do Modelo}
 \label{ch:implementacao-modelo}
 
+% NOTA PARA A ESCRITA DA IMPLEMENTAÇÃO:
+% - Foco: APLICAÇÃO PRÁTICA, ENGENHARIA E PRODUÇÃO PRÓPRIA.
+% - O que escrever aqui:
+%   1. Unity e XR: Como configuramos o XR Origin, as mãos e os comandos.
+%   2. Assets: O processo de modelação no Blender e texturas no Aseprite.
+%   3. Código (Scripts C#): Mostrar a lógica dos puzzles.
+
+
+\section{Conceito e Arquitetura do Sistema}
+% Podemos incluir concept art talvez
+% Aqui faz-se um resumo visual de como o Unity se liga ao XR Interaction Toolkit.
+% Pode-se incluir um diagrama de blocos da arquitetura (Input do Utilizador -> XR Rig -> Lógica do Jogo).
+% Explicar o que é abstraído e o que já vem implementado.
+
+\section{Evolução do Protótipo}
+% Aqui explica-se a "fase de desenvolvimento inicial". Como o modelo é iterativo,
+% explica-se o que se validou no protótipo / greyboxing antes de avançar para a arte final.
+
+\section{Desenvolvimento de Elementos Gráficos e Ambiente}
+% Mapa modular feito no blender com texturas no Aseprite
+% Mãos encontradas na internet e apropiadas para o jogo
+% Elementos do mapa (PCs, escadas, etc)
+% Mencionar a cor "vermelha" que guia o jogador
+\subsection{Direção Artística e Concept Art}
+% É aqui que entra a arte conceptual
+% Explicamos o conceito visual do jogo (ex: misterioso, cyberpunk, low-poly, etc.).
+% Concept art, sketches, etc.
+
+\subsection{Texturização e Identidade Cromática}
+% Aqui falamos do Aseprite e da escolha da COR VERMELHA como 
+% elemento de destaque e guia visual para o utilizador.
+
+\subsection{Montagem do Cenário e Iluminação}
+% Aqui explicamos o Level Design no Unity, o encaixe dos mapa modular 
+% e a configuração das LUZES para direcionar o foco do jogador em VR.
+
+\section{Desenvolvimento dos Sistemas Interativos (Código e Mecânicas)}
+% Falar da interação do knob do gerador
+% Falar da interação da escada
+% etc etc
+
+\subsection{Puzzles}
+
+\subsection{Gestão do Estado do Jogo e Narrativa}
+% Falamos do eventual sistema de narrativa
+
 \cleardoublepage
 \chapter{Validação e Testes}
 \label{ch:validacao-testes}
+Ao longo da implementação, foram definidas duas fases de testes onde 5 a 10 pessoas jogaram
+o jogo e preencheram um questionário definido no padrão \texttt{GUESS-18}~\cite{guess18}. Foram registadas notas sobre
+todos os participantes durante os testes, para além dos comentários dos jogadores.
 
 \cleardoublepage
 \chapter{Conclusões e Trabalho Futuro}
@@ -180,8 +263,22 @@ O presente relatório encontra-se organizado da seguinte forma: \dots
 
 \cleardoublepage
 \begin{thebibliography}{9}
-\bibitem{unity}[Unity, site] Unity (site). \url{https://unity.com/pt}
-\bibitem{xr}[XR Interaction Toolkit, site] Unity, XR Interaction Toolkit (site). \url{https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@3.0/manual/index.html}
+
+\bibitem{unity}
+[Unity, site] 
+Unity (site). 
+\url{https://unity.com/pt}
+
+\bibitem{xr}
+[XR Interaction Toolkit, site]
+Unity, XR Interaction Toolkit (site). 
+\url{https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@3.0/manual/index.html}
+
+\bibitem{guess18}
+[The Journal of User Experience, GUESS-18 Scoring Guidelines]
+The Journal of User Experience, GUESS-18 Scoring Guidelines.
+\url{https://uxpajournal.org/wp-content/uploads/sites/7/pdf/JUS_Keebler_GUESS-18%20Scoring%20Guidelines.pdf}
+
 \end{thebibliography}
 
 \end{document}
