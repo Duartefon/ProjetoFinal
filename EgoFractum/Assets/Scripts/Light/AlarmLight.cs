@@ -27,7 +27,7 @@ public class AlarmLight : MonoBehaviour
         if (!isActive) return;
  
 
-        transform.Rotate(0, rotationAmount * Time.deltaTime, 0, Space.World);
+        transform.Rotate(0, 0, rotationAmount * Time.deltaTime, Space.World);
 
     }
     
