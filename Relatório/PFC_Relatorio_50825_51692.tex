@@ -167,6 +167,20 @@ O presente relatório encontra-se organizado da seguinte forma: \dots
 \chapter{Modelo Proposto}
 \label{ch:modelo-proposto}
 \section{Requisitos}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{9cm}|l|}
+        \hline
+        \multicolumn{3}{|c|}{\textbf{Regras do Jogo}} \\ \hline
+        \textbf{Ref} & \textbf{Função} & \textbf{Categoria} \\ \hline
+        R1.1 & Quando o jogador resolve um puzzle, desbloqueia uma parte da narrativa & Visível \\ \hline
+    \end{tabular}
+    \caption{Tabela de requisitos do sistema.}
+    \label{tab:regras_jogo}
+\end{table}
+
+
 \section{Fundamentos}
 
 % NOTA PARA A ESCRITA DOS FUNDAMENTOS:
@@ -220,6 +234,17 @@ funcionalidades mal implementadas.
 \section{Evolução do Protótipo}
 % Aqui explica-se a "fase de desenvolvimento inicial". Como o modelo é iterativo,
 % explica-se o que se validou no protótipo / greyboxing antes de avançar para a arte final.
+No início do projeto, desenvolveu-se um protótipo do ambiente virtual com o
+propósito de validar conceitos essenciais antes da integração da arte final.
+Esta iteração inicial focou-se em avaliar o nível de imersão, a resposta
+emocional do utilizador e a mitigação de potenciais efeitos adversos
+frequentemente associados à Realidade Virtual. Para a construção deste cenário,
+recorreu-se à técnica de \textit{greyboxing}~\cite{greyboxing}, através do pacote 
+\texttt{ProBuilder}~\cite{probuilder} do
+Unity. Esta ferramenta permitiu uma modelação geométrica rápida e intuitiva, 
+revelando-se fundamental para iterar sobre o layout inicial, afinar o fluxo
+de navegação do mapa e definir estrategicamente os melhores pontos de interesse
+para o jogador.\par
 
 \subsection{Direção Artística e Concept Art}
 % É aqui que entra a arte conceptual
@@ -227,11 +252,11 @@ funcionalidades mal implementadas.
 % Concept art, sketches, etc.
 
 Foi definido um estilo visual baseado no estilo retro-futurístico, 
-com elementos de terror e suspanse.
-
+com elementos de terror e suspanse. \par
+ 
 Para ajudar no processo de modelação e texturização, foram
 feitos vários rascunhos e conceitos de elementos gráficos, como
-o personagem controlado pelo jogador, as mãos e o ambiente virtual.
+o personagem controlado pelo jogador, as mãos e o ambiente virtual. \par
 
 Alguns dos conceitos encontram-se ilustrados nas figuras 
 \ref{fig:sub44_sketch}, \ref{fig:hand_sketch} e \ref{fig:map_sketch}.
@@ -250,22 +275,63 @@ Alguns dos conceitos encontram-se ilustrados nas figuras
 % Elementos do mapa (PCs, escadas, etc)
 % Mencionar a cor "vermelha" que guia o jogador
 Para construir o ambiente virtual, foi adotada uma
-abordagem modular, no sentido que, foram moduladas
+abordagem modular, no sentido que, foram modeladas
 várias ``peças'', como paredes retas, cantos e  portas.
 \par
 Isto permite simplificar a construção de um ambiente virtual
 complexo, podendo também ser facilmente modificado e reutilizado.
+Para além de paredes, foram modelados outros elementos, como escadas, computadores e
+objetos de decoração, para tornar o ambiente mais rico e imersivo.
+\par
+Abaixo encontra-se a Figura~\ref{fig:map_pieces}, que mostra as peças
+modulares e alguns elementos decorativos usados para construir o mapa.
 
-
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{Imagens/map_pieces.png}
+    \caption{Peças modulares e elementos decorativos usados para construir o mapa.}
+    \label{fig:map_pieces}
+\end{figure}
 
 
 \subsection{Texturização e Identidade Cromática}
 % Aqui falamos do Aseprite e da escolha da COR VERMELHA como 
 % elemento de destaque e guia visual para o utilizador.
+Todas as texturas foram criadas de raiz com recurso ao programa \texttt{Aseprite},
+que se especializa em pixel art e animação 2D. A escolha deste programa permitiu 
+criar texturas com um estilo retro-futurístico, coerente com a direção artística 
+definida para o projeto. Para além disso, foi definida uma identidade cromática 
+baseada em tons escuros, com destaque para a cor vermelha, que deverá sinalizar 
+elementos de interesse e guiar o jogador ao longo do jogo. A Figura~\ref{fig:textures}
+mostra alguns exemplos de texturas criadas para o projeto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{Imagens/textures.png}
+    \caption{Exemplos de texturas criadas para o projeto.}
+    \label{fig:textures}
+\end{figure}
 
 \subsection{Montagem do Cenário e Iluminação}
 % Aqui explicamos o Level Design no Unity, o encaixe dos mapa modular 
 % e a configuração das LUZES para direcionar o foco do jogador em VR.
+Para montar o cenário, foram criados \texttt{Prefabs} de cada elemento, com
+as texturas aplicadas e as colisões configuradas. Estes \texttt{Prefabs} foram depois
+organizados no ambiente virtual e encaixados para formar o mapa. \par
+
+Para que as peças se encaixassem corretamente, foi usada a funcionalidade
+\texttt{Vertex Snapping} do Unity, que permite alinhar os vértices de um 
+objeto com os de outro.
+
+O mapa foi projetado para ser explorado em realidade virtual, 
+o que implica uma atenção especial aos detalhes e à iluminação. Antes da montagem
+do cenário, foi desenhado um layout do mapa, para garantir uma boa fluidez e uma 
+experiência de jogo envolvente. A iluminação foi configurada para criar uma 
+atmosfera misteriosa e para guiar o foco do jogador, com luzes direcionais e pontos de 
+luz estrategicamente colocados, tendo sido usada a cor vermelha em certos sítios.
+
+O plano da montagem encontra-se ilustrado na Figura~\ref{fig:map_layout}, 
+enquanto o resultado final da montagem do cenário pode ser visto na Figura~\ref{fig:final_map}.
 
 \section{Desenvolvimento dos Sistemas Interativos (Código e Mecânicas)}
 % Falar da interação do knob do gerador
@@ -284,6 +350,8 @@ Ao longo da implementação, foram definidas duas fases de testes onde 5 a 10 pe
 o jogo e preencheram um questionário definido no padrão \texttt{GUESS-18}~\cite{guess18}. Foram registadas notas sobre
 todos os participantes durante os testes, para além dos comentários dos jogadores.
 
+%mostrar as estatisticas do GUESS-18, com gráficos e tabelas, e fazer uma análise dos resultados obtidos.
+
 \cleardoublepage
 \chapter{Conclusões e Trabalho Futuro}
 \label{ch:conclusoes-trabalho-futuro}
@@ -301,6 +369,16 @@ Unity (site).
 [XR Interaction Toolkit, site]
 Unity, XR Interaction Toolkit (site). 
 \url{https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@3.0/manual/index.html}
+
+\bibitem{greyboxing}
+[Neil Blevins, Greyboxing, site]
+Neil Blevins, Greyboxing (site).
+\url{http://www.neilblevins.com/art_lessons/greybox/greybox.htm}
+
+\bibitem{probuilder}
+[Unity, ProBuilder, site]
+Unity, ProBuilder (site).
+\url{https://docs.unity3d.com/Packages/com.unity.probuilder@4.0/manual/index.html}
 
 \bibitem{guess18}
 [The Journal of User Experience, GUESS-18 Scoring Guidelines]
