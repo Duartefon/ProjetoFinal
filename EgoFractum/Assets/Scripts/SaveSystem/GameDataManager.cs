@@ -37,6 +37,7 @@ public class GameDataManager : MonoBehaviour
         {
             saveText.gameObject.SetActive(false);
         }
+
     }
 
     private void Update()
@@ -114,7 +115,7 @@ public class GameDataManager : MonoBehaviour
     {
         saveText.gameObject.SetActive(true);
 
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 3; i++)
         {
             Color color = saveText.color;
             color.a = 0f;
