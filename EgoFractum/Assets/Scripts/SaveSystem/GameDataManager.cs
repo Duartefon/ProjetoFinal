@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
+using TMPro;
 
 public class GameDataManager : MonoBehaviour
 {
@@ -7,6 +9,12 @@ public class GameDataManager : MonoBehaviour
 
     [Header("Player Position")]
     public Transform playerTransform;
+
+    [Header("UI Elements")]
+    public TMP_Text saveText;
+
+    [Header("Test")]
+    public bool triggerSaveUI;
 
     // O save poderá ser periódico ou apenas ao fim de cada puzzle.
 
@@ -20,6 +28,27 @@ public class GameDataManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        if (saveText != null)
+        {
+            saveText.gameObject.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if (triggerSaveUI)
+        {
+            triggerSaveUI = false;
+            if (saveText != null)
+            {
+                StopAllCoroutines();
+                StartCoroutine(BlinkSaveTextRoutine());
+            }
         }
     }
 
@@ -50,6 +79,12 @@ public class GameDataManager : MonoBehaviour
         string json = JsonUtility.ToJson(data);
         string path = Application.persistentDataPath + "/playerData.json";
         System.IO.File.WriteAllText(path, json);
+
+        if (saveText != null)
+        {
+            StopAllCoroutines();
+            StartCoroutine(BlinkSaveTextRoutine());
+        }
     }
 
     public void LoadGame()
@@ -73,6 +108,47 @@ public class GameDataManager : MonoBehaviour
 
 
         }
+    }
+
+    private IEnumerator BlinkSaveTextRoutine()
+    {
+        saveText.gameObject.SetActive(true);
+
+        for (int i = 0; i < 2; i++)
+        {
+            Color color = saveText.color;
+            color.a = 0f;
+            saveText.color = color;
+
+            yield return StartCoroutine(FadeAlpha(0f, 1f, 0.5f));
+
+            yield return new WaitForSeconds(0.75f);
+
+            yield return StartCoroutine(FadeAlpha(1f, 0f, 0.5f));
+
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        saveText.gameObject.SetActive(false);
+    }
+
+    private IEnumerator FadeAlpha(float startAlpha, float endAlpha, float duration)
+    {
+        float elapsedTime = 0f;
+        Color color = saveText.color;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            color.a = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
+            saveText.color = color;
+
+            yield return null;
+        }
+
+        color.a = endAlpha;
+        saveText.color = color;
     }
 
 }
