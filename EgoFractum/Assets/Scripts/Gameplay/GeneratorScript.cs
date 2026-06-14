@@ -11,34 +11,48 @@ public class GeneratorScript : MonoBehaviour
     private AudioSource audioSource;
     public XRSocketInteractor leverSocket, fuseSocket;
 
+    public string puzzleKey = "Generator";
+    private bool isComplete = false;
 
     void Start()
     {
         audioSource = GetComponentInChildren<AudioSource>();
+        if (PuzzleManager.Instance.IsPuzzleCompleted(puzzleKey))
+        {
+            isComplete = true;
+            isOn = true;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(fuseSocket.hasSelection)
+        // troquei para usar o event Select Entered
+        /*
+        if (fuseSocket.hasSelection)
         {
             AddFuse();
         }
+        */
 
-        if(isOn)
+        if (isOn && !audioSource.isPlaying)
         {
             audioSource.Play();
         }
 
-        if(voltage == 600f && leverSocket.hasSelection)
+        if (!isComplete && voltage == 600f && leverSocket.hasSelection)
         {
             Debug.Log("Everything is on!");
+            isComplete = true;
+
+            PuzzleManager.Instance.CompletePuzzle(puzzleKey);
         }
     }
 
     public void AddFuse()
     {
         isOn = true;
+
     }
 
     public void SetVoltage(float voltage)

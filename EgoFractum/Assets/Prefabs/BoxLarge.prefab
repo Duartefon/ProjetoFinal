@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e7d3a0ed34dd0d54289978b0792fcb7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.789217
+      value: 4.4768105
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7d3a0ed34dd0d54289978b0792fcb7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.20801833
+      value: -9.967721
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7d3a0ed34dd0d54289978b0792fcb7c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.527201
+      value: -19.429367
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7d3a0ed34dd0d54289978b0792fcb7c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7d3a0ed34dd0d54289978b0792fcb7c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e7d3a0ed34dd0d54289978b0792fcb7c, type: 3}
       propertyPath: m_LocalRotation.z
@@ -69,6 +69,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e7d3a0ed34dd0d54289978b0792fcb7c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8896598307258176531}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e7d3a0ed34dd0d54289978b0792fcb7c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2478755889825182405}
   m_SourcePrefab: {fileID: 100100000, guid: e7d3a0ed34dd0d54289978b0792fcb7c, type: 3}
 --- !u!1 &4731318531691812604 stripped
 GameObject:
@@ -252,3 +255,16 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
+--- !u!114 &2478755889825182405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4731318531691812604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270153ea5101a9249ac3e9abf450159b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
+  uniqueID: 9d5dc043-054e-4a58-aa16-702adc6ce61c
