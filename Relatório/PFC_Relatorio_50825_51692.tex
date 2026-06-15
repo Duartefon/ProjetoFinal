@@ -156,12 +156,107 @@ Globalmente, os objetivos propostos foram \dots
 O presente relatório encontra-se organizado da seguinte forma: \dots
 
 
-\cleardoublepage
-\chapter{Trabalhos Relacionados}
+\cleardoublepage 
+\chapter{Trabalhos Relacionados} 
 \label{ch:trab-relacionados}
 
-% Ghost Town
-% Half Life: Alyx
+Durante a conceção e desenvolvimento deste projeto, foram analisados dois
+videojogos em Realidade Virtual (VR) que se enquadram nos géneros de terror e
+resolução de \textit{puzzles}: ``Ghost Town'' e ``Half-Life: Alyx''. Nas
+Secções~\ref{sec:ghosttown} e \ref{sec:halflife}, são detalhados os aspetos
+fundamentais de cada título, bem como as mecânicas e influências extraídas para
+a fundamentação do presente trabalho.
+
+\section{Half-Life: Alyx (2020)} \label{sec:halflife}
+Lançado em 2020 pela Valve, ``Half-Life: Alyx'' assume-se como uma
+referência no desenvolvimento para Realidade Virtual. Para o âmbito do presente
+projeto, a análise deste título focou-se na extração de boas práticas em três
+áreas centrais: imersão, orientação espacial e integração mecânica.
+
+A sensação de presença e interatividade obtém-se pelo facto de que 
+a maioria dos objetos presentes no ambiente são manipuláveis. 
+Como os elementos reagem de forma orgânica às ações do jogador,
+toda a interação consolida um ambiente credível e imersivo. Um exemplo deste
+nível de detalhe interativo encontra-se ilustrado na Figura~\ref{fig:
+alyx_imersao}.
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[scale=0.1]{Imagens/isel_logo.png}
+    \caption{Demonstração da manipulação de objetos e imersão no ``Half-Life: Alyx''.} 
+    \label{fig:alyx_imersao}
+\end{figure}
+
+No que diz respeito ao \textit{level design}, o jogo destaca-se
+pela forma como guia o jogador. Em vez de recorrer a instruções intrusivas ou indicadores óbvios, 
+é tirado partido da iluminação e da composição do
+cenário para direcionar a atenção e o percurso do
+utilizador de forma natural e subconsciente. A Figura~\ref{fig:alyx_leveldesign}
+exemplifica a utilização destes elementos arquitetónicos e luminosos.
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[scale=0.1]{Imagens/isel_logo.png}
+    \caption{Uso de iluminação e composição do cenário para orientação do jogador.} 
+    \label{fig:alyx_leveldesign} 
+\end{figure}
+
+Por fim, a integração dos \textit{puzzles} reforça a coerência do universo
+virtual. Os desafios assumem um caráter totalmente diegético~\cite{diegetic}, uma vez que se
+encontram integrados na própria arquitetura do mundo do jogo. Esta abordagem
+capitaliza a espacialidade tridimensional e requer movimentos físicos reais.
+Deste modo, assegura-se que a resolução de problemas mantém a narrativa contínua
+e não quebra a imersão, conforme demonstrado na Figura~\ref{fig:alyx_puzzles}.
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[scale=0.1]{Imagens/isel_logo.png}
+    \caption{Exemplo de um \textit{puzzle} diegético integrado na arquitetura do nível.} 
+    \label{fig:alyz_puzzles} 
+\end{figure}
+
+\section{Ghost Town (2025)} 
+\label{sec:ghosttown}
+
+Lançado em 2025 pela Fireproof Games, ``Ghost Town'' constitui uma
+referência no género de aventura e \textit{puzzles} em Realidade Virtual. À
+semelhança da secção anterior, a análise deste título incidiu sobre três áreas
+principais: imersão, orientação espacial e integração mecânica.
+
+A imersão resulta da combinação entre uma atmosfera cinematográfica e um
+sistema de interação tátil detalhado. Em vez de recorrer a sustos repentinos
+para gerar tensão, o jogo privilegia um ambiente realista centrado na exploração
+e na interação direta com objetos. Os artefactos e mecanismos respondem de forma
+consistente aos movimentos das mãos do jogador, o que reforça a sensação de
+presença e credibilidade do espaço virtual.
+
+Relativamente ao \textit{level design}, o jogo conduz o
+utilizador sem comprometer a coerência visual do mundo. Em vez de utilizar
+indicadores explícitos, direciona a atenção do jogador através da iluminação, do
+uso da lanterna e da organização arquitetónica dos espaços. Estes elementos
+orientam naturalmente o olhar e facilitam a navegação. 
+A Figura~\ref{fig:ghosttown_leveldesign} ilustra a aplicação destes recursos.
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[scale=0.1]{Imagens/isel_logo.png} 
+    \caption{Utilização da iluminação e da composição do cenário para orientar a atenção do jogador.}
+    \label{fig:ghosttown_leveldesign} 
+\end{figure}
+
+A integração dos \textit{puzzles} contribui para a coerência do universo
+virtual através de uma forte componente mecânica. Os desafios apresentam um
+caráter diegético~\cite{diegetic} e incluem frequentemente painéis e mecanismos que
+se enquadram de forma lógica no ambiente. Esta abordagem explora a perceção
+espacial e requer movimentos físicos reais. Como resultado, a resolução dos
+\textit{puzzles} mantém a continuidade da experiência e preserva a imersão. A
+Figura~\ref{fig:ghosttown_puzzles} demonstra este tipo de integração.
+
+\begin{figure}[H] \centering 
+    \includegraphics[scale=0.1]{Imagens/isel_logo.png} 
+    \caption{Exemplo de um \textit{puzzle} mecânico diegético integrado no ambiente.} 
+    \label{fig:ghosttown_puzzles} 
+\end{figure}
 
 \cleardoublepage
 \chapter{Modelo Proposto}
@@ -181,6 +276,7 @@ O presente relatório encontra-se organizado da seguinte forma: \dots
     \caption{Tabela de funções de regras do jogo.}
     \label{tab:regras_jogo}
 \end{table}
+
 
 \begin{table}[H]
     \centering
