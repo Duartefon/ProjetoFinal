@@ -160,18 +160,31 @@ O presente relatório encontra-se organizado da seguinte forma: \dots
 \chapter{Trabalhos Relacionados} 
 \label{ch:trab-relacionados}
 
-Durante a conceção e desenvolvimento deste projeto, foram analisados dois
-videojogos em Realidade Virtual (VR) que se enquadram nos géneros de terror e
-resolução de \textit{puzzles}: ``Ghost Town'' e ``Half-Life: Alyx''. Nas
-Secções~\ref{sec:ghosttown} e \ref{sec:halflife}, são detalhados os aspetos
-fundamentais de cada título, bem como as mecânicas e influências extraídas para
-a fundamentação do presente trabalho.
+Este capítulo apresenta a análise de trabalhos relacionados que serviram de
+referência para a conceção e desenvolvimento do presente projeto. A seleção dos
+casos de estudo teve como objetivo identificar abordagens eficazes à imersão,
+\textit{level design} e integração de mecânicas interativas em ambientes de
+Realidade Virtual, com especial foco nos géneros de terror e resolução de
+\textit{puzzles}. A análise destes títulos permitiu extrair boas práticas e
+soluções de \textit{design} relevantes para a definição dos requisitos e das
+opções de desenvolvimento adotadas. 
 
-\section{Half-Life: Alyx (2020)} \label{sec:halflife}
-Lançado em 2020 pela Valve, ``Half-Life: Alyx'' assume-se como uma
+O capítulo encontra-se estruturado em duas
+secções principais. A Secção~\ref{sec:halflife} apresenta a análise de ``Half-Life:~Alyx''
+e explora as soluções de interação, navegação e construção de ambientes
+que o tornaram uma referência no contexto da Realidade Virtual. A Secção~\ref{sec:ghosttown} 
+analisa o videojogo
+``Ghost Town'', destacando os seus contributos ao nível da imersão, do
+\textit{level design} e da integração diegética dos \textit{puzzles}.  Por fim, na Secção
+~\ref{sec:sintese_trabalhos} são
+identificadas as principais lições retiradas destes casos de estudo e a forma
+como influenciaram o desenvolvimento do projeto.
+
+\section{Half-Life:~Alyx (2020)} \label{sec:halflife}
+Lançado em 2020 pela Valve, ``Half-Life:~Alyx'' assume-se como uma
 referência no desenvolvimento para Realidade Virtual. Para o âmbito do presente
 projeto, a análise deste título focou-se na extração de boas práticas em três
-áreas centrais: imersão, orientação espacial e integração mecânica.
+áreas centrais: imersão, \textit{level design} e integração mecânica.
 
 A sensação de presença e interatividade obtém-se pelo facto de que 
 a maioria dos objetos presentes no ambiente são manipuláveis. 
@@ -183,7 +196,7 @@ alyx_imersao}.
 \begin{figure}[H] 
     \centering 
     \includegraphics[scale=0.1]{Imagens/isel_logo.png}
-    \caption{Demonstração da manipulação de objetos e imersão no ``Half-Life: Alyx''.} 
+    \caption{Demonstração da manipulação de objetos e imersão no ``Half-Life:~Alyx''.} 
     \label{fig:alyx_imersao}
 \end{figure}
 
@@ -257,6 +270,35 @@ Figura~\ref{fig:ghosttown_puzzles} demonstra este tipo de integração.
     \caption{Exemplo de um \textit{puzzle} mecânico diegético integrado no ambiente.} 
     \label{fig:ghosttown_puzzles} 
 \end{figure}
+
+\section{Síntese e Contributos para o Projeto}
+\label{sec:sintese_trabalhos}
+
+A análise de ``Ghost Town'' e ``Half-Life:~Alyx'' permitiu identificar
+um conjunto de princípios de \textit{design} relevantes para o desenvolvimento
+do presente projeto. Apesar de pertencerem ao mesmo contexto de Realidade
+Virtual e partilharem elementos de exploração e resolução de \textit{puzzles},
+os dois títulos adotam abordagens distintas na forma como promovem a imersão,
+orientam o jogador e integram as suas mecânicas de interação.
+
+Em ``Ghost Town'', destacou-se a utilização de uma atmosfera envolvente,
+de interações táteis detalhadas e de \textit{puzzles} diegéticos integrados no
+ambiente. Estas características demonstram a importância de manter a coerência
+entre os elementos narrativos, visuais e mecânicos para reforçar a sensação de
+presença do utilizador.
+
+Por outro lado, ``Half-Life:~Alyx'' mostrou soluções avançadas de
+interação física, gestão do espaço virtual e orientação do jogador através do
+próprio ambiente. A qualidade das mecânicas de manipulação de objetos e a forma
+como o jogo comunica objetivos sem recorrer excessivamente a interfaces
+intrusivas constituíram referências importantes para este projeto.
+
+Com base nesta análise, foram identificadas três diretrizes principais para o
+desenvolvimento da solução proposta: a utilização de interações naturais e
+baseadas em movimentos físicos, a integração dos desafios no contexto do
+ambiente virtual e a adoção de estratégias de orientação espacial que preservem
+a imersão do utilizador. Estas diretrizes serviram de base para as decisões de
+\textit{design} e implementação descritas nos capítulos seguintes.
 
 \cleardoublepage
 \chapter{Modelo Proposto}
