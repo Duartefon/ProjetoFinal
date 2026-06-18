@@ -642,6 +642,67 @@ enquanto o resultado final da montagem do cenário pode ser visto na Figura~\ref
 \subsection{Gestão do Estado do Jogo e Narrativa}
 % Falamos do eventual sistema de narrativa
 
+\subsection{Gestão do Progresso do Jogo}
+
+Para permitir uma melhor experiência de utilizador, foi implementado
+um sistema para guardar e carregar o progresso do jogo. Este sistema
+divide-se em três partes: a posição do jogador, o estado dos puzzles
+e a posição de todos os objetos interagíveis.
+\par
+A classe central deste sistema é o \texttt{GameDataManager}, que segue
+o padrão \texttt{Singleton}~\cite{singleton}, garantindo que existe
+apenas uma instância ativa em toda a aplicação e que esta persiste
+entre cenas. Quando é desencadeada uma gravação, esta classe recolhe
+o estado atual do jogo, que inclui a posição do jogador, puzzles concluídos e
+transformações dos objetos móveis, e serializa-o em formato \texttt{JSON}
+através do \texttt{JsonUtility} do Unity, e escreve o resultado num
+ficheiro no caminho dado por \texttt{Application.persistentDataPath},
+uma localização gerida pelo sistema operativo que persiste entre
+sessões de jogo. O carregamento segue o processo inverso: o ficheiro
+é lido e os valores são restaurados diretamente nos respetivos
+componentes.
+\par
+De notar que o estado dos puzzles é internamente representado como um
+\texttt{Dictionary<string, bool>}, mas é guardado em dois \texttt{List}
+paralelos, um para as chaves e outro para os valores. Esta
+conversão deve-se ao facto de o \texttt{JsonUtility} não suportar a
+serialização direta de dicionários, sendo a estrutura reconstruída
+no momento do carregamento.
+
+Para identificar quais os objetos cujo estado deve ser guardado, foi
+criado o componente \texttt{SaveableObject}. Este componente é
+adicionado a qualquer objeto interagível que necessite de persistência
+e atribui-lhe um identificador único (GUID). Os objetos registam-se
+automaticamente numa coleção estática global no momento em que são
+criados, e removem-se quando são destruídos. Durante o carregamento,
+o sistema percorre esta coleção e restaura a posição e rotação de
+cada objeto com base no seu identificador, de forma independente
+da ordem ou hierarquia da cena.
+
+De modo a automatizar a configuração inicial, foi desenvolvido um
+utilitário de editor acessível através do menu
+\texttt{Tools > Setup Saveable Objects}, exemplificado na Figura~\ref{fig:setup_saveable_objects}. 
+Este utilitário percorre
+toda a cena em busca de objetos com comportamentos interagíveis,
+nomeadamente objetos com \texttt{XRGrabInteractable} ou com
+\texttt{Rigidbody} não cinemático, e adiciona-lhes automaticamente
+o componente \texttt{SaveableObject}, gerando um GUID único para cada
+um. Este procedimento elimina a necessidade de configurar manualmente
+cada objeto da cena, que é mais trabalhoso e propício a erros de omissão.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=1]{Imagens/tool_saveable_objects.png}
+    \caption{Janela de configuração inicial dos objetos interagíveis.}
+    \label{fig:setup_saveable_objects}
+\end{figure}
+
+Por fim, para dar retorno visual ao utilizador após uma gravação,
+foi implementada uma animação de texto em HUD que surge, pisca três
+vezes com um \textit{fade}, e desaparece automaticamente.
+Esta animação é gerida por uma \textit{coroutine}, o mecanismo do Unity
+para executar operações assíncronas de forma não bloqueante.
+
 \cleardoublepage
 \chapter{Validação e Testes}
 \label{ch:validacao-testes}

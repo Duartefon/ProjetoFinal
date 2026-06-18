@@ -13965,17 +13965,6 @@ Transform:
   - {fileID: 967210835}
   m_Father: {fileID: 639727386}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1027195196 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4401149576565398267, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
-  m_PrefabInstance: {fileID: 8055841369344584633}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ccaf62836ca77b44bab7aa7cc7c7696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HandData
 --- !u!4 &1027818594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8294030939270889359, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
@@ -32259,25 +32248,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 963453506521279241, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1349123295684412569, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
-      propertyPath: m_MovementType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1349123295684412569, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 756192407}
-    - target: {fileID: 1349123295684412569, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
-      propertyPath: m_InteractionLayers.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 2799852459673556694, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
-      value: 4294967295
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696262386856168855, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
+      propertyPath: m_Height
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696262386856168855, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
+      propertyPath: m_Radius
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696262386856168855, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
+      propertyPath: m_Center.x
+      value: -0.00096338976
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696262386856168855, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
+      propertyPath: m_Center.y
+      value: 0.0050185886
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696262386856168855, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
+      propertyPath: m_Center.z
+      value: -0.004567066
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696262386856168855, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
+      propertyPath: m_Direction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696262386856168855, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7051098571190301826, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32323,36 +32328,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: flashlight
       objectReference: {fileID: 0}
-    - target: {fileID: 9201742068176251211, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
-      propertyPath: handPose
-      value: 
-      objectReference: {fileID: 1027195196}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7679016036208717368, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8055841369344584635}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
---- !u!1 &8055841369344584634 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7679016036208717368, guid: dc9cb10d63df4d140914a03c6671fdd3, type: 3}
-  m_PrefabInstance: {fileID: 8055841369344584633}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8055841369344584635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8055841369344584634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 270153ea5101a9249ac3e9abf450159b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
-  uniqueID: d2d43b9c-5399-4af6-9a58-7f58d92eed16
 --- !u!33 &8121262063083932253
 MeshFilter:
   m_ObjectHideFlags: 0
