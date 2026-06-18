@@ -16,6 +16,7 @@ public class GameDataManager : MonoBehaviour
     [Header("Test")]
     public bool triggerSaveUI;
     public bool saveGame;
+    [Tooltip("Ligar isto para testar o 'Load' ao começar o 'Play Mode'.")]
     public bool loadGameOnStart;
 
     // O save poderá ser periódico ou apenas ao fim de cada puzzle.
@@ -44,6 +45,8 @@ public class GameDataManager : MonoBehaviour
         {
             saveText.gameObject.SetActive(false);
         }
+
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
     }
 
