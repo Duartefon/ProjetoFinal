@@ -115,26 +115,24 @@
 %% Para colocar as listas de conteúdos (índice, Tabelas e Figuras)
 %% como entrada no índice
 %%________________________________________________________________________
-\newcommand{\myTocXX}[2]
+\newcommand{\myTableOfContents}
    {
-   \chapter*{#1\@mkboth{Conteúdo}{CONTENTS}}
-   \addcontentsline{toc}{chapter}{#1}
-   \@starttoc{#2}
+   \chapter*{Índice\@mkboth{Conteúdo}{CONTENTS}}
+   \@starttoc{toc}
    }
 
-\newcommand{\myTableOfContents}
-   { \myTocXX{Índice}{toc} }
-
 \newcommand{\myListOfTables}
-   { \myTocXX{Lista de Tabelas}{lot} }
+   {
+   \chapter*{Lista de Tabelas}
+   \addcontentsline{toc}{chapter}{Lista de Tabelas}
+   \@starttoc{lot}
+   }
 
 \newcommand{\myListOfFigures}
-   { \myTocXX{Lista de Figuras}{lof} }
-
-\newcommand{\myListOfListings}
    {
-   \addcontentsline{toc}{chapter}{Lista de Códigos}
-   \lstlistoflistings
+   \chapter*{Lista de Figuras}
+   \addcontentsline{toc}{chapter}{Lista de Figuras}
+   \@starttoc{lof}
    }
 
 

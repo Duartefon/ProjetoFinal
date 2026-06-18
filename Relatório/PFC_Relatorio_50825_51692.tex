@@ -1,10 +1,20 @@
 \documentclass[a4paper, 12pt]{book}
+\usepackage[
+   a4paper,
+   left=2.5cm,
+   right=2.5cm,
+   top=2.7cm,
+   bottom=2.7cm
+]{geometry}
+
 \usepackage{makeidx}
 \usepackage{amsmath}
 \usepackage{float}
 \usepackage[utf8]{inputenc}
 \usepackage[portuguese]{babel}
 \usepackage{multicol}
+\usepackage{graphicx,url}
+\usepackage{multirow}
 \usepackage{verbatim}
 \usepackage{listings}
 \renewcommand{\lstlistingname}{Código}
@@ -17,7 +27,8 @@
 \usepackage{graphicx}
 \usepackage{lastpage}
 \usepackage{estilo}
-
+\usepackage{algorithm}
+\usepackage{tabls}
 
 \begin{document}
 
@@ -85,6 +96,7 @@ It is concluded that the adopted approach is \dots
 
 \cleardoublepage
 \chapter{Agradecimentos}
+Escrever aqui eventuais agradecimentos \ldots
 
 \cleardoublepage
 \begin{myDedication}
@@ -100,8 +112,8 @@ It is concluded that the adopted approach is \dots
 \cleardoublepage
 \myListOfTables
 
-\cleardoublepage
-\myListOfListings
+%\cleardoublepage
+%\myListOfListings
 
 \mainmatter
 \myPageStyle
@@ -304,6 +316,9 @@ a imersão do utilizador. Estas diretrizes serviram de base para as decisões de
 \chapter{Modelo Proposto}
 \label{ch:modelo-proposto}
 \section{Requisitos}
+% Requisitos Funcionais / Não Funcionais
+% Casos de Utilização
+% Resultado da fase de avaliação de requisitos
 
 \begin{table}[H]
     \centering
@@ -313,7 +328,8 @@ a imersão do utilizador. Estas diretrizes serviram de base para as decisões de
         \textbf{Ref.} & \textbf{Função} & \textbf{Categoria} \\ \hline
         R1.1 & O jogador deve voltar ao último \textit{checkpoint} quando morre & Evidente \\ \hline
         R1.2 & O jogador deve desbloquear a narrativa ao completar puzzles & Evidente \\ \hline
-        R1.3 & Objetos interagíveis devem estar bem sinalizados & Evidente \\ \hline
+        R1.3 & O progresso do jogador deve ser guardado ao completar \textit{puzzles} & Evidente \\ \hline
+        R1.4 & Objetos interagíveis devem estar bem sinalizados & Evidente \\ \hline
     \end{tabular}
     \caption{Tabela de funções de regras do jogo.}
     \label{tab:regras_jogo}
@@ -335,7 +351,20 @@ a imersão do utilizador. Estas diretrizes serviram de base para as decisões de
     \label{tab:controlo_jogador}
 \end{table}
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{9cm}|l|}
+        \hline
+        \multicolumn{3}{|c|}{\textbf{Funções de Persistência}} \\ \hline
+        \textbf{Ref.} & \textbf{Função} & \textbf{Categoria} \\ \hline
+        R3.1 & O progresso do jogador deve ser guardado & Evidente \\ \hline
+        R3.2 & O jogador deve poder carregar o progresso guardado & Evidente \\ \hline
+    \end{tabular}
+    \caption{Tabela de funções de controlo do jogador.}
+    \label{tab:controlo_jogador}
+\end{table}
 
+\newpage
 \section{Fundamentos}
 
 % NOTA PARA A ESCRITA DOS FUNDAMENTOS:
@@ -350,17 +379,124 @@ a imersão do utilizador. Estas diretrizes serviram de base para as decisões de
 % Pequeno parágrafo introdutório
 Nesta secção são apresentados os conceitos teóricos e 
 tecnológicos que servem de base para o desenvolvimento do modelo 
-proposto, englobando os princípios de interação em realidade virtual, 
-a arquitetura do ecossistema XR e as teorias de design de jogos aplicadas.
+proposto, englobando os princípios de interação em realidade virtual 
+(cf.~subsecção~\ref{subsec:interacao_presenca}), 
+a arquitetura do ecossistema \texttt{XR} (cf.~subsecção~\ref{subsec:interactor_interactable}),
+ e as teorias de design de jogos aplicadas (cf.~subsecção~\ref{subsec:puzzles_narrativa}).
 
 \subsection{Interação Tridimensional e Presença em \texttt{VR}}
-% Escrevemos sobre 6 DoF, mapeamento natural e o sentimento de presença.
+\label{subsec:interacao_presenca}
+A interação em ambientes de realidade virtual distingue-se das interfaces 
+bidimensionais tradicionais pela capacidade de captar e traduzir o movimento 
+do utilizador em seis graus de liberdade (\textit{6 DoF}, do inglês 
+\textit{Degrees of Freedom})~\cite{sixdof}. Este conceito decompõe o movimento humano em 
+duas componentes complementares: a rotação, que regista a orientação da 
+cabeça ou das mãos segundo os eixos de inclinação (\textit{pitch}), direção 
+(\textit{yaw}) e rotação lateral (\textit{roll}); e a translação, que capta 
+o deslocamento físico do corpo nos três eixos espaciais. Sistemas limitados 
+a três graus de liberdade (3 DoF) permitem apenas a rotação da cabeça, sem 
+deslocamento real no espaço, o que reduz a naturalidade da interação e, por 
+consequência, o sentido de presença.
+\par
+Também associado a este conceito está o princípio do mapeamento 
+natural, formulado por Donald Norman~\cite{norman} no âmbito do design de interfaces. 
+Este princípio defende que a correspondência entre uma ação física e o seu 
+efeito no sistema deve refletir relações já conhecidas do utilizador no 
+mundo real, de forma a  minimizar a carga cognitiva necessária para aprender a 
+interagir com o sistema. Em \texttt{VR}, isto traduz-se na possibilidade de 
+o utilizador agarrar, empurrar ou rodar objetos virtuais através de gestos 
+equivalentes aos que executaria sobre objetos físicos, sem necessidade de 
+mediação através de menus ou comandos abstratos.
+\par
+A conjugação destes dois fatores contribui diretamente para a sensação de 
+presença, entendida como o fenómeno psicológico de sentir que se está, de 
+facto, dentro do ambiente virtual. Mel Slater distingue duas componentes 
+desta experiência: a ilusão de lugar (\textit{place illusion}), associada à 
+sensação de estar fisicamente presente num espaço, decorrente sobretudo da 
+qualidade sensorial e dos graus de liberdade disponíveis; e a ilusão de 
+plausibilidade (\textit{plausibility illusion}), relacionada com a 
+verosimilhança dos eventos e respostas do ambiente face às ações do 
+utilizador. Enquanto a imersão constitui uma propriedade objetiva do 
+sistema tecnológico, a presença é a resposta subjetiva do utilizador a essa 
+imersão, e é precisamente esta resposta que os princípios de interação 
+natural procuram maximizar.
+\par
 
 \subsection{O Modelo Interactor-Interactable (Unity XR)}
-% Explicamos o fundamento lógico de como o Unity abstrai as mãos e os objetos.
+\label{subsec:interactor_interactable}
+A generalização da interação em ambientes \texttt{XR} exige um modelo 
+conceptual capaz de desacoplar a origem física da ação (a mão, um 
+controlador ou qualquer outro dispositivo de entrada) da lógica de resposta 
+dos objetos manipulados. É neste contexto que se insere o modelo 
+arquitetural Interactor-Interactable, adotado pelo \textit{Unity XR 
+Interaction Toolkit} e que representa, ao nível conceptual, uma divisão 
+clara de responsabilidades entre quem inicia uma interação e quem a recebe.
+\par
+O \texttt{Interactor} corresponde à abstração de qualquer entidade capaz de 
+iniciar uma interação dentro do ambiente virtual, independentemente de essa 
+entidade representar uma mão rastreada, um controlador físico ou um cursor 
+direcionado por raio (\textit{ray-based interaction}). O \texttt{Interactor} 
+não conhece os detalhes internos dos objetos com que interage; limita-se a 
+expor um conjunto de estados de interação, tipicamente \textit{hover}, 
+\textit{select} e \textit{activate}, que descrevem a relação temporal entre 
+o agente e o alvo.
+\par
+O \texttt{Interactable}, por sua vez, representa qualquer objeto do 
+ambiente virtual capaz de responder a esses estados, definindo o 
+comportamento que deve ocorrer quando é aproximado, selecionado ou 
+acionado. Esta inversão de responsabilidade, em que o objeto define como 
+reage, em vez de o agente definir como manipula, permite que múltiplos 
+tipos de \texttt{Interactor} operem sobre o mesmo \texttt{Interactable} sem 
+necessidade de lógica condicional adicional.
+\par
+A principal vantagem teórica deste modelo reside na sua natureza 
+orientada a eventos e na independência relativamente ao dispositivo de 
+entrada. Ao tratar a interação como uma sucessão de estados desencadeados 
+por eventos, em lugar de verificações constantes de proximidade ou colisão, 
+o modelo aproxima-se de padrões de design como o \textit{Observer}, em que 
+os objetos reagem a notificações em vez de serem continuamente inquiridos. 
+Esta abstração é o que permite, a um nível conceptual, que um 
+mesmo sistema de interação seja igualmente compatível com diferentes 
+paradigmas de \textit{input}, sem alterar a lógica ao 
+comportamento dos objetos.
+\par
 
 \subsection{Design de Puzzles e Narrativa Ambiental}
-% Explicamos a teoria por trás da criação de puzzles intuitivos e imersivos
+\label{subsec:puzzles_narrativa}
+A construção de puzzles intuitivos e envolventes assenta, do ponto de 
+vista teórico, na Teoria de Flow de Mihály Csíkszentmihályi~\cite{flow}. Este modelo 
+descreve um estado psicológico de absorção total numa tarefa, caracterizado 
+por objetivos claros, retorno imediato sobre as ações realizadas e um 
+equilíbrio constante entre o nível de desafio proposto e a competência do 
+utilizador. Quando o desafio excede largamente a competência, surge a 
+frustração; quando a competência excede o desafio, surge o tédio. A 
+aplicação desta teoria ao design de puzzles implica, assim, a construção de 
+uma curva de dificuldade progressiva, em que cada novo desafio se apoia em 
+mecânicas já compreendidas pelo utilizador, de forma a evitar saltos abruptos de 
+complexidade que comprometam o estado de fluxo.
+\par
+Complementarmente, a narrativa ambiental constitui uma abordagem teórica ao 
+design narrativo que privilegia a transmissão de informação através da 
+disposição do espaço e dos objetos, em vez de recorrer a exposição direta 
+através de diálogos ou texto. Don Carson descreve este princípio como 
+\textit{environmental storytelling}~\cite{env_story}, em que o próprio cenário, a 
+disposição de objetos, o estado de degradação de um espaço, indícios 
+visuais de eventos passados, comunica contexto narrativo de forma 
+implícita. Esta abordagem aproxima-se ainda do conceito de \textit{spatial 
+stories} proposto por Henry Jenkins~\cite{spatial_stories}, segundo o qual 
+a narrativa em ambientes 
+interativos não é apenas contada, mas também descoberta progressivamente 
+pelo utilizador através da exploração.
+\par
+A combinação destes dois fundamentos teóricos é particularmente relevante 
+em ambientes de realidade virtual, onde a presença e a interação física 
+direta reforçam tanto o envolvimento cognitivo exigido pela resolução de 
+puzzles como a capacidade de leitura do espaço enquanto suporte narrativo. 
+Um puzzle bem integrado num ambiente narrativamente coerente deixa de ser 
+percebido como um obstáculo artificial e passa a ser interpretado como uma 
+extensão lógica do próprio mundo representado.
+\par
+
 \section{Abordagem}
 Durante o desenvolvimento do projeto, foi adotada uma abordagem
 iterativa com diversas partes distintas: prototipagem, implementação e testes.
@@ -385,21 +521,28 @@ funcionalidades mal implementadas.
 % Aqui faz-se um resumo visual de como o Unity se liga ao XR Interaction Toolkit.
 % Pode-se incluir um diagrama de blocos da arquitetura (Input do Utilizador -> XR Rig -> Lógica do Jogo).
 % Explicar o que é abstraído e o que já vem implementado.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.2]{Imagens/modelo_arquitetura.png}
+    \caption{Diagrama simplificado da arquitetura do jogo.}
+    \label{fig:modelo_arquitetura}
+\end{figure}
 
 \section{Evolução do Protótipo}
 % Aqui explica-se a "fase de desenvolvimento inicial". Como o modelo é iterativo,
 % explica-se o que se validou no protótipo / greyboxing antes de avançar para a arte final.
-No início do projeto, desenvolveu-se um protótipo do ambiente virtual com o
-propósito de validar conceitos essenciais antes da integração da arte final.
-Esta iteração inicial focou-se em avaliar o nível de imersão, a resposta
-emocional do utilizador e a mitigação de potenciais efeitos adversos
-frequentemente associados à Realidade Virtual. Para a construção deste cenário,
-recorreu-se à técnica de \textit{greyboxing}~\cite{greyboxing}, através do pacote 
-\texttt{ProBuilder}~\cite{probuilder} do
-Unity. Esta ferramenta permitiu uma modelação geométrica rápida e intuitiva, 
-revelando-se fundamental para iterar sobre o layout inicial, afinar o fluxo
-de navegação do mapa e definir estrategicamente os melhores pontos de interesse
-para o jogador.\par
+No início do projeto, foi desenvolvido um protótipo do ambiente virtual com o
+objetivo de avaliar e iterar sobre o fluxo de navegação e a disposição do espaço.
+Esta fase inicial centrou-se na análise do nível de imersão, da escala do
+ambiente, da resposta emocional do utilizador e de potenciais efeitos adversos
+frequentemente associados à Realidade Virtual.
+\par
+Para a construção deste cenário temporário, recorreu-se à técnica de
+\textit{greyboxing}~\cite{greyboxing}, implementada através do pacote
+\texttt{ProBuilder}~\cite{probuilder} do Unity. Esta técnica consiste na criação
+do nível utilizando apenas formas geométricas simples, sem aplicação de texturas
+ou elementos visuais finais, de forma a permitir avaliar a disposição espacial e a
+interação do utilizador com o ambiente de forma mais clara.
 
 \subsection{Direção Artística e Concept Art}
 % É aqui que entra a arte conceptual
@@ -441,9 +584,9 @@ objetos de decoração, para tornar o ambiente mais rico e imersivo.
 Abaixo encontra-se a Figura~\ref{fig:map_pieces}, que mostra as peças
 modulares e alguns elementos decorativos usados para construir o mapa.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{Imagens/map_pieces.png}
+    \includegraphics[scale=0.45]{Imagens/map_pieces.png}
     \caption{Peças modulares e elementos decorativos usados para construir o mapa.}
     \label{fig:map_pieces}
 \end{figure}
@@ -462,7 +605,7 @@ mostra alguns exemplos de texturas criadas para o projeto.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{Imagens/textures.png}
+    \includegraphics[scale=0.5]{Imagens/textures.png}
     \caption{Exemplos de texturas criadas para o projeto.}
     \label{fig:textures}
 \end{figure}
@@ -492,6 +635,7 @@ enquanto o resultado final da montagem do cenário pode ser visto na Figura~\ref
 % Falar da interação do knob do gerador
 % Falar da interação da escada
 % etc etc
+\subsection{Interação com Objetos}
 
 \subsection{Puzzles}
 
@@ -515,30 +659,57 @@ todos os participantes durante os testes, para além dos comentários dos jogado
 \cleardoublepage
 \begin{thebibliography}{9}
 
-\bibitem{unity}
-[Unity, site] 
-Unity (site). 
+\bibitem[Unity, site]{unity}
+Unity Technologies.
+\textit{Unity Official Website}.
 \url{https://unity.com/pt}
 
-\bibitem{xr}
-[XR Interaction Toolkit, site]
-Unity, XR Interaction Toolkit (site). 
+\bibitem[XR Interaction Toolkit, Unity, site]{xri}
+Unity Technologies.
+\textit{XR Interaction Toolkit Documentation}.
 \url{https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@3.0/manual/index.html}
 
-\bibitem{greyboxing}
-[Neil Blevins, Greyboxing, site]
-Neil Blevins, Greyboxing (site).
-\url{http://www.neilblevins.com/art_lessons/greybox/greybox.htm}
-
-\bibitem{probuilder}
-[Unity, ProBuilder, site]
-Unity, ProBuilder (site).
+\bibitem[ProBuilder, Unity, site]{probuilder}
+Unity Technologies.
+\textit{ProBuilder Documentation}.
 \url{https://docs.unity3d.com/Packages/com.unity.probuilder@4.0/manual/index.html}
 
-\bibitem{guess18}
-[The Journal of User Experience, GUESS-18 Scoring Guidelines]
-The Journal of User Experience, GUESS-18 Scoring Guidelines.
+\bibitem[Neil Blevins, Greyboxing, site]{greyboxing}
+Neil Blevins.
+\textit{Greyboxing in Game Development}.
+\url{http://www.neilblevins.com/art_lessons/greybox/greybox.htm}
+
+\bibitem[Keebler et al., GUESS-18, 2016]{guess18}
+The Journal of Usability Studies.
+\textit{GUESS-18 Scoring Guidelines}.
 \url{https://uxpajournal.org/wp-content/uploads/sites/7/pdf/JUS_Keebler_GUESS-18%20Scoring%20Guidelines.pdf}
+
+\bibitem[Six Degrees of Freedom, Wikipedia, site]{sixdof}
+Wikipedia contributors.
+\textit{Six Degrees of Freedom}.
+\url{https://en.wikipedia.org/wiki/Six_degrees_of_freedom}
+
+\bibitem[Norman, 2013]{norman}
+Donald A. Norman.
+\textit{The Design of Everyday Things}.
+Basic Books, Revised and Expanded Edition, 2013.
+
+\bibitem[Csikszentmihalyi, 1990]{flow}
+Mihaly Csikszentmihalyi.
+\textit{Flow: The Psychology of Optimal Experience}.
+Harper \& Row, 1990.
+
+\bibitem[Carson, Environmental Storytelling, site]{env_story}
+Don Carson.
+\textit{Environmental Storytelling: Creating Immersive 3D Worlds Using Lessons Learned from the Theme Park Industry}.
+Game Developer.
+\url{https://www.gamedeveloper.com/design/environmental-storytelling-creating-immersive-3d-worlds-using-lessons-learned-from-the-theme-park-industry}
+
+\bibitem[Jenkins, Spatial Stories]{spatial_stories}
+Henry Jenkins.
+\textit{Game Design as Narrative Architecture}.
+2004.
+
 
 \end{thebibliography}
 
