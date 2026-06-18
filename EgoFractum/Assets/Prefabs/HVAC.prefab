@@ -604,7 +604,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 5000
+    maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -870,7 +870,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 5
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4882,7 +4882,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677103516487281156}
-  m_Mesh: {fileID: -8363287266502194564, guid: 78480ae5be2823c429f5a5abc10b42a1, type: 3}
+  m_Mesh: {fileID: -8363287266502194564, guid: 87032eebfd8646543b3a009fbf7941d1, type: 3}
 --- !u!23 &7294303265865821844
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4994,7 +4994,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3149325458959513173}
-  m_Mesh: {fileID: 6570524359057386679, guid: 78480ae5be2823c429f5a5abc10b42a1, type: 3}
+  m_Mesh: {fileID: 6570524359057386679, guid: 38e17514598c82543a1965cd93b4cceb, type: 3}
 --- !u!23 &2491424486038972903
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5213,7 +5213,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5264795384157015268}
-  m_Mesh: {fileID: -1300596200046377996, guid: 78480ae5be2823c429f5a5abc10b42a1, type: 3}
+  m_Mesh: {fileID: -1300596200046377996, guid: 38e17514598c82543a1965cd93b4cceb, type: 3}
 --- !u!23 &796242611637227218
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5303,7 +5303,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7607374693773604748}
-  m_Mesh: {fileID: 6381356175885465824, guid: 78480ae5be2823c429f5a5abc10b42a1, type: 3}
+  m_Mesh: {fileID: 6381356175885465824, guid: 87032eebfd8646543b3a009fbf7941d1, type: 3}
 --- !u!23 &308172216328826977
 MeshRenderer:
   m_ObjectHideFlags: 0
