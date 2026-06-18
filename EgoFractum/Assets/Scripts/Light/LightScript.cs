@@ -47,8 +47,7 @@ public class LightScript : MonoBehaviour
 
         if (isOn)
         {
-            lightMesh.material = onMaterial;
-            if (audioSource != null && !audioSource.isPlaying)
+            if (audioSource != null)
             {
                 audioSource.clip = lightBuzz;
                 audioSource.loop = true;
@@ -57,10 +56,11 @@ public class LightScript : MonoBehaviour
         }
         else
         {
-            lightMesh.material = offMaterial;
             if (audioSource != null && audioSource.isPlaying)
                 audioSource.Stop();
         }
+
+
     }
 
     private void TurnOnLight()
@@ -70,7 +70,10 @@ public class LightScript : MonoBehaviour
         if (Random.value > failProbability)
         {
             foreach (Light light in lightComponents)
+            {
                 light.enabled = true;
+                lightMesh.material = onMaterial;
+            }
 
             if (audioSource != null)
             {
@@ -87,7 +90,13 @@ public class LightScript : MonoBehaviour
                 light.gameObject.AddComponent<LightFlicker>();
             }
             */
-        
+
+            foreach (Light light in lightComponents)
+            {
+                light.enabled = false;
+                lightMesh.material = offMaterial;
+            }
+
         }
 
         isOn = true;
