@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 7682737379386973033}
   - component: {fileID: 1609589042321586474}
   - component: {fileID: 3390110113917917381}
+  - component: {fileID: 1142106165686517078}
   m_Layer: 0
   m_Name: Desk
   m_TagString: Untagged
@@ -150,7 +151,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7614001589355137792}
-  m_Mesh: {fileID: 6317106008045385693, guid: 979825f06f2bddd4db1d3b0646581eea, type: 3}
+  m_Mesh: {fileID: 6317106008045385693, guid: 57478c627c03e5f49b03ca23eac99979, type: 3}
 --- !u!23 &1609589042321586474
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -227,6 +228,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1142106165686517078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7614001589355137792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270153ea5101a9249ac3e9abf450159b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
+  uniqueID: 7e28f0d2-a8e9-4432-8dbe-d86179a30559
 --- !u!1 &8957614636120087694
 GameObject:
   m_ObjectHideFlags: 0
