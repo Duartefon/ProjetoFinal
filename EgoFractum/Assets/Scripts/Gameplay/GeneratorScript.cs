@@ -6,7 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class GeneratorScript : MonoBehaviour
 {
     private int fuseCount = 2;
-    public bool isOn = false;
+    public bool isOn = false, energyEstablished = false;
     private float voltage = 0;
     private AudioSource audioSource;
     public XRSocketInteractor leverSocket, fuseSocket;
@@ -21,6 +21,7 @@ public class GeneratorScript : MonoBehaviour
         {
             isComplete = true;
             isOn = true;
+            energyEstablished = true;
         }
     }
 
@@ -35,7 +36,7 @@ public class GeneratorScript : MonoBehaviour
         }
         */
 
-        if (isOn && !audioSource.isPlaying)
+        if (energyEstablished && !audioSource.isPlaying)
         {
             audioSource.Play();
         }
@@ -43,6 +44,7 @@ public class GeneratorScript : MonoBehaviour
         if (!isComplete && voltage == 600f && leverSocket.hasSelection)
         {
             Debug.Log("Everything is on!");
+            energyEstablished = true;
             isComplete = true;
 
             PuzzleManager.Instance.CompletePuzzle(puzzleKey);

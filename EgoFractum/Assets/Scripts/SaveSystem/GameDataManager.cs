@@ -15,6 +15,9 @@ public class GameDataManager : MonoBehaviour
 
     [Header("Test")]
     public bool triggerSaveUI;
+    public bool saveGame;
+    [Tooltip("Ligar isto para testar o 'Load' ao começar o 'Play Mode'.")]
+    public bool loadGameOnStart;
 
     // O save poderá ser periódico ou apenas ao fim de cada puzzle.
 
@@ -33,10 +36,17 @@ public class GameDataManager : MonoBehaviour
 
     private void Start()
     {
+        if (loadGameOnStart)
+        {
+            LoadGame();
+        }
+
         if (saveText != null)
         {
             saveText.gameObject.SetActive(false);
         }
+
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
     }
 
@@ -50,6 +60,13 @@ public class GameDataManager : MonoBehaviour
                 StopAllCoroutines();
                 StartCoroutine(BlinkSaveTextRoutine());
             }
+        }
+
+        if (saveGame)
+        {
+            saveGame = false;
+            SaveGame();
+            Debug.Log("[TEST] Saving game...");
         }
     }
 
@@ -107,6 +124,18 @@ public class GameDataManager : MonoBehaviour
             playerTransform.position = new Vector3(data.transform[0], data.transform[1], data.transform[2]);
             PuzzleManager.Instance.SetPuzzles(loadedPuzzles);
 
+            foreach (var objData in data.movableObjects)
+            {
+                foreach (SaveableObject obj in SaveableObject.AllSaveableObjects)
+                {
+                    if (obj.uniqueID == objData.id)
+                    {
+                        obj.transform.position = objData.position;
+                        obj.transform.rotation = objData.rotation;
+                        break;
+                    }
+                }
+            }
 
         }
     }

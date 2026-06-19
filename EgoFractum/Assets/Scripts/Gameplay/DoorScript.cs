@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
+    public AudioClip openSound, closeSound;
+    private AudioSource audioSource;
     private Animator animator;
     private bool isOpen = false;
     private GeneratorScript generatorScript;
@@ -10,6 +12,7 @@ public class DoorController : MonoBehaviour
     {
         generatorScript = GameObject.FindWithTag("Generator").GetComponent<GeneratorScript>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void OpenDoor()
@@ -20,6 +23,10 @@ public class DoorController : MonoBehaviour
             isOpen = true;
         }
     }
+
+    public void PlayOpenSound() { audioSource.PlayOneShot(openSound); }
+
+    public void PlayCloseSound() { audioSource.PlayOneShot(closeSound); }
 
     public void CloseDoor()
     {

@@ -34,21 +34,20 @@ public class LightScript : MonoBehaviour
 
     void Update()
     {
-        if (generatorScript.isOn && !isOn && !isPendingOn) // Se o gerador estiver ligado e a luz estiver desligada
+        if (generatorScript.energyEstablished && !isOn && !isPendingOn) // Se o gerador estiver ligado e a luz estiver desligada
         {
             isPendingOn = true;
             float delay = Random.Range(0.5f, 2f); // Gerar um delay aleatório entre 0.5 e 2 segundos
             Invoke("TurnOnLight", delay); // Chamar a função para ligar a luz após o delay
         }
-        else if (!generatorScript.isOn && isOn)
+        else if (!generatorScript.energyEstablished && isOn)
         {
             TurnOffLight();
         }
 
         if (isOn)
         {
-            lightMesh.material = onMaterial;
-            if (audioSource != null && !audioSource.isPlaying)
+            if (audioSource != null)
             {
                 audioSource.clip = lightBuzz;
                 audioSource.loop = true;
@@ -57,10 +56,11 @@ public class LightScript : MonoBehaviour
         }
         else
         {
-            lightMesh.material = offMaterial;
             if (audioSource != null && audioSource.isPlaying)
                 audioSource.Stop();
         }
+
+
     }
 
     private void TurnOnLight()
@@ -70,7 +70,10 @@ public class LightScript : MonoBehaviour
         if (Random.value > failProbability)
         {
             foreach (Light light in lightComponents)
+            {
                 light.enabled = true;
+                lightMesh.material = onMaterial;
+            }
 
             if (audioSource != null)
             {
@@ -87,7 +90,13 @@ public class LightScript : MonoBehaviour
                 light.gameObject.AddComponent<LightFlicker>();
             }
             */
-        
+
+            foreach (Light light in lightComponents)
+            {
+                light.enabled = false;
+                lightMesh.material = offMaterial;
+            }
+
         }
 
         isOn = true;

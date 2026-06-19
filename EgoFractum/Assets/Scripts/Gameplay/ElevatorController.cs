@@ -7,11 +7,14 @@ public class ElevatorController : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip moveSound;
     public AudioClip stopSound;
+    public ParticleSystem smoke;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        smoke = GetComponentInChildren<ParticleSystem>();
+        smoke.Stop();
     }
 
     void Update()
@@ -26,7 +29,8 @@ public class ElevatorController : MonoBehaviour
     public void GoUp() {
         if(!isMoving) {
             isMoving = true;
-            animator.SetTrigger("Up");
+            animator.SetTrigger("ElevatorUp");
+            Debug.Log("Going Up");
         }
 
     }
@@ -34,9 +38,20 @@ public class ElevatorController : MonoBehaviour
     public void GoDown() {
         if(!isMoving) {
             isMoving = true;
-            animator.SetTrigger("Down");
+            animator.SetTrigger("ElevatorDown");
+            Debug.Log("Going Down");
         }
 
+    }
+
+    public void PlaySmoke()
+    {
+        smoke.Play();
+    }
+
+    public void StopSmoke()
+    {
+        smoke.Stop();
     }
 
     public void PlayStopSound() {

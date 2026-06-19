@@ -37,6 +37,13 @@ public class VoltageScript : MonoBehaviour
         screenLight.color = lowVoltageColor;
 
         previousVoltage = voltage;
+
+        if(generator.energyEstablished)
+        {
+            voltageText.enabled = true;
+            screenLight.enabled = true;
+            voltageText.text = "600V";
+        }
     }
     void Update()
     {
@@ -86,6 +93,8 @@ public class VoltageScript : MonoBehaviour
             screenLight.enabled = false;
             voltageText.text = "0V";
         }
+
+        
     }
     void Pulse()
     {
