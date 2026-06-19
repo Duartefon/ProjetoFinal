@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
@@ -54,7 +52,14 @@ public class GeneratorScript : MonoBehaviour
     public void AddFuse()
     {
         isOn = true;
+        fuseCount++;
+    }
 
+    public void RemoveFuse()
+    {
+        isOn = false;
+        energyEstablished = false;
+        fuseCount--;
     }
 
     public void SetVoltage(float voltage)

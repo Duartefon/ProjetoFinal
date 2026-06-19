@@ -40,10 +40,7 @@ public class VoltageScript : MonoBehaviour
 
         if(generator.energyEstablished)
         {
-            voltageText.enabled = true;
-            screenLight.enabled = true;
-            voltageText.text = "600V";
-            generator.SetVoltage(600f);
+            voltage = goodVoltage;
         }
     }
     void Update()
@@ -93,6 +90,11 @@ public class VoltageScript : MonoBehaviour
             voltageText.enabled = false;
             screenLight.enabled = false;
             voltageText.text = "0V";
+        }
+
+        if(generator.energyEstablished)
+        {
+            voltage = goodVoltage;
         }
 
         
