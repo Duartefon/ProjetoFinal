@@ -8030,6 +8030,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 370487597}
     - target: {fileID: 3223960226318686059, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3223960226318686059, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: metalStepSound
       value: 
       objectReference: {fileID: 8300000, guid: 20eca1fd06dbc674ab049dc2ef395a81, type: 3}
@@ -8039,7 +8043,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: cd0240d2e8f0d774eb140e4344aad7f2, type: 3}
     - target: {fileID: 3223960226318686059, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: velocityToTriggerStepSound
-      value: 1.06
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 3261775336381949059, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_Cameras.Array.size
@@ -8057,9 +8061,29 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5898371318599319926, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898371318599319926, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 5898371318599319926, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6862835014607177292, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253190602539643862, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: Pan2D
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253190602539643862, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: MaxDistance
+      value: 2.11
       objectReference: {fileID: 0}
     - target: {fileID: 7266653795348206842, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_InteractionManager
@@ -8291,7 +8315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8444248569201460132, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_CameraYOffset
-      value: 1.31
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8721194703924008800, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: introAudio
@@ -9785,7 +9809,6 @@ GameObject:
   m_Component:
   - component: {fileID: 888075069}
   - component: {fileID: 888075072}
-  - component: {fileID: 888075071}
   - component: {fileID: 888075070}
   m_Layer: 0
   m_Name: HUDCamera
@@ -9853,14 +9876,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!81 &888075071
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 888075068}
-  m_Enabled: 1
 --- !u!20 &888075072
 Camera:
   m_ObjectHideFlags: 0

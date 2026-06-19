@@ -28,9 +28,13 @@ public class FootStepSoundManager : MonoBehaviour
     void Update()
     {
         timestamp += Time.deltaTime;
-
+        Debug.Log(player.velocity.magnitude);
+        Debug.Log("Time: " + timestamp + "timeLastStep: " + timeLastStep + delayBetweenSteps + "Player grounded: " + player.isGrounded );
+        float rayDistance = (player.height / 2f) - player.radius + 0.1f;
+        Vector3 sphereOrigin = player.transform.position + player.center;
+        bool isManuallyGrounded = Physics.SphereCast(sphereOrigin, player.radius, Vector3.down, out RaycastHit hit, rayDistance);
         if (player.velocity.magnitude > velocityToTriggerStepSound
-            && timestamp > timeLastStep + delayBetweenSteps && player.isGrounded)
+            && timestamp > timeLastStep + delayBetweenSteps && isManuallyGrounded)
         {
             timeLastStep = Time.fixedTime;
 
