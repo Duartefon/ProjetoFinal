@@ -44,16 +44,16 @@ public class FootStepSoundManager : MonoBehaviour
     }
 
     private bool IsOnMetal()
-{
-    int metalLayer = LayerMask.NameToLayer("Metal");
-    if (Physics.Raycast(player.transform.position, Vector3.down, out RaycastHit hit, 2f))
     {
-        bool onMetal = hit.collider.gameObject.layer == metalLayer;
-        Debug.DrawRay(player.transform.position, Vector3.down * 2f, onMetal ? Color.yellow : Color.red);
-        return onMetal;
-    }
+        int metalLayer = LayerMask.NameToLayer("Metal");
+        if (Physics.Raycast(player.transform.position, Vector3.down, out RaycastHit hit, 2f))
+        {
+            bool onMetal = hit.collider.gameObject.layer == metalLayer;
+            Debug.DrawRay(player.transform.position, Vector3.down * 2f, onMetal ? Color.yellow : Color.red);
+            return onMetal;
+        }
 
-    Debug.DrawRay(player.transform.position, Vector3.down * 2f, Color.red);
-    return false;
-}
+        Debug.DrawRay(player.transform.position, Vector3.down * 2f, Color.red);
+        return false;
+    }
 }

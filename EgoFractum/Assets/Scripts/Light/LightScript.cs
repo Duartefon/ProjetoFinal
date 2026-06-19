@@ -34,13 +34,13 @@ public class LightScript : MonoBehaviour
 
     void Update()
     {
-        if (generatorScript.isOn && !isOn && !isPendingOn) // Se o gerador estiver ligado e a luz estiver desligada
+        if (generatorScript.energyEstablished && !isOn && !isPendingOn) // Se o gerador estiver ligado e a luz estiver desligada
         {
             isPendingOn = true;
             float delay = Random.Range(0.5f, 2f); // Gerar um delay aleatório entre 0.5 e 2 segundos
             Invoke("TurnOnLight", delay); // Chamar a função para ligar a luz após o delay
         }
-        else if (!generatorScript.isOn && isOn)
+        else if (!generatorScript.energyEstablished && isOn)
         {
             TurnOffLight();
         }

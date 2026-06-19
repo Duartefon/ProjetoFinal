@@ -2,69 +2,78 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
+using UnityEngine.Events;
 
 public class ButtonPress : MonoBehaviour
 {
+    [Header("Elevator Reference")]
+    public UnityEvent elevatorFunction;
+
+    [Header("Button")]
     public Transform button;
-    public Vector3 localAxis;
-    public float releaseSpeed = 10f;
-    private Vector3 offset;
-    private Transform attachPoint;
-    private Vector3 initialPosition;
+    public Vector3 localAxis = Vector3.back;
+    public float maxTravel = 0.015f; // em metros
+    public float releaseSpeed = 5f;
+
+    private Vector3 initialLocalPosition;
     private XRBaseInteractable interactable;
-    private bool isPressing;
+    private XRPokeInteractor activePoker;
+    private bool hasInvoked;
 
     void Start()
     {
         interactable = GetComponent<XRBaseInteractable>();
         interactable.hoverEntered.AddListener(Press);
         interactable.hoverExited.AddListener(Release);
-
-        interactable.selectEntered.AddListener(Pressed);
-
-        initialPosition = button.localPosition;
+        initialLocalPosition = button.localPosition;
     }
 
-    public void Press(BaseInteractionEventArgs hover)
+    private void Press(BaseInteractionEventArgs args)
     {
-        if (hover.interactorObject is XRPokeInteractor)
+        if (args.interactorObject is XRPokeInteractor poker)
         {
-            XRPokeInteractor pokeInteractor = (XRPokeInteractor)hover.interactorObject;
-            isPressing = true;
-            attachPoint = pokeInteractor.attachTransform;
-            offset = button.position - attachPoint.position;
+            activePoker = poker;
+            hasInvoked = false;
         }
     }
 
-    private void Release(BaseInteractionEventArgs hover)
+    private void Release(BaseInteractionEventArgs args)
     {
-        if (hover.interactorObject is XRPokeInteractor)
+        if (args.interactorObject is XRPokeInteractor)
         {
-            isPressing = false;
+            activePoker = null;
+            hasInvoked = false;
         }
     }
 
-    private void Pressed(SelectEnterEventArgs press)
-    {
-        if (press.interactorObject is XRPokeInteractor)
-        {
-            // faz um som de click
-        }
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (isPressing)
+        if (activePoker != null)
         {
-            // para o bitao so mexer num eixo
-            Vector3 localBottunPos = button.InverseTransformDirection(attachPoint.position + offset);
-            Vector3 constrainedLocalButtonPos = Vector3.Project(localBottunPos, localAxis);
-            button.position = button.TransformPoint(constrainedLocalButtonPos);
+            Vector3 pokerLocalPos = button.parent != null
+                ? button.parent.InverseTransformPoint(activePoker.attachTransform.position)
+                : activePoker.attachTransform.position;
+
+            Vector3 displacement = pokerLocalPos - initialLocalPosition;
+            float travel = Vector3.Dot(displacement, localAxis.normalized);
+            travel = Mathf.Clamp(travel, 0f, maxTravel);
+
+            button.localPosition = initialLocalPosition + localAxis.normalized * travel;
+
+            if (travel >= maxTravel && !hasInvoked)
+            {
+                hasInvoked = true;
+                Debug.Log("Button fully pressed, invoking: " + elevatorFunction);
+                elevatorFunction.Invoke();
+            }
         }
         else
         {
-            button.localPosition = Vector3.Lerp(button.localPosition, initialPosition, Time.deltaTime * releaseSpeed);
+            button.localPosition = Vector3.Lerp(
+                button.localPosition,
+                initialLocalPosition,
+                Time.deltaTime * releaseSpeed
+            );
         }
     }
 }

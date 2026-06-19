@@ -29,7 +29,8 @@ public class ElevatorController : MonoBehaviour
     public void GoUp() {
         if(!isMoving) {
             isMoving = true;
-            animator.SetTrigger("Up");
+            animator.SetTrigger("ElevatorUp");
+            Debug.Log("Going Up");
         }
 
     }
@@ -37,7 +38,8 @@ public class ElevatorController : MonoBehaviour
     public void GoDown() {
         if(!isMoving) {
             isMoving = true;
-            animator.SetTrigger("Down");
+            animator.SetTrigger("ElevatorDown");
+            Debug.Log("Going Down");
         }
 
     }
