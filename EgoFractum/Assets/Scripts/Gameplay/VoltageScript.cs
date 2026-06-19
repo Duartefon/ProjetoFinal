@@ -43,6 +43,7 @@ public class VoltageScript : MonoBehaviour
             voltageText.enabled = true;
             screenLight.enabled = true;
             voltageText.text = "600V";
+            generator.SetVoltage(600f);
         }
     }
     void Update()
