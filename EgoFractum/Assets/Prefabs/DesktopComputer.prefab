@@ -203,6 +203,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 555e0ac84233cc14d877c3e83f290863, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3465254014032837592}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 555e0ac84233cc14d877c3e83f290863, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 894890952383520208}
   m_SourcePrefab: {fileID: 100100000, guid: 555e0ac84233cc14d877c3e83f290863, type: 3}
 --- !u!1 &2531377657632925948 stripped
 GameObject:
@@ -387,8 +390,29 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
+--- !u!114 &894890952383520208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2531377657632925948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912983d16f80f464b96e99220d3be3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  screenLight: {fileID: 5327922047505990798}
+  screenOnMaterial: {fileID: 2100000, guid: 67c2ec2d043463d4ebfc0246f0daeade, type: 2}
+  screenOffMaterial: {fileID: 2100000, guid: 845d516de84fb0b488e82878b68d6a28, type: 2}
+  screenMesh: {fileID: 4985648498181961584}
 --- !u!4 &2912300902979367494 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 555e0ac84233cc14d877c3e83f290863, type: 3}
+  m_PrefabInstance: {fileID: 3449804871658575277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4985648498181961584 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1526509560930016547, guid: 555e0ac84233cc14d877c3e83f290863, type: 3}
   m_PrefabInstance: {fileID: 3449804871658575277}
   m_PrefabAsset: {fileID: 0}

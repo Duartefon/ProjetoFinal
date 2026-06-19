@@ -44,23 +44,6 @@ public class LightScript : MonoBehaviour
         {
             TurnOffLight();
         }
-
-        if (isOn)
-        {
-            if (audioSource != null)
-            {
-                audioSource.clip = lightBuzz;
-                audioSource.loop = true;
-                audioSource.Play();
-            }
-        }
-        else
-        {
-            if (audioSource != null && audioSource.isPlaying)
-                audioSource.Stop();
-        }
-
-
     }
 
     private void TurnOnLight()
@@ -72,31 +55,30 @@ public class LightScript : MonoBehaviour
             foreach (Light light in lightComponents)
             {
                 light.enabled = true;
-                lightMesh.material = onMaterial;
             }
+            lightMesh.material = onMaterial;
 
             if (audioSource != null)
             {
                 audioSource.pitch = Random.Range(0.75f, 0.85f);
                 audioSource.PlayOneShot(lightOnSound);
+
+                audioSource.clip = lightBuzz;
+                audioSource.loop = true;
+                audioSource.Play();
             }
         }
         else
         {
             // se a luz falhar vai tocar um som de faisca e vai se adicionar
             // o script LightFlicker para criar um efeito de luz a falhar
-            /*
-            foreach (Light light in lightComponents) {
-                light.gameObject.AddComponent<LightFlicker>();
-            }
-            */
-
             foreach (Light light in lightComponents)
             {
-                light.enabled = false;
-                lightMesh.material = offMaterial;
+                LightFlicker flicker = light.gameObject.AddComponent<LightFlicker>();
+                flicker.lightMesh = lightMesh;
+                flicker.onMaterial = onMaterial;
+                flicker.offMaterial = offMaterial;
             }
-
         }
 
         isOn = true;
@@ -111,7 +93,10 @@ public class LightScript : MonoBehaviour
         foreach (Light light in lightComponents)
             light.enabled = false;
 
+        lightMesh.material = offMaterial;
+
         if (audioSource != null)
             audioSource.PlayOneShot(lightOffSound);
+        audioSource.Stop();
     }
 }
