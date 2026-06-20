@@ -462,6 +462,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "TriggerPress",
+                    "type": "Value",
+                    "id": "816230ac-b807-4e2c-b4d1-e79dc1acfa1c",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ThumbPress",
+                    "type": "Value",
+                    "id": "0356e732-3c39-4632-aaa8-a7dea79dea6c",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -880,6 +898,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "GripPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2c1ef9c-fa7c-4411-984e-b67d26c24249",
+                    "path": "<XRController>{LeftHand}/{Trigger}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c813eaa2-7503-4ade-822b-07c927f4d151",
+                    "path": "<XRController>{LeftHand}/{PrimaryTouch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ThumbPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
