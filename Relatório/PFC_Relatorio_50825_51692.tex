@@ -295,13 +295,26 @@ integrar os desafios no contexto do ambiente virtual, e orientar o
 utilizador através do próprio espaço, sem comprometer a imersão.
 
 \cleardoublepage
-\chapter{Modelo Proposto}
-\label{ch:modelo-proposto}
-\section{Requisitos}
+\chapter{Modelo Proposto}\label{ch:modelo-proposto}
+
+Neste capítulo é apresentado o modelo proposto, estruturado em três secções
+principais. Na secção~\ref{sec:requisitos}, são
+identificados e descritos os requisitos funcionais e não funcionais, bem como os
+casos de utilização do sistema. Na secção~\ref{sec:fundamentos}, 
+são apresentados os conceitos e fundamentos teóricos que suportam
+o trabalho desenvolvido. Por fim, na secção~\ref{sec:abordagem},
+é descrita a metodologia adotada para o desenvolvimento e
+implementação do modelo proposto.
+
+\section{Requisitos}\label{sec:requisitos}
 % Requisitos Funcionais / Não Funcionais
 % Casos de Utilização
 % Resultado da fase de avaliação de requisitos
-
+Nesta secção são apresentados os requisitos funcionais
+e não funcionais do modelo proposto. Nas seguintes tabelas
+\ref{tab:regras_jogo}, \ref{tab:controlo_jogador} e \ref{tab:persistencia}, 
+encontram-se as funções de regras do jogo, o controlo do jogador e 
+as funções de persistência, respetivamente.
 \begin{table}[H]
     \centering
     \begin{tabular}{|l|p{9cm}|l|}
@@ -342,12 +355,12 @@ utilizador através do próprio espaço, sem comprometer a imersão.
         R3.1 & O progresso do jogador deve ser guardado & Evidente \\ \hline
         R3.2 & O jogador deve poder carregar o progresso guardado & Evidente \\ \hline
     \end{tabular}
-    \caption{Tabela de funções de controlo do jogador.}
-    \label{tab:controlo_jogador}
+    \caption{Tabela de funções de persistência.}
+    \label{tab:persistencia}
 \end{table}
 
 \newpage
-\section{Fundamentos}
+\section{Fundamentos}\label{sec:fundamentos}
 
 % NOTA PARA A ESCRITA DOS FUNDAMENTOS:
 % - Foco: TEORIA E CONCEITOS ABSTRATOS.
@@ -479,7 +492,7 @@ percebido como um obstáculo artificial e passa a ser interpretado como uma
 extensão lógica do próprio mundo representado.
 \par
 
-\section{Abordagem}
+\section{Abordagem}\label{sec:abordagem}
 Durante o desenvolvimento do projeto, foi adotada uma abordagem
 iterativa com diversas partes distintas: prototipagem, implementação e testes.
 Esta abordagem permitiu-nos avaliar as decisões tomadas e ajustar o sistema ao
@@ -675,7 +688,7 @@ cada objeto da cena, que é mais trabalhoso e propício a erros de omissão.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=1]{Imagens/tool_saveable_objects.png}
+    \includegraphics[scale=1.1]{Imagens/tool_saveable_objects.png}
     \caption{Janela de configuração inicial dos objetos interagíveis.}
     \label{fig:setup_saveable_objects}
 \end{figure}
