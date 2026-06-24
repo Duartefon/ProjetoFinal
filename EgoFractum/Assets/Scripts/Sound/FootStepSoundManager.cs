@@ -25,12 +25,12 @@ public class FootStepSoundManager : MonoBehaviour
             Debug.LogError($"Não existe CharacterController no parent: {gameObject.transform.parent.name}");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         timestamp += Time.deltaTime;
         Debug.Log(player.velocity.magnitude);
         Debug.Log("Time: " + timestamp + "timeLastStep: " + timeLastStep + delayBetweenSteps + "Player grounded: " + player.isGrounded );
-        float rayDistance = (player.height / 2f) - player.radius + 0.1f;
+        float rayDistance = (player.height) - player.radius + 0.1f;
         Vector3 sphereOrigin = player.transform.position + player.center;
         bool isManuallyGrounded = Physics.SphereCast(sphereOrigin, player.radius, Vector3.down, out RaycastHit hit, rayDistance);
         if (player.velocity.magnitude > velocityToTriggerStepSound
@@ -49,15 +49,18 @@ public class FootStepSoundManager : MonoBehaviour
 
     private bool IsOnMetal()
     {
-        int metalLayer = LayerMask.NameToLayer("Metal");
-        if (Physics.Raycast(player.transform.position, Vector3.down, out RaycastHit hit, 2f))
+        var origin = player.transform.position;
+        var direction = Vector3.down;
+        var maxDistance = 0.5f;
+        
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, maxDistance))
         {
-            bool onMetal = hit.collider.gameObject.layer == metalLayer;
-            Debug.DrawRay(player.transform.position, Vector3.down * 2f, onMetal ? Color.yellow : Color.red);
+            var onMetal = hit.collider.gameObject.CompareTag("Metal");
+            Debug.DrawRay(origin, direction , onMetal ? Color.yellow : Color.red);
             return onMetal;
         }
 
-        Debug.DrawRay(player.transform.position, Vector3.down * 2f, Color.red);
+      
         return false;
     }
 }

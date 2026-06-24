@@ -1751,6 +1751,22 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4600358071842353619, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: thumbPressAction
+      value: 
+      objectReference: {fileID: -2397720128474299618, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 4600358071842353619, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: triggerPressAction
+      value: 
+      objectReference: {fileID: 7835336665714427603, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 6133986819431208580, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: thumbPressAction
+      value: 
+      objectReference: {fileID: -2397720128474299618, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 6133986819431208580, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: triggerPressAction
+      value: 
+      objectReference: {fileID: 7835336665714427603, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 7396600035019905873, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1912,6 +1928,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8766065124969793699, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8766065124969793699, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: maxPitch
       value: 1.5
       objectReference: {fileID: 0}
@@ -1927,6 +1947,10 @@ PrefabInstance:
       propertyPath: normalStepSound
       value: 
       objectReference: {fileID: 8300000, guid: cd0240d2e8f0d774eb140e4344aad7f2, type: 3}
+    - target: {fileID: 8766065124969793699, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: velocityToTriggerStepSound
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3223960226318686059, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
     m_RemovedGameObjects: []

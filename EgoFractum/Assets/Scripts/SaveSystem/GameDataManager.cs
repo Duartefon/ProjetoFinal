@@ -45,8 +45,9 @@ public class GameDataManager : MonoBehaviour
         {
             saveText.gameObject.SetActive(false);
         }
-
+        
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        
 
     }
 
