@@ -144,7 +144,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
             }
         }
 
-        private float CheckAngle(float currentAngle, float startAngle) => (360f - currentAngle) + startAngle;
+        private float CheckAngle(float currentAngle, float _startAngle) => (360f - currentAngle) + _startAngle;
 
         private void RotateDialClockwise()
         {
