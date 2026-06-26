@@ -360,6 +360,8 @@ as funções de persistência, respetivamente.
     \label{tab:persistencia}
 \end{table}
 
+\section{Casos de Utilização}\label{sec:casos-util}
+
 \newpage
 \section{Fundamentos}\label{sec:fundamentos}
 
@@ -523,14 +525,14 @@ guiar a modelação e o conceito visual do projeto.
 Os desafios propostos ao jogador foram desenhados para testar diferentes competências
 cognitivas e espaciais, garantindo uma curva de aprendizagem progressiva:
 \begin{itemize} 
-    \item \textbf{Puzzle 1 (Exploração e Consciência Espacial):}
+    \item \textbf{Puzzle 1:}
 Funciona como o tutorial implícito do jogo. O jogador desperta no laboratório
 principal e é confrontado com a ausência de energia elétrica. O desafio foca-se
 na navegação e na perceção do espaço: o jogador deve deduzir que a solução se
 encontra numa área técnica, sendo guiado até ao piso -2. Ao localizar e
 interagir fisicamente com o gerador, restabelece a energia e familiariza-se com
 as mecânicas de interação base e com a topologia do nível. 
-\item \textbf{Puzzle 2 (Dedução Lógica e Interação Física):} O segundo obstáculo foca-se no
+    \item \textbf{Puzzle 2:} O segundo obstáculo foca-se no
 raciocínio dedutivo. Numa sala de controlo equipada com um terminal e uma
 balança, o jogador deve analisar um conjunto de objetos espalhados pelo cenário.
 A solução exige que o jogador relacione os pesos físicos dos objetos (que contêm
@@ -656,17 +658,31 @@ luz estrategicamente colocados, tendo sido usada a cor vermelha em certos sítio
 O plano da montagem encontra-se ilustrado na Figura~\ref{fig:map_layout}, 
 enquanto o resultado final da montagem do cenário pode ser visto na Figura~\ref{fig:final_map}.
 
-\section{Desenvolvimento dos Sistemas Interativos (Código e Mecânicas)}
-% Falar da interação do knob do gerador
-% Falar da interação da escada
-% etc etc
-\subsection{Interação com Objetos}
+\section{Desenvolvimento dos Sistemas Interativos}
+\label{sec:sistemas-interativos}
 
-% incluir aqui o sistema de poses
+\subsection{Mecânicas de Interação e Locomoção}
+\label{ssec:interacao-objetos}
+Muitos dos objetos decorativos do jogo podem ser manipulados fisicamente com 
+as mãos do jogador (ex: agarrar, atirar). Para este efeito, utilizaram-se as funcionalidades 
+base do \textit{XR Interaction Toolkit}, que suportam este tipo de interação direta. 
+Para componentes com comportamentos mecânicos específicos, foi necessário desenvolver \textit{scripts} 
+personalizados:
 
-\subsection{Puzzles}
-%codigo e cenas assim
+%falar da escalada (escadas)
+% script dos botoes
+% script da alavanca
+% elevador
 
+
+\subsection{Implementação da Lógica dos Puzzles}
+\label{ssec:logica-puzzles}
+Uma vez garantidas as mecânicas base de interação, a implementação dos puzzles focou-se na validação 
+de estados e desencadeamento de eventos.
+
+Para o \textbf{Puzzle 1}, \ldots
+% portas automaticas
+%falar dos scripts da balança dos pesos e do terminal da porta
 \subsection{Gestão da Narrativa}
 % Falamos do eventual sistema de narrativa
 % Dizer que os puzzles ao serem concluidos, guardam o jogo (?)
