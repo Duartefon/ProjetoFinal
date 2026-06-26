@@ -52,7 +52,7 @@ A narrativa é revelada de forma gradual, de maneira a incentivar a descoberta e
 o envolvimento do jogador.
 \par
 O sistema foi desenvolvido com o motor de jogo Unity~\cite{unity} com recurso ao 
-\textit{toolkit} de interação XR~\cite{xr}. 
+\textit{toolkit} de interação XR~\cite{xri}. 
 Foi adotada uma abordagem iterativa, com prototipagem, implementação e 
 testes sucessivos. Todos os elementos gráficos foram criados de raiz.
 \par
@@ -302,7 +302,8 @@ principais. Na secção~\ref{sec:requisitos}, são
 identificados e descritos os requisitos funcionais e não funcionais, bem como os
 casos de utilização do sistema. Na secção~\ref{sec:fundamentos}, 
 são apresentados os conceitos e fundamentos teóricos que suportam
-o trabalho desenvolvido. Por fim, na secção~\ref{sec:abordagem},
+o trabalho desenvolvido. Na secção~\ref{sec:concecao-jogo}, 
+é apresentado o conceito do jogo. Por fim, na secção~\ref{sec:abordagem},
 é descrita a metodologia adotada para o desenvolvimento e
 implementação do modelo proposto.
 
@@ -492,6 +493,56 @@ percebido como um obstáculo artificial e passa a ser interpretado como uma
 extensão lógica do próprio mundo representado.
 \par
 
+\section{Conceção do Jogo}
+\label{sec:concecao-jogo}
+Nesta secção são detalhados os aspetos conceptuais do jogo, desde o enredo (cf.~\ref{ssec:resumo}),
+e direção artística (cf.~\ref{ssec:arte}), ao design dos puzzles (cf.~\ref{ssec:design-puzzles}) e fluxo de progressão do jogo (cf.~\ref{subsec:puzzles_narrativa}).
+
+\subsection{Resumo / Enredo} 
+\label{ssec:resumo}
+% resumo da historia do jogo?
+
+
+\subsection{Direção Artística e Arte Conceptual} \label{ssec:arte} 
+Para estabelecer a identidade visual do jogo, realizou-se uma pesquisa de referências
+estéticas focada em ambientes cibernéticos e biónicos. A direção artística foi
+fortemente inspirada no trabalho do artista conceptual Adam Adamowicz,
+reconhecido pelos seus contributos visuais no jogo \textit{Fallout 3}. \par
+Partindo destas referências, desenvolveu-se a ilustração conceptual da
+personagem principal, apresentada na Figura~\ref{fig:sub44_sketch}, para melhor
+guiar a modelação e o conceito visual do projeto. 
+
+\begin{figure}[H] 
+    \centering
+    \includegraphics[scale=0.18]{Imagens/sub44_concept.png} 
+    \caption{Ilustração conceptual da personagem principal.} 
+    \label{fig:sub44_sketch} 
+\end{figure}
+
+\subsection{Design dos Puzzles} \label{ssec:design-puzzles} 
+Os desafios propostos ao jogador foram desenhados para testar diferentes competências
+cognitivas e espaciais, garantindo uma curva de aprendizagem progressiva:
+\begin{itemize} 
+    \item \textbf{Puzzle 1 (Exploração e Consciência Espacial):}
+Funciona como o tutorial implícito do jogo. O jogador desperta no laboratório
+principal e é confrontado com a ausência de energia elétrica. O desafio foca-se
+na navegação e na perceção do espaço: o jogador deve deduzir que a solução se
+encontra numa área técnica, sendo guiado até ao piso -2. Ao localizar e
+interagir fisicamente com o gerador, restabelece a energia e familiariza-se com
+as mecânicas de interação base e com a topologia do nível. 
+\item \textbf{Puzzle 2 (Dedução Lógica e Interação Física):} O segundo obstáculo foca-se no
+raciocínio dedutivo. Numa sala de controlo equipada com um terminal e uma
+balança, o jogador deve analisar um conjunto de objetos espalhados pelo cenário.
+A solução exige que o jogador relacione os pesos físicos dos objetos (que contêm
+valores numéricos associados) com as pistas textuais apresentadas no ecrã. Este
+puzzle obriga o utilizador a recorrer à manipulação tridimensional dos objetos
+para pesar e validar os resultados, de forma a descobrir a sequência correta e
+aceder à área seguinte. 
+\end{itemize}
+
+\subsection{Fluxo de Progressão}
+\label{ssec:fluxo-progressao}
+
 \section{Abordagem}\label{sec:abordagem}
 Durante o desenvolvimento do projeto, foi adotada uma abordagem
 iterativa com diversas partes distintas: prototipagem, implementação e testes.
@@ -511,7 +562,7 @@ funcionalidades mal implementadas.
 %   3. Código (Scripts C#): Mostrar a lógica dos puzzles.
 
 
-\section{Conceito e Arquitetura do Sistema}
+\section{Arquitetura do Sistema}
 % Podemos incluir concept art talvez
 % Aqui faz-se um resumo visual de como o Unity se liga ao XR Interaction Toolkit.
 % Pode-se incluir um diagrama de blocos da arquitetura (Input do Utilizador -> XR Rig -> Lógica do Jogo).
@@ -524,6 +575,7 @@ funcionalidades mal implementadas.
 \end{figure}
 
 \section{Evolução do Protótipo}
+\label{sec:prototipo}
 % Aqui explica-se a "fase de desenvolvimento inicial". Como o modelo é iterativo,
 % explica-se o que se validou no protótipo / greyboxing antes de avançar para a arte final.
 No início do projeto, foi desenvolvido um protótipo do ambiente virtual com o
@@ -538,28 +590,6 @@ Para a construção deste cenário temporário, recorreu-se à técnica de
 do nível utilizando apenas formas geométricas simples, sem aplicação de texturas
 ou elementos visuais finais, de forma a permitir avaliar a disposição espacial e a
 interação do utilizador com o ambiente de forma mais clara.
-
-\subsection{Direção Artística e Concept Art}
-% É aqui que entra a arte conceptual
-% Explicamos o conceito visual do jogo (ex: misterioso, cyberpunk, low-poly, etc.).
-% Concept art, sketches, etc.
-
-Foi definido um estilo visual baseado no estilo retro-futurístico, 
-com elementos de terror e suspanse. \par
- 
-Para ajudar no processo de modelação e texturização, foram
-feitos vários rascunhos e conceitos de elementos gráficos, como
-o personagem controlado pelo jogador, as mãos e o ambiente virtual. \par
-
-Alguns dos conceitos encontram-se ilustrados nas figuras
-~\ref{fig:sub44_sketch},~\ref{fig:hand_sketch} e~\ref{fig:map_sketch}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.18]{Imagens/sub44_concept.png}
-    \caption{Ilustração conceptual do personagem principal.}
-    \label{fig:sub44_sketch}
-\end{figure}
 
 
 \section{Desenvolvimento de Elementos Gráficos e Ambiente}
@@ -632,9 +662,12 @@ enquanto o resultado final da montagem do cenário pode ser visto na Figura~\ref
 % etc etc
 \subsection{Interação com Objetos}
 
-\subsection{Puzzles}
+% incluir aqui o sistema de poses
 
-\subsection{Gestão do Estado do Jogo e Narrativa}
+\subsection{Puzzles}
+%codigo e cenas assim
+
+\subsection{Gestão da Narrativa}
 % Falamos do eventual sistema de narrativa
 % Dizer que os puzzles ao serem concluidos, guardam o jogo (?)
 
