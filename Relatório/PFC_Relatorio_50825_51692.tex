@@ -142,11 +142,11 @@ novas áreas e da aquisição de informação contextual sobre o mundo virtual, 
 promover simultaneamente o envolvimento do utilizador e a construção de uma 
 narrativa implícita.
 \par
-A implementação foi realizada utilizando o motor de jogo Unity, 
-em conjunto com o \textit{toolkit} de interação XR, o que permite compatibilidade com 
+A implementação foi realizada utilizando o motor de jogo \texttt{Unity}, 
+em conjunto com o \textit{toolkit} de interação \texttt{XR}, o que permite compatibilidade com 
 diferentes dispositivos de realidade virtual e oferece alguma flexibilidade no 
-desenvolvimento. Todos os elementos gráficos, tanto 2D como 3D, 
-foram desenvolvidos de raiz com recurso a ferramentas, como o Blender e Aseprite, 
+desenvolvimento. Todos os elementos gráficos, tanto \texttt{2D} como \texttt{3D}, 
+foram desenvolvidos de raiz com recurso a ferramentas, como o \texttt{Blender} e \texttt{Aseprite}, 
 para garantir a coerência visual e o controlo total sobre a estética do jogo.
 \par
 Como principais contributos deste trabalho destacam-se: (i) o desenvolvimento de 
@@ -297,10 +297,10 @@ utilizador através do próprio espaço, sem comprometer a imersão.
 \cleardoublepage
 \chapter{Modelo Proposto}\label{ch:modelo-proposto}
 
-Neste capítulo é apresentado o modelo proposto, estruturado em três secções
+Neste capítulo é apresentado o modelo proposto, estruturado em cinco secções
 principais. Na secção~\ref{sec:requisitos}, são
-identificados e descritos os requisitos funcionais e não funcionais, bem como os
-casos de utilização do sistema. Na secção~\ref{sec:fundamentos}, 
+identificados e descritos os requisitos funcionais e não funcionais, seguidos pelos
+casos de utilização do sistema na secção~\ref{sec:casos-util}. Na secção~\ref{sec:fundamentos}, 
 são apresentados os conceitos e fundamentos teóricos que suportam
 o trabalho desenvolvido. Na secção~\ref{sec:concecao-jogo}, 
 é apresentado o conceito do jogo. Por fim, na secção~\ref{sec:abordagem},
@@ -361,6 +361,9 @@ as funções de persistência, respetivamente.
 \end{table}
 
 \section{Casos de Utilização}\label{sec:casos-util}
+
+% fazer o mesmo que na apresentação de FEIM (?)
+% escolher um caso e expandir para um cenário.
 
 \newpage
 \section{Fundamentos}\label{sec:fundamentos}
@@ -459,7 +462,7 @@ paradigmas de \textit{input}, sem alterar a lógica ao
 comportamento dos objetos.
 \par
 
-\subsection{Design de Puzzles e Narrativa Ambiental}
+\subsection{\textit{Flow} e Narrativa Ambiental}
 \label{subsec:puzzles_narrativa}
 A construção de puzzles intuitivos e envolventes assenta, do ponto de 
 vista teórico, na Teoria de \textit{Flow} de Mihály Csíkszentmihályi~\cite{flow}. Este modelo 
@@ -545,6 +548,13 @@ aceder à área seguinte.
 \subsection{Fluxo de Progressão}
 \label{ssec:fluxo-progressao}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Imagens/ciclo_jogo.png}
+    \caption{Diagrama de fluxo do jogo.}
+    \label{fig:ciclo_jogo}
+\end{figure}
+
 \section{Abordagem}\label{sec:abordagem}
 Durante o desenvolvimento do projeto, foi adotada uma abordagem
 iterativa com diversas partes distintas: prototipagem, implementação e testes.
@@ -560,7 +570,7 @@ funcionalidades mal implementadas.
 % - Foco: APLICAÇÃO PRÁTICA, ENGENHARIA E PRODUÇÃO PRÓPRIA.
 % - O que escrever aqui:
 %   1. Unity e XR: Como configuramos o XR Origin, as mãos e os comandos.
-%   2. Assets: O processo de modelação no Blender e texturas no Aseprite.
+%   2. Assets: O processo de modelação no \texttt{Blender} e texturas no \texttt{Aseprite}.
 %   3. Código (Scripts C#): Mostrar a lógica dos puzzles.
 
 
@@ -593,70 +603,99 @@ do nível utilizando apenas formas geométricas simples, sem aplicação de text
 ou elementos visuais finais, de forma a permitir avaliar a disposição espacial e a
 interação do utilizador com o ambiente de forma mais clara.
 
-
+\newpage
 \section{Desenvolvimento de Elementos Gráficos e Ambiente}
-% Mapa modular feito no blender com texturas no Aseprite
-% Mãos encontradas na internet e apropiadas para o jogo
-% Elementos do mapa (PCs, escadas, etc)
-% Mencionar a cor "vermelha" que guia o jogador
-Para construir o ambiente virtual, foi adotada uma
-abordagem modular, no sentido que, foram modeladas
-várias ``peças'', como paredes retas, cantos e  portas.
+\label{sec:elementos-graficos}
+
+Para a construção do ambiente virtual, adotou-se uma abordagem modular através 
+da qual se modelaram componentes estruturais base, tais como paredes retas, 
+cantos e portas. Esta metodologia simplifica a criação de cenários complexos e
+oferece a flexibilidade necessária para modificações e reutilização de elementos.
+ Complementarmente à estrutura arquitetónica, foram desenhados elementos 
+ decorativos e interativos, incluindo computadores, escadas e mobiliário 
+ de laboratório, com o propósito de enriquecer o cenário e aumentar a 
+ imersão do jogador.
 \par
-Isto permite simplificar a construção de um ambiente virtual
-complexo, podendo também ser facilmente modificado e reutilizado.
-Para além de paredes, foram modelados outros elementos, como escadas, computadores e
-objetos de decoração, para tornar o ambiente mais rico e imersivo.
-\par
-Abaixo encontra-se a Figura~\ref{fig:map_pieces}, que mostra as peças
-modulares e alguns elementos decorativos usados para construir o mapa.
+Adicionalmente, foram utilizados modelos \texttt{3D} de mãos humanas recolhidas 
+do sítio \texttt{Sketchfab}, feitas pelo utilizador \texttt{scribbletoad}, e adaptadas de 
+acordo com o conceito do jogo, ilustradas na Figura~\ref{fig:hand_models}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.45]{Imagens/map_pieces.png}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.25]{Imagens/hands_F.png}
+        \caption{Mão adaptada (esquerda) e original (direita), mostradas de frente.}
+        \label{fig:subfig_1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.25]{Imagens/hands_B.png}
+        \caption{Mão original (esquerda) e adaptada (direita), mostradas de trás.}
+        \label{fig:subfig_2}
+    \end{subfigure}
+    
+    \caption{Comparação entre os modelos adaptados e os originais das mãos.}
+    \label{fig:hand_models}
+\end{figure}
+
+A Figura~\ref{fig:map_pieces} ilustra o conjunto de peças modulares e 
+alguns elementos decorativos utilizados na construção do mapa.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.40]{Imagens/map_pieces.png}
     \caption{Peças modulares e elementos decorativos usados para construir o mapa.}
     \label{fig:map_pieces}
 \end{figure}
 
-
 \subsection{Texturização e Identidade Cromática}
-% Aqui falamos do Aseprite e da escolha da COR VERMELHA como 
-% elemento de destaque e guia visual para o utilizador.
-Todas as texturas foram criadas de raiz com recurso ao programa \texttt{Aseprite},
-que se especializa em pixel art e animação 2D. A escolha deste programa permitiu 
-criar texturas de baixa resolução, coerente com a direção artística 
-definida para o projeto. Para além disso, foi definida uma paleta de cores limitada e 
-baseada em tons escuros, com destaque para a cor vermelha, que deverá sinalizar 
-elementos de interesse e guiar o jogador ao longo do jogo. A Figura~\ref{fig:textures}
-mostra alguns exemplos de texturas criadas para o projeto.
+\label{ssec:texturizacao}
+
+Todas as texturas aplicadas aos modelos foram desenvolvidas de raiz 
+com recurso ao \textit{software} \texttt{Aseprite}, que se especializa 
+em \textit{pixel art} e animação \texttt{2D}. A utilização desta ferramenta permitiu 
+a criação de texturas de baixa resolução, coerentes com a direção artística 
+retro-futurista definida para o projeto.
+\par
+Estabeleceu-se uma paleta de cores restrita, predominantemente composta 
+por tons escuros, na qual a cor vermelha atua como o principal elemento 
+de destaque visual (\textit{visual cue}). Esta escolha cromática tem a 
+função deliberada de sinalizar objetos interativos, delimitar zonas de 
+interesse e guiar o fluxo de navegação do jogador de forma intuitiva, de forma
+a minimizar a necessidade de interfaces de utilizador. 
+A Figura~\ref{fig:textures} apresenta alguns exemplos das texturas 
+criadas para o projeto.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5]{Imagens/textures.png}
+    \includegraphics[scale=0.4]{Imagens/textures.png}
     \caption{Exemplos de texturas criadas para o projeto.}
     \label{fig:textures}
 \end{figure}
 
 \subsection{Montagem do Cenário e Iluminação}
-% Aqui explicamos o Level Design no Unity, o encaixe dos mapa modular 
-% e a configuração das LUZES para direcionar o foco do jogador em VR.
-Para montar o cenário, foram criados \texttt{Prefabs} de cada elemento, com
-as texturas aplicadas e as colisões configuradas. Estes \texttt{Prefabs} foram depois
-organizados no ambiente virtual e encaixados para formar o mapa. \par
+\label{ssec:montagem-iluminacao}
 
-Para que as peças se encaixassem corretamente, foi usada a funcionalidade
-\texttt{Vertex Snapping} do Unity, que permite alinhar os vértices de um 
-objeto com os de outro.
+O processo de \textit{level design} no \texttt{Unity} iniciou-se com 
+a conversão dos modelos \texttt{3D} em \texttt{Prefabs}, com as respetivas 
+texturas aplicadas e os componentes de colisão (\textit{Colliders}) devidamente 
+configurados. Posteriormente, estes blocos foram organizados de forma incremental 
+no espaço. Para assegurar o alinhamento preciso 
+dos objetos e evitar falhas na geometria, 
+utilizou-se a funcionalidade \texttt{Vertex Snapping}.
+\par
+O planeamento do espaço obedeceu a um \textit{layout} pré-definido, focado 
+na fluidez de movimentos e na escala adequada para a exploração em 
+Realidade Virtual. A iluminação desempenha um papel fundamental na 
+atmosfera misteriosa do ambiente e na orientação do utilizador. 
+Foram distribuídos pontos de luz focais e direcionais estrategicamente 
+posicionados, recorrendo novamente à cor vermelha para captar a atenção 
+do jogador para pontos de interesse. O plano estrutural do nível 
+e o resultado final da montagem encontram-se ilustrados nas 
+Figuras~\ref{fig:map_layout} e \ref{fig:final_map}, respetivamente.
 
-O mapa foi projetado para ser explorado em realidade virtual, 
-o que implica uma atenção especial aos detalhes e à iluminação. Antes da montagem
-do cenário, foi desenhado um layout do mapa, para garantir uma boa fluidez e uma 
-experiência de jogo envolvente. A iluminação foi configurada para criar uma 
-atmosfera misteriosa e para guiar o foco do jogador, com luzes direcionais e pontos de 
-luz estrategicamente colocados, tendo sido usada a cor vermelha em certos sítios.
-
-O plano da montagem encontra-se ilustrado na Figura~\ref{fig:map_layout}, 
-enquanto o resultado final da montagem do cenário pode ser visto na Figura~\ref{fig:final_map}.
 
 \section{Desenvolvimento dos Sistemas Interativos}
 \label{sec:sistemas-interativos}
@@ -677,10 +716,57 @@ personalizados:
 
 \subsection{Implementação da Lógica dos Puzzles}
 \label{ssec:logica-puzzles}
-Uma vez garantidas as mecânicas base de interação, a implementação dos puzzles focou-se na validação 
-de estados e desencadeamento de eventos.
+\subsubsection{Puzzle 1: Restabelecimento de Energia}
+\label{sssec:puzzle1}
 
-Para o \textbf{Puzzle 1}, \ldots
+A implementação do Puzzle 1 baseia-se na validação sequencial de estados e no despoletamento 
+de eventos associados ao gerador elétrico. O comportamento deste mecanismo é gerido por 
+um \textit{script} dedicado que expõe dois métodos públicos principais:
+\begin{itemize}
+    \item \texttt{AddFuse()}: Incrementa o contador de fusíveis ativos no circuito;
+    \item \texttt{RemoveFuse()}: Decrementa o referido contador.
+\end{itemize}
+
+Para iniciar o gerador, é necessário inserir um fusível no respetivo
+recetáculo. Para facilitar o alinhamento do objeto, foi utilizado o componente
+\texttt{XRSocketInteractor} do \textit{XR Interaction Toolkit}, que posiciona
+automaticamente o fusível no local correto através da funcionalidade de
+\textit{snap}. A ligação à lógica do puzzle é feita através dos
+eventos nativos \texttt{selectEntered} e \texttt{selectExited}, que chamam os
+métodos \texttt{AddFuse()} e \texttt{RemoveFuse()} quando o fusível é inserido
+ou removido. 
+
+Depois de validada a presença do fusível, é ativado um ecrã
+digital que apresenta a tensão do gerador, inicialmente igual a 0,V. Para
+alterar este valor, o jogador interage com um botão rotativo, que aumenta a
+tensão em intervalos de 10,V, de acordo com a mecânica descrita na
+Secção~\ref{ssec:interacao-objetos}. 
+
+Quando a tensão atinge os 600\,V, o
+sistema reproduz um som para confirmar que o valor está correto. O último passo
+consiste em baixar uma alavanca, cujo funcionamento foi também implementado com
+um \texttt{XRSocketInteractor}. Quando a alavanca alcança a posição inferior, o
+puzzle fica concluído e a energia é restabelecida no laboratório. 
+
+Para indicar o estado do puzzle sem recorrer a elementos de interface adicionais, foi
+implementado um sistema de \textit{feedback} integrado no ecrã do gerador. A cor
+da interface e da iluminação altera-se de forma gradual através da função
+\texttt{Color.Lerp}, em função da diferença entre a tensão atual e o valor
+pretendido de 600\,V. Quando a tensão entra numa zona crítica, a iluminação e a
+opacidade do texto passam a oscilar com base numa função sinusoidal dependente
+do tempo. 
+\par
+O sistema inclui também \textit{feedback} sonoro. Cada alteração
+da tensão reproduz um som, que é substituído por um sinal diferente quando o
+valor de 600\,V é alcançado. Desta forma, o jogador recebe confirmação do
+progresso sem necessidade de manter atenção constante ao ecrã, o que favorece a
+interação com os elementos físicos do painel.
+\par
+Depois de concluir esta secção introdutória, as luzes do laboratório são ligadas, 
+as portas automáticas são ativadas (cf.~\ref{sssec:puzzle2}) e o elevador fica disponível para o jogador.
+
+\subsubsection{Puzzle 2: Formas e Números}
+\label{sssec:puzzle2}
 % portas automaticas
 %falar dos scripts da balança dos pesos e do terminal da porta
 \subsection{Gestão da Narrativa}
@@ -807,7 +893,7 @@ Harper \& Row, 1990.
 
 \bibitem[Carson, Environmental Storytelling, site]{env_story}
 Don Carson.
-\textit{Environmental Storytelling: Creating Immersive 3D Worlds Using Lessons Learned from the Theme Park Industry}.
+\textit{Environmental Storytelling: Creating Immersive \texttt{3D} Worlds Using Lessons Learned from the Theme Park Industry}.
 Game Developer.
 \url{https://www.gamedeveloper.com/design/environmental-storytelling-creating-immersive-3d-worlds-using-lessons-learned-from-the-theme-park-industry}
 
