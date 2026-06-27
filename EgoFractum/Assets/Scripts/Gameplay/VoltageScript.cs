@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+
 public class VoltageScript : MonoBehaviour
 {
     [Header("Colors")]
@@ -26,106 +28,97 @@ public class VoltageScript : MonoBehaviour
     public AudioClip beepSound;
     public AudioClip beepSuccessSound;
 
+    [Header("Events")]
+    public UnityEvent<float> onVoltageChanged;
+
     [Range(0, 1000)]
-    public float voltage = 0f;
-    private float previousVoltage;
+    private float _voltage = 0f;
+    public float Voltage => _voltage; // getter
+
+    private float _previousVoltage;
 
     void Start()
     {
-        voltageText.color = lowVoltageColor;
-        voltageText.text = $"{voltage}V";
-        screenLight.color = lowVoltageColor;
+        _previousVoltage = _voltage;
+        UpdateVisuals();
 
-        previousVoltage = voltage;
-
-        if(generator.energyEstablished)
-        {
-            voltage = goodVoltage;
-        }
+        if (generator.energyEstablished)
+            SetVoltage(goodVoltage);
     }
+
     void Update()
     {
-        if (generator.isOn)
+        bool generatorOn = generator.isOn;
+
+        voltageText.enabled = generatorOn;
+        screenLight.enabled = generatorOn;
+
+        if (!generatorOn)
         {
-            voltageText.enabled = true;
-            screenLight.enabled = true;
-
-            generator.SetVoltage(voltage);
-
-            if (voltage != previousVoltage)
-            {
-                if (voltage == goodVoltage)
-                    BeepSuccess();
-                else
-                    Beep();
-
-                previousVoltage = voltage;
-            }
-
-            Color targetColor;
-            if (voltage <= goodVoltage)
-            {
-                targetColor = Color.Lerp(lowVoltageColor, goodVoltageColor,
-                    Mathf.InverseLerp(0, goodVoltage, voltage));
-            }
-            else
-            {
-                targetColor = Color.Lerp(goodVoltageColor, mediumVoltageColor,
-                    Mathf.InverseLerp(goodVoltage, maxVoltage, voltage));
-            }
-
-            voltageText.color = targetColor;
-            screenLight.color = targetColor;
-            voltageText.text = $"{voltage}V";
-
-            if (voltage < lowVoltage)
-            {
-                Pulse();
-            } else {
-                screenLight.intensity = maxLightIntensity;
-            }
-        }
-         else
-        {
-            voltageText.enabled = false;
-            screenLight.enabled = false;
             voltageText.text = "0V";
+            return;
         }
 
-        if(generator.energyEstablished)
+        if (generator.energyEstablished && _voltage != goodVoltage)
+            SetVoltage(goodVoltage);
+
+        if (_voltage != _previousVoltage)
         {
-            voltage = goodVoltage;
+            PlayFeedbackSound();
+            generator.SetVoltage(_voltage);
+            onVoltageChanged?.Invoke(_voltage);
+            _previousVoltage = _voltage;
         }
 
-        
+        UpdateVisuals();
+
+        if (_voltage < lowVoltage)
+            Pulse();
+        else
+            screenLight.intensity = maxLightIntensity;
     }
+
+    public void AdjustVoltage(float delta)
+    {
+        SetVoltage(Mathf.Clamp(_voltage + delta, 0f, maxVoltage));
+    }
+
+    public void SetVoltage(float newVoltage)
+    {
+        if (!generator.isOn) return;
+        _voltage = Mathf.Clamp(newVoltage, 0f, maxVoltage);
+    }
+
+    private void UpdateVisuals()
+    {
+        Color targetColor;
+
+        if (_voltage <= goodVoltage)
+            targetColor = Color.Lerp(lowVoltageColor, goodVoltageColor,
+                Mathf.InverseLerp(0, goodVoltage, _voltage));
+        else
+            targetColor = Color.Lerp(goodVoltageColor, mediumVoltageColor,
+                Mathf.InverseLerp(goodVoltage, maxVoltage, _voltage));
+
+        voltageText.color = targetColor;
+        voltageText.text = $"{_voltage}V";
+        screenLight.color = targetColor;
+    }
+
+    private void PlayFeedbackSound()
+    {
+        if (!audioSource) return;
+
+        if (_voltage == goodVoltage && beepSuccessSound)
+            audioSource.PlayOneShot(beepSuccessSound);
+        else if (beepSound)
+            audioSource.PlayOneShot(beepSound);
+    }
+
     void Pulse()
     {
-        voltageText.alpha = 0.5f + 0.5f * Mathf.Sin(Time.time * pulseFrequency);
-        screenLight.intensity = Mathf.Clamp(
-            0.5f + 0.5f * Mathf.Sin(Time.time * pulseFrequency),
-            0, maxLightIntensity);
-    }
-
-    void Beep()
-    {
-        if (audioSource && beepSound)
-        {
-            audioSource.PlayOneShot(beepSound);
-        }
-    }
-
-    void BeepSuccess()
-    {
-        if (audioSource && beepSuccessSound)
-        {
-            audioSource.PlayOneShot(beepSuccessSound);
-        }
-    }
-
-    public void SetVoltage(float voltage)
-    {
-        if(generator.isOn)
-            this.voltage = voltage;
+        float sin = 0.5f + 0.5f * Mathf.Sin(Time.time * pulseFrequency);
+        voltageText.alpha = sin;
+        screenLight.intensity = Mathf.Clamp(sin, 0, maxLightIntensity);
     }
 }

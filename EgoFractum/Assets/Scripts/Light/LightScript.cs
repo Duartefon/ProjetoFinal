@@ -8,7 +8,7 @@ using UnityEngine;
 */
 public class LightScript : MonoBehaviour
 {
-    private GeneratorScript generatorScript; // Referência ao script do gerador
+    [SerializeField] private GeneratorScript generator;
     private Light[] lightComponents; // Cada luz tem dois componentes light
     private bool isOn = false; // Estado da luz
     private bool isPendingOn = false; // Se a luz está à espera de acender
@@ -27,22 +27,48 @@ public class LightScript : MonoBehaviour
 
     void Start()
     {
-        generatorScript = GameObject.FindWithTag("Generator").GetComponent<GeneratorScript>();
         lightComponents = GetComponentsInChildren<Light>();
         audioSource = GetComponentInChildren<AudioSource>();
+
+        generator = GameObject.FindWithTag("Generator").GetComponent<GeneratorScript>();
+        generator.onEnergyEstablished.AddListener(TurnOnWithDelay);
+        generator.onEnergyLost.AddListener(TurnOffLight);
+
+        if (generator.energyEstablished)
+            TurnOnWithDelay();
     }
 
-    void Update()
+    void OnDestroy()
     {
-        if (generatorScript.energyEstablished && !isOn && !isPendingOn) // Se o gerador estiver ligado e a luz estiver desligada
+        generator.onEnergyEstablished.RemoveListener(TurnOnWithDelay);
+        generator.onEnergyLost.RemoveListener(TurnOffLight);
+    }
+
+    // chamado pelo evento OnEnergyEstablished
+    public void TurnOnWithDelay()
+    {
+        if (isOn || isPendingOn) return;
+        isPendingOn = true;
+        float delay = Random.Range(0.5f, 2f);
+        Invoke(nameof(TurnOnLight), delay);
+    }
+
+    // chamado pelo evento OnEnergyLost
+    public void TurnOffLight()
+    {
+        CancelInvoke(nameof(TurnOnLight));
+        isPendingOn = false;
+        isOn = false;
+
+        foreach (Light light in lightComponents)
+            light.enabled = false;
+
+        lightMesh.material = offMaterial;
+
+        if (audioSource != null)
         {
-            isPendingOn = true;
-            float delay = Random.Range(0.5f, 2f); // Gerar um delay aleatório entre 0.5 e 2 segundos
-            Invoke("TurnOnLight", delay); // Chamar a função para ligar a luz após o delay
-        }
-        else if (!generatorScript.energyEstablished && isOn)
-        {
-            TurnOffLight();
+            audioSource.PlayOneShot(lightOffSound);
+            audioSource.Stop();
         }
     }
 
@@ -56,13 +82,13 @@ public class LightScript : MonoBehaviour
             {
                 light.enabled = true;
             }
+
             lightMesh.material = onMaterial;
 
             if (audioSource != null)
             {
                 audioSource.pitch = Random.Range(0.75f, 0.85f);
                 audioSource.PlayOneShot(lightOnSound);
-
                 audioSource.clip = lightBuzz;
                 audioSource.loop = true;
                 audioSource.Play();
@@ -82,21 +108,5 @@ public class LightScript : MonoBehaviour
         }
 
         isOn = true;
-    }
-
-    private void TurnOffLight()
-    {
-        CancelInvoke("TurnOnLight"); // Cancelar qualquer Invoke pendente
-        isPendingOn = false;
-        isOn = false;
-
-        foreach (Light light in lightComponents)
-            light.enabled = false;
-
-        lightMesh.material = offMaterial;
-
-        if (audioSource != null)
-            audioSource.PlayOneShot(lightOffSound);
-        audioSource.Stop();
     }
 }

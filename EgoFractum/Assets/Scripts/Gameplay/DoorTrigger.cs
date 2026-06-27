@@ -6,7 +6,6 @@ public class DoorTrigger : MonoBehaviour
 
     private void Awake()
     {
-        // Automatically grabs the DoorController from the parent
         door = GetComponentInParent<DoorController>();
     }
 

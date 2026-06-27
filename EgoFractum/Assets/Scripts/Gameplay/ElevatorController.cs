@@ -9,8 +9,8 @@ public class ElevatorController : MonoBehaviour
     [Header("Smoke")]
     public ParticleSystem smoke;
     
-    private GeneratorScript generator;
     private bool isMoving = false;
+    private bool energyEstablished = false;
     private Animator animator;
     private AudioSource audioSource;
 
@@ -20,34 +20,32 @@ public class ElevatorController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         smoke = GetComponentInChildren<ParticleSystem>();
         smoke.Stop();
-        generator = GameObject.FindWithTag("Generator").GetComponent<GeneratorScript>();
     }
 
     void Update()
     {
-        if (isMoving)
+        if (isMoving && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            {
-                isMoving = false;
-            }
+            isMoving = false;
         }
     }
 
+    public void OnEnergyEstablished() => energyEstablished = true;
+    public void OnEnergyLost() => energyEstablished = false;
+
     public void GoUp()
     {
-        if (!isMoving && generator.energyEstablished)
+        if (!isMoving && energyEstablished)
         {
             isMoving = true;
             animator.SetTrigger("ElevatorUp");
             Debug.Log("Going Up");
         }
-
     }
 
     public void GoDown()
     {
-        if (!isMoving && generator.energyEstablished)
+        if (!isMoving && energyEstablished)
         {
             isMoving = true;
             animator.SetTrigger("ElevatorDown");

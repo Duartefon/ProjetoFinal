@@ -9448,7 +9448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38cbb7f782b6dac4284c7efa875a9377, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.61
+      value: 3.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38cbb7f782b6dac4284c7efa875a9377, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26066,7 +26066,7 @@ GameObject:
   - component: {fileID: 1630358200}
   - component: {fileID: 1630358199}
   m_Layer: 0
-  m_Name: VoltageControllerTest
+  m_Name: VoltageController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26098,7 +26098,21 @@ MonoBehaviour:
   audioSource: {fileID: 297233447}
   beepSound: {fileID: 8300000, guid: 2b477651ad0bac744859a7a00d2b8a7d, type: 3}
   beepSuccessSound: {fileID: 8300000, guid: c4a9411d5ea295d46a67da5e11240c25, type: 3}
-  voltage: 0
+  onVoltageChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 566461161241538224}
+        m_TargetAssemblyTypeName: GeneratorScript, Assembly-CSharp
+        m_MethodName: SetVoltage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1630358200
 Transform:
   m_ObjectHideFlags: 0
@@ -40036,6 +40050,70 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 297233447}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyLost.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyEstablished.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyLost.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyLost.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7935865553524146745}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyLost.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyLost.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnEnergyLost
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyEstablished.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyEstablished.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7935865553524146745}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyEstablished.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyEstablished.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyEstablished.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyEstablished.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnEnergyEstablished
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyLost.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ElevatorController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyEstablished.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ElevatorController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyLost.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699381084772339256, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onEnergyEstablished.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7138260050726622957, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
       propertyPath: RighthandModel
       value: 
@@ -40051,6 +40129,30 @@ PrefabInstance:
     - target: {fileID: 7138260050726622957, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
       propertyPath: shouldUseDummyHands
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138260050726622957, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138260050726622957, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1630358199}
+    - target: {fileID: 7138260050726622957, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138260050726622957, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AdjustVoltage
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138260050726622957, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VoltageScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138260050726622957, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8729991830451751937, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.size
@@ -42599,7 +42701,7 @@ GameObject:
   - component: {fileID: 2517144801354656692}
   - component: {fileID: 1251269073569154792}
   m_Layer: 0
-  m_Name: Elevator
+  m_Name: ElevatorModel
   m_TagString: Metal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

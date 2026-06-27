@@ -1,72 +1,87 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
+using UnityEngine.Events;
 
 public class GeneratorScript : MonoBehaviour
 {
-    private int fuseCount = 2;
-    public bool isOn = false, energyEstablished = false;
-    private float voltage = 0;
+    public bool isOn = false;
+    public bool energyEstablished = false;
+
+    [SerializeField] private float targetVoltage = 600f;
+    [SerializeField] private float voltageTolerance = 0.1f; // para comparar floats
+
     public AudioSource audioSource;
-    public XRSocketInteractor leverSocket, fuseSocket;
+    public XRSocketInteractor leverSocket;
 
     public string puzzleKey = "Generator";
-    private bool isComplete = false;
+
+    private float _currentVoltage = 0f;
+    private bool _isComplete = false;
+
+    [Header("Events")]
+    public UnityEvent onEnergyEstablished;
+    public UnityEvent onEnergyLost;
+    public bool Established => energyEstablished;
 
     void Start()
     {
-        //audioSource = GetComponentInChildren<AudioSource>();
         if (PuzzleManager.Instance.IsPuzzleCompleted(puzzleKey))
         {
-            isComplete = true;
+            _isComplete = true;
             isOn = true;
             energyEstablished = true;
+            PlayAmbientSound();
+            onEnergyEstablished?.Invoke();
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // troquei para usar o event Select Entered
-        /*
-        if (fuseSocket.hasSelection)
-        {
-            AddFuse();
-        }
-        */
-
         if (energyEstablished && !audioSource.isPlaying)
-        {
-            audioSource.Play();
-        }
+            PlayAmbientSound();
 
-        if (!isComplete && voltage == 600f && leverSocket.hasSelection)
-        {
-            Debug.Log("Everything is on!");
-            energyEstablished = true;
-            isComplete = true;
+        if (!_isComplete && isOn && leverSocket.hasSelection && IsAtTargetVoltage())
+            CompleteGenerator();
 
-            PuzzleManager.Instance.CompletePuzzle(puzzleKey);
-        }
+
+        // Teste
+        if(energyEstablished) CompleteGenerator();
+    }
+
+    // chamado pelo VoltageScript via onVoltageChanged
+    public void SetVoltage(float newVoltage)
+    {
+        _currentVoltage = newVoltage;
     }
 
     public void AddFuse()
     {
         isOn = true;
-        fuseCount++;
     }
 
     public void RemoveFuse()
     {
         isOn = false;
         energyEstablished = false;
-        fuseCount--;
+
+        onEnergyLost?.Invoke();
     }
 
-    public void SetVoltage(float voltage)
+    private bool IsAtTargetVoltage()
+        => Mathf.Abs(_currentVoltage - targetVoltage) <= voltageTolerance;
+
+    private void CompleteGenerator()
     {
-        // 600V
-        this.voltage = voltage;
+        Debug.Log("Generator: energy established!");
+        energyEstablished = true;
+        _isComplete = true;
+        PuzzleManager.Instance.CompletePuzzle(puzzleKey);
+        onEnergyEstablished?.Invoke();
     }
 
-
+    private void PlayAmbientSound()
+    {
+        if (audioSource && !audioSource.isPlaying)
+            audioSource.Play();
+    }
 }
