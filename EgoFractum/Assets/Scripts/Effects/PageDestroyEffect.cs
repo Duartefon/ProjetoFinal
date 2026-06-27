@@ -12,10 +12,10 @@ public class PageDestroyEffect : MonoBehaviour
     [Tooltip("O quão rápido o Rigidbody tem de se mexer para as páginas serem destruídas")]
     public float movementThreshold = 0.5f;
 
-    
+
     void Update()
     {
-        if(objectRigidbody != null && objectRigidbody.linearVelocity.magnitude > movementThreshold)
+        if (objectRigidbody != null && objectRigidbody.linearVelocity.magnitude > movementThreshold)
         {
             DestroyPages();
         }
@@ -23,8 +23,16 @@ public class PageDestroyEffect : MonoBehaviour
 
     private void DestroyPages()
     {
-        if(pageParticleSystem != null) Instantiate(pageParticleSystem, transform.position, Quaternion.identity);
-        if(audioSource != null) AudioSource.PlayClipAtPoint(audioSource.clip, transform.position, audioSource.volume);
+        if (pageParticleSystem != null)
+        {
+            ParticleSystem ps = Instantiate(
+                pageParticleSystem,
+                transform.position,
+                pageParticleSystem.transform.rotation
+            );
+            ps.Emit(4);
+        }
+        if (audioSource != null) AudioSource.PlayClipAtPoint(audioSource.clip, transform.position, audioSource.volume);
         Destroy(gameObject);
     }
 }

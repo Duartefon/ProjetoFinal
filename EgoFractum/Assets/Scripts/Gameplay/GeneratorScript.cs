@@ -6,7 +6,7 @@ public class GeneratorScript : MonoBehaviour
     private int fuseCount = 2;
     public bool isOn = false, energyEstablished = false;
     private float voltage = 0;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     public XRSocketInteractor leverSocket, fuseSocket;
 
     public string puzzleKey = "Generator";
@@ -14,7 +14,7 @@ public class GeneratorScript : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponentInChildren<AudioSource>();
+        //audioSource = GetComponentInChildren<AudioSource>();
         if (PuzzleManager.Instance.IsPuzzleCompleted(puzzleKey))
         {
             isComplete = true;
