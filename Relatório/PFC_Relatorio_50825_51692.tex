@@ -735,8 +735,9 @@ A implementação do Puzzle 1 baseia-se na validação sequencial de estados e n
 de eventos associados ao gerador elétrico. O comportamento deste mecanismo é gerido por 
 um \textit{script} dedicado que expõe dois métodos públicos principais:
 \begin{itemize}
-    \item \texttt{AddFuse()}: Incrementa o contador de fusíveis ativos no circuito;
-    \item \texttt{RemoveFuse()}: Decrementa o referido contador.
+    \item \texttt{AddFuse()}: Ativa o gerador e dispara o evento \texttt{onGeneratorOn};
+    \item \texttt{RemoveFuse()}: Desativa o gerador e dispara o evento \texttt{onGeneratorOff}, 
+    repondo o estado de energia não estabelecida.
 \end{itemize}
 
 Para iniciar o gerador, é necessário inserir um fusível no respetivo
@@ -748,17 +749,18 @@ eventos nativos \texttt{selectEntered} e \texttt{selectExited}, que chamam os
 métodos \texttt{AddFuse()} e \texttt{RemoveFuse()} quando o fusível é inserido
 ou removido. 
 
-Depois de validada a presença do fusível, é ativado um ecrã
-digital que apresenta a tensão do gerador, inicialmente igual a 0\,V. Para
-alterar este valor, o jogador interage com um botão rotativo, que aumenta a
-tensão incrementalmente, de acordo com a mecânica descrita na
-sub-secção anterior. 
+Depois de validada a presença do fusível, é ativado um ecrã digital que apresenta
+a tensão do gerador, inicialmente igual a 0\,V. Para alterar este valor, o jogador
+interage com um botão rotativo, que aumenta a tensão incrementalmente, de acordo
+com a mecânica descrita na sub-secção anterior. Cada alteração de tensão é
+propagada através de um \texttt{UnityEvent}, ao qual o \textit{script} do gerador
+se encontra subscrito para evitar qualquer dependência direta entre os componentes.
 
-Quando a tensão atinge os 600\,V, o
-sistema reproduz um som para confirmar que o valor está correto. O último passo
-consiste em baixar uma alavanca, cujo funcionamento foi também implementado com
-um \texttt{XRSocketInteractor}. Quando a alavanca alcança a posição inferior, o
-puzzle fica concluído e a energia é restabelecida no laboratório. 
+Quando a tensão atinge os 600\,V, o sistema reproduz um som para confirmar que o
+valor está correto. O último passo consiste em baixar uma alavanca, cujo
+funcionamento foi também implementado com um \texttt{XRSocketInteractor}. Quando a
+alavanca alcança a posição inferior, o puzzle fica concluído, a energia é
+restabelecida no laboratório e o evento \texttt{onEnergyEstablished} é disparado.
 
 Para indicar o estado do puzzle sem recorrer a elementos de interface adicionais, foi
 implementado um sistema de \textit{feedback} integrado no ecrã do gerador. A cor
