@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
-
+//todo make  events
 [RequireComponent(typeof(Animator))]
 public class HandAnimator : MonoBehaviour
 {
-    
+        
     public InputActionReference gripPressAction;
 
     public InputActionReference triggerPressAction;
@@ -25,6 +25,13 @@ public class HandAnimator : MonoBehaviour
         
 
     };
+
+
+    public struct finger
+    {
+        public Fingers fingerName;
+        public bool isSet;
+    } 
     
     public enum Fingers
     {
@@ -34,9 +41,21 @@ public class HandAnimator : MonoBehaviour
         Ring,
         Pinky
     }
+
+
+    public void OnEnable()
+    {
+        gripPressAction.action.performed += OnMove;
+        
+    }
+
     
-
-
+    public void OnDisable()
+    {
+        gripPressAction.action.performed -= OnMove;
+        
+    }
+    
     private void Update()
     {
  
@@ -44,14 +63,14 @@ public class HandAnimator : MonoBehaviour
             {
                 if (finger is nameof(Fingers.Thumb))
                 {
-                    Debug.Log($"I'm pressing trigger {triggerPressAction.action.ReadValue<float>()} force");
+                   // Debug.Log($"I'm pressing trigger {triggerPressAction.action.ReadValue<float>()} force");
                     handAnimator.SetFloat(finger, thumbPressAction.action.ReadValue<float>());
                     continue;
                 }
 
                 if (finger is nameof(Fingers.Index))
                 {
-                    Debug.Log($"I'm pressing trigger {triggerPressAction.action.ReadValue<float>()} force");
+//                    Debug.Log($"I'm pressing trigger {triggerPressAction.action.ReadValue<float>()} force");
                     handAnimator.SetFloat(finger, triggerPressAction.action.ReadValue<float>());
                     continue;
                 }
@@ -70,5 +89,10 @@ public class HandAnimator : MonoBehaviour
 
   
 
+    }
+
+    public void OnMove(InputAction.CallbackContext callbackContext)
+    {
+        Debug.Log("Hello");
     }
 }
