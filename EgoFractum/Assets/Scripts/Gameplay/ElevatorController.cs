@@ -9,17 +9,16 @@ public class ElevatorController : MonoBehaviour
     private static readonly int ElevatorUp = Animator.StringToHash("ElevatorUp");
 
     [Header("Audio")]
-    public AudioClip moveSound;
-    public AudioClip stopSound;
+    [SerializeField] private AudioClip moveSound;
+    [SerializeField] private AudioClip stopSound;
     [Header("Smoke")]
-    public ParticleSystem smoke;
+    [SerializeField] private ParticleSystem smoke;
     
     private bool isMoving = false;
     private bool energyEstablished = false;
     private Animator animator;
     private AudioSource audioSource;
-
-
+    
     private void OnEnable()
     { 
         GeneratorScript.OnEnergyEstablished += OnEnergyEstablished;
@@ -70,6 +69,11 @@ public class ElevatorController : MonoBehaviour
             Debug.Log("Going Down");
         }
 
+    }
+    
+    public void OnArrived()
+    {
+        isMoving = false;
     }
 
     public void PlaySmoke()
