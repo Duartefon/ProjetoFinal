@@ -4,15 +4,17 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.Events;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class KnobRotator : MonoBehaviour
 {
     [SerializeField] Transform linkedDial;
     [SerializeField] private int snapRotationAmount = 25;
     [SerializeField] private float angleTolerance;
-    [SerializeField] private GameObject RighthandModel;
-    [SerializeField] private GameObject LefthandModel;
-    [SerializeField] bool shouldUseDummyHands;
+    /*
+    [SerializeField] private GameObject rightHandModel;
+    [SerializeField] private GameObject leftHandModel;
+    [SerializeField] bool shouldUseDummyHands;*/
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -26,7 +28,7 @@ public class KnobRotator : MonoBehaviour
     private float startAngle;
     private bool requiresStartAngle = true;
     private bool shouldGetHandRotation = false;
-    private UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grabInteractor => GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+    private XRGrabInteractable grabInteractor => GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
 
     public VoltageScript voltageController;
 
@@ -72,13 +74,14 @@ public class KnobRotator : MonoBehaviour
 
     private void HandModelVisibility(bool visibilityState)
     {
+        /*
         if (!shouldUseDummyHands)
             return;
 
         if (interactor.CompareTag("RightHand"))
-            RighthandModel.SetActive(visibilityState);
+            rightHandModel.SetActive(visibilityState);
         else
-            LefthandModel.SetActive(visibilityState);
+            leftHandModel.SetActive(visibilityState);*/
     }
 
     void Update()
