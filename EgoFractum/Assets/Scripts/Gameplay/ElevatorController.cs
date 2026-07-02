@@ -21,16 +21,15 @@ public class ElevatorController : MonoBehaviour
 
 
     private void OnEnable()
-    {
+    { 
         GeneratorScript.OnEnergyEstablished += OnEnergyEstablished;
-       GeneratorScript.OnEnergyLost += OnEnergyLost;
+        GeneratorScript.OnEnergyLost += OnEnergyLost;
     }
     
     private void OnDisable()
     {
-        //GeneratorScript.OnEnergyEstablished -= OnEnergyEstablished;
-       // GeneratorScript.OnEnergyLost -= OnEnergyLost;
-        
+        GeneratorScript.OnEnergyEstablished -= OnEnergyEstablished;
+        GeneratorScript.OnEnergyLost -= OnEnergyLost;
     }
 
     void Start()

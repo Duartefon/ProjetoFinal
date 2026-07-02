@@ -11,17 +11,12 @@ public class KnobRotator : MonoBehaviour
     [SerializeField] Transform linkedDial;
     [SerializeField] private int snapRotationAmount = 25;
     [SerializeField] private float angleTolerance;
-    /*
-    [SerializeField] private GameObject rightHandModel;
-    [SerializeField] private GameObject leftHandModel;
-    [SerializeField] bool shouldUseDummyHands;*/
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip rotationSound;
 
     [Header("Events")]
-    [SerializeField]
     public static Action<float> OnValueChanged;
 
     private XRBaseInteractor interactor;
@@ -29,8 +24,6 @@ public class KnobRotator : MonoBehaviour
     private bool requiresStartAngle = true;
     private bool shouldGetHandRotation = false;
     private XRGrabInteractable grabInteractor => GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
-
-    public VoltageScript voltageController;
 
     private void OnEnable()
     {
@@ -167,7 +160,7 @@ public class KnobRotator : MonoBehaviour
     private void RotateDialAntiClockwise()
     {
         linkedDial.Rotate(-snapRotationAmount, 0f, 0f, Space.Self);
-        OnValueChanged?.Invoke(snapRotationAmount);
+        OnValueChanged?.Invoke(-snapRotationAmount);
         audioSource.Play();
     }
 }

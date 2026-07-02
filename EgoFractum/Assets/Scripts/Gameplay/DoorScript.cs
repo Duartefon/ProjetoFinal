@@ -5,11 +5,11 @@ using UnityEngine;
 public class DoorController : MonoBehaviour
 {
     [SerializeField] private GeneratorScript generator;
-    public AudioClip openSound, closeSound;
+    [SerializeField] private AudioClip openSound, closeSound;
     private AudioSource audioSource;
     private Animator animator;
-    private bool isOpen = false;
-    private bool energyEstablished = false;
+    private bool _isOpen = false;
+    private bool _energyEstablished = false;
 
     private void OnEnable()
     {
@@ -32,8 +32,8 @@ public class DoorController : MonoBehaviour
         //generator.onEnergyEstablished.AddListener(OnEnergyEstablished);
       //  generator.onEnergyLost.AddListener(OnEnergyLost);
 
-        if (generator.energyEstablished)
-            energyEstablished = true;
+        if (generator.EnergyEstablished)
+            _energyEstablished = true;
     }
 
     void OnDestroy()
@@ -42,25 +42,25 @@ public class DoorController : MonoBehaviour
      //   generator.onEnergyLost.RemoveListener(OnEnergyLost);
     }
 
-    public void OnEnergyEstablished() => energyEstablished = true;
+    public void OnEnergyEstablished() => _energyEstablished = true;
 
-    public void OnEnergyLost() => energyEstablished = false;
+    public void OnEnergyLost() => _energyEstablished = false;
 
     public void OpenDoor()
     {
-        if (energyEstablished && !isOpen)
+        if (_energyEstablished && !_isOpen)
         {
             animator.SetTrigger("Open");
-            isOpen = true;
+            _isOpen = true;
         }
     }
 
     public void CloseDoor()
     {
-        if (isOpen)
+        if (_isOpen)
         {
             animator.SetTrigger("Close");
-            isOpen = false;
+            _isOpen = false;
         }
     }
 

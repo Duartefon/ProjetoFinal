@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class ComputerScript : MonoBehaviour
 {
-    public Light screenLight;
-    public Material screenOnMaterial, screenOffMaterial;
+    [SerializeField] private Light screenLight;
+    [SerializeField] private Material screenOnMaterial, screenOffMaterial;
     private GeneratorScript generatorScript;
-    public MeshRenderer screenMesh;
+    [SerializeField] private MeshRenderer screenMesh;
     void Start()
     {
         generatorScript = GameObject.FindWithTag("Generator").GetComponent<GeneratorScript>();
@@ -14,7 +14,7 @@ public class ComputerScript : MonoBehaviour
 
     void Update()
     {
-        if (generatorScript.energyEstablished)
+        if (generatorScript.EnergyEstablished)
         {
             screenMesh.material = screenOnMaterial;
             screenLight.enabled = true;

@@ -8,28 +8,28 @@ namespace Gameplay
     public class VoltageScript : MonoBehaviour
     {
         [Header("Colors")]
-        public Color lowVoltageColor;
-        public Color mediumVoltageColor;
-        public Color goodVoltageColor;
+        [SerializeField] private Color lowVoltageColor;
+        [SerializeField] private Color mediumVoltageColor;
+        [SerializeField] private Color goodVoltageColor;
 
         [Header("References")]
-        public TMP_Text voltageText;
-        public Light screenLight;
-        public GeneratorScript generator;
+        [SerializeField] private TMP_Text voltageText;
+        [SerializeField] private Light screenLight;
+        [SerializeField] private GeneratorScript generator;
 
         [Header("Light Settings")]
-        public float maxLightIntensity = 0.25f;
+        [SerializeField] private float maxLightIntensity = 0.25f;
 
         [Header("Voltage Settings")]
-        public float maxVoltage = 1000f;
-        public float goodVoltage = 600f;
-        public float lowVoltage = 100f;
-        public float pulseFrequency = 6f;
+        [SerializeField] private float maxVoltage = 1000f;
+        [SerializeField] private float goodVoltage = 600f;
+        [SerializeField] private float lowVoltage = 100f;
+        [SerializeField] private float pulseFrequency = 6f;
 
         [Header("Sound Effects")]
-        public AudioSource audioSource;
-        public AudioClip beepSound;
-        public AudioClip beepSuccessSound;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip beepSound;
+        [SerializeField] private AudioClip beepSuccessSound;
 
         [Header("Events")]
         public static Action<float> OnVoltageChanged;
@@ -39,35 +39,29 @@ namespace Gameplay
         public float Voltage => _voltage; // getter
 
         private float _previousVoltage;
-
-   
+        
         private void OnEnable()
         {
-
-            KnobRotator.OnValueChanged += OnVoltageChanged;
+            KnobRotator.OnValueChanged += AdjustVoltage;
         }
 
         private void OnDisable()
         {
-            KnobRotator.OnValueChanged -= OnVoltageChanged;
-
+            KnobRotator.OnValueChanged -= AdjustVoltage;
         }
 
         void Start()
         {
-            
-            
             _previousVoltage = _voltage;
             UpdateVisuals();
 
-            if (generator.energyEstablished)
+            if (generator.EnergyEstablished)
                 SetVoltage(goodVoltage);
-            
         }
 
         void Update()
         {
-            bool generatorOn = generator.isOn;
+            bool generatorOn = generator.IsOn;
 
             voltageText.enabled = generatorOn;
             screenLight.enabled = generatorOn;
@@ -78,7 +72,7 @@ namespace Gameplay
                 return;
             }
 
-            if (generator.energyEstablished && _voltage != goodVoltage)
+            if (generator.EnergyEstablished && _voltage != goodVoltage)
                 SetVoltage(goodVoltage);
 
             if (_voltage != _previousVoltage)
@@ -104,7 +98,7 @@ namespace Gameplay
 
         public void SetVoltage(float newVoltage)
         {
-            if (!generator.isOn) return;
+            if (!generator.IsOn) return;
             _voltage = Mathf.Clamp(newVoltage, 0f, maxVoltage);
         }
 

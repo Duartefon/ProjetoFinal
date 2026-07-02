@@ -13,23 +13,22 @@ using Random = UnityEngine.Random;
 public class LightScript : MonoBehaviour
 {
     [SerializeField] private GeneratorScript generator;
-    private Light[] lightComponents; // Cada luz tem dois componentes light
+    private Light[] lightComponents; // cada luz tem dois componentes light
     private bool isOn = false; // Estado da luz
-    private bool isPendingOn = false; // Se a luz está à espera de acender
-    private static float failProbability = 0.2f; // Probabilidade de falha de cada luz
+    private bool isPendingOn = false;
+    private static float failProbability = 0.2f;
 
     [Header("Materials")]
-    public Material onMaterial; // Material para quando a luz está ligada
-    public Material offMaterial; // Material para quando a luz está desligada
+    [SerializeField] private Material onMaterial;
+    [SerializeField] private Material offMaterial;
 
     [Header("Light Mesh")]
-    public MeshRenderer lightMesh; // Mesh da luz para mudar o material
+    [SerializeField] private MeshRenderer lightMesh; // Mesh da luz para mudar o material
 
     [Header("Audio")]
     private AudioSource audioSource;
-    public AudioClip lightBuzz, lightOnSound, lightOffSound;
-
-
+    [SerializeField] private AudioClip lightBuzz, lightOnSound, lightOffSound;
+    
     private void OnEnable()
     {
         GeneratorScript.OnEnergyEstablished += TurnOnWithDelay;
@@ -49,7 +48,7 @@ public class LightScript : MonoBehaviour
         generator.OnEnergyEstablished.AddListener(TurnOnWithDelay);
         generator.onEnergyLost.AddListener(TurnOffLight);
 */
-        if (generator.energyEstablished)
+        if (generator.EnergyEstablished)
             TurnOnWithDelay();
     }
 

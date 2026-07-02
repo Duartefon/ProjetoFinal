@@ -9485,8 +9485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c405a124cbce6d745938b29c49345c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GeneratorScript
-  isOn: 0
-  energyEstablished: 0
   targetVoltage: 600
   voltageTolerance: 0.1
   audioSource: {fileID: 297233447}
@@ -45674,10 +45672,26 @@ PrefabInstance:
     - target: {fileID: 8729991830451751937, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
       propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 572542759}
     - target: {fileID: 8729991830451751937, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 572542759}
+    - target: {fileID: 8729991830451751937, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RemoveFuse
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729991830451751937, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddFuse
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729991830451751937, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: m_SelectExited.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Gameplay.GeneratorScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729991830451751937, guid: d7bdc39943fc69f41b02a64b157bd2a1, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Gameplay.GeneratorScript, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
