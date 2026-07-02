@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Gameplay;
+using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.Events;
@@ -17,7 +19,8 @@ public class KnobRotator : MonoBehaviour
     [SerializeField] private AudioClip rotationSound;
 
     [Header("Events")]
-    [SerializeField] private UnityEvent<float> onValueChanged;
+    [SerializeField]
+    public static Action<float> OnValueChanged;
 
     private XRBaseInteractor interactor;
     private float startAngle;
@@ -153,15 +156,15 @@ public class KnobRotator : MonoBehaviour
     private void RotateDialClockwise()
     {
         linkedDial.Rotate(snapRotationAmount, 0f, 0f, Space.Self);
-        onValueChanged?.Invoke(snapRotationAmount);
-        audioSource.Play();
+        OnValueChanged?.Invoke(snapRotationAmount);
+        audioSource.Play(); 
     }
 
 
     private void RotateDialAntiClockwise()
     {
         linkedDial.Rotate(-snapRotationAmount, 0f, 0f, Space.Self);
-        onValueChanged?.Invoke(snapRotationAmount);
+        OnValueChanged?.Invoke(snapRotationAmount);
         audioSource.Play();
     }
 }

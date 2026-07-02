@@ -1,7 +1,12 @@
+using System;
+using Gameplay;
+using Palmmedia.ReportGenerator.Core;
 using UnityEngine;
 
 public class ElevatorController : MonoBehaviour
 {
+    private static readonly int ElevatorDown = Animator.StringToHash("ElevatorDown");
+    private static readonly int ElevatorUp = Animator.StringToHash("ElevatorUp");
 
     [Header("Audio")]
     public AudioClip moveSound;
@@ -13,6 +18,20 @@ public class ElevatorController : MonoBehaviour
     private bool energyEstablished = false;
     private Animator animator;
     private AudioSource audioSource;
+
+
+    private void OnEnable()
+    {
+        GeneratorScript.OnEnergyEstablished += OnEnergyEstablished;
+       GeneratorScript.OnEnergyLost += OnEnergyLost;
+    }
+    
+    private void OnDisable()
+    {
+        //GeneratorScript.OnEnergyEstablished -= OnEnergyEstablished;
+       // GeneratorScript.OnEnergyLost -= OnEnergyLost;
+        
+    }
 
     void Start()
     {
@@ -30,15 +49,15 @@ public class ElevatorController : MonoBehaviour
         }
     }
 
-    public void OnEnergyEstablished() => energyEstablished = true;
-    public void OnEnergyLost() => energyEstablished = false;
+    private void OnEnergyEstablished() => energyEstablished = true;
+    private void OnEnergyLost() => energyEstablished = false;
 
     public void GoUp()
     {
         if (!isMoving && energyEstablished)
         {
             isMoving = true;
-            animator.SetTrigger("ElevatorUp");
+            animator.SetTrigger(ElevatorUp);
             Debug.Log("Going Up");
         }
     }
@@ -48,7 +67,7 @@ public class ElevatorController : MonoBehaviour
         if (!isMoving && energyEstablished)
         {
             isMoving = true;
-            animator.SetTrigger("ElevatorDown");
+            animator.SetTrigger(ElevatorDown);
             Debug.Log("Going Down");
         }
 

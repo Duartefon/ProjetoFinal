@@ -1,4 +1,8 @@
+using System;
+using Gameplay;
+using Palmmedia.ReportGenerator.Core;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /**
 * Este script vai controlar as luzes do mapa consoante a energia do gerador.
@@ -25,23 +29,34 @@ public class LightScript : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip lightBuzz, lightOnSound, lightOffSound;
 
+
+    private void OnEnable()
+    {
+        GeneratorScript.OnEnergyEstablished += TurnOnWithDelay;
+        GeneratorScript.OnEnergyLost += TurnOffLight;
+    }
+    private void OnDisable()
+    {
+        GeneratorScript.OnEnergyEstablished -= TurnOnWithDelay;
+        GeneratorScript.OnEnergyLost -= TurnOffLight;
+    }
     void Start()
     {
         lightComponents = GetComponentsInChildren<Light>();
         audioSource = GetComponentInChildren<AudioSource>();
-
+/*
         generator = GameObject.FindWithTag("Generator").GetComponent<GeneratorScript>();
-        generator.onEnergyEstablished.AddListener(TurnOnWithDelay);
+        generator.OnEnergyEstablished.AddListener(TurnOnWithDelay);
         generator.onEnergyLost.AddListener(TurnOffLight);
-
+*/
         if (generator.energyEstablished)
             TurnOnWithDelay();
     }
 
     void OnDestroy()
     {
-        generator.onEnergyEstablished.RemoveListener(TurnOnWithDelay);
-        generator.onEnergyLost.RemoveListener(TurnOffLight);
+     //   generator.onEnergyEstablished.RemoveListener(TurnOnWithDelay);
+       // generator.onEnergyLost.RemoveListener(TurnOffLight);
     }
 
     // chamado pelo evento OnEnergyEstablished

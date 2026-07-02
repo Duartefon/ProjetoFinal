@@ -93,6 +93,6 @@ public class HandAnimator : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log("Hello");
+     //   Debug.Log("Hello");
     }
 }

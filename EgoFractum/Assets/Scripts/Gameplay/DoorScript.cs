@@ -1,3 +1,5 @@
+using System;
+using Gameplay;
 using UnityEngine;
 
 public class DoorController : MonoBehaviour
@@ -9,14 +11,26 @@ public class DoorController : MonoBehaviour
     private bool isOpen = false;
     private bool energyEstablished = false;
 
+    private void OnEnable()
+    {
+        GeneratorScript.OnEnergyEstablished += OnEnergyEstablished;
+        GeneratorScript.OnEnergyLost += OnEnergyLost;
+    }
+    
+    private void OnDisable()
+    {
+        GeneratorScript.OnEnergyEstablished -= OnEnergyEstablished;
+        GeneratorScript.OnEnergyLost -= OnEnergyLost;
+    }
+
     void Start()
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
 
         generator = GameObject.FindWithTag("Generator").GetComponent<GeneratorScript>();
-        generator.onEnergyEstablished.AddListener(OnEnergyEstablished);
-        generator.onEnergyLost.AddListener(OnEnergyLost);
+        //generator.onEnergyEstablished.AddListener(OnEnergyEstablished);
+      //  generator.onEnergyLost.AddListener(OnEnergyLost);
 
         if (generator.energyEstablished)
             energyEstablished = true;
@@ -24,8 +38,8 @@ public class DoorController : MonoBehaviour
 
     void OnDestroy()
     {
-        generator.onEnergyEstablished.RemoveListener(OnEnergyEstablished);
-        generator.onEnergyLost.RemoveListener(OnEnergyLost);
+       // generator.onEnergyEstablished.RemoveListener(OnEnergyEstablished);
+     //   generator.onEnergyLost.RemoveListener(OnEnergyLost);
     }
 
     public void OnEnergyEstablished() => energyEstablished = true;

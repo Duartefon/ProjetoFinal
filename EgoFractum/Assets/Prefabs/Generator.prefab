@@ -64,10 +64,34 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GeneratorScript, Assembly-CSharp
+        m_MethodName: AddFuse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GeneratorScript, Assembly-CSharp
+        m_MethodName: RemoveFuse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_ShowInteractableHoverMeshes: 1
@@ -159,7 +183,7 @@ Transform:
   m_GameObject: {fileID: 2994716603615816225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.32, y: 1.091, z: -0.802}
+  m_LocalPosition: {x: -0.145, y: 0.69, z: 0.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -176,18 +200,18 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Resource: {fileID: 8300000, guid: 872b477c6e980c2418f46988867c997a, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.8
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 5
+  MinDistance: 0.5
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -601,13 +625,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4380353846804268783, guid: 5219057c6d8aa554ea87df1bd2c43e1a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 471748678195709665}
   m_SourcePrefab: {fileID: 100100000, guid: 5219057c6d8aa554ea87df1bd2c43e1a, type: 3}
 --- !u!4 &75813781344925087 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3999746435640237141, guid: 5219057c6d8aa554ea87df1bd2c43e1a, type: 3}
   m_PrefabInstance: {fileID: 3930705736117266890}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &740429371282878245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4380353846804268783, guid: 5219057c6d8aa554ea87df1bd2c43e1a, type: 3}
+  m_PrefabInstance: {fileID: 3930705736117266890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &471748678195709665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740429371282878245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270153ea5101a9249ac3e9abf450159b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
+  uniqueID: f48de4ee-6c03-4e90-8352-39b5452da734
 --- !u!1001 &4793721451267438252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -800,9 +845,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3646918843194915022}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5699381084772339256}
     - targetCorrespondingSourceObject: {fileID: 4440136938205496092, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4074589109655182718}
@@ -818,6 +860,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5972075659866864634, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6123699673783275383}
+    - targetCorrespondingSourceObject: {fileID: 5972075659866864634, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 201694772383523157}
     - targetCorrespondingSourceObject: {fileID: -8119454512133907028, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2933778429896229663}
@@ -830,6 +875,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8119454512133907028, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8699458050087376643}
+    - targetCorrespondingSourceObject: {fileID: -8119454512133907028, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6265922863428253347}
     - targetCorrespondingSourceObject: {fileID: 3152923916210709274, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6782913402276281800}
@@ -1014,11 +1062,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelUP.Dial.Rotator
   linkedDial: {fileID: 1683518390426811184}
-  snapRotationAmount: 25
+  snapRotationAmount: -25
   angleTolerance: 20
   RighthandModel: {fileID: 0}
   LefthandModel: {fileID: 0}
   shouldUseDummyHands: 0
+  audioSource: {fileID: 0}
+  rotationSound: {fileID: 0}
+  onValueChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VoltageScript, Assembly-CSharp
+        m_MethodName: AdjustVoltage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   voltageController: {fileID: 0}
 --- !u!135 &6123699673783275383
 SphereCollider:
@@ -1041,6 +1106,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.06791188
   m_Center: {x: 0.00034826994, y: 0.00017833714, z: 0.0000021457672}
+--- !u!114 &201694772383523157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182101895354371414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270153ea5101a9249ac3e9abf450159b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
+  uniqueID: 10956f69-be38-4305-be3e-e57cd1bea244
 --- !u!4 &1683518390426811184 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3036631984323621476, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
@@ -1162,7 +1240,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 94
   m_CollisionDetection: 0
 --- !u!114 &4684943208420217794
 MonoBehaviour:
@@ -1333,26 +1411,19 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!1 &5640707488047827965 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
-  m_PrefabInstance: {fileID: 4793721451267438252}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5699381084772339256
+--- !u!114 &6265922863428253347
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5640707488047827965}
+  m_GameObject: {fileID: 5609056731878910720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c405a124cbce6d745938b29c49345c2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 270153ea5101a9249ac3e9abf450159b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  isOn: 0
-  leverSocket: {fileID: 8672742190795429896}
-  fuseSocket: {fileID: 8729991830451751937}
+  m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
+  uniqueID: 8dc90d2c-2f17-45be-a82e-0ce1ef15cd5c
 --- !u!1 &7586269429494027702 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3152923916210709274, guid: 4aa0f17a97d0dc84b8b98716a1c9d1e6, type: 3}
@@ -1477,8 +1548,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4380353846804268783, guid: 5219057c6d8aa554ea87df1bd2c43e1a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2137922330867848880}
   m_SourcePrefab: {fileID: 100100000, guid: 5219057c6d8aa554ea87df1bd2c43e1a, type: 3}
+--- !u!1 &5054710066035431891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4380353846804268783, guid: 5219057c6d8aa554ea87df1bd2c43e1a, type: 3}
+  m_PrefabInstance: {fileID: 8858532757432360764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2137922330867848880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5054710066035431891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 270153ea5101a9249ac3e9abf450159b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
+  uniqueID: 9b5fc5a9-c28c-421e-aed5-39cb85ef0b60
 --- !u!4 &5579432905862693737 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3999746435640237141, guid: 5219057c6d8aa554ea87df1bd2c43e1a, type: 3}
