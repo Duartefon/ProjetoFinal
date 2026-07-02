@@ -27,6 +27,7 @@ namespace Gameplay
         [HideInInspector]
         public static event Action OnEnergyEstablished;
         public static event Action OnEnergyLost;
+        public static event Action<bool> OnPowerChanged;
 
         void Start()
         {
@@ -36,6 +37,7 @@ namespace Gameplay
                 _isOn = true;
                 _energyEstablished = true;
                 PlayAmbientSound();
+                OnPowerChanged?.Invoke(true);
                 OnEnergyEstablished?.Invoke();
             }
         }
@@ -71,11 +73,13 @@ namespace Gameplay
         public void AddFuse()
         {
             _isOn = true;
+            OnPowerChanged?.Invoke(true);
         }
 
         public void RemoveFuse()
         {
             _isOn = false;
+            OnPowerChanged?.Invoke(false);
 
             if (_energyEstablished)
             {

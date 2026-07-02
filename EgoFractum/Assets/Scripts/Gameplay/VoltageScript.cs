@@ -39,39 +39,36 @@ namespace Gameplay
         public float Voltage => _voltage; // getter
 
         private float _previousVoltage;
+        private bool _generatorOn;
         
         private void OnEnable()
         {
             KnobRotator.OnValueChanged += AdjustVoltage;
+            GeneratorScript.OnPowerChanged += HandlePower;
+            GeneratorScript.OnEnergyEstablished += EnergyOn;
         }
 
         private void OnDisable()
         {
             KnobRotator.OnValueChanged -= AdjustVoltage;
+            GeneratorScript.OnPowerChanged -= HandlePower;
+            GeneratorScript.OnEnergyEstablished -= EnergyOn;
         }
 
         void Start()
         {
-            _previousVoltage = _voltage;
-            UpdateVisuals();
+            _generatorOn = generator.IsOn;
+            voltageText.enabled = _generatorOn;
+            screenLight.enabled = _generatorOn;
 
             if (generator.EnergyEstablished)
                 SetVoltage(goodVoltage);
+            else
+                UpdateVisuals();
         }
 
         void Update()
         {
-            bool generatorOn = generator.IsOn;
-
-            voltageText.enabled = generatorOn;
-            screenLight.enabled = generatorOn;
-
-            if (!generatorOn)
-            {
-                voltageText.text = "0V";
-                return;
-            }
-
             if (generator.EnergyEstablished && _voltage != goodVoltage)
                 SetVoltage(goodVoltage);
 
@@ -83,12 +80,26 @@ namespace Gameplay
                 _previousVoltage = _voltage;
             }
 
-            UpdateVisuals();
+            if (!_generatorOn) return;
 
             if (_voltage < lowVoltage)
                 Pulse();
             else
                 screenLight.intensity = maxLightIntensity;
+        }
+        
+        private void HandlePower(bool isOn)
+        {
+            _generatorOn = isOn;
+            voltageText.enabled = isOn;
+            screenLight.enabled = isOn;
+            
+            if(!isOn) voltageText.text = "0V";
+        }
+
+        private void EnergyOn()
+        {
+            
         }
 
         public void AdjustVoltage(float delta)
@@ -100,6 +111,11 @@ namespace Gameplay
         {
             if (!generator.IsOn) return;
             _voltage = Mathf.Clamp(newVoltage, 0f, maxVoltage);
+            
+            generator.SetVoltage(_voltage);
+            OnVoltageChanged?.Invoke(_voltage);
+            UpdateVisuals();
+            PlayFeedbackSound();
         }
 
         private void UpdateVisuals()
