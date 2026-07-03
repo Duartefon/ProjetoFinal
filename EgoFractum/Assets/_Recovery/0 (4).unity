@@ -20071,15 +20071,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039842512}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0.000000059604645, z: 0.000000059604645, w: 0.7071068}
-  m_LocalPosition: {x: -0.0059986115, y: -0.24000096, z: -0.0030002594}
+  m_LocalRotation: {x: -0, y: -0, z: 0.0000000028333527, w: 1}
+  m_LocalPosition: {x: -0.005770412, y: 0.0030007362, z: -3.1700006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1100704897}
   - {fileID: 127944484}
   - {fileID: 704897168}
-  m_Father: {fileID: 543450653441522597}
+  m_Father: {fileID: 4013649498058881934}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1039842514
 MonoBehaviour:
@@ -20123,9 +20123,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1039842512}
   serializedVersion: 5
-  m_Mass: 15
+  m_Mass: 10
   m_LinearDamping: 0
-  m_AngularDamping: 0.01
+  m_AngularDamping: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -22883,15 +22883,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162808325}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.70655847, y: -0.027839558, z: 0.0278397, w: 0.7065587}
-  m_LocalPosition: {x: 0.219, y: -0.211, z: -3.882001}
+  m_LocalRotation: {x: 0.00000017881392, y: -0.039371178, z: 0.00000001862645, w: 0.99922466}
+  m_LocalPosition: {x: 0.1231708, y: 3.8820019, z: -3.1626334}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1654978008}
   - {fileID: 1284223214}
   - {fileID: 160227664}
-  m_Father: {fileID: 543450653441522597}
+  m_Father: {fileID: 4013649498058881934}
   m_LocalEulerAnglesHint: {x: 0, y: -4.513, z: 0}
 --- !u!65 &1162808327
 BoxCollider:
@@ -22922,9 +22922,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162808325}
   serializedVersion: 5
-  m_Mass: 15
+  m_Mass: 10
   m_LinearDamping: 0
-  m_AngularDamping: 0.01
+  m_AngularDamping: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -22940,7 +22940,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!23 &1162808330
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -23030,18 +23030,18 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -86.753365
+    limit: -15.434115
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 92.92043
+    limit: 31.127373
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 84.9173
+    limit: 29.595066
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -24393,7 +24393,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263307315}
   serializedVersion: 5
-  m_Mass: 2
+  m_Mass: 50
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -37752,7 +37752,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688225770}
   serializedVersion: 5
-  m_Mass: 9
+  m_Mass: 5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -46242,8 +46242,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 533193074900803147}
-  - {fileID: 1162808326}
-  - {fileID: 1039842513}
   - {fileID: 4013649498058881934}
   - {fileID: 283453862}
   m_Father: {fileID: 639727386}
@@ -46756,7 +46754,6 @@ GameObject:
   - component: {fileID: 7688907438159000043}
   - component: {fileID: 7688907438159000044}
   - component: {fileID: 7688907438159000045}
-  - component: {fileID: 7688907438159000046}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -47900,7 +47897,9 @@ Transform:
   m_LocalPosition: {x: -0.00022819919, y: 2.93, z: 0.00000011175871}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1162808326}
+  - {fileID: 1039842513}
   m_Father: {fileID: 543450653441522597}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &4132930755422521901
@@ -49393,7 +49392,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2496358465230973679}
   serializedVersion: 5
-  m_Mass: 150
+  m_Mass: 500
   m_LinearDamping: 0
   m_AngularDamping: 1.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -49446,52 +49445,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
   uniqueID: 15b6da0e-dd92-4911-b042-ffb0f8d7170c
---- !u!144 &7688907438159000046
-CharacterJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2496358465230973679}
-  serializedVersion: 3
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0.24, y: 0.02, z: 0.25}
-  m_Axis: {x: -1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
-  m_SwingAxis: {x: 0, y: 1, z: 0}
-  m_TwistLimitSpring:
-    spring: 0
-    damper: 0
-  m_LowTwistLimit:
-    limit: -61.577496
-    bounciness: 0
-    contactDistance: 0
-  m_HighTwistLimit:
-    limit: 56.07254
-    bounciness: 0
-    contactDistance: 0
-  m_SwingLimitSpring:
-    spring: 0
-    damper: 0
-  m_Swing1Limit:
-    limit: 3
-    bounciness: 0
-    contactDistance: 0
-  m_Swing2Limit:
-    limit: 3
-    bounciness: 0
-    contactDistance: 0
-  m_EnableProjection: 0
-  m_ProjectionDistance: 0.1
-  m_ProjectionAngle: 180
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!4 &7749119990063326116
 Transform:
   m_ObjectHideFlags: 0
