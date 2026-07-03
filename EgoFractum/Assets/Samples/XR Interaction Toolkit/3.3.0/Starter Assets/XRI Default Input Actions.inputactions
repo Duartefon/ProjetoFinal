@@ -480,6 +480,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "FlashlightButton",
+                    "type": "Button",
+                    "id": "75d1a5b5-746e-4bd0-8275-aad7b180cf77",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -920,6 +929,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ThumbPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3bdbd899-900d-4af2-b05d-7027869e63a2",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlashlightButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1615,6 +1635,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ThumbPress",
+                    "type": "Value",
+                    "id": "c51112a3-52e1-42e3-8738-5bf26a8ab668",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -2033,6 +2062,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "GripPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f10172e3-e5fe-4c32-b01a-1bf2941f1b7a",
+                    "path": "<XRController>{RightHand}/{PrimaryTouch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ThumbPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
