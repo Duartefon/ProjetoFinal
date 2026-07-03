@@ -423,20 +423,19 @@ imersão, e é precisamente esta resposta que os princípios de interação
 natural procuram maximizar.
 \par
 
-\subsection{O Modelo Interactor-Interactable (Unity XR)}
+\subsection{O Modelo \texttt{Interactor}-\texttt{Interactable} (Unity XR)}
 \label{subsec:interactor_interactable}
 A generalização da interação em ambientes \texttt{XR} exige um modelo 
 conceptual capaz de desacoplar a origem física da ação (a mão, um 
 controlador ou qualquer outro dispositivo de entrada) da lógica de resposta 
 dos objetos manipulados. É neste contexto que se insere o modelo 
-arquitetural Interactor-Interactable, adotado pelo \textit{Unity XR 
+arquitetural \texttt{Interactor}-\texttt{Interactable}, adotado pelo Unity XR \textit{ 
 Interaction Toolkit} e que representa, ao nível conceptual, uma divisão 
 clara de responsabilidades entre quem inicia uma interação e quem a recebe.
 \par
 O \texttt{Interactor} corresponde à abstração de qualquer entidade capaz de 
-iniciar uma interação dentro do ambiente virtual, independentemente de essa 
-entidade representar uma mão rastreada, um controlador físico ou um cursor 
-direcionado por raio (\textit{ray-based interaction}). O \texttt{Interactor} 
+iniciar uma interação dentro do ambiente virtual, independentemente da representação
+do controlador. O \texttt{Interactor} 
 não conhece os detalhes internos dos objetos com que interage; limita-se a 
 expor um conjunto de estados de interação, tipicamente \textit{hover}, 
 \textit{select} e \textit{activate}, que descrevem a relação temporal entre 
@@ -718,8 +717,38 @@ personalizados:
 \label{ssec:logica-puzzles}
 
 \subsubsection{Botões}
+Cada botão interativo contém um \textit{script} dedicado (\texttt{ButtonPress.cs}) que define o seu 
+comportamento. O objetivo principal deste \textit{script} é despoletar eventos e fornecer 
+\textit{feedback} visual e sonoro ao utilizador quando o botão é pressionado.
 
-\subsubsection{Botões Rotativos (\textit{Knob/Dial})}
+A deteção da interação é feita através dos eventos \texttt{hoverEntered} e 
+\texttt{hoverExited}, disponibilizados pelo \texttt{XRBaseInteractable} do XR Interaction 
+Toolkit. Estes eventos são despoletados sempre que um interator entra ou sai da zona de 
+deteção do botão, respetivamente. O \textit{script} verifica ainda se o interator responsável pela 
+interação é do tipo \texttt{XRPokeInteractor}, garantindo que apenas interações por toque 
+(\textit{poke}) acionam o comportamento do botão, e não outros tipos de interação, como o 
+\textit{grab} ou o \textit{ray interaction}.
+
+O \textit{feedback} visual é dado pelo próprio movimento físico do botão: quando o 
+\texttt{XRPokeInteractor} entra em contacto com o botão, a sua posição é recalculada a cada 
+frame com base na projeção do deslocamento do interator sobre um eixo local definido 
+(\texttt{localAxis}), simulando o percurso real de um botão físico a ser premido. Este 
+deslocamento é limitado por um valor máximo (\texttt{maxTravel}), que corresponde à distância 
+que o botão pode percorrer antes de ser considerado totalmente pressionado. Quando o interator 
+deixa de estar em contacto com o botão, este regressa suavemente à sua posição inicial através 
+de uma interpolação linear (\texttt{Lerp}), controlada pela variável \texttt{releaseSpeed}.
+
+O \textit{feedback} sonoro é acionado no instante em que o botão atinge o seu deslocamento 
+máximo, através da reprodução de um \texttt{AudioClip} associado, utilizando um 
+\texttt{AudioSource} configurado no Inspetor do Unity.
+
+Cada botão possui ainda um \texttt{UnityEvent} público (\texttt{buttonAction}), que pode ser 
+configurado no Inspetor para acionar diferentes ações consoante o contexto de utilização do 
+botão, como, por exemplo, controlar o elevador. Este evento é invocado apenas uma vez por cada 
+pressão completa, evitando disparos repetidos enquanto o botão permanece pressionado.
+
+
+\subsubsection{Botões Rotativos \textit{(Knob/Dial)}}
 
 \subsubsection{Alavancas}
 
@@ -857,6 +886,11 @@ o jogo e preencheram um questionário definido no padrão \texttt{GUESS-18}~\cit
 todos os participantes durante os testes, para além dos comentários dos jogadores.
 
 %mostrar as estatisticas do GUESS-18, com gráficos e tabelas, e fazer uma análise dos resultados obtidos.
+
+
+\chapter{Utilização de Inteligência Artificial}
+\label{ch:utilizacao-ia}
+
 
 \cleardoublepage
 \chapter{Conclusões e Trabalho Futuro}

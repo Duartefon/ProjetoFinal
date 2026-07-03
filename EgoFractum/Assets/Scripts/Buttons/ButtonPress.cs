@@ -6,34 +6,36 @@ using UnityEngine.Events;
 
 public class ButtonPress : MonoBehaviour
 {
-    [Header("Elevator Reference")]
-    public UnityEvent elevatorFunction;
+    [Header("Button Action")]
+    public UnityEvent buttonAction;
 
     [Header("Button")]
-    public Transform button;
-    public Vector3 localAxis = Vector3.back;
-    public float maxTravel = 0.015f; // em metros
-    public float releaseSpeed = 5f;
+    [SerializeField] private Transform button;
+    [SerializeField] private Vector3 localAxis = Vector3.back;
+    [SerializeField] private float maxTravel = 0.015f; // em metros
+    [SerializeField] private float releaseSpeed = 5f;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip buttonPressSound;
 
-    private Vector3 initialLocalPosition;
-    private XRBaseInteractable interactable;
-    private XRPokeInteractor activePoker;
-    private bool hasInvoked;
+    private Vector3 _initialLocalPosition;
+    private XRBaseInteractable _interactable;
+    private XRPokeInteractor _activePoker;
+    private bool _hasInvoked;
 
     void Start()
     {
-        interactable = GetComponent<XRBaseInteractable>();
-        interactable.hoverEntered.AddListener(Press);
-        interactable.hoverExited.AddListener(Release);
-        initialLocalPosition = button.localPosition;
+        _interactable = GetComponent<XRBaseInteractable>();
+        _interactable.hoverEntered.AddListener(Press);
+        _interactable.hoverExited.AddListener(Release);
+        _initialLocalPosition = button.localPosition;
     }
 
     private void Press(BaseInteractionEventArgs args)
     {
         if (args.interactorObject is XRPokeInteractor poker)
         {
-            activePoker = poker;
-            hasInvoked = false;
+            _activePoker = poker;
+            _hasInvoked = false;
         }
     }
 
@@ -41,37 +43,43 @@ public class ButtonPress : MonoBehaviour
     {
         if (args.interactorObject is XRPokeInteractor)
         {
-            activePoker = null;
-            hasInvoked = false;
+            _activePoker = null;
+            _hasInvoked = false;
         }
+    }
+
+    private void PlayFeedbackSound()
+    {
+        if (audioSource != null && buttonPressSound != null) audioSource.PlayOneShot(buttonPressSound);
     }
 
     void Update()
     {
-        if (activePoker != null)
+        if (_activePoker != null)
         {
             Vector3 pokerLocalPos = button.parent != null
-                ? button.parent.InverseTransformPoint(activePoker.attachTransform.position)
-                : activePoker.attachTransform.position;
+                ? button.parent.InverseTransformPoint(_activePoker.attachTransform.position)
+                : _activePoker.attachTransform.position;
 
-            Vector3 displacement = pokerLocalPos - initialLocalPosition;
+            Vector3 displacement = pokerLocalPos - _initialLocalPosition;
             float travel = Vector3.Dot(displacement, localAxis.normalized);
             travel = Mathf.Clamp(travel, 0f, maxTravel);
 
-            button.localPosition = initialLocalPosition + localAxis.normalized * travel;
+            button.localPosition = _initialLocalPosition + localAxis.normalized * travel;
 
-            if (travel >= maxTravel && !hasInvoked)
+            if (travel >= maxTravel && !_hasInvoked)
             {
-                hasInvoked = true;
-                Debug.Log("Button fully pressed, invoking: " + elevatorFunction);
-                elevatorFunction.Invoke();
+                _hasInvoked = true;
+                PlayFeedbackSound();
+                Debug.Log("Button fully pressed, invoking: " + buttonAction);
+                buttonAction.Invoke();
             }
         }
         else
         {
             button.localPosition = Vector3.Lerp(
                 button.localPosition,
-                initialLocalPosition,
+                _initialLocalPosition,
                 Time.deltaTime * releaseSpeed
             );
         }
