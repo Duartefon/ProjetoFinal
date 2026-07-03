@@ -30,5 +30,21 @@ public class Puzzle1 : MonoBehaviour
         }
 
     }
+    public void OnEnterPressed()
+    { 
+        if (_inputKeyCode == keyCode)
+            _puzzleFinished = true;
+        else if (_inputKeyCode.Length >= 4)
+        {
+            Debug.Log("Wrong Keycode");
+        }
+
+    }
     
+    public void OnClearPressed()
+    { 
+        //get string from start to last position-1, therefore excluding last char
+        _inputKeyCode = _inputKeyCode.Substring(0, _inputKeyCode.Length - 1);
+
+    }
 }
