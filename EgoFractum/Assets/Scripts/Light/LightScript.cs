@@ -12,7 +12,7 @@ using Random = UnityEngine.Random;
 */
 public class LightScript : MonoBehaviour
 {
-    [SerializeField] private GeneratorScript generator;
+    //[SerializeField] private GeneratorScript generator;
     private Light[] lightComponents; // cada luz tem dois componentes light
     private bool isOn = false; // Estado da luz
     private bool isPendingOn = false;
@@ -28,6 +28,8 @@ public class LightScript : MonoBehaviour
     [Header("Audio")]
     private AudioSource audioSource;
     [SerializeField] private AudioClip lightBuzz, lightOnSound, lightOffSound;
+
+    private static GeneratorScript generator;
     
     private void OnEnable()
     {
@@ -43,11 +45,10 @@ public class LightScript : MonoBehaviour
     {
         lightComponents = GetComponentsInChildren<Light>();
         audioSource = GetComponentInChildren<AudioSource>();
-/*
-        generator = GameObject.FindWithTag("Generator").GetComponent<GeneratorScript>();
-        generator.OnEnergyEstablished.AddListener(TurnOnWithDelay);
-        generator.onEnergyLost.AddListener(TurnOffLight);
-*/
+        if(!generator)
+         generator = GameObject.FindWithTag("Generator").GetComponent<GeneratorScript>();
+        // generator.OnEnergyEstablished.AddListener(TurnOnWithDelay);
+        //generator.onEnergyLost.AddListener(TurnOffLight);
         if (generator.EnergyEstablished)
             TurnOnWithDelay();
     }
