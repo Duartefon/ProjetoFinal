@@ -18,7 +18,7 @@ namespace Hands
 
         private Rigidbody _rbInteractable;
 
-
+        public float catchFlightTime = 0.4f; // tune to taste, or make it scale with distance
         protected override void Awake()
         {
             base.Awake();
@@ -35,7 +35,7 @@ namespace Hands
                 if (vel.magnitude > minVel)
                 {
                     Drop();
-                    _rbInteractable.linearVelocity = ComputeVelocity(); //Vector3.up*5f;
+                    _rbInteractable.linearVelocity = ComputeVelocity();  
                     _canJump = false;
                 }
             }
@@ -64,20 +64,16 @@ namespace Hands
 
         private Vector3 ComputeVelocity()
         {
-            var diff = _nearFarInteractor.transform.position - transform.position;
-            var diffXZ = new Vector3(diff.x, 0, diff.z);
-            var diffXZLength = diffXZ.magnitude;
-            var diffYLength = diff.y;
+            Vector3 target = _nearFarInteractor.transform.position;
+            Vector3 displacement = target - transform.position;
 
-            var angleInRadian = k_Jump_Angle * Mathf.Deg2Rad;
+            // Optional: scale flight time with distance so far throws aren't instant
+            // float t = Mathf.Clamp(displacement.magnitude / someSpeed, 0.2f, 0.8f);
+            float t = catchFlightTime;
 
-            var jumpSpeed = Mathf.Sqrt(-Physics.gravity.y * Mathf.Pow(diffXZLength, 2) /
-                                         (2 * Mathf.Cos(angleInRadian) * Mathf.Cos(angleInRadian) *
-                                          (diffXZ.magnitude * Mathf.Tan(angleInRadian) - diffYLength)));
-
-            Vector3 jumpVelocity = diffXZ.normalized * (jumpSpeed * Mathf.Cos(angleInRadian))
-                                   + Vector3.up * (jumpSpeed * Mathf.Sin(angleInRadian));
-            return jumpVelocity;
+            // v = displacement/t - 0.5*g*t  (solves x(t) = x0 + v*t + 0.5*g*t^2 for v)
+            Vector3 velocity = displacement / t - Physics.gravity * (0.5f * t);
+            return velocity;
         }
     }
 }

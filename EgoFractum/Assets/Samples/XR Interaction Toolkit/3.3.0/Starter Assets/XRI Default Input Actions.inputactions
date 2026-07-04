@@ -1637,6 +1637,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "TriggerPress",
+                    "type": "Value",
+                    "id": "efe92388-844e-45d0-a263-1456ffc2178e",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "ThumbPress",
                     "type": "Value",
                     "id": "c51112a3-52e1-42e3-8738-5bf26a8ab668",
@@ -2073,6 +2082,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ThumbPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1d49cf1a-0496-4c44-a39e-e604c3946d7b",
+                    "path": "<XRController>{RightHand}/{Trigger}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
