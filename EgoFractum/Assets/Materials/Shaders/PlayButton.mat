@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SpriteTest
+  m_Name: PlayButton
   m_Shader: {fileID: -6465566751694194690, guid: 69b66298176a9e44fa324ee151840a63, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -55,11 +55,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _Float: 0
+    - _displacementIntensity: 0.2
     - _flickerSpeed: 0.1
     - _grainScale: 1
     - _grainSpeed: 300
     - _horizontalVertexDisplacement: -0.5
-    - _isSelected: 1
+    - _isSelected: 0
     - _shineIntensity: 3.6
     - _shineIntensityNormal: 0.28
     - _shineIntensitySelected: 3.6

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public String mainLevel = "MainLevel";
-  
+    private Material lastButtonSelected = null;
     public void OnPlayButtonPressed()
     {
         SceneManager.LoadScene(mainLevel);
@@ -28,6 +28,14 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    public void OnButtonSelected(Material buttonMaterial)
+    {
+        if(lastButtonSelected)
+            lastButtonSelected.SetFloat("_isSelected", 0);
+        buttonMaterial.SetFloat("_isSelected", 1);
+        
+        
+    }
     public void OnQuit()
     {
         Application.Quit();

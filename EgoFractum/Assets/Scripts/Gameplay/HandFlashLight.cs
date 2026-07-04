@@ -23,10 +23,12 @@ public class HandFlashLight : MonoBehaviour
     private float unchargeCooldown = 2.5f;
     
     private float timeStamp;
+
+    [SerializeField] [Range(0, 1)] private float blinkingTreshold = 0.35f;
     //Debug
     public TMP_Text text;
 
-    private Coroutine _coroutine;
+    private Coroutine _coroutine, _blinkingCoroutine;
     
     public InputActionReference flashlightAction;
 
@@ -46,13 +48,13 @@ public class HandFlashLight : MonoBehaviour
     public void Update()
     {
         text.text =
-            $"{_energy}%, T0: {timeStamp}, Time: {Time.time}";
+            $"{_energy}%, Light Level{_light.intensity}";
     }
 
     IEnumerator FlashlightOn()
     {
         timeStamp = Time.time;
- 
+
         do
         {    
             if (Time.time - timeStamp > unchargeCooldown)
@@ -60,13 +62,30 @@ public class HandFlashLight : MonoBehaviour
 
                 timeStamp = Time.time;
                 _energy = Mathf.Clamp(_energy-unchargeStep,0, 100);
-                
+
+                if (_energy <= 100 * blinkingTreshold)
+                {
+                    if(_blinkingCoroutine == null)
+                        _blinkingCoroutine = StartCoroutine(BlinkingLight());
+                }
             }
             yield return null;
             
         } while (_energy > 0);
 
  
+    }
+
+    IEnumerator BlinkingLight()
+    {
+        Debug.Log("I got Called");
+        while (_isActive)
+        {
+            Debug.Log(Mathf.Sin(Time.time) * 50);
+            _light.intensity +=  Mathf.Sin(Time.time) * 50;
+            yield return null;
+            
+        }
     }
  
     public void OnFlashlightButtonPress(InputAction.CallbackContext callbackContext)
