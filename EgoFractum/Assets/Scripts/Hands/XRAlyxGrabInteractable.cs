@@ -1,33 +1,76 @@
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 namespace Hands
 {
-    
     public class XRAlyxGrabInteractable : XRGrabInteractable
     {
         public float minVel = 2f;
+        public float catchFlightTime = 0.4f;
+
+        // Should roughly match NearFarInteractor's near sphere-cast radius.
+        // Anything grabbed within this distance is treated as a normal hand grab.
+        public float nearGrabMaxDistance = 0.25f;
 
         private NearFarInteractor _nearFarInteractor;
         private Vector3 _previousPos;
         private bool _canJump = true;
-        private const float k_Jump_Angle = 60f;
+        private bool _isFarGrab;
 
         private Rigidbody _rbInteractable;
 
-        public float catchFlightTime = 0.4f; // tune to taste, or make it scale with distance
         protected override void Awake()
         {
             base.Awake();
             _rbInteractable = GetComponent<Rigidbody>();
         }
 
+        protected override void OnSelectEntered(SelectEnterEventArgs args)
+        {
+            Vector3 preservedVelocity = _rbInteractable.linearVelocity;
+            Vector3 preservedAngularVelocity = _rbInteractable.angularVelocity;
+
+            var nearFar = args.interactorObject as NearFarInteractor;
+            float distance = nearFar != null
+                ? Vector3.Distance(nearFar.transform.position, transform.position)
+                : 0f;
+
+            _isFarGrab = nearFar != null && distance > nearGrabMaxDistance;
+
+            Debug.Log($"Grabbed by {args.interactorObject}, distance: {distance:F2}, isFarGrab: {_isFarGrab}");
+
+            if (_isFarGrab)
+            {
+                trackPosition = false;
+                trackRotation = false;
+                throwOnDetach = false;
+
+                _nearFarInteractor = nearFar;
+                _previousPos = _nearFarInteractor.transform.position;
+                _canJump = true;
+            }
+            else
+            {
+                trackPosition = true;
+                trackRotation = true;
+                throwOnDetach = true;
+                _canJump = false;
+            }
+
+            base.OnSelectEntered(args);
+
+            if (_isFarGrab)
+            {
+                _rbInteractable.linearVelocity = preservedVelocity;
+                _rbInteractable.angularVelocity = preservedAngularVelocity;
+            }
+        }
+
         private void Update()
         {
-            if (_canJump && isSelected && firstInteractorSelecting is NearFarInteractor)
+            if (_canJump && _isFarGrab && isSelected && firstInteractorSelecting is NearFarInteractor)
             {
                 Vector3 vel = (_nearFarInteractor.transform.position - _previousPos) / Time.deltaTime;
                 _previousPos = _nearFarInteractor.transform.position;
@@ -35,45 +78,18 @@ namespace Hands
                 if (vel.magnitude > minVel)
                 {
                     Drop();
-                    _rbInteractable.linearVelocity = ComputeVelocity();  
+                    _rbInteractable.linearVelocity = ComputeVelocity();
                     _canJump = false;
                 }
             }
-        }
-
-        protected override void OnSelectEntered(SelectEnterEventArgs args)
-        {
-            if (args.interactorObject is NearFarInteractor interactor)
-            {
-                trackPosition = false;
-                trackRotation = false;
-                throwOnDetach = false;
-
-                _nearFarInteractor = interactor;
-                _previousPos = _nearFarInteractor.transform.position;
-
-                _canJump = true;
-            } else {
-                trackPosition = true;
-                trackRotation = true;
-                throwOnDetach = true;
-            }
-
-            base.OnSelectEntered(args);
         }
 
         private Vector3 ComputeVelocity()
         {
             Vector3 target = _nearFarInteractor.transform.position;
             Vector3 displacement = target - transform.position;
-
-            // Optional: scale flight time with distance so far throws aren't instant
-            // float t = Mathf.Clamp(displacement.magnitude / someSpeed, 0.2f, 0.8f);
             float t = catchFlightTime;
-
-            // v = displacement/t - 0.5*g*t  (solves x(t) = x0 + v*t + 0.5*g*t^2 for v)
-            Vector3 velocity = displacement / t - Physics.gravity * (0.5f * t);
-            return velocity;
+            return displacement / t - Physics.gravity * (0.5f * t);
         }
     }
 }
