@@ -423,20 +423,19 @@ imersão, e é precisamente esta resposta que os princípios de interação
 natural procuram maximizar.
 \par
 
-\subsection{O Modelo Interactor-Interactable (Unity XR)}
+\subsection{O Modelo \texttt{Interactor}-\texttt{Interactable} (Unity XR)}
 \label{subsec:interactor_interactable}
 A generalização da interação em ambientes \texttt{XR} exige um modelo 
 conceptual capaz de desacoplar a origem física da ação (a mão, um 
 controlador ou qualquer outro dispositivo de entrada) da lógica de resposta 
 dos objetos manipulados. É neste contexto que se insere o modelo 
-arquitetural Interactor-Interactable, adotado pelo \textit{Unity XR 
+arquitetural \texttt{Interactor}-\texttt{Interactable}, adotado pelo Unity XR \textit{ 
 Interaction Toolkit} e que representa, ao nível conceptual, uma divisão 
 clara de responsabilidades entre quem inicia uma interação e quem a recebe.
 \par
 O \texttt{Interactor} corresponde à abstração de qualquer entidade capaz de 
-iniciar uma interação dentro do ambiente virtual, independentemente de essa 
-entidade representar uma mão rastreada, um controlador físico ou um cursor 
-direcionado por raio (\textit{ray-based interaction}). O \texttt{Interactor} 
+iniciar uma interação dentro do ambiente virtual, independentemente da representação
+do controlador. O \texttt{Interactor} 
 não conhece os detalhes internos dos objetos com que interage; limita-se a 
 expor um conjunto de estados de interação, tipicamente \textit{hover}, 
 \textit{select} e \textit{activate}, que descrevem a relação temporal entre 
@@ -706,27 +705,118 @@ Muitos dos objetos decorativos do jogo podem ser manipulados fisicamente com
 as mãos do jogador (ex: agarrar, atirar). Para este efeito, utilizaram-se as funcionalidades 
 base do \textit{XR Interaction Toolkit}, que suportam este tipo de interação direta. 
 Para componentes com comportamentos mecânicos específicos, foi necessário desenvolver \textit{scripts} 
-personalizados:
+personalizados.
 
 %falar da escalada (escadas)
 % script dos botoes
 % script da alavanca
 % elevador
 
+\subsubsection{Botões}\label{sssec:botoes}
+Cada botão interativo contém um \textit{script} dedicado (\texttt{ButtonPress.cs}) que define o seu 
+comportamento. O objetivo principal deste \textit{script} é despoletar eventos e fornecer 
+\textit{feedback} visual e sonoro ao utilizador quando o botão é pressionado.
 
-\subsection{Implementação da Lógica dos Puzzles}
-\label{ssec:logica-puzzles}
+A deteção da interação é feita através dos eventos \texttt{hoverEntered} e 
+\texttt{hoverExited}, disponibilizados pelo \texttt{XRBaseInteractable} do XR Interaction 
+Toolkit. Estes eventos são despoletados sempre que um interator entra ou sai da zona de 
+deteção do botão, respetivamente. O \textit{script} verifica ainda se o interator responsável pela 
+interação é do tipo \texttt{XRPokeInteractor}, garantindo que apenas interações por toque 
+(\textit{poke}) acionam o comportamento do botão, e não outros tipos de interação, como o 
+\textit{grab} ou o \textit{ray interaction}.
 
-\subsubsection{Botões}
+O \textit{feedback} visual é dado pelo próprio movimento físico do botão. Quando o 
+\texttt{XRPokeInteractor} entra em contacto com o botão, a sua posição é recalculada a cada 
+frame com base na projeção do deslocamento do interator sobre um eixo local definido 
+(\texttt{localAxis}), de forma a simular o percurso real de um botão físico a ser premido. Este 
+deslocamento é limitado por um valor máximo (\texttt{maxTravel}), que corresponde à distância 
+que o botão pode percorrer antes de ser considerado totalmente pressionado. Quando o interator 
+deixa de estar em contacto com o botão, este regressa suavemente à sua posição inicial através 
+de uma interpolação linear (\texttt{Lerp}), controlada pela variável \texttt{releaseSpeed}.
 
-\subsubsection{Botões Rotativos (\textit{Knob/Dial})}
+O \textit{feedback} sonoro é acionado no instante em que o botão atinge o seu deslocamento 
+máximo, através da reprodução de um \texttt{AudioClip} associado, utilizando um 
+\texttt{AudioSource} configurado no Inspetor do Unity.
+
+Cada botão possui ainda um \texttt{UnityEvent} público (\texttt{buttonAction}), que pode ser 
+configurado no inspetor para acionar diferentes ações consoante o contexto de utilização do 
+botão, como, por exemplo, controlar o elevador. Este evento é invocado apenas uma vez por cada 
+pressão completa, evitando disparos repetidos enquanto o botão permanece pressionado.
+
+\subsubsection{Botões Rotativos \textit{(Knob/Dial)}}
+Para além dos botões tradicionais, o laboratório inclui também botões rotativos 
+(\textit{knobs}), utilizados para interações que requerem um ajuste contínuo ou 
+gradual de um valor, como no gerador. Este comportamento 
+é implementado através do script \texttt{KnobRotator.cs}.
+
+A interação é iniciada quando o jogador agarra o objeto através de um 
+\texttt{XRGrabInteractable}, recorrendo aos eventos \texttt{selectEntered} e 
+\texttt{selectExited} do XR Interaction Toolkit. Ao ser agarrado, o script regista o 
+interator responsável e passa a monitorizar, em cada frame, a rotação do controlador 
+do jogador em torno do eixo Z, comparando-a com um ângulo de referência inicial.
+
+Sempre que a diferença entre o ângulo atual e o ângulo de referência ultrapassa uma 
+margem de tolerância (\texttt{angleTolerance}), o \textit{dial} associado 
+(\texttt{linkedDial}) é rodado num incremento fixo (\texttt{snapRotationAmount}), 
+simulando um movimento de \textit{"encaixe"} (\textit{snapping}) típico de botões 
+rotativos físicos, em vez de uma rotação contínua e livre. É também tratado o caso 
+particular em que a rotação do controlador ultrapassa a fronteira entre $360^{\circ}$ e $0^{\circ}$, 
+de forma a evitar que essa transição seja interpretada como uma rotação inversa 
+indevida.
+
+Cada incremento de rotação é acompanhado de \textit{feedback} sonoro, de forma a reforçar 
+a perceção do utilizador de que a interação teve efeito. Adicionalmente, o script 
+expõe um evento (\texttt{OnValueChanged}), invocado sempre que o valor do botão 
+rotativo é alterado, permitindo que outros sistemas do laboratório reajam a essas 
+mudanças, como a atualização de um valor apresentado no painel do gerador.
 
 \subsubsection{Alavancas}
 
 \subsubsection{Elevador}
+O elevador é um elemento interativo que permite ao jogador deslocar-se verticalmente 
+entre diferentes pisos do laboratório. A sua implementação baseia-se em estados de 
+animação, acionados pelos botões, como referido anteriormente (\ref{sssec:botoes} - 
+Botões).
 
+O elevador possui um \textit{script} dedicado (\texttt{ElevatorController.cs}), que expõe os 
+métodos públicos \texttt{GoUp} e \texttt{GoDown}, invocados pelos eventos dos botões 
+correspondentes. O ciclo da máquina de estados resume-se a três estados principais: 
+parado, a subir e a descer. A transição entre estes estados é controlada pelos 
+eventos dos botões, que verificam se o elevador se encontra parado (\texttt{isMoving}) 
+antes de iniciar qualquer movimento.
+
+O funcionamento do elevador está ainda condicionado ao estado do gerador elétrico do 
+laboratório: o \textit{script} subscreve os eventos \texttt{OnEnergyEstablished} e 
+\texttt{OnEnergyLost}, disponibilizados pelo \texttt{GeneratorScript}, de forma a 
+impedir a ativação do elevador sempre que não exista energia estabelecida no sistema. 
+Este mecanismo reforça a coerência do ambiente, uma vez que o elevador só pode ser 
+utilizado depois de o gerador ser ligado pelo jogador.
+
+A animação do elevador é gerida por um \texttt{Animator}, que reproduz a sequência de 
+subida ou descida através dos \textit{triggers} \texttt{ElevatorUp} e 
+\texttt{ElevatorDown}, sincronizando o movimento físico do elevador com a animação 
+visual. O regresso ao estado parado é assinalado através do método 
+\texttt{OnArrived}, invocado por um evento de animação no momento em que o elevador 
+chega ao piso de destino.
+
+Quanto aos efeitos visuais e sonoros, são utilizados eventos de animação para disparar 
+sons de motor (\texttt{PlayMoveSound}) e de paragem (\texttt{PlayStopSound}), bem como 
+um sistema de partículas de fumo (\texttt{PlaySmoke}/\texttt{StopSmoke}), de forma a 
+reforçar o realismo e a imersão da experiência.
+
+Para evitar problemas de movimentação brusca ou colisões com o jogador, o elevador 
+possui um \texttt{Collider} definido como \textit{Trigger} (\texttt{ElevatorTrigger.cs}), 
+que deteta a entrada e saída do jogador através da respetiva \textit{tag}. Ao entrar na 
+zona do elevador, o jogador é tornado filho do \texttt{transform} do elevador, garantindo 
+que se desloca solidariamente com a plataforma durante o movimento; adicionalmente, o seu 
+\texttt{Rigidbody} é definido como \textit{kinematic}, impedindo que o sistema de física 
+interfira com a translação do elevador. Ao sair da zona do elevador, o processo é 
+revertido: o jogador deixa de ser filho do elevador e o seu \texttt{Rigidbody} volta a 
+ser controlado normalmente pela física do motor de jogo.
 \subsubsection{Escadas e Escalada}
 
+\subsection{Implementação da Lógica dos Puzzles}
+\label{ssec:logica-puzzles}
 
 \subsubsection{Puzzle 1: Restabelecimento de Energia}
 \label{sssec:puzzle1}
@@ -857,6 +947,11 @@ o jogo e preencheram um questionário definido no padrão \texttt{GUESS-18}~\cit
 todos os participantes durante os testes, para além dos comentários dos jogadores.
 
 %mostrar as estatisticas do GUESS-18, com gráficos e tabelas, e fazer uma análise dos resultados obtidos.
+
+
+\chapter{Utilização de Inteligência Artificial}
+\label{ch:utilizacao-ia}
+
 
 \cleardoublepage
 \chapter{Conclusões e Trabalho Futuro}

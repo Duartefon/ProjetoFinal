@@ -1,79 +1,85 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
-using UnityEngine.Events;
 
-public class ButtonPress : MonoBehaviour
+namespace Buttons
 {
-    [Header("Elevator Reference")]
-    public UnityEvent elevatorFunction;
-
-    [Header("Button")]
-    public Transform button;
-    public Vector3 localAxis = Vector3.back;
-    public float maxTravel = 0.015f; // em metros
-    public float releaseSpeed = 5f;
-
-    private Vector3 initialLocalPosition;
-    private XRBaseInteractable interactable;
-    private XRPokeInteractor activePoker;
-    private bool hasInvoked;
-
-    void Start()
+    public class ButtonPress : MonoBehaviour
     {
-        interactable = GetComponent<XRBaseInteractable>();
-        interactable.hoverEntered.AddListener(Press);
-        interactable.hoverExited.AddListener(Release);
-        initialLocalPosition = button.localPosition;
-    }
+        [Header("Button Action")]
+        public UnityEvent buttonAction;
 
-    private void Press(BaseInteractionEventArgs args)
-    {
-        if (args.interactorObject is XRPokeInteractor poker)
+        [Header("Button")]
+        [SerializeField] private Transform button;
+        [SerializeField] private Vector3 localAxis = Vector3.back;
+        [SerializeField] private float maxTravel = 0.015f; // em metros
+        [SerializeField] private float releaseSpeed = 5f;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip buttonPressSound;
+
+        private Vector3 _initialLocalPosition;
+        private XRBaseInteractable _interactable;
+        private XRPokeInteractor _activePoker;
+        private bool _hasInvoked;
+
+        void Start()
         {
-            activePoker = poker;
-            hasInvoked = false;
+            _interactable = GetComponent<XRBaseInteractable>();
+            _interactable.hoverEntered.AddListener(Press);
+            _interactable.hoverExited.AddListener(Release);
+            _initialLocalPosition = button.localPosition;
         }
-    }
 
-    private void Release(BaseInteractionEventArgs args)
-    {
-        if (args.interactorObject is XRPokeInteractor)
+        private void Press(BaseInteractionEventArgs args)
         {
-            activePoker = null;
-            hasInvoked = false;
+            if (args.interactorObject is not XRPokeInteractor poker) return;
+            _activePoker = poker;
+            _hasInvoked = false;
         }
-    }
 
-    void Update()
-    {
-        if (activePoker != null)
+        private void Release(BaseInteractionEventArgs args)
         {
-            Vector3 pokerLocalPos = button.parent != null
-                ? button.parent.InverseTransformPoint(activePoker.attachTransform.position)
-                : activePoker.attachTransform.position;
+            if (args.interactorObject is not XRPokeInteractor) return;
+            _activePoker = null;
+            _hasInvoked = false;
+        }
 
-            Vector3 displacement = pokerLocalPos - initialLocalPosition;
-            float travel = Vector3.Dot(displacement, localAxis.normalized);
-            travel = Mathf.Clamp(travel, 0f, maxTravel);
+        private void PlayFeedbackSound()
+        {
+            if (audioSource && buttonPressSound) audioSource.PlayOneShot(buttonPressSound);
+        }
 
-            button.localPosition = initialLocalPosition + localAxis.normalized * travel;
-
-            if (travel >= maxTravel && !hasInvoked)
+        void Update()
+        {
+            if (_activePoker)
             {
-                hasInvoked = true;
-                Debug.Log("Button fully pressed, invoking: " + elevatorFunction);
-                elevatorFunction.Invoke();
+                Vector3 pokerLocalPos = button.parent
+                    ? button.parent.InverseTransformPoint(_activePoker.attachTransform.position)
+                    : _activePoker.attachTransform.position;
+
+                Vector3 displacement = pokerLocalPos - _initialLocalPosition;
+                float travel = Vector3.Dot(displacement, localAxis.normalized);
+                travel = Mathf.Clamp(travel, 0f, maxTravel);
+
+                button.localPosition = _initialLocalPosition + localAxis.normalized * travel;
+
+                if (!(travel >= maxTravel) || _hasInvoked) return;
+                
+                _hasInvoked = true;
+                PlayFeedbackSound();
+                //Debug.Log("Button fully pressed, invoking: " + buttonAction);
+                buttonAction.Invoke();
             }
-        }
-        else
-        {
-            button.localPosition = Vector3.Lerp(
-                button.localPosition,
-                initialLocalPosition,
-                Time.deltaTime * releaseSpeed
-            );
+            else
+            {
+                button.localPosition = Vector3.Lerp(
+                    button.localPosition,
+                    _initialLocalPosition,
+                    Time.deltaTime * releaseSpeed
+                );
+            }
         }
     }
 }

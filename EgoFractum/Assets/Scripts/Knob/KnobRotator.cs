@@ -1,44 +1,40 @@
 ﻿using System;
-using Gameplay;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
-using UnityEngine.Events;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class KnobRotator : MonoBehaviour
 {
-    [SerializeField] Transform linkedDial;
+    [Header("Settings")] [SerializeField] private Transform linkedDial;
     [SerializeField] private int snapRotationAmount = 25;
     [SerializeField] private float angleTolerance;
 
-    [Header("Audio")]
-    [SerializeField] private AudioSource audioSource;
+    [Header("Audio")] [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip rotationSound;
 
-    [Header("Events")]
-    public static Action<float> OnValueChanged;
+    [Header("Events")] public static Action<float> OnValueChanged;
 
-    private XRBaseInteractor interactor;
-    private float startAngle;
-    private bool requiresStartAngle = true;
-    private bool shouldGetHandRotation = false;
-    private XRGrabInteractable grabInteractor => GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
+    private XRBaseInteractor _interactor;
+    private float _startAngle;
+    private bool _requiresStartAngle = true;
+    private bool _shouldGetHandRotation = false;
+    private XRGrabInteractable grabInteractor => GetComponent<XRGrabInteractable>();
 
     private void OnEnable()
     {
         grabInteractor.selectEntered.AddListener(GrabbedBy);
         grabInteractor.selectExited.AddListener(GrabEnd);
 
-        if (audioSource == null)
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.playOnAwake = false;
-            audioSource.clip = rotationSound;
-            audioSource.spatialBlend = 1f;
-            audioSource.volume = 0.5f;
-        }
+        if (audioSource != null) return;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.clip = rotationSound;
+        audioSource.spatialBlend = 1f;
+        audioSource.volume = 0.5f;
     }
+
     private void OnDisable()
     {
         grabInteractor.selectEntered.RemoveListener(GrabbedBy);
@@ -47,115 +43,97 @@ public class KnobRotator : MonoBehaviour
 
     private void GrabEnd(SelectExitEventArgs arg0)
     {
-        shouldGetHandRotation = false;
-        requiresStartAngle = true;
-        HandModelVisibility(false);
+        _shouldGetHandRotation = false;
+        _requiresStartAngle = true;
     }
 
     private void GrabbedBy(SelectEnterEventArgs arg0)
     {
-        interactor = arg0.interactorObject as XRBaseInteractor;
+        _interactor = arg0.interactorObject as XRBaseInteractor;
 
         var directInteractor = arg0.interactorObject as XRDirectInteractor;
         if (directInteractor != null)
             directInteractor.hideControllerOnSelect = true;
 
-        shouldGetHandRotation = true;
-        startAngle = 0f;
-        HandModelVisibility(true);
-    }
-
-    private void HandModelVisibility(bool visibilityState)
-    {
-        /*
-        if (!shouldUseDummyHands)
-            return;
-
-        if (interactor.CompareTag("RightHand"))
-            rightHandModel.SetActive(visibilityState);
-        else
-            leftHandModel.SetActive(visibilityState);*/
+        _shouldGetHandRotation = true;
+        _startAngle = 0f;
     }
 
     void Update()
     {
-        if (shouldGetHandRotation)
-        {
-            var rotationAngle = GetInteractorRotation(); //pega na rotação do controller
-            GetRotationDistance(rotationAngle);
-        }
+        if (!_shouldGetHandRotation) return;
+
+        var rotationAngle = GetInteractorRotation(); //pega na rotação do controller
+        GetRotationDistance(rotationAngle);
     }
 
-    public float GetInteractorRotation() => interactor.GetComponent<Transform>().eulerAngles.z;
+    private float GetInteractorRotation() => _interactor.GetComponent<Transform>().eulerAngles.z;
 
     private void GetRotationDistance(float currentAngle)
     {
-        if (!requiresStartAngle)
+        if (!_requiresStartAngle)
         {
-            var angleDifference = Mathf.Abs(startAngle - currentAngle);
+            var angleDifference = Mathf.Abs(_startAngle - currentAngle);
 
-            if (angleDifference > angleTolerance)
+            if (!(angleDifference > angleTolerance)) return;
+
+            if (angleDifference > 270f) //para ver se ja passou do 0-360
             {
-                if (angleDifference > 270f) //para ver se ja passou do 0-360
+                float angleCheck;
+
+                if (_startAngle < currentAngle)
                 {
-                    float angleCheck;
+                    angleCheck = CheckAngle(currentAngle, _startAngle);
 
-                    if (startAngle < currentAngle)
-                    {
-                        angleCheck = CheckAngle(currentAngle, startAngle);
+                    if (angleCheck > angleTolerance)
 
-                        if (angleCheck < angleTolerance)
-                            return;
-                        else
-                        {
-                            RotateDialClockwise();
-                            startAngle = currentAngle;
-                        }
-                    }
-                    else if (startAngle > currentAngle)
-                    {
-                        angleCheck = CheckAngle(currentAngle, startAngle);
-
-                        if (angleCheck < angleTolerance)
-                            return;
-                        else
-                        {
-                            RotateDialAntiClockwise();
-                            startAngle = currentAngle;
-                        }
-                    }
-                }
-                else
-                {
-                    if (startAngle < currentAngle)
-                    {
-                        RotateDialAntiClockwise();
-                        startAngle = currentAngle;
-                    }
-                    else if (startAngle > currentAngle)
                     {
                         RotateDialClockwise();
-                        startAngle = currentAngle;
+                        _startAngle = currentAngle;
                     }
+                }
+                else if (_startAngle > currentAngle)
+                {
+                    angleCheck = CheckAngle(currentAngle, _startAngle);
+
+                    if (angleCheck < angleTolerance)
+                        return;
+                    else
+                    {
+                        RotateDialAntiClockwise();
+                        _startAngle = currentAngle;
+                    }
+                }
+            }
+            else
+            {
+                if (_startAngle < currentAngle)
+                {
+                    RotateDialAntiClockwise();
+                    _startAngle = currentAngle;
+                }
+                else if (_startAngle > currentAngle)
+                {
+                    RotateDialClockwise();
+                    _startAngle = currentAngle;
                 }
             }
         }
         else
         {
-            requiresStartAngle = false;
-            startAngle = currentAngle;
+            _requiresStartAngle = false;
+            _startAngle = currentAngle;
         }
     }
 
-    private float CheckAngle(float currentAngle, float _startAngle) => (360f - currentAngle) + _startAngle;
+    private float CheckAngle(float currentAngle, float startAngle) => (360f - currentAngle) + startAngle;
 
     private void RotateDialClockwise()
     {
         linkedDial.Rotate(snapRotationAmount, 0f, 0f, Space.Self);
         OnValueChanged?.Invoke(snapRotationAmount);
-        audioSource.Play(); 
+        audioSource.Play();
     }
-
 
     private void RotateDialAntiClockwise()
     {
@@ -164,6 +142,3 @@ public class KnobRotator : MonoBehaviour
         audioSource.Play();
     }
 }
-
-
-
