@@ -11866,9 +11866,9 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 2
-  catchFlightTime: 0.4
-  nearGrabMaxDistance: 0.25
+  minVel: 3
+  catchFlightTime: 0.75
+  nearGrabMaxDistance: 1.5
 --- !u!114 &663999425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28146,9 +28146,9 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 2
-  catchFlightTime: 0.4
-  nearGrabMaxDistance: 0.25
+  minVel: 3
+  catchFlightTime: 0.75
+  nearGrabMaxDistance: 1.5
 --- !u!1001 &1410090931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46714,9 +46714,9 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 2
-  catchFlightTime: 0.4
-  nearGrabMaxDistance: 0.25
+  minVel: 3
+  catchFlightTime: 0.75
+  nearGrabMaxDistance: 1.5
 --- !u!1 &2088902467
 GameObject:
   m_ObjectHideFlags: 0
