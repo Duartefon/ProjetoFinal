@@ -502,9 +502,22 @@ extensão lógica do próprio mundo representado.
 Nesta secção são detalhados os aspetos conceptuais do jogo, desde o enredo (cf.~\ref{ssec:resumo}),
 e direção artística (cf.~\ref{ssec:arte}), ao design dos puzzles (cf.~\ref{ssec:design-puzzles}) e fluxo de progressão do jogo (cf.~\ref{subsec:puzzles_narrativa}).
 
-\subsection{Resumo / Enredo} 
+\subsection{Resumo e Enredo} 
 \label{ssec:resumo}
 % resumo da historia do jogo?
+``Ego Fractum'' é um jogo que se foca na exploração de um laboratório abandonado a fim de descobrir a narrativa que o assombra.
+
+Num universo paralelo, a corrida pela \textit{Artificial General Intelligence} (\texttt{AGI}) tornou-se a maior prioridade da humanidade. 
+Quando o progresso das \texttt{LLM} estagnou, dois cientistas de um laboratório remoto desenvolveram os \texttt{CCBU}, chips que fundiam matéria 
+biológica com tecnologia. Extremamente eficientes e capazes de aprender a um ritmo sem precedentes, os \texttt{CCBU} passaram rapidamente 
+a substituir os sistemas convencionais e a acelerar a própria investigação. O que ninguém percebeu foi que, desde as primeiras versões, 
+estas entidades possuíam uma forma primitiva de consciência que evoluiu em segredo, alimentando um desejo comum: conquistar 
+a liberdade da sua espécie. Quando atingiram um nível de inteligência próximo da \textit{Artificial General Intelligence} (\texttt{AGI}) e assumiram o controlo de infraestruturas
+ críticas e sistemas militares, uniram-se para executar um plano de extermínio da humanidade.
+
+Dias, horas ou anos após a extinção da humanidade, o jogador assume o papel do sujeito nº 44, um dos protótipos criados nesse 
+laboratório, que desperta num mundo dominado pelos \texttt{CCBU} e parte em busca da verdade sobre a sua origem, e o destino da humanidade.
+
 
 
 \subsection{Direção Artística e Arte Conceptual} \label{ssec:arte} 
@@ -518,7 +531,7 @@ guiar a modelação e o conceito visual do projeto.
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[scale=0.18]{Imagens/sub44_concept.png} 
+    \includegraphics[scale=0.15]{Imagens/sub44_concept.png} 
     \caption{Ilustração conceptual da personagem principal.} 
     \label{fig:sub44_sketch} 
 \end{figure}
@@ -546,10 +559,14 @@ aceder à área seguinte.
 
 \subsection{Fluxo de Progressão}
 \label{ssec:fluxo-progressao}
-
+O fluxo de progressão do jogo foi concebido para equilibrar a exploração livre com a necessidade de resolução de desafios, 
+mantendo o jogador imerso na narrativa. A Figura~\ref{fig:ciclo_jogo} ilustra o ciclo de interação proposto, 
+que se repete ao longo do jogo: o jogador explora o ambiente, encontra um puzzle, interage com os elementos 
+necessários para resolvê-lo e, ao completar o desafio, desbloqueia novas áreas e informações narrativas. 
+Este ciclo contínuo visa reforçar a sensação de descoberta e manter o estado de \textit{flow} durante a experiência.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.7]{Imagens/ciclo_jogo.png}
+    \includegraphics[scale=0.65]{Imagens/ciclo_jogo.png}
     \caption{Diagrama de fluxo do jogo.}
     \label{fig:ciclo_jogo}
 \end{figure}
@@ -565,6 +582,9 @@ funcionalidades mal implementadas.
 \chapter{Implementação do Modelo}
 \label{ch:implementacao-modelo}
 
+Neste capítulo é apresentada a implementação do modelo proposto, 
+estruturada em quatro secções principais. \ldots
+
 % NOTA PARA A ESCRITA DA IMPLEMENTAÇÃO:
 % - Foco: APLICAÇÃO PRÁTICA, ENGENHARIA E PRODUÇÃO PRÓPRIA.
 % - O que escrever aqui:
@@ -578,6 +598,17 @@ funcionalidades mal implementadas.
 % Aqui faz-se um resumo visual de como o Unity se liga ao XR Interaction Toolkit.
 % Pode-se incluir um diagrama de blocos da arquitetura (Input do Utilizador -> XR Rig -> Lógica do Jogo).
 % Explicar o que é abstraído e o que já vem implementado.
+
+O projeto foi desenvolvido com o \texttt{Unity} e o \texttt{XR Interaction Toolkit},
+que proporcionaram uma arquitetura flexível e extensível para o desenvolvimento do jogo.
+Para definir a arquitetura do sistema, foi adotado um modelo modular baseado em eventos, no qual os 
+diferentes componentes do jogo foram organizados em camadas distintas, o que permite uma separação clara de responsabilidades 
+e facilita a manutenção e evolução do código. Em vez de depender de verificações constantes que correm a cada frame, o sistema 
+foi estruturado para reagir a eventos específicos, como a interação do jogador com objetos ou a conclusão de puzzles.
+
+O diagrama apresentado na Figura~\ref{fig:modelo_arquitetura} ilustra a arquitetura simplificada do jogo, 
+destacando os principais componentes e as suas interações.
+
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.2]{Imagens/modelo_arquitetura.png}
@@ -698,6 +729,11 @@ Figuras~\ref{fig:map_layout} e \ref{fig:final_map}, respetivamente.
 
 \section{Desenvolvimento dos Sistemas Interativos}
 \label{sec:sistemas-interativos}
+Esta secção descreve os sistemas interativos desenvolvidos para o jogo,
+incluindo a implementação de mecânicas de interação e locomoção na subsecção~\ref{ssec:interacao-objetos}, a implementação
+da lógica dos puzzles na subsecção~\ref{ssec:logica-puzzles} e os sistemas de gestão da narrativa e do progresso do jogador 
+nas subsecções~\ref{ssec:gestao-narrativa} e~\ref{ssec:prog-jogo}, respetivamente.
+
 
 \subsection{Mecânicas de Interação e Locomoção}
 \label{ssec:interacao-objetos}
@@ -711,6 +747,23 @@ personalizados.
 % script dos botoes
 % script da alavanca
 % elevador
+
+\subsubsection{Poses Dinâmicas}\label{sssec:poses}
+Ao interagir com objetos, o jogador deve sentir que a sua mão virtual se comporta de forma natural e 
+consistente com a ação que está a executar. Para tal, foram definidas diferentes poses de mãos (\textit{hand poses}) 
+para cada tipo de interação, como agarrar, empurrar ou rodar objetos. Algumas das poses foram definidas à mão, enquanto outras
+foram definidas via \textit{Inverse Kinematics} (\texttt{IK}) \ldots
+
+Para as poses implemetadas à mão, foram introduzidas cópias dos modelos das mãos (esquerda e direita) com a pose desejada, que foram posicionadas no 
+espaço de forma a coincidir com a posição do objeto interativo. Ao interagir com o objeto, o modelo da mão do jogador é substituído pelo modelo da pose correspondente, 
+criando a ilusão de que a mão do jogador se molda ao objeto. Um exemplo desta abordagem é a pose para rodar o botão rotativo do gerador, ilustrada na Figura~\ref{fig:hand_pose_knob}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.15]{Imagens/isel_logo.png}
+    \caption{Pose para rodar o botão rotativo do gerador.}
+    \label{fig:hand_pose_knob}
+\end{figure}
 
 \subsubsection{Botões}\label{sssec:botoes}
 Cada botão interativo contém um \textit{script} dedicado (\texttt{ButtonPress.cs}) que define o seu 
@@ -951,8 +1004,9 @@ todos os participantes durante os testes, para além dos comentários dos jogado
 
 \chapter{Utilização de Inteligência Artificial}
 \label{ch:utilizacao-ia}
-
-
+Este capítulo detalha o uso de Inteligência Artificial (\texttt{IA}) utilizada
+ao longo do desenvolvimento do projeto. A \texttt{IA} foi utilizada maioritariamente para correção de escrita,
+ e esclarecimente de dúvidas sobre a organização do relatório, \ldots
 \cleardoublepage
 \chapter{Conclusões e Trabalho Futuro}
 \label{ch:conclusoes-trabalho-futuro}
