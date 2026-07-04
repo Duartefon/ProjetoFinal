@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,9 +7,25 @@ public class MenuManager : MonoBehaviour
 {
     public String mainLevel = "MainLevel";
     private Material lastButtonSelected = null;
+    private Animator _cameraAnimator;
+
+    private void Start()
+    {
+        _cameraAnimator = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
+    }
+
     public void OnPlayButtonPressed()
     {
-        SceneManager.LoadScene(mainLevel);
+        StartCoroutine(goToMenu());
+    }
+
+    IEnumerator goToMenu()
+    {
+       _cameraAnimator.SetTrigger("playGlitch");
+       yield return new WaitForSeconds(1.5f);
+       
+         SceneManager.LoadScene(mainLevel);
+        
     }
 
     public void OnLoadButtonPressed()
