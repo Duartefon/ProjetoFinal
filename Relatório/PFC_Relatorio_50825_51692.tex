@@ -36,7 +36,7 @@
 \pagestyle{plain}
 \fazerCapa
 
-\cleardoublepage
+%\cleardoublepage
 \chapter{Resumo}
 
 Este trabalho apresenta o desenvolvimento de um jogo em realidade virtual focado 
@@ -67,7 +67,7 @@ Os resultados mostram \dots
 \par
 Conclui-se que a abordagem adotada é \dots
 
-\cleardoublepage
+%\cleardoublepage
 \chapter{Abstract}
 
 This work presents the development of a virtual reality game focused on 
@@ -94,31 +94,31 @@ The results show \dots
 
 It is concluded that the adopted approach is \dots
 
-\cleardoublepage
+%\cleardoublepage
 \chapter{Agradecimentos}
 Escrever aqui eventuais agradecimentos \ldots
 
-\cleardoublepage
+%\cleardoublepage
 \begin{myDedication}
     Texto dedicatório \ldots
 \end{myDedication}
 
-\cleardoublepage
+%\cleardoublepage
 \myTableOfContents
 
-\cleardoublepage
+%\cleardoublepage
 \myListOfFigures
 
-\cleardoublepage
+%\cleardoublepage
 \myListOfTables
 
-%\cleardoublepage
+%%\cleardoublepage
 %\myListOfListings
 
 \mainmatter
 \myPageStyle
 
-\cleardoublepage
+%\cleardoublepage
 \chapter{Introdução}
 \label{ch:introducao}
 Neste projeto, foi desenvolvido e testado um jogo em realidade virtual, 
@@ -158,7 +158,7 @@ de prototipagem, implementação e teste, para  validar as decisões tomadas e
 ajustar o sistema com base nos resultados obtidos.
 \par
 A validação do sistema incluiu testes funcionais e avaliações da experiência do 
-utilizador a partir do padrão \texttt{GUESS-18}~\cite{guess18}, com foco na usabilidade, imersão e intuitividade da interação.
+utilizador baseados no padrão \texttt{GUESS-18}~\cite{guess18}, com foco na usabilidade, imersão e intuitividade da interação.
 Os resultados obtidos indicam que a abordagem adotada contribui positivamente 
 para a experiência global, embora também revelem limitações que abrem caminho 
 para trabalho futuro.
@@ -168,7 +168,7 @@ Globalmente, os objetivos propostos foram \dots
 O presente relatório encontra-se organizado da seguinte forma: \dots
 
 
-\cleardoublepage 
+%\cleardoublepage 
 \chapter{Trabalhos Relacionados} 
 \label{ch:trab-relacionados}
 
@@ -294,7 +294,7 @@ solução proposta: privilegiar interações baseadas em movimentos físicos,
 integrar os desafios no contexto do ambiente virtual, e orientar o
 utilizador através do próprio espaço, sem comprometer a imersão.
 
-\cleardoublepage
+%\cleardoublepage
 \chapter{Modelo Proposto}\label{ch:modelo-proposto}
 
 Neste capítulo é apresentado o modelo proposto, estruturado em cinco secções
@@ -314,7 +314,7 @@ implementação do modelo proposto.
 Nesta secção são apresentados os requisitos funcionais
 e não funcionais do modelo proposto. Nas seguintes tabelas
 \ref{tab:regras_jogo}, \ref{tab:controlo_jogador} e \ref{tab:persistencia}, 
-encontram-se as funções de regras do jogo, o controlo do jogador e 
+encontram-se as funções principais do sistema, nomadamente as funções de regras do jogo, o controlo do jogador e 
 as funções de persistência, respetivamente.
 \begin{table}[H]
     \centering
@@ -359,6 +359,23 @@ as funções de persistência, respetivamente.
     \caption{Tabela de funções de persistência.}
     \label{tab:persistencia}
 \end{table}
+
+Quanto aos requisitos não funcionais, focou-se principalemente no tempo de resposta do sistema e 
+da taxa de \textit{frames} por segundo (\textit{FPS}) do jogo, de forma a garantir uma experiência de 
+jogo fluída e imersiva, e mitigar efeitos secundários adversos provocados por \texttt{VR} mal otimizado.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{9cm}|l|}
+        \hline
+        \multicolumn{3}{|c|}{\textbf{Requisitos Não Funcionais}} \\ \hline
+        \textbf{Ref.} & \textbf{Função} & \textbf{Categoria} \\ \hline
+    \end{tabular}
+    \caption{Tabela de requisitos não funcionais.}
+    \label{tab:nfuncionais}
+\end{table}
+
+\ldots
 
 \section{Casos de Utilização}\label{sec:casos-util}
 
@@ -578,7 +595,7 @@ Esta abordagem permitiu-nos avaliar as decisões tomadas e ajustar o sistema ao
 longo do desenvolvimento, podendo sempre voltar atrás para corrigir erros ou 
 funcionalidades mal implementadas.
 
-\cleardoublepage
+%\cleardoublepage
 \chapter{Implementação do Modelo}
 \label{ch:implementacao-modelo}
 
@@ -992,7 +1009,7 @@ vezes com um \textit{fade}, e desaparece automaticamente.
 Esta animação é gerida por uma \textit{coroutine}, o mecanismo do Unity
 para executar operações assíncronas de forma não bloqueante.
 
-\cleardoublepage
+%\cleardoublepage
 \chapter{Validação e Testes}
 \label{ch:validacao-testes}
 Ao longo da implementação, foram definidas duas fases de testes onde 5 a 10 pessoas jogaram
@@ -1007,12 +1024,12 @@ todos os participantes durante os testes, para além dos comentários dos jogado
 Este capítulo detalha o uso de Inteligência Artificial (\texttt{IA}) utilizada
 ao longo do desenvolvimento do projeto. A \texttt{IA} foi utilizada maioritariamente para correção de escrita,
  e esclarecimente de dúvidas sobre a organização do relatório, \ldots
-\cleardoublepage
+%\cleardoublepage
 \chapter{Conclusões e Trabalho Futuro}
 \label{ch:conclusoes-trabalho-futuro}
 
 
-\cleardoublepage
+%\cleardoublepage
 \begin{thebibliography}{9}
 
 \bibitem[Unity, site]{unity}
