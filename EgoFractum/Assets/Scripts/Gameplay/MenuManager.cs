@@ -18,11 +18,12 @@ public class MenuManager : MonoBehaviour
     {
         StartCoroutine(goToMenu());
     }
-
+//TODO: clean up this , distinguish between first play and load
     IEnumerator goToMenu()
     {
        _cameraAnimator.SetTrigger("playGlitch");
-       yield return new WaitForSeconds(1.5f);
+       yield return new WaitForSeconds(2.1f);
+       
        
          SceneManager.LoadScene(mainLevel);
         

@@ -43,7 +43,7 @@ public class IntroSequenceManager : MonoBehaviour
         LockMovement(true);
        leftHandModel.SetActive(false);
        rightHandModel.SetActive(false);
-    
+       yield return new WaitForSeconds(1.5f);
         yield return StartCoroutine(FadeText(quoteText, 1f));
         yield return new WaitForSeconds(quoteStayTime);
         yield return StartCoroutine(FadeText(quoteText, -0.01f));
