@@ -29,7 +29,7 @@ namespace Gameplay
             if (didHit && hit.transform.gameObject.CompareTag("Transfer"))
             {
                 if (_coroutine != null) return;
-                _coroutine = StartCoroutine(OnTransfer());
+                _coroutine = StartCoroutine(OnTransfer(TransferState.PlayerToPuzzle));
             }
 
         }
