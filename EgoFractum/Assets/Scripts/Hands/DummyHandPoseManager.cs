@@ -100,36 +100,52 @@ public class DummyHandPoseManager : MonoBehaviour
     
         
         Transform transformInteractor = interactor?.transform;
-        RaycastHit hit = new RaycastHit();
-        foreach (var raycastOrigin in rightHandRaycastOriginList)
-        {
-            didHit =   Physics.Raycast(raycastOrigin.position, -Vector3.up , out hit, rayLenght, grabbableMask );
-            Debug.DrawRay(raycastOrigin.position, -Vector3.up* rayLenght, didHit ? Color.green:Color.red, 2f); // stays visible 2 seconds
-            if (didHit) break;
-        }
-
-        Debug.Log("Did I hit?" + didHit);
-        
-        if ( !transformInteractor || !didHit ) return;
-        Debug.Log("[SHOW HAND] Interactor: " + interactor + " Hit: " + hit.transform.gameObject.name);
-        
         bool isRight = transformInteractor.CompareTag("RightHand");
         bool isLeft = transformInteractor.CompareTag("LeftHand");
         
-        Debug.Log("Is Right? " + isRight + " | " + "Is Left? " +  isLeft + " | Did I hit? "  + (!isRight && !isLeft) );
+        if (!transformInteractor || !isRight && !isLeft) return;
         
-        if(!isRight && !isLeft) return;
+
+    
+
+
+     
+        
+      
+        
+      
+        
+        
+        
         Debug.Log("CHEGUEI");
         if (isRight)
-        {
+        {    
+            RaycastHit hit = new RaycastHit();
+            foreach (var raycastOrigin in rightHandRaycastOriginList)
+            {
+                didHit =   Physics.Raycast(raycastOrigin.position, -Vector3.up , out hit, rayLenght, grabbableMask );
+                Debug.DrawRay(raycastOrigin.position, -Vector3.up* rayLenght, didHit ? Color.green:Color.red, 2f); // stays visible 2 seconds
+                if (didHit) break;
+            }
+            
+            if( !didHit ) return;
+            
             rightDummyHand.SetActive(showDummy);
             rightDummyHand.transform.position = new Vector3( hit.point.x,  rightDummyHand.transform.position.y,  rightDummyHand.transform.position.z);
             rightPlayerHand.SetActive(!showDummy);
-        } else if (isLeft)
+        } 
+        if(isLeft) 
         {
+            RaycastHit hit = new RaycastHit();
+            foreach (var raycastOrigin in leftHandRaycastOriginList)
+            {
+                didHit =   Physics.Raycast(raycastOrigin.position, -Vector3.up , out hit, rayLenght, grabbableMask );
+                Debug.DrawRay(raycastOrigin.position, -Vector3.up* rayLenght, didHit ? Color.green:Color.red, 2f); // stays visible 2 seconds
+                if (didHit) break;
+            }
+            
             leftDummyHand.SetActive(showDummy); 
             leftDummyHand.transform.position = hit.point;
-            
             leftPlayerHand.SetActive(!showDummy);
         }
      
