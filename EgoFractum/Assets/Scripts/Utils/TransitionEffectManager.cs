@@ -8,6 +8,7 @@ public class TransitionEffectManager : MonoBehaviour
 
     [SerializeField] private float _effectTime = 2.1f;
 
+    
     public float effectTime => _effectTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -15,5 +16,10 @@ public class TransitionEffectManager : MonoBehaviour
     public void PlayEffect()
     {
         _effectAnimator.SetTrigger(_effectTrigger);
+    }
+    
+    public void PlayEffect(string effectName)
+    {
+        _effectAnimator.SetTrigger(effectName);
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using ScriptableObjects;
 using UnityEngine;
 
 public class TransferBeam : MonoBehaviour
@@ -11,9 +12,9 @@ public class TransferBeam : MonoBehaviour
     [SerializeField]  private GameObject miniPlayer;
     [SerializeField] private GameObject player;
 
-    [SerializeField]
-    Animator _animator;
-    
+    [SerializeField] TransitionEffectManager _effectManager;
+    [SerializeField] private PlayerTransferData playerData;
+    [SerializeField] private PlayerTransferData miniPlayerData;
 
     private Coroutine _coroutine;
     private void Update()
@@ -22,16 +23,24 @@ public class TransferBeam : MonoBehaviour
         Debug.DrawRay(_raycastOrigin.position, _raycastOrigin.forward * _rayLength);
         if (didHit && hit.transform.gameObject.CompareTag("Transfer"))
         {
-            /*if (_coroutine) return;
-            _coroutine = StartCoroutine(player)*/
+            if (_coroutine != null) return;
+                _coroutine = StartCoroutine(OnTransfer());
         }
 
     }
 
     IEnumerator OnTransfer()
     {
-       // _animator.Play();
-        yield return null;
+        _effectManager.PlayEffect("playTransition");
+        
+        yield return new WaitForSeconds(_effectManager.effectTime*2);
+        player.transform.position = miniPlayerData.position;
+        player.transform.eulerAngles = miniPlayerData.rotation;
+        player.transform.localScale = miniPlayerData.scale;
+
+        player.GetComponent<CharacterController>().stepOffset = miniPlayerData.stepOffset;
+
+
     }
     
     
