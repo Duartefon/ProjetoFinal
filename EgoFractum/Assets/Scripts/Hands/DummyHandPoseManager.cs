@@ -15,6 +15,19 @@ public class DummyHandPoseManager : MonoBehaviour
     [Header("Player Hands (Visual)")]
     [SerializeField] private GameObject rightPlayerHand;
     [SerializeField] private GameObject leftPlayerHand;
+    public bool isAnimatePosition = false;
+    //debug
+    public float radius = 0.5f;
+    public float offset = 0.5f;
+    public float rayLenght = 0.1f;
+
+    public Transform[] rightHandRaycastOriginList;
+    public Transform[] leftHandRaycastOriginList;
+    
+
+    
+    public GameObject debugSphere;
+    [SerializeField] private LayerMask grabbableMask;
 
     private void OnEnable()
     {
@@ -26,16 +39,28 @@ public class DummyHandPoseManager : MonoBehaviour
     private void OnDisable()
     {
         var xrGrab = gameObject.GetComponent<XRGrabInteractable>();
+        
         xrGrab.selectEntered.RemoveListener(OnGrab);
         xrGrab.selectExited.RemoveListener(OnUngrab);
     }
 
     private void OnGrab(SelectEnterEventArgs arg0)
     {
+        
         //dummyHand.SetActive(true);
-        ShowHand(arg0.interactorObject, true);
+        if (isAnimatePosition)
+        {
+            ShowHandPosition(arg0.interactorObject, arg0.interactableObject, true);
+        }
+        else
+        {
+         ShowHand(arg0.interactorObject, true);
+            
+        }
+        
 
         Debug.Log("Grabbed by: " + arg0.interactorObject);
+        
     }
 
     private void OnUngrab(SelectExitEventArgs arg0)
@@ -66,4 +91,51 @@ public class DummyHandPoseManager : MonoBehaviour
             leftPlayerHand.SetActive(!showDummy);
         }
     }
+ 
+    private void ShowHandPosition(IXRSelectInteractor interactor,IXRSelectInteractable interactable, bool showDummy)
+    {
+        
+        
+        var didHit = false;
+    
+        
+        Transform transformInteractor = interactor?.transform;
+        RaycastHit hit = new RaycastHit();
+        foreach (var raycastOrigin in rightHandRaycastOriginList)
+        {
+            didHit =   Physics.Raycast(raycastOrigin.position, -Vector3.up , out hit, rayLenght, grabbableMask );
+            Debug.DrawRay(raycastOrigin.position, -Vector3.up* rayLenght, didHit ? Color.green:Color.red, 2f); // stays visible 2 seconds
+            if (didHit) break;
+        }
+
+        Debug.Log("Did I hit?" + didHit);
+        
+        if ( !transformInteractor || !didHit ) return;
+        Debug.Log("[SHOW HAND] Interactor: " + interactor + " Hit: " + hit.transform.gameObject.name);
+        
+        bool isRight = transformInteractor.CompareTag("RightHand");
+        bool isLeft = transformInteractor.CompareTag("LeftHand");
+        
+        Debug.Log("Is Right? " + isRight + " | " + "Is Left? " +  isLeft + " | Did I hit? "  + (!isRight && !isLeft) );
+        
+        if(!isRight && !isLeft) return;
+        Debug.Log("CHEGUEI");
+        if (isRight)
+        {
+            rightDummyHand.SetActive(showDummy);
+            rightDummyHand.transform.position = new Vector3( hit.point.x,  rightDummyHand.transform.position.y,  rightDummyHand.transform.position.z);
+            rightPlayerHand.SetActive(!showDummy);
+        } else if (isLeft)
+        {
+            leftDummyHand.SetActive(showDummy); 
+            leftDummyHand.transform.position = hit.point;
+            
+            leftPlayerHand.SetActive(!showDummy);
+        }
+     
+    }
+
+
+
+
 }
