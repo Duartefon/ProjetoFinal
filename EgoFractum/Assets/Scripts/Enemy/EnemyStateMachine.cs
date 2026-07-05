@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyStateMachine : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class EnemyStateMachine : MonoBehaviour
     private bool puzzleStarted = false;
     private bool waitFinished = false;
     [SerializeField] private float waitTimeIdle = 3.5f;
+    [SerializeField] private float enemyWalkSpeed = 0.05f;
+    [SerializeField] private float enemyRunSpeed = 0.15f;
+    
     public enum EnemyStates
     {
         Idle,
@@ -18,13 +22,19 @@ public class EnemyStateMachine : MonoBehaviour
         Run
     }
 
+    [SerializeField] private Animator _animator;
     
-    
-   
-    
-    
-    
-    
+    [SerializeField] private NavMeshAgent _agent;
+
+    [SerializeField] private Transform _player;
+
+
+    private void Start()
+    {
+        _agent.speed = enemyWalkSpeed;
+    }
+
+
     private void Update()
     {
         Debug.Log("Im in the: " + _currentState);
@@ -57,10 +67,11 @@ public class EnemyStateMachine : MonoBehaviour
     
     public void UpdateWanderState()
     {
-        
+        UpdateAgent(_agent, enemyWalkSpeed, _player.position);
     }
     public void UpdateRunState()
     {
+        UpdateAgent(_agent, enemyRunSpeed, _player.position);
         
     }
     /** Events
@@ -82,6 +93,12 @@ public class EnemyStateMachine : MonoBehaviour
         yield return new WaitForSeconds(timeToWait);
         waitFinished = true;
     }
-    
+
+
+    private void UpdateAgent(NavMeshAgent agent ,float moveSpeed, Vector3 goalPosition)
+    {
+        agent.speed = moveSpeed;
+        agent.destination = goalPosition;
+    }
     
 }
