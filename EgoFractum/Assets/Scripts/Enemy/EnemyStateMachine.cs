@@ -38,7 +38,6 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Im in the: " + _currentState);
 
         switch (_currentState)
         {
