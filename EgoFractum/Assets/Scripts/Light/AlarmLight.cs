@@ -1,40 +1,23 @@
- 
 using UnityEngine;
 
 public class AlarmLight : MonoBehaviour
 {
-    public bool isActive = false;
-
-    public float rotationAmount = 3f;
-    bool hasMusicStarted = false;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-       
-        
-    }
+    private bool _isActive = false;
+    [SerializeField] float rotationAmount = 3f;
 
     public void Play()
     {
-      
-        isActive = true; 
-        GetComponent<AudioSource>().Play();
-        
+        _isActive = true;
+        //GetComponent<AudioSource>().Play();
     }
-    public void rotateLight()
-    {   
-        if (!isActive) return;
- 
 
+    private void RotateLight()
+    {
+        if (!_isActive) return;
         transform.Rotate(0, 0, rotationAmount * Time.deltaTime, Space.World);
-
     }
-    
-    // Update is called once per frame
     void Update()
     {
-        rotateLight();
-        
+        RotateLight();
     }
 }
