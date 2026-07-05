@@ -5,28 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public String mainLevel = "MainLevel";
+    [SerializeField] private TransitionEffectManager _transitionEffectManager;
+    private static readonly int IsSelected = Shader.PropertyToID("_isSelected");
     private Material lastButtonSelected = null;
-    private Animator _cameraAnimator;
-
-    private void Start()
-    {
-        _cameraAnimator = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
-    }
+   
+    public String mainLevel = "MainLevel";
 
     public void OnPlayButtonPressed()
     {
         StartCoroutine(goToMenu());
     }
-//TODO: clean up this , distinguish between first play and load
+    
+    //TODO: clean up this , distinguish between first play and load
     IEnumerator goToMenu()
     {
-       _cameraAnimator.SetTrigger("playGlitch");
-       yield return new WaitForSeconds(2.1f);
-       
-       
-         SceneManager.LoadScene(mainLevel);
-        
+        _transitionEffectManager.PlayEffect();
+        yield return new WaitForSeconds(_transitionEffectManager.effectTime);
+        SceneManager.LoadScene(mainLevel);
     }
 
     public void OnLoadButtonPressed()
@@ -49,11 +44,10 @@ public class MenuManager : MonoBehaviour
     public void OnButtonSelected(Material buttonMaterial)
     {
         if(lastButtonSelected)
-            lastButtonSelected.SetFloat("_isSelected", 0);
-        buttonMaterial.SetFloat("_isSelected", 1);
-        
-        
+            lastButtonSelected.SetFloat(IsSelected, 0);
+        buttonMaterial.SetFloat(IsSelected, 1);
     }
+    
     public void OnQuit()
     {
         Application.Quit();
