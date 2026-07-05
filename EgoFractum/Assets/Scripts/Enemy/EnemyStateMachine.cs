@@ -27,7 +27,8 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] private NavMeshAgent _agent;
 
     [SerializeField] private Transform _player;
-
+    [SerializeField] private Transform _rayOrigin;
+    [SerializeField] private float    _rayLength;
 
     private void Start()
     {
@@ -60,7 +61,7 @@ public class EnemyStateMachine : MonoBehaviour
         if (!puzzleStarted) return;
         if (waitFinished)
             _currentState = EnemyStates.Wander;
-
+        UpdateAnimator("isIdle");
 
 
     }
@@ -68,10 +69,21 @@ public class EnemyStateMachine : MonoBehaviour
     public void UpdateWanderState()
     {
         UpdateAgent(_agent, enemyWalkSpeed, _player.position);
+        UpdateAnimator("isWalking");
+        
+        Physics.Raycast(_rayOrigin.position, transform.forward * _rayLength, out RaycastHit hit);
+        
+        Debug.DrawRay(_rayOrigin.position, transform.forward * _rayLength, Color.cornflowerBlue);
+        if (hit.transform.gameObject.CompareTag("Player"))
+            _currentState = EnemyStates.Run;
+
     }
     public void UpdateRunState()
     {
         UpdateAgent(_agent, enemyRunSpeed, _player.position);
+        
+        UpdateAnimator("isRunning");
+        
         
     }
     /** Events
@@ -100,5 +112,10 @@ public class EnemyStateMachine : MonoBehaviour
         agent.speed = moveSpeed;
         agent.destination = goalPosition;
     }
-    
+    private void UpdateAnimator(string triggerName)
+    {
+        _animator.GetCurrentAnimatorStateInfo(-1);
+        _animator.SetTrigger(triggerName);
+    }
+
 }
