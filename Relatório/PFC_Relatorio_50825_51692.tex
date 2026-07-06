@@ -51,8 +51,8 @@ puzzles. O jogador interage diretamente com objetos do ambiente para progredir.
 A narrativa é revelada de forma gradual, de maneira a incentivar a descoberta e 
 o envolvimento do jogador.
 \par
-O sistema foi desenvolvido com o motor de jogo Unity~\cite{unity} com recurso ao 
-\textit{toolkit} de interação XR~\cite{xri}. 
+O sistema foi desenvolvido com o motor de jogo \texttt{Unity}~\cite{unity} com recurso ao 
+\texttt{XR Interaction Toolkit}~\cite{xr}. 
 Foi adotada uma abordagem iterativa, com prototipagem, implementação e 
 testes sucessivos. Todos os elementos gráficos foram criados de raiz.
 \par
@@ -80,7 +80,7 @@ education, despite its potential and growing relevance in the multimedia field.
 The proposed solution consists of an exploration-based game centered on puzzle 
 solving. The player interacts directly with objects in the environment to progress. The narrative is revealed gradually, encouraging discovery and user engagement.
 \par
-The system was developed using the Unity~\cite{unity} game engine and the XR Interaction Toolkit~\cite{xr}. 
+The system was developed using the \texttt{Unity}~\cite{unity} game engine and the \texttt{XR Interaction Toolkit}~\cite{xr}. 
 An iterative approach was adopted, including prototyping, implementation, and 
 successive testing phases. All graphical assets were created from scratch.
 \par
@@ -163,9 +163,19 @@ Os resultados obtidos indicam que a abordagem adotada contribui positivamente
 para a experiência global, embora também revelem limitações que abrem caminho 
 para trabalho futuro.
 \par
-Globalmente, os objetivos propostos foram \dots
+Globalmente, os objetivos propostos foram a implementação de um protótipo funcional de jogo em realidade virtual, a exploração de soluções 
+de interação tridimensional baseadas em movimentos reais, e a avaliação da experiência do utilizador, descritos ao longo do presente relatório.
 \par
-O presente relatório encontra-se organizado da seguinte forma: \dots
+O relatório encontra-se organizado em 7 capítulos:
+\begin{itemize}
+    \item O Capítulo~\ref{ch:introducao} apresenta a introdução, objetivos e a motivação para o trabalho.
+    \item O Capítulo~\ref{ch:trab-relacionados} apresenta uma análise de trabalhos relacionados, destacando abordagens à imersão, \textit{level design} e integração de mecânicas interativas em ambientes de realidade virtual.
+    \item O Capítulo~\ref{ch:modelo-proposto} descreve e analisa o modelo proposto, apresentando os requisitos e fundamentos do trabalho.
+    \item O Capítulo~\ref{ch:implementacao-modelo} descreve a implementação do modelo proposto.
+    \item O Capítulo~\ref{ch:validacao-testes} analisa e apresenta os resultados da validação e dos testes.
+    \item O Capítulo~\ref{ch:utilizacao-ia} refere o uso de inteligência artificial durante o trabalho.
+    \item O Capítulo~\ref{ch:conclusoes} apresenta as conclusões e o trabalho futuro.
+\end{itemize}
 
 
 %\cleardoublepage 
@@ -307,10 +317,26 @@ o trabalho desenvolvido. Na secção~\ref{sec:concecao-jogo},
 é descrita a metodologia adotada para o desenvolvimento e
 implementação do modelo proposto.
 
-\section{Requisitos}\label{sec:requisitos}
+\section{Análise de Requisitos}\label{sec:requisitos}
+Nesta secção é apresentada a análise de requisitos do modelo proposto, 
+incluindo a caracterização geral, as funções do sistema e os atributos do sistema.
+\subsection{Caracterização Geral}\label{ssec:caracterizacao-geral
+}
+Síntese de objectivos: O jogo consiste na exploração de um laboratório abandonado, 
+onde o jogador deve resolver puzzles para progredir e descobrir a narrativa do jogo.
+
+Clientes: Adolescentes e jovens adultos
+Metas a alcançar:
+\begin{itemize}
+    \item Construção de um ambiente virtual imsersivo
+    \item Implementação de um personagem em realidade virtual controlado pelo jogador
+    \item Criação de três puzzles interativos que desafiem o jogador a explorar o ambiente
+    \item Desenho de interface gráfica diegética, integrada no ambiente do jogo
+\end{itemize}
 % Requisitos Funcionais / Não Funcionais
 % Casos de Utilização
 % Resultado da fase de avaliação de requisitos
+\subsection{Funções do Sistema}\label{ssec:funcoes}
 Nesta secção são apresentados os requisitos funcionais
 e não funcionais do modelo proposto. Nas seguintes tabelas
 \ref{tab:regras_jogo}, \ref{tab:controlo_jogador} e \ref{tab:persistencia}, 
@@ -360,27 +386,90 @@ as funções de persistência, respetivamente.
     \label{tab:persistencia}
 \end{table}
 
-Quanto aos requisitos não funcionais, focou-se principalemente no tempo de resposta do sistema e 
-da taxa de \textit{frames} por segundo (\textit{FPS}) do jogo, de forma a garantir uma experiência de 
+\subsection{Atributos do Sistema}\label{ssec:atributos}
+Quanto aos atributos do sistema, focou-se principalemente no tempo de resposta do sistema e 
+da taxa de \textit{frames} por segundo (\texttt{FPS}) do jogo, de forma a garantir uma experiência de 
 jogo fluída e imersiva, e mitigar efeitos secundários adversos provocados por \texttt{VR} mal otimizado.
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|l|p{9cm}|l|}
+    \begin{tabular}{|p{3.2cm}|p{8.5cm}|p{2.5cm}|}
         \hline
-        \multicolumn{3}{|c|}{\textbf{Requisitos Não Funcionais}} \\ \hline
-        \textbf{Ref.} & \textbf{Função} & \textbf{Categoria} \\ \hline
+        \textbf{Atributo} & \textbf{Detalhe/Restrição} & \textbf{Categoria} \\ \hline
+        Plataformas & Compatível com o sistema operativo Windows. & Obrigatório \\ \hline
+        Desempenho & Taxa de frames mínima de 90 \texttt{FPS}. & Obrigatório \\ \hline
+        Desempenho & Tempo de resposta inferior a 20 ms. & Obrigatório \\ \hline
+        Estética & Os objetos e cenários devem ser visualmente coerentes com o tema do jogo. & Obrigatório \\ \hline
+        Estética & Os menus do jogo devem ser visualmente coerentes com o tema do jogo. & Desejável \\ \hline
+        Facilidade de Utilização & O jogo deve ser intuitivo e fácil de utilizar, mesmo para jogadores sem experiência prévia em \texttt{VR}. & Desejável \\ \hline
     \end{tabular}
-    \caption{Tabela de requisitos não funcionais.}
-    \label{tab:nfuncionais}
+    \caption{Atributos e restrições do sistema.}
+    \label{tab:atributos}
 \end{table}
 
 \ldots
 
-\section{Casos de Utilização}\label{sec:casos-util}
+\subsection{Casos de Utilização}\label{sec:casos-util}
+Nesta secção serão exemplificados alguns casos de utilização resumidos e apenas expandir um, por uma
+questão de brevidade. Alguns exemplos de casos de utilização encontram-se apresentados
+na Figura~\ref{fig:casos_utilizacao}.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.15]{Imagens/isel_logo.png}
+    \caption{Exemplos de casos de utilização.}
+    \label{fig:casos_utilizacao}
+\end{figure}
 % fazer o mesmo que na apresentação de FEIM (?)
 % escolher um caso e expandir para um cenário.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{9cm}|l|}
+        \hline
+        \multicolumn{3}{|c|}{\textbf{Cabeçalho}} \\ \hline
+        Nome & Completar o primeiro puzzle. \\ \hline
+        Resumo & Iniciar o jogo, navegar pelo ambiente e completar a sequência de
+        restabelecimento da energia. \\ \hline
+        Referências & R.1.*, R.2.*, R.3.* \\ \hline
+    \end{tabular}
+    \caption{Tabela de casos de utilização.}
+    \label{tab:casos-util}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{7cm}|p{7cm}|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{Cenário Principal}} \\ \hline
+        Ação do Utilizador & Resposta do Sistema \\ \hline
+        \textbf{1.} O jogador executa o jogo & \\\hline
+        & \textbf{2.} O menu principal é mostrado. \\ \hline
+        \textbf{3.} O jogador inicia o jogo & \\\hline
+        & \textbf{4.} O ambiente do jogo é carregado. \\ \hline
+        & \textbf{5.} A sequência introdutória é reproduzida. \\ \hline
+        \textbf{6.} O jogador navega pelo ambiente & \\\hline
+        \textbf{7.} O jogador dirige-se ao compartimnento do elevador & \\\hline
+        \textbf{8.} O jogador desce o escadote de manutenção & \\\hline
+        \textbf{9.} O jogador interage com o painel de restabelecimento da energia & \\\hline
+        & \textbf{10.} A energia é restabelecida ao laboratório. \\\hline
+        \textbf{11.} O jogador utiliza o elevador para voltar para o átrio principal. & \\\hline
+
+    \end{tabular}
+    \caption{Cenário principal - ``Completar o primeiro puzzle.''}
+    \label{tab:cenário}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|p{7cm}|p{7cm}|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{Cenário Alternativo}} \\ \hline
+        Número de Sequência & Alternativa \\ \hline
+        \textbf{8.} O jogador cai do escadote de manutenção e morre & O jogador volta ao último \textit{chekpoint}\\\hline
+    \end{tabular}
+    \caption{Cenário alternativo - ``Completar o primeiro puzzle.''}
+    \label{tab:cenário-alternativo}
+\end{table}
 
 \newpage
 \section{Fundamentos}\label{sec:fundamentos}
@@ -440,13 +529,13 @@ imersão, e é precisamente esta resposta que os princípios de interação
 natural procuram maximizar.
 \par
 
-\subsection{O Modelo \texttt{Interactor}-\texttt{Interactable} (Unity XR)}
+\subsection{O Modelo \texttt{Interactor - Interactable (Unity XR)}}
 \label{subsec:interactor_interactable}
 A generalização da interação em ambientes \texttt{XR} exige um modelo 
 conceptual capaz de desacoplar a origem física da ação (a mão, um 
 controlador ou qualquer outro dispositivo de entrada) da lógica de resposta 
 dos objetos manipulados. É neste contexto que se insere o modelo 
-arquitetural \texttt{Interactor}-\texttt{Interactable}, adotado pelo Unity XR \textit{ 
+arquitetural \texttt{Interactor}-\texttt{Interactable}, adotado pelo \texttt{Unity XR 
 Interaction Toolkit} e que representa, ao nível conceptual, uma divisão 
 clara de responsabilidades entre quem inicia uma interação e quem a recebe.
 \par
@@ -624,7 +713,7 @@ e facilita a manutenção e evolução do código. Em vez de depender de verific
 foi estruturado para reagir a eventos específicos, como a interação do jogador com objetos ou a conclusão de puzzles.
 
 O diagrama apresentado na Figura~\ref{fig:modelo_arquitetura} ilustra a arquitetura simplificada do jogo, 
-destacando os principais componentes e as suas interações.
+que destaca os principais componentes e as suas interações.
 
 \begin{figure}[H]
     \centering
@@ -645,7 +734,7 @@ frequentemente associados à Realidade Virtual.
 \par
 Para a construção deste cenário temporário, recorreu-se à técnica de
 \newline\textit{greyboxing}~\cite{greyboxing}, implementada através do pacote
-\newline\texttt{ProBuilder}~\cite{probuilder} do Unity. Esta técnica consiste na criação
+\newline\texttt{ProBuilder}~\cite{probuilder} do \texttt{Unity}. Esta técnica consiste na criação
 do nível utilizando apenas formas geométricas simples, sem aplicação de texturas
 ou elementos visuais finais, de forma a permitir avaliar a disposição espacial e a
 interação do utilizador com o ambiente de forma mais clara.
@@ -706,7 +795,7 @@ em \textit{pixel art} e animação \texttt{2D}. A utilização desta ferramenta 
 a criação de texturas de baixa resolução, coerentes com a direção artística 
 retro-futurista definida para o projeto.
 \par
-Estabeleceu-se uma paleta de cores restrita, predominantemente composta 
+Estabeleceu-se uma paleta de cores limitada, predominantemente composta 
 por tons escuros, na qual a cor vermelha atua como o principal elemento 
 de destaque visual (\textit{visual cue}). Esta escolha cromática tem a 
 função deliberada de sinalizar objetos interativos, delimitar zonas de 
@@ -756,7 +845,7 @@ nas subsecções~\ref{ssec:gestao-narrativa} e~\ref{ssec:prog-jogo}, respetivame
 \label{ssec:interacao-objetos}
 Muitos dos objetos decorativos do jogo podem ser manipulados fisicamente com 
 as mãos do jogador (ex: agarrar, atirar). Para este efeito, utilizaram-se as funcionalidades 
-base do \textit{XR Interaction Toolkit}, que suportam este tipo de interação direta. 
+base do \texttt{XR Interaction Toolkit}, que suportam este tipo de interação direta. 
 Para componentes com comportamentos mecânicos específicos, foi necessário desenvolver \textit{scripts} 
 personalizados.
 
@@ -768,10 +857,12 @@ personalizados.
 \subsubsection{Poses Dinâmicas}\label{sssec:poses}
 Ao interagir com objetos, o jogador deve sentir que a sua mão virtual se comporta de forma natural e 
 consistente com a ação que está a executar. Para tal, foram definidas diferentes poses de mãos (\textit{hand poses}) 
-para cada tipo de interação, como agarrar, empurrar ou rodar objetos. Algumas das poses foram definidas à mão, enquanto outras
-foram definidas via \textit{Inverse Kinematics} (\texttt{IK}) \ldots
-
-Para as poses implemetadas à mão, foram introduzidas cópias dos modelos das mãos (esquerda e direita) com a pose desejada, que foram posicionadas no 
+para cada tipo de interação, como agarrar, empurrar ou rodar objetos. Essas poses foram definidas manualmente, 
+com base em referências visuais e na análise de gestos humanos reais, de forma a garantir que a posição dos dedos e a orientação da mão 
+transmitam a sensação de realismo e coerência com o objeto interativo. Quando um jogador pode interagir com um objeto
+longo, onde as posições das mãos podem variar, foram implementadas poses dinâmicas que se ajustam à posição do momento de interação.
+\par
+Para estas poses, foram introduzidas cópias dos modelos das mãos (esquerda e direita) com a pose desejada, que foram posicionadas no 
 espaço de forma a coincidir com a posição do objeto interativo. Ao interagir com o objeto, o modelo da mão do jogador é substituído pelo modelo da pose correspondente, 
 criando a ilusão de que a mão do jogador se molda ao objeto. Um exemplo desta abordagem é a pose para rodar o botão rotativo do gerador, ilustrada na Figura~\ref{fig:hand_pose_knob}.
 
@@ -788,8 +879,8 @@ comportamento. O objetivo principal deste \textit{script} é despoletar eventos 
 \textit{feedback} visual e sonoro ao utilizador quando o botão é pressionado.
 
 A deteção da interação é feita através dos eventos \texttt{hoverEntered} e 
-\texttt{hoverExited}, disponibilizados pelo \texttt{XRBaseInteractable} do XR Interaction 
-Toolkit. Estes eventos são despoletados sempre que um interator entra ou sai da zona de 
+\texttt{hoverExited}, disponibilizados pelo \texttt{XRBaseInteractable} do \texttt{XR Interaction Toolkit}. Estes eventos são despoletados sempre que um interator entra ou sai da zona de 
+Estes eventos são despoletados sempre que um interator entra ou sai da zona de 
 deteção do botão, respetivamente. O \textit{script} verifica ainda se o interator responsável pela 
 interação é do tipo \texttt{XRPokeInteractor}, garantindo que apenas interações por toque 
 (\textit{poke}) acionam o comportamento do botão, e não outros tipos de interação, como o 
@@ -806,7 +897,7 @@ de uma interpolação linear (\texttt{Lerp}), controlada pela variável \texttt{
 
 O \textit{feedback} sonoro é acionado no instante em que o botão atinge o seu deslocamento 
 máximo, através da reprodução de um \texttt{AudioClip} associado, utilizando um 
-\texttt{AudioSource} configurado no Inspetor do Unity.
+\texttt{AudioSource} configurado no Inspetor do \texttt{Unity}.
 
 Cada botão possui ainda um \texttt{UnityEvent} público (\texttt{buttonAction}), que pode ser 
 configurado no inspetor para acionar diferentes ações consoante o contexto de utilização do 
@@ -821,7 +912,7 @@ gradual de um valor, como no gerador. Este comportamento
 
 A interação é iniciada quando o jogador agarra o objeto através de um 
 \texttt{XRGrabInteractable}, recorrendo aos eventos \texttt{selectEntered} e 
-\texttt{selectExited} do XR Interaction Toolkit. Ao ser agarrado, o script regista o 
+\texttt{selectExited} do \texttt{XR Interaction Toolkit}. Ao ser agarrado, o script regista o 
 interator responsável e passa a monitorizar, em cada frame, a rotação do controlador 
 do jogador em torno do eixo Z, comparando-a com um ângulo de referência inicial.
 
@@ -841,6 +932,11 @@ rotativo é alterado, permitindo que outros sistemas do laboratório reajam a es
 mudanças, como a atualização de um valor apresentado no painel do gerador.
 
 \subsubsection{Alavancas}
+As alavancas são elementos interativos definidos apenas por duas posições discretas: ativada e desativada. A sua implementação baseia-se na 
+utilização de dois \texttt{XRSocketInteractor}, que representam as posições extremas da alavanca. Para detetar a interação, 
+basta ler os eventos \texttt{selectEntered} e \texttt{selectExited} de cada \textit{socket}, 
+de forma a determinar quando a alavanca é movida para uma das posições.
+
 
 \subsubsection{Elevador}
 O elevador é um elemento interativo que permite ao jogador deslocar-se verticalmente 
@@ -883,7 +979,26 @@ que se desloca solidariamente com a plataforma durante o movimento; adicionalmen
 interfira com a translação do elevador. Ao sair da zona do elevador, o processo é 
 revertido: o jogador deixa de ser filho do elevador e o seu \texttt{Rigidbody} volta a 
 ser controlado normalmente pela física do motor de jogo.
-\subsubsection{Escadas e Escalada}
+
+\subsubsection{Portas Automáticas}\label{sssec:portas-automaticas}
+Ao longo do laboratório existem várias portas automáticas que se abrem e fecham em resposta à presença do jogador. 
+A implementação destas portas baseia-se na utilização de \texttt{BoxColliders} definidos como \textit{Trigger}, que 
+detetam a entrada e saída do jogador através da respetiva \textit{tag}. Quando o jogador entra na zona de deteção,
+ a porta inicia uma animação de abertura, reproduzindo também um efeito sonoro correspondente. 
+ Ao sair da zona, a porta fecha-se automaticamente, garantindo que o jogador não consegue atravessar a porta sem que esta esteja aberta.
+
+Estas estão bloqueadas no início do jogo, sendo desbloqueadas a partir do momento em que o jogador conclui o Puzzle 1, 
+restabelecendo a energia do laboratório. O comportamento destas portas é gerido por um \textit{script} dedicado, o 
+\texttt{DoorController}, responsável por controlar a animação, o som e o estado de bloqueio de cada porta. 
+Este componente subscreve os eventos estáticos \texttt{OnEnergyEstablished} e \texttt{OnEnergyLost}, expostos pelo 
+\texttt{GeneratorScript}, permitindo que todas as portas do laboratório reajam de forma sincronizada ao restabelecimento ou p
+erda de energia, sem necessidade de referências diretas entre objetos.
+
+Enquanto a energia não estiver estabelecida, as chamadas a \texttt{OpenDoor} são ignoradas, mantendo a porta bloqueada 
+independentemente da deteção do jogador. Após a conclusão do Puzzle 1 e o consequente restabelecimento da energia, 
+a variável \texttt{\_energyEstablished} é atualizada para \textit{true}, permitindo que a porta responda normalmente 
+aos eventos de entrada e saída do jogador na zona de deteção, através dos métodos \texttt{OpenDoor} e \texttt{CloseDoor}.
+
 
 \subsection{Implementação da Lógica dos Puzzles}
 \label{ssec:logica-puzzles}
@@ -902,7 +1017,7 @@ um \textit{script} dedicado que expõe dois métodos públicos principais:
 
 Para iniciar o gerador, é necessário inserir um fusível no respetivo
 recetáculo. Para facilitar o alinhamento do objeto, foi utilizado o componente
-\texttt{XRSocketInteractor} do \textit{XR Interaction Toolkit}, que posiciona
+\texttt{XRSocketInteractor} do \texttt{XR Interaction Toolkit}, que posiciona
 automaticamente o fusível no local correto através da funcionalidade de
 \textit{snap}. A ligação à lógica do puzzle é feita através dos
 eventos nativos \texttt{selectEntered} e \texttt{selectExited}, que chamam os
@@ -913,7 +1028,7 @@ Depois de validada a presença do fusível, é ativado um ecrã digital que apre
 a tensão do gerador, inicialmente igual a 0\,V. Para alterar este valor, o jogador
 interage com um botão rotativo, que aumenta a tensão incrementalmente, de acordo
 com a mecânica descrita na sub-secção anterior. Cada alteração de tensão é
-propagada através de um \texttt{UnityEvent}, ao qual o \textit{script} do gerador
+propagada através de um evento, ao qual o \textit{script} do gerador
 se encontra subscrito para evitar qualquer dependência direta entre os componentes.
 
 Quando a tensão atinge os 600\,V, o sistema reproduz um som para confirmar que o
@@ -937,10 +1052,26 @@ progresso sem necessidade de manter atenção constante ao ecrã, o que favorece
 interação com os elementos físicos do painel.
 \par
 Depois de concluir esta secção introdutória, as luzes do laboratório são ligadas, 
-as portas automáticas são ativadas (cf.~\ref{sssec:puzzle2}) e o elevador fica disponível para o jogador.
+as portas automáticas são ativadas (cf.~\ref{sssec:portas-automaticas}) e o elevador fica disponível para o jogador.
 
 \subsubsection{Puzzle 2: Formas e Números}
-\label{sssec:puzzle2}
+O segundo puzzle do jogo desafia o jogador a relacionar objetos físicos com informações apresentadas num terminal digital. 
+Cada objeto deve ser comparado com um peso com um número associado, para descobrir o código de saída.
+A implementação deste puzzle baseia-se na interação física entre objetos \texttt{Rigidbody} e na validação de estados através de eventos.
+O objeto central, uma balança, é implementada via Joints para obter o comportamento físico desejado. 
+
+Para o teclado, foi implementado o componente \texttt{Keypad}, responsável por gerir a introdução do código numérico por 
+parte do jogador. Cada tecla pressionada invoca o método \texttt{OnKeyPressed}, que concatena o carácter correspondente a 
+uma \textit{string} interna (\texttt{\_inputKeyCode}) e atualiza o ecrã digital através de um componente \texttt{TMP\_Text}. 
+O jogador pode ainda remover o último caractere introduzido (\texttt{OnClearPressed}) ou submeter o código 
+para validação (\texttt{OnEnterPressed}).
+A validação é realizada em \texttt{VerifyKeyCode}, que compara a \textit{string} introduzida com o valor de \texttt{keyCode}, 
+definido previamente no Inspector do Unity. Caso a comparação seja bem-sucedida, o puzzle é assinalado como concluído através da 
+chamada a \texttt{PuzzleManager.Instance.CompletePuzzle(puzzleKey)}, notificando o gestor central de puzzles do estado atualizado. 
+Em caso de falha, a \textit{string} introduzida é reiniciada, obrigando o jogador a repetir a introdução do código.
+
+Cada botão do teclado possui o componente \texttt{ButtonPress}, descrito anteriormente, que deteta a interação do jogador 
+e invoca o método correspondente no \texttt{Keypad}, seja este um valor numérico ou um \textit{clear}.
 % portas automaticas
 %falar dos scripts da balança dos pesos e do terminal da porta
 \subsection{Gestão da Narrativa}
@@ -1006,7 +1137,7 @@ cada objeto da cena, que é mais trabalhoso e propício a erros de omissão.
 Por fim, para dar \text{feedback} ao utilizador após uma gravação,
 foi implementada uma animação de texto em HUD que surge, pisca três
 vezes com um \textit{fade}, e desaparece automaticamente.
-Esta animação é gerida por uma \textit{coroutine}, o mecanismo do Unity
+Esta animação é gerida por uma \textit{coroutine}, o mecanismo do \texttt{Unity}
 para executar operações assíncronas de forma não bloqueante.
 
 %\cleardoublepage
@@ -1023,10 +1154,12 @@ todos os participantes durante os testes, para além dos comentários dos jogado
 \label{ch:utilizacao-ia}
 Este capítulo detalha o uso de Inteligência Artificial (\texttt{IA}) utilizada
 ao longo do desenvolvimento do projeto. A \texttt{IA} foi utilizada maioritariamente para correção de escrita,
- e esclarecimente de dúvidas sobre a organização do relatório, \ldots
+ e esclarecimente de dúvidas sobre a organização do relatório. Quanto ao jogo, 
+ a \texttt{IA} foi apenas utilizada para esclarecimento de dúvidas sobre a implementação, não tendo sido utilizada 
+ para gerar código ou \textit{assets}.
 %\cleardoublepage
 \chapter{Conclusões e Trabalho Futuro}
-\label{ch:conclusoes-trabalho-futuro}
+\label{ch:conclusoes}
 
 
 %\cleardoublepage
