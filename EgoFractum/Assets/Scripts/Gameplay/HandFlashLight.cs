@@ -21,6 +21,9 @@ public class HandFlashLight : MonoBehaviour
     private float _timeStamp;
     
     [SerializeField] private float lightBlinkingDecreaseStep = 0.2f;
+    [SerializeField] private float baseLightInnerSpot = 23.9f;
+    [SerializeField] private float baseLightOuterSpot = 56.7f;
+
 
     [SerializeField] [Range(0, 1)] private float blinkingTreshold = 0.35f;
 
@@ -68,7 +71,12 @@ public class HandFlashLight : MonoBehaviour
             yield return null;
         } while (_energy > 0);
         
-        
+     
+
+
+
+
+
     }
 
     private IEnumerator BlinkingLight()
@@ -85,6 +93,11 @@ public class HandFlashLight : MonoBehaviour
             else if (light.intensity >= 0)
             {
                 light.intensity = 16/2f * Mathf.Sin(Time.time*2) + 10;
+                light.spotAngle = Mathf.Clamp(baseLightOuterSpot / 2 * Mathf.Sin(Time.time * 1/3) + 10, 25,
+                    baseLightOuterSpot);
+                light.innerSpotAngle =   Mathf.Clamp( baseLightInnerSpot/2 * Mathf.Sin(Time.time*1/3)+10, 5, 
+                    baseLightInnerSpot);
+                
             }
             yield return null;
         }
@@ -105,6 +118,8 @@ public class HandFlashLight : MonoBehaviour
             StopCoroutine(_coroutine);
             _isLightOn = false;
             _chargeCoroutine = StartCoroutine(ChargeLight());
+            StopCoroutine(BlinkingLight());
+            _blinkingCoroutine = null;
         }
     }
 
@@ -116,6 +131,7 @@ public class HandFlashLight : MonoBehaviour
             {
                 _timeStamp = Time.time;
                 _energy = Mathf.Clamp(_energy + rechargeStep, 0, 100);
+                light.intensity =  Mathf.Clamp( light.intensity + rechargeStep, 0, baseLightIntensity);;
                 
             }
 

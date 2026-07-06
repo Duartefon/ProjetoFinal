@@ -15986,6 +15986,9 @@ MonoBehaviour:
   unchargeCooldown: 2
   baseLightIntensity: 50
   baseLightThreshold: 0.35
+  lightBlinkingDecreaseStep: 0.2
+  baseLightInnerSpot: 23.9
+  baseLightOuterSpot: 56.7
   blinkingTreshold: 0.979
   text: {fileID: 1524868427}
   flashlightAction: {fileID: 7224615724586139641, guid: c348712bda248c246b8c49b3db54643f, type: 3}
@@ -30327,13 +30330,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321750423}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.005514913, y: -0.7382306, z: -0.6622568, w: -0.12806684}
+  m_LocalRotation: {x: 0.19680725, y: 0.7316253, z: 0.64944494, w: 0.064905465}
   m_LocalPosition: {x: 0.02700047, y: -0.008999492, z: -0.0640007}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1345906325}
-  m_LocalEulerAnglesHint: {x: -78.296, y: 116.348, z: 52.755}
+  m_LocalEulerAnglesHint: {x: -67.631, y: 112.888, z: 78.023}
 --- !u!114 &1321750425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30383,14 +30386,14 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321750423}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 0.6603774, g: 0.48304367, b: 0.25854397, a: 1}
   m_Intensity: 50
-  m_Range: 7
-  m_SpotAngle: 49.90567
-  m_InnerSpotAngle: 34.674538
+  m_Range: 20.345682
+  m_SpotAngle: 56.742096
+  m_InnerSpotAngle: 23.984667
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
     m_Type: 0
@@ -30973,7 +30976,10 @@ MonoBehaviour:
   unchargeCooldown: 1
   baseLightIntensity: 50
   baseLightThreshold: 0.35
-  blinkingTreshold: 0.979
+  lightBlinkingDecreaseStep: 0.2
+  baseLightInnerSpot: 23.9
+  baseLightOuterSpot: 56.7
+  blinkingTreshold: 0.943
   text: {fileID: 1713335217}
   flashlightAction: {fileID: 7224615724586139641, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!4 &1345906329 stripped
