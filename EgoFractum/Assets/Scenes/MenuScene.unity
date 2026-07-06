@@ -567,38 +567,6 @@ PrefabInstance:
       value: 0.9999765
       objectReference: {fileID: 0}
     - target: {fileID: 8542943827435110246, guid: 012c9165a920ca340b7bef4b75c9bd54, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.0068631666
-      objectReference: {fileID: 0}
-    - target: {fileID: 8542943827435110246, guid: 012c9165a920ca340b7bef4b75c9bd54, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.786
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754317164186315498, guid: 1d5c4801060266a45ba9fe51a14fdcb0, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754317164186315498, guid: 1d5c4801060266a45ba9fe51a14fdcb0, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8542943827435110246, guid: 012c9165a920ca340b7bef4b75c9bd54, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 8542943827435110246, guid: 012c9165a920ca340b7bef4b75c9bd54, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 8542943827435110246, guid: 012c9165a920ca340b7bef4b75c9bd54, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 8542943827435110246, guid: 012c9165a920ca340b7bef4b75c9bd54, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9999765
-      objectReference: {fileID: 0}
-    - target: {fileID: 8542943827435110246, guid: 012c9165a920ca340b7bef4b75c9bd54, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -625,6 +593,14 @@ PrefabInstance:
     - target: {fileID: 9062775764613785052, guid: 012c9165a920ca340b7bef4b75c9bd54, type: 3}
       propertyPath: m_Name
       value: Chamber 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754317164186315498, guid: 1d5c4801060266a45ba9fe51a14fdcb0, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754317164186315498, guid: 1d5c4801060266a45ba9fe51a14fdcb0, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1147,7 +1123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d142e8abc0a880245a199af92c2d55d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuManager
-  _transitionEffectManager: {fileID: 0}
+  _transitionEffectManager: {fileID: 1783912612}
   mainLevel: NewMainLevel2
 --- !u!114 &712531966
 MonoBehaviour:
