@@ -113,8 +113,10 @@ public class EnemyStateMachine : MonoBehaviour
     }
     private void UpdateAnimator(string triggerName)
     {
-        _animator.GetCurrentAnimatorStateInfo(-1);
+        //_animator.GetCurrentAnimatorStateInfo(-1);
         _animator.SetTrigger(triggerName);
     }
+    
+ 
 
 }
