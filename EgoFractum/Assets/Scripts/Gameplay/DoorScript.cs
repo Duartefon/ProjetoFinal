@@ -6,8 +6,8 @@ public class DoorController : MonoBehaviour
 {
     [SerializeField] private GeneratorScript generator;
     [SerializeField] private AudioClip openSound, closeSound;
-    private AudioSource audioSource;
-    private Animator animator;
+    private AudioSource _audioSource;
+    private Animator _animator;
     private bool _isOpen = false;
     private bool _energyEstablished = false;
 
@@ -16,7 +16,7 @@ public class DoorController : MonoBehaviour
         GeneratorScript.OnEnergyEstablished += OnEnergyEstablished;
         GeneratorScript.OnEnergyLost += OnEnergyLost;
     }
-    
+
     private void OnDisable()
     {
         GeneratorScript.OnEnergyEstablished -= OnEnergyEstablished;
@@ -25,21 +25,18 @@ public class DoorController : MonoBehaviour
 
     void Start()
     {
-        animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
 
-        generator = GameObject.FindWithTag("Generator").GetComponent<GeneratorScript>();
-        //generator.onEnergyEstablished.AddListener(OnEnergyEstablished);
-      //  generator.onEnergyLost.AddListener(OnEnergyLost);
+        if (generator == null)
+        {
+            var generatorObj = GameObject.FindWithTag("Generator");
+            if (generatorObj != null)
+                generator = generatorObj.GetComponent<GeneratorScript>();
+        }
 
         if (generator.EnergyEstablished)
             _energyEstablished = true;
-    }
-
-    void OnDestroy()
-    {
-       // generator.onEnergyEstablished.RemoveListener(OnEnergyEstablished);
-     //   generator.onEnergyLost.RemoveListener(OnEnergyLost);
     }
 
     public void OnEnergyEstablished() => _energyEstablished = true;
@@ -50,7 +47,7 @@ public class DoorController : MonoBehaviour
     {
         if (_energyEstablished && !_isOpen)
         {
-            animator.SetTrigger("Open");
+            _animator.SetTrigger("Open");
             _isOpen = true;
         }
     }
@@ -59,12 +56,18 @@ public class DoorController : MonoBehaviour
     {
         if (_isOpen)
         {
-            animator.SetTrigger("Close");
+            _animator.SetTrigger("Close");
             _isOpen = false;
         }
     }
 
-    public void PlayOpenSound() { audioSource.PlayOneShot(openSound); }
+    public void PlayOpenSound()
+    {
+        _audioSource.PlayOneShot(openSound);
+    }
 
-    public void PlayCloseSound() { audioSource.PlayOneShot(closeSound); }
+    public void PlayCloseSound()
+    {
+        _audioSource.PlayOneShot(closeSound);
+    }
 }
