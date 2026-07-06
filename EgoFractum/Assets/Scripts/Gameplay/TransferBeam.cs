@@ -9,13 +9,14 @@ namespace Gameplay
         [SerializeField] private Transform _raycastOrigin;
         [SerializeField] private float _rayLength = 3f;
         [SerializeField] private LayerMask layerMask;
-        public Material m;
         [SerializeField] private GameObject player;
 
         [SerializeField] TransitionEffectManager _effectManager;
         [SerializeField] private PlayerTransferData playerData;
         [SerializeField] private PlayerTransferData miniPlayerData;
+        [SerializeField] private PuzzleMazeManager _puzzleMazeManager;
 
+        
         private enum TransferState
         {
             PlayerToPuzzle,
@@ -46,6 +47,8 @@ namespace Gameplay
 
 
         }
+        
+        
 
         private void TransitionPlayerTo(PlayerTransferData plData)
         {
@@ -54,6 +57,7 @@ namespace Gameplay
             player.transform.localScale = miniPlayerData.scale;
 
             player.GetComponent<CharacterController>().stepOffset = miniPlayerData.stepOffset;
+            _puzzleMazeManager.OnPuzzleStarted();
         }
     
     

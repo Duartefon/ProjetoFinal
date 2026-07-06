@@ -9,7 +9,7 @@ public class PuzzleMazeManager : MonoBehaviour
 
     private EnemyStateMachine _enemyStateMachine;
 
-    private void OnPuzzleStarted()
+    public void OnPuzzleStarted()
     {
         _enemyStateMachine.OnPuzzleStarted();
     }
