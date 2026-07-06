@@ -15984,6 +15984,8 @@ MonoBehaviour:
   rechargeCooldown: 0.5
   unchargeStep: 5
   unchargeCooldown: 2
+  baseLightIntensity: 50
+  baseLightThreshold: 0.35
   blinkingTreshold: 0.979
   text: {fileID: 1524868427}
   flashlightAction: {fileID: 7224615724586139641, guid: c348712bda248c246b8c49b3db54643f, type: 3}
@@ -30968,7 +30970,9 @@ MonoBehaviour:
   rechargeStep: 15
   rechargeCooldown: 0.5
   unchargeStep: 5
-  unchargeCooldown: 2
+  unchargeCooldown: 1
+  baseLightIntensity: 50
+  baseLightThreshold: 0.35
   blinkingTreshold: 0.979
   text: {fileID: 1713335217}
   flashlightAction: {fileID: 7224615724586139641, guid: c348712bda248c246b8c49b3db54643f, type: 3}
