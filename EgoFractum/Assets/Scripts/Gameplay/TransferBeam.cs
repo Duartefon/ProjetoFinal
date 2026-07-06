@@ -16,6 +16,7 @@ namespace Gameplay
         [SerializeField] private PlayerTransferData miniPlayerData;
         [SerializeField] private PuzzleMazeManager _puzzleMazeManager;
 
+        
         private enum TransferState
         {
             PlayerToPuzzle,
@@ -46,6 +47,8 @@ namespace Gameplay
 
 
         }
+        
+        
 
         private void TransitionPlayerTo(PlayerTransferData plData)
         {
