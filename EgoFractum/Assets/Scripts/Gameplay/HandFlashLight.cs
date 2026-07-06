@@ -70,6 +70,7 @@ public class HandFlashLight : MonoBehaviour
 
             yield return null;
         } while (_energy > 0);
+ 
         
      
 
@@ -125,6 +126,8 @@ public class HandFlashLight : MonoBehaviour
 
     IEnumerator ChargeLight()
     {
+        light.enabled = false;
+        _isLightOn = false;
         do
         {
             if (Time.time - _timeStamp > rechargeCooldown)
