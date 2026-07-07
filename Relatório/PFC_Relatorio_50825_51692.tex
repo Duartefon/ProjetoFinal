@@ -356,17 +356,30 @@ o trabalho desenvolvido. Na secção~\ref{sec:concecao-jogo},
 Nesta secção é apresentada a análise de requisitos do modelo proposto, 
 incluindo a caracterização geral, as funções do sistema e os atributos do sistema.
 \subsection{Caracterização Geral}\label{ssec:caracterizacao-geral}
-Síntese de objectivos: O jogo consiste na exploração de um laboratório abandonado, 
-onde o jogador deve resolver puzzles para progredir e descobrir a narrativa do jogo.
+O jogo consiste na exploração de um laboratório abandonado, onde o jogador 
+deve resolver puzzles para progredir e descobrir a narrativa por trás do 
+espaço que percorre. Destina-se sobretudo a adolescentes e jovens adultos, 
+público habitualmente mais familiarizado com jogos, e para quem a experiência 
+de imersão proporcionada pela 
+realidade virtual tende a ser particularmente relevante.
 
-Clientes: Adolescentes e jovens adultos
-Metas a alcançar:
+Para concretizar esta proposta, foram definidas quatro metas principais que 
+orientaram o desenvolvimento do projeto:
 \begin{itemize}
-    \item Construção de um ambiente virtual imsersivo
-    \item Implementação de um personagem em realidade virtual controlado pelo jogador
-    \item Criação de três puzzles interativos que desafiem o jogador a explorar o ambiente
-    \item Desenho de interface gráfica diegética, integrada no ambiente do jogo
+    \item Construção de um ambiente virtual imersivo;
+    \item Implementação de uma personagem em Realidade Virtual, controlada 
+    pelo jogador;
+    \item Criação de três puzzles interativos que desafiem o jogador a 
+    explorar o ambiente;
+    \item Desenho de uma interface gráfica diegética, integrada no 
+    ambiente do jogo.
 \end{itemize}
+
+As quatro metas relacionam-se entre si, tal que a interface diegética e o ambiente 
+imersivo reforçam-se mutuamente, e os puzzles foram pensados para tirar 
+partido do próprio espaço explorado, em vez de existirem como desafios 
+isolados da narrativa. As secções seguintes detalham como cada uma destas 
+metas foi abordada ao longo do desenvolvimento.
 % Requisitos Funcionais / Não Funcionais
 % Casos de Utilização
 % Resultado da fase de avaliação de requisitos
@@ -420,6 +433,7 @@ as funções de persistência, respetivamente.
     \label{tab:persistencia}
 \end{table}
 
+\newpage
 \subsection{Atributos do Sistema}\label{ssec:atributos}
 Quanto aos atributos do sistema, focou-se principalemente no tempo de resposta do sistema e 
 da taxa de \textit{frames} por segundo (\texttt{FPS}) do jogo, de forma a garantir uma experiência de 
@@ -452,6 +466,7 @@ na Figura~\ref{fig:casos_utilizacao}.
     \label{fig:casos_utilizacao}
 \end{figure}
 
+\newpage
 Como cenário principal, escolheu-se o caso de utilização ``Completar o primeiro puzzle'', que engloba multiplas ações do jogador, 
 desde a navegação pelo ambiente até à interação com o painel de restabelecimento da energia. Na Tabela~\ref{tab:cenário} encontra-se 
 descrito o cenário principal, enquanto que na Tabela~\ref{tab:cenário-alternativo}, encontra-se descrito o cenário alternativo, 
@@ -508,7 +523,6 @@ que ocorre quando o jogador cai do escadote de manutenção e morre, voltando ao
     \label{tab:cenário-alternativo}
 \end{table}
 
-\newpage
 \section{Fundamentos}\label{sec:fundamentos}
 
 % NOTA PARA A ESCRITA DOS FUNDAMENTOS:
@@ -697,8 +711,14 @@ valores numéricos associados) com as pistas textuais apresentadas no ecrã. Est
 puzzle obriga o utilizador a recorrer à manipulação tridimensional dos objetos
 para pesar e validar os resultados, de forma a descobrir a sequência correta e
 aceder à área seguinte. 
+\item \textbf{Puzzle 3:} O último desafio implica a exploração de um labirinto
+digital, projetado para testar a memória espacial do jogador. Através de um terminal, 
+o jogador acede a uma representação virtual do labirinto, que deve percorrer fisicamente 
+no espaço real. O objetivo é chegar à saída do labirinto, evitando um inimigo que o
+persegue. No fim, o jogador interage com um botão que desbloqueia o fim do jogo.
 \end{itemize}
 
+\newpage
 \subsection{Fluxo de Progressão}
 \label{ssec:fluxo-progressao}
 O jogo segue um ciclo de exploração e resolução de puzzles que se repete ao longo 
@@ -738,56 +758,46 @@ os elementos gráficos e o ambiente do jogo, e por fim, na secção~\ref{sec:sis
 % Aqui faz-se um resumo visual de como o Unity se liga ao XR Interaction Toolkit.
 % Pode-se incluir um diagrama de blocos da arquitetura (Input do Utilizador -> XR Rig -> Lógica do Jogo).
 % Explicar o que é abstraído e o que já vem implementado.
-
-O projeto foi desenvolvido com o \texttt{Unity} e o \texttt{XR Interaction Toolkit},
-que proporcionaram uma arquitetura flexível e extensível para o desenvolvimento do jogo.
-Para definir a arquitetura do sistema, foi adotado um modelo baseado em eventos, no qual os 
-diferentes componentes do jogo foram organizados em camadas distintas, o que permite uma separação clara de responsabilidades 
-e facilita a manutenção e evolução do código. Em vez de depender de verificações constantes que correm a cada \textit{frame}, o sistema 
-foi estruturado para reagir a eventos específicos, como a interação do jogador com objetos ou a conclusão de puzzles.
-
-O diagrama apresentado na Figura~\ref{fig:modelo_arquitetura} ilustra a arquitetura simplificada do jogo, 
-que destaca os principais componentes e as suas interações.
-
+O jogo foi desenvolvido em \texttt{Unity}, com recurso ao \texttt{XR Interaction Toolkit}.
+A arquitetura assenta num modelo baseado em eventos, com os componentes do jogo
+organizados em camadas distintas, o que separa responsabilidades e facilita
+alterações futuras ao código. Em vez de verificações constantes a cada
+\textit{frame}, o sistema reage por eventos, por exemplo, o 
+jogador interagir com um objeto ou terminar um puzzle.
+A Figura~\ref{fig:modelo_arquitetura} mostra uma versão simplificada desta
+arquitetura, com os principais componentes e a forma como comunicam entre si.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.2]{Imagens/modelo_arquitetura.png}
     \caption{Diagrama simplificado da arquitetura do jogo.}
     \label{fig:modelo_arquitetura}
 \end{figure}
-
 \section{Evolução do Protótipo}
 \label{sec:prototipo}
 % Aqui explica-se a "fase de desenvolvimento inicial". Como o modelo é iterativo,
 % explica-se o que se validou no protótipo / greyboxing antes de avançar para a arte final.
-No início do projeto, foi desenvolvido um protótipo do ambiente virtual com o
-objetivo de avaliar e iterar sobre o fluxo de navegação e a disposição do espaço.
-Esta fase inicial centrou-se na análise do nível de imersão, da escala do
-ambiente, da resposta emocional do utilizador e de potenciais efeitos adversos
-frequentemente associados à realidade virtual.
+No início do projeto foi construído um protótipo do ambiente virtual, com o
+objetivo de testar o fluxo de navegação e a disposição do espaço antes de
+avançar para a arte final. Esta fase serviu principalmente para avaliar a
+imersão, a escala do ambiente e a reação do utilizador, incluindo possíveis
+efeitos adversos comuns em \texttt{VR}, como o \textit{motion sickness}.
 \par
-Para a construção deste cenário temporário, recorreu-se à técnica de
-\newline\textit{greyboxing}~\cite{greyboxing}, implementada através do pacote
-\newline\texttt{ProBuilder}~\cite{probuilder} do \texttt{Unity}. Esta técnica consiste na criação
-do nível utilizando apenas formas geométricas simples, sem aplicação de texturas
-ou elementos visuais finais, de forma a permitir avaliar a disposição espacial e a
-interação do utilizador com o ambiente de forma mais clara.
-
+Este cenário temporário foi construído com recurso a
+\textit{greyboxing}~\cite{greyboxing}, com o pacote \texttt{ProBuilder}~\cite{probuilder}
+do \texttt{Unity}. A técnica consiste em montar o nível apenas com formas
+geométricas simples, sem texturas nem elementos visuais finais, para
+concentrar a avaliação na disposição espacial e na interação com o ambiente.
 \section{Desenvolvimento de Elementos Gráficos e Ambiente}
 \label{sec:elementos-graficos}
-
-Para a construção do ambiente virtual, adotou-se uma abordagem modular através 
-da qual se modelaram componentes estruturais base, tais como paredes retas, 
-cantos e portas. Esta metodologia simplifica a criação de cenários complexos e
-oferece a flexibilidade necessária para modificações e reutilização de elementos.
- Complementarmente à estrutura arquitetónica, foram desenhados elementos 
- decorativos e interativos, incluindo computadores, escadas e mobiliário 
- de laboratório, com o propósito de enriquecer o cenário e aumentar a 
- imersão do jogador.
+A construção do ambiente seguiu uma abordagem modular, tal que se modelaram
+componentes estruturais base, como paredes retas, cantos, portas, que
+podem ser reutilizados e combinados para montar cenários mais complexos sem
+grande esforço adicional. A isto juntaram-se elementos decorativos e
+interativos, como computadores, escadas e mobiliário de laboratório, para dar
+mais vida ao cenário.
 \par
-
-A Figura~\ref{fig:map_pieces} ilustra o conjunto de peças modulares e 
-alguns elementos decorativos utilizados na construção do mapa.
+A Figura~\ref{fig:map_pieces} mostra o conjunto de peças modulares e alguns
+dos elementos decorativos usados na construção do mapa.
 
 \begin{figure}[H]
     \centering
@@ -884,6 +894,13 @@ Figuras~\ref{fig:map_layout} e \ref{fig:final_map}, respetivamente.
     
     \caption{Conceito da disposição do mapa do jogo, com destaque para os dois pisos principais.}
     \label{fig:map_layout}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.15]{Imagens/isel_logo.png}
+    \caption{Resultado final da montagem do mapa do jogo.}
+    \label{fig:final_map}
 \end{figure}
 
 \section{Desenvolvimento dos Sistemas Interativos}
@@ -1157,12 +1174,19 @@ Em caso de falha, a \textit{string} introduzida é reiniciada, obrigando o jogad
 
 Cada botão do teclado possui o componente \texttt{ButtonPress}, descrito anteriormente, que deteta a interação do jogador 
 e invoca o método correspondente no \texttt{Keypad}, seja este um valor numérico ou um \textit{clear}.
+
+\subsubsection{Puzzle 3: Labirinto Digital}
+
 % portas automaticas
 %falar dos scripts da balança dos pesos e do terminal da porta
 \subsection{Gestão da Narrativa}
 \label{ssec:gestao-narrativa}
-% Falamos do eventual sistema de narrativa
-% Dizer que os puzzles ao serem concluidos, guardam o jogo (?)
+A narrativa do jogo funciona como uma série de diálogos e mensagens apresentadas ao jogador
+em momentos especiais, como ao iniciar ou concluir um puzzle. O sistema funciona à base
+de \textit{triggers} colocados em pontos estratégicos do mapa. Estes \textit{triggers} narrativos são compostos
+por um ficheiro de áudio e um componente AudioSource, que reproduz o áudio quando o jogador entra 
+na zona de deteção. Estes \textit{triggers} só serão ativados consoante a sua progressão no jogo, de forma 
+a evitar que o jogador ouça mensagens fora de contexto.
 
 \subsection{Gestão do Progresso do Jogo}
 \label{ssec:prog-jogo}
@@ -1172,9 +1196,30 @@ divide-se em três partes: a posição do jogador, o estado dos puzzles
 e a posição de todos os objetos interagíveis.
 \par
 A classe central deste sistema é o \texttt{GameDataManager}, que segue
-o padrão \texttt{Singleton}, garantindo que existe
+o padrão \texttt{Singleton}, demonstrado no excerto de código~\ref{lst:singleton}, garantindo que existe
 apenas uma instância ativa em toda a aplicação e que esta persiste
-entre cenas. Quando é desencadeada uma gravação, esta classe recolhe
+entre cenas. 
+
+\begin{lstlisting}[style=csharp, 
+    caption={\texttt{GameDataManager} - Singleton implementado em \texttt{C\#}.}, label={lst:singleton},
+    captionpos=t]
+    public static GameDataManager Instance { get; private set; }
+    ...
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+\end{lstlisting}
+
+Quando é desencadeada uma gravação, esta classe recolhe
 o estado atual do jogo, que inclui a posição do jogador, puzzles concluídos e
 transformações dos objetos móveis, e serializa-o em formato \texttt{JSON}
 através do \texttt{JsonUtility} do \texttt{Unity}, e escreve o resultado num
@@ -1226,11 +1271,117 @@ vezes com um \textit{fade}, e desaparece automaticamente.
 %\cleardoublepage
 \chapter{Validação e Testes}
 \label{ch:validacao-testes}
-Ao longo da implementação, foram definidas duas fases de testes onde 5 a 10 pessoas jogaram
-o jogo e preencheram um questionário definido no padrão \texttt{GUESS-18}~\cite{guess18}. Foram registadas notas sobre
-todos os participantes durante os testes, para além dos comentários dos jogadores.
 
-%mostrar as estatisticas do GUESS-18, com gráficos e tabelas, e fazer uma análise dos resultados obtidos.
+Este capítulo descreve o processo de validação do jogo junto de utilizadores,
+incluindo o instrumento de recolha de dados utilizado, o procedimento de teste
+e a análise estatística realizada aos resultados obtidos.
+
+O capítulo está dividido em cinco secções. A secção~\ref{sec:objetivos-validacao}
+apresenta os objetivos dos testes de validação. A secção~\ref{sec:instrumento}
+descreve o questionário utilizado, baseado no \texttt{GUESS-18}, e as adaptações
+feitas ao mesmo. A secção~\ref{sec:amostra-procedimento} caracteriza a amostra e
+o procedimento seguido durante as sessões de teste. Na secção~\ref{sec:analise-estatistica}
+é detalhada a abordagem de análise estatística adotada, e a secção~\ref{sec:resultados-validacao}
+apresenta e discute os resultados obtidos. Por fim, a secção~\ref{sec:limitacoes-validacao}
+identifica as principais limitações deste processo de validação.
+
+\section{Objetivos}
+\label{sec:objetivos-validacao}
+
+Os testes de validação tiveram como objetivo avaliar a experiência do jogador
+em três dimensões principais: a compreensão das mecânicas e objetivos do jogo,
+a satisfação geral com a experiência (usabilidade, imersão, estética visual e
+sonora, entre outras) e a deteção de eventuais problemas de \textit{design} que
+possam comprometer a jogabilidade, como pontos de confusão na navegação ou
+\textit{puzzles} pouco claros.
+
+\section{Instrumento de Recolha de Dados}
+\label{sec:instrumento}
+
+Para avaliar a satisfação do jogador, recorreu-se ao \texttt{GUESS-18}
+\cite{guess18}, uma versão reduzida de 18 items da
+\textit{Game User Experience Satisfaction Scale} (\texttt{GUESS})
+\cite{guess}. O \texttt{GUESS-18} organiza-se em nove subescalas
+(duas perguntas cada), que cobrem aspetos como usabilidade, narrativa,
+imersão, prazer, liberdade criativa, estética sonora, gratificação pessoal,
+ligação social e estética visual. As respostas são recolhidas numa escala de
+Likert de 7 pontos, de \textit{``Disagree Completely''} a \textit{``Agree
+Completely''}, com um item de formulação negativa (\textit{``I feel bored
+while playing the game''}) que é invertido antes da agregação por subescala.
+
+Uma vez que o \texttt{GUESS-18} não avalia diretamente a compreensão dos
+objetivos e mecânicas do jogo, o questionário foi complementado com um
+segundo bloco de perguntas, desenvolvido especificamente para este projeto.
+Este bloco foca-se em momentos-chave da experiência (por exemplo, perceber
+que era necessário abrir a porta para começar a andar, ou identificar as
+pistas necessárias para resolver o segundo \textit{puzzle}) e utiliza uma
+escala de Likert de 5 pontos (\textit{Strongly Disagree} a \textit{Strongly
+Agree}), com um ponto central neutro (\textit{Undecided}). Ao contrário do
+\texttt{GUESS-18}, este bloco não foi psicometricamente validado, pelo que os
+seus resultados devem ser interpretados de forma mais qualitativa.
+
+\section{Amostra e Procedimento}
+\label{sec:amostra-procedimento}
+Para este estudo foram feitos testes com um total de 8 participantes, com idades
+compreendidas entre os 20 e os 25 anos, com diferentes níveis de experiência com 
+jogos e realidade virtual. Os participantes foram selecionados com alguns
+alunos do ISEL e amigos pessoais, que não tinham participado no desenvolvimento do projeto, e foram 
+convidados a experimentar o jogo e a preencher o questionário de avaliação.
+% completar com: número de participantes, critérios de seleção, contexto
+% (ex.: alunos do ISEL, idade, experiência prévia com VR), duração da sessão,
+% ordem das tarefas e momento em que o questionário foi preenchido.
+
+\section{Análise Estatística}
+\label{sec:analise-estatistica}
+
+As respostas ao questionário foram codificadas numericamente e analisadas
+separadamente por bloco, dado utilizarem escalas distintas. O bloco do
+\texttt{GUESS-18} (7 pontos) e o bloco de compreensão desenvolvido para este
+projeto (5 pontos). Em ambos os casos, a opção central, \textit{``No
+Opinion''} no \texttt{GUESS-18} e \textit{``Undecided''} no bloco de
+compreensão, foi tratada de forma distinta, apenas a segunda corresponde a
+um verdadeiro ponto neutro da escala, pelo que a primeira foi tratada como
+dado em falta em vez de valor numérico central.
+
+Dada a natureza ordinal dos dados, optou-se por reportar medianas e modas por
+item, em vez de médias, complementadas com gráficos de barras divergentes que
+mostram a distribuição completa das respostas por categoria. Este tipo de
+gráfico permite visualizar simultaneamente a concentração de respostas
+positivas e negativas, bem como a proporção de respostas em falta.
+
+Devido à dimensão reduzida da amostra recolhida nesta fase do projeto, optou-se
+por não realizar testes de inferência estatística (por exemplo, testes de
+Mann-Whitney), uma vez que o poder estatístico
+destes testes seria insuficiente para produzir resultados fiáveis. A análise
+foi por isso conduzida como um estudo exploratório/piloto, com o objetivo de
+identificar tendências e possíveis pontos de melhoria a validar em futuras
+iterações com uma amostra mais alargada.
+
+O processamento e visualização dos dados foi feito através de um
+\textit{script} em \texttt{Python}, utilizando as bibliotecas
+\texttt{openpyxl} para leitura das respostas, \texttt{NumPy} para o cálculo
+das estatísticas descritivas e \texttt{Matplotlib} para a geração dos
+gráficos.
+
+\section{Resultados}
+\label{sec:resultados-validacao}
+
+% completar com: tabelas/gráficos de resultados por subescala do GUESS-18,
+% destaque para items com respostas mais divergentes (ex.: controlos do jogo,
+% desafio do inimigo no terceiro puzzle), e comentário aos dados qualitativos
+% (perguntas abertas do questionário).
+
+\textit{A trabalhar nisso \ldots}
+
+\section{Limitações}
+\label{sec:limitacoes-validacao}
+
+A principal limitação deste processo de validação prende-se com a dimensão
+reduzida da amostra, o que impede a generalização estatística dos resultados
+e limita a análise a um nível descritivo/exploratório. Adicionalmente, o
+bloco de perguntas sobre compreensão do jogo, por não ser um instrumento
+validado, deve ser interpretado com maior cautela do que os resultados do
+\texttt{GUESS-18}.
 
 
 \chapter{Utilização de Inteligência Artificial}
@@ -1244,11 +1395,58 @@ ao longo do desenvolvimento do projeto. A \texttt{IA} foi utilizada maioritariam
 \chapter{Conclusões e Trabalho Futuro}
 \label{ch:conclusoes}
 Durante o desenvolvimento do projeto, foi possível explorar e aplicar conceitos de 
-realidade virtual, design de jogos e interação pessoa-máquina e integrá-los num ambiente virtual interativo. 
-Ao criar todos os objetos e texturas do zero, foi possível desenvolver uma identidade visual consistente e coerente com a narrativa do jogo e
-possibilitou mais controlo sobre o desenvolvimento. No fim, foi possível implementar várias soluções de interação, como o sistema
-de poses dinâmicas, botões, botões rotativos, alavancas, elevador e portas automáticas, todas interativas a partir de movimentos reais.
+realidade virtual, \textit{design} de jogos e interação pessoa-máquina e integrá-los num ambiente virtual 
+interativo. Ao criar todos os objetos e texturas do zero, foi possível desenvolver uma identidade visual 
+consistente e coerente com a narrativa do jogo e possibilitou mais controlo sobre o desenvolvimento. 
+No fim, foi possível implementar várias soluções de interação, como o sistema
+de poses dinâmicas, botões, botões rotativos, alavancas, elevador e portas automáticas, 
+todas interativas a partir de movimentos reais.
 
+A escolha do \texttt{OpenXR} como base de desenvolvimento, através do
+\texttt{XR Interaction Toolkit}, revelou-se acertada, visto que permitiu testar o jogo
+tanto no \texttt{Meta Quest} como no \texttt{HTC Vive Pro} sem necessidade de
+manter duas versões separadas do projeto, e disponibilizou já resolvidos
+sistemas de interação de complexidade considerável, como a escalada, que de
+outra forma teriam exigido um esforço de implementação maior. A abordagem
+iterativa seguida ao longo do projeto, com recurso a \textit{greyboxing} nas
+fases iniciais antes de avançar para os elementos gráficos finais, permitiu
+corrigir vários problemas de disposição espacial e navegação que só se
+tornam evidentes quando experienciados em primeira pessoa, dentro dos
+próprios óculos.
+
+Os testes de validação realizados junto de utilizadores, com base numa
+adaptação do \texttt{GUESS-18}, confirmaram que aspetos como a atmosfera, os
+gráficos e o áudio do jogo foram bem recebidos, e não identificaram
+problemas graves de \textit{motion sickness}. Por outro lado, também revelaram
+alguns pontos de atrito, nomeadamente na compreensão de certos controlos e
+na dificuldade de alguns participantes em interpretar as pistas do segundo
+puzzle, o que sugere que ainda há espaço para melhorar a comunicação visual
+de determinados mecanismos do jogo.
+
+\section{Trabalho Futuro}
+\label{sec:trabalho-futuro}
+
+Uma das limitações mais evidentes deste trabalho foi a reduzida dimensão da
+amostra utilizada nos testes de validação. Um passo natural para dar
+continuidade ao projeto seria repetir estes testes com um número mais
+alargado de participantes, o que permitiria não só obter resultados
+estatisticamente mais robustos, como também recorrer a testes de inferência
+que não foram possíveis nesta fase, como comparações entre diferentes
+perfis de jogadores (por exemplo, com e sem experiência prévia em VR).
+
+Ao nível do conteúdo do jogo, seria interessante expandir o número de
+puzzles e áreas exploráveis do laboratório, mantendo a filosofia de
+integração diegética que serviu de base a este projeto, inspirada em
+títulos como ``Half-Life:~Alyx'' e ``Ghost Town''. O sistema modular de
+peças de ambiente desenvolvido facilita esta expansão, já que grande parte
+da infraestrutura necessária para construir novos espaços já está pronta a
+ser reutilizada.
+
+Por fim, valeria a pena rever alguns dos mecanismos de interação apontados
+como menos intuitivos nos testes, como os controlos gerais do jogo e o
+sistema de pesagem do segundo puzzle, e considerar a inclusão de um breve
+tutorial inicial, sugestão que aliás foi deixada por um dos participantes
+nos testes de validação.
 %\cleardoublepage
 \begin{thebibliography}{9}
 
@@ -1277,6 +1475,11 @@ Neil Blevins.
 The Journal of Usability Studies.
 \textit{GUESS-18 Scoring Guidelines}.
 \url{https://uxpajournal.org/wp-content/uploads/sites/7/pdf/JUS_Keebler_GUESS-18%20Scoring%20Guidelines.pdf}
+
+\bibitem[Phan, Keebler \& Chaparro, 2016, Human Factors]{guess}
+ResearchGate.
+\textit{The Development and Validation of the Game User Experience Satisfaction Scale (GUESS)}
+\url{https://www.researchgate.net/publication/308343588_The_Development_and_Validation_of_the_Game_User_Experience_Satisfaction_Scale_GUESS}
 
 \bibitem[Six Degrees of Freedom, Wikipedia, site]{sixdof}
 Wikipedia contributors.
