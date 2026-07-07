@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
+
 
 public class EnemyStateMachine : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] private float waitTimeIdle = 3.5f;
     [SerializeField] private float enemyWalkSpeed = 0.05f;
     [SerializeField] private float enemyRunSpeed = 0.15f;
+    [SerializeField] private ClockDelay internalClock;
     
     public enum EnemyStates
     {
@@ -30,9 +33,14 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] private Transform _rayOrigin;
     [SerializeField] private float    _rayLength;
 
+    [SerializeField] private float wanderDelay = 2f;
+    private float timeStamp = 0f;
+    private Vector3 _targetPosition;
+    
     private void Start()
     {
         _agent.speed = enemyWalkSpeed;
+ 
     }
 
 
@@ -72,14 +80,27 @@ public class EnemyStateMachine : MonoBehaviour
     public void UpdateWanderState()
     {
         var animState = true;
-        //Every x seconds
-        RandomNavSphere(transform.position, 0.5f, LayerMask.GetMask("Default"));
 
-        UpdateAgent(_agent, enemyWalkSpeed, RandomNavSphere(transform.position, 0.5f, LayerMask.GetMask("Default")));//_player.position);
+        if (Time.time + timeStamp >= wanderDelay)
+        {
+            timeStamp = Time.time;
+            
+            var randomPointNextToPlayer = new Vector3(_player.transform.position.x + Random.Range(-0.5f , 0.5f) , _player.transform.position.y , _player.transform.position.z + Random.Range(-0.5f , 0.5f) );
+
+             
+            var randomPointInMap = RandomNavSphere(randomPointNextToPlayer, 0.5f, LayerMask.GetMask("Default"));
+            _targetPosition = _player.position;
         
-        Physics.Raycast(_rayOrigin.position, transform.forward * _rayLength, out RaycastHit hit);
+
+
+        }
         
-        Debug.DrawRay(_rayOrigin.position, transform.forward * _rayLength, Color.cornflowerBlue);
+        UpdateAgent(_agent, enemyWalkSpeed, _player.position);
+    
+       
+        var didHit = Physics.Raycast(_rayOrigin.position, transform.forward * _rayLength, out RaycastHit hit);
+        
+        Debug.DrawRay(_rayOrigin.position, transform.forward * _rayLength, didHit ? Color.cornflowerBlue : Color.darkRed);
         if (hit.transform.gameObject.CompareTag("Player"))
         {
             _currentState = EnemyStates.Run;
