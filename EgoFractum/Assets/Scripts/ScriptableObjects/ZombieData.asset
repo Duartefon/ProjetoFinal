@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90260dc2a5265a9488d58abb00571d3c, type: 3}
+  m_Name: ZombieData
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieData
+  runSpeed: 4.5
+  attackDamage: 10
+  attackRate: 1.5
+  attackRange: 2
+  biteRange: 1
+  idleSound: []
+  walkSound:
+  - {fileID: 8300000, guid: 52b19514961ed77469b44bb1462e7d02, type: 3}
+  - {fileID: 8300000, guid: 7fd16f0559ec8f540af39cec1364ac91, type: 3}
+  - {fileID: 8300000, guid: 6e40fd3fcd8ef664590d8f464ccb4cbb, type: 3}
+  - {fileID: 8300000, guid: 8848551f34b8d1a448ae6641792bfed9, type: 3}
+  runningSound:
+  - {fileID: 8300000, guid: 0d1c7bdecc600754f9d48a731c4eef7a, type: 3}
+  - {fileID: 8300000, guid: 12ec9a986058f964ba2c866a85b69ec6, type: 3}
+  - {fileID: 8300000, guid: 7373f9e86796d084d93867918bb577a9, type: 3}
+  - {fileID: 8300000, guid: e3fb3eccf20d1244cbbcb7860574cc28, type: 3}
+  attackSound: []
+  gettingHitsound: []
+  attackingDeadPlayer: []
