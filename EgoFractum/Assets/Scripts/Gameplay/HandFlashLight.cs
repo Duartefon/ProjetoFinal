@@ -127,6 +127,7 @@ public class HandFlashLight : MonoBehaviour
     IEnumerator ChargeLight()
     {
         light.enabled = false;
+        
         _isLightOn = false;
         do
         {

@@ -57,31 +57,46 @@ public class EnemyStateMachine : MonoBehaviour
 
     public void UpdateIdleState()
     {
+        var animState = true;
         if (!puzzleStarted) return;
         if (waitFinished)
+        {
             _currentState = EnemyStates.Wander;
-        UpdateAnimator("isIdle");
+            animState = false;
+        }
+        UpdateAnimator("isIdle", animState);
 
 
     }
     
     public void UpdateWanderState()
     {
-        UpdateAgent(_agent, enemyWalkSpeed, _player.position);
-        UpdateAnimator("isWalking");
+        var animState = true;
+        //Every x seconds
+        RandomNavSphere(transform.position, 0.5f, LayerMask.GetMask("Default"));
+
+        UpdateAgent(_agent, enemyWalkSpeed, RandomNavSphere(transform.position, 0.5f, LayerMask.GetMask("Default")));//_player.position);
         
         Physics.Raycast(_rayOrigin.position, transform.forward * _rayLength, out RaycastHit hit);
         
         Debug.DrawRay(_rayOrigin.position, transform.forward * _rayLength, Color.cornflowerBlue);
         if (hit.transform.gameObject.CompareTag("Player"))
+        {
             _currentState = EnemyStates.Run;
+            animState = false;
+        }
+        UpdateAnimator("isWalking", animState);
 
     }
     public void UpdateRunState()
     {
+        var animState = true;
+        
         UpdateAgent(_agent, enemyRunSpeed, _player.position);
         
-        UpdateAnimator("isRunning");
+        
+        UpdateAnimator("isRunning", animState);
+        
         
         
     }
@@ -111,10 +126,22 @@ public class EnemyStateMachine : MonoBehaviour
         agent.speed = moveSpeed;
         agent.destination = goalPosition;
     }
-    private void UpdateAnimator(string triggerName)
+    private void UpdateAnimator(string parameterName, bool value)
     {
         //_animator.GetCurrentAnimatorStateInfo(-1);
-        _animator.SetTrigger(triggerName);
+        _animator.SetBool(parameterName, value );
+    }
+    
+    public static Vector3 RandomNavSphere (Vector3 origin, float distance, int layermask) {
+        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance;
+           
+        randomDirection += origin;
+           
+        NavMeshHit navHit;
+           
+        NavMesh.SamplePosition (randomDirection, out navHit, distance, layermask);
+           
+        return navHit.position;
     }
     
  
