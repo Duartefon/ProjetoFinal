@@ -1176,6 +1176,39 @@ Cada botão do teclado possui o componente \texttt{ButtonPress}, descrito anteri
 e invoca o método correspondente no \texttt{Keypad}, seja este um valor numérico ou um \textit{clear}.
 
 \subsubsection{Puzzle 3: Labirinto Digital}
+O terceiro puzzle inicia-se quando o jogador aponta para um feixe de 
+transferência, identificado no código através da \textit{tag} 
+\texttt{"Transfer"} e detetado por um \textit{raycast} contínuo lançado a 
+partir do olhar do jogador (\texttt{TransferBeam}). Ao detetar a colisão, é 
+disparado um efeito de transição visual e, decorrido o tempo desse efeito, o 
+jogador é reposicionado de acordo com 
+valores predefinidos num \textit{ScriptableObject} (\texttt{PlayerTransferData}). 
+É esta mudança de escala que sustenta, a nível narrativo e mecânico, a 
+passagem do jogador para uma versão miniaturizada e ``digital'' de si 
+próprio dentro do labirinto.
+
+A entrada no labirinto despoleta também o inimigo que o jogador terá de 
+evitar. O \texttt{PuzzleMazeManager} funciona como ponto de entrada desta 
+fase: ao ser notificado do início do puzzle, ativa a máquina de estados do 
+inimigo (\texttt{EnemyStateMachine}), que alterna entre três estados: 
+\textit{Idle}, \textit{Wander} e \textit{Run}. O inimigo permanece parado 
+durante um intervalo inicial, após o qual passa a vaguear pelo labirinto nas 
+imediações do jogador, recorrendo à \textit{NavMesh} do \texttt{Unity} para se 
+deslocar. Enquanto vagueia, um segundo \textit{raycast}, lançado a partir do 
+próprio inimigo, verifica se este tem o jogador diretamente à sua frente; 
+caso o detete, transita para o estado de perseguição, aumentando a sua 
+velocidade de deslocação.
+
+O comportamento e os parâmetros de cada inimigo, como a velocidade, dano de 
+ataque, alcance de ataque e mordida, bem como os conjuntos de sons 
+associados a cada estado, estão isolados num \textit{ScriptableObject} 
+próprio (\texttt{ZombieData}), separando a configuração da lógica de 
+comportamento e permitindo reutilizar a mesma máquina de estados para 
+diferentes variantes de inimigo. A resposta sonora é gerida de forma 
+independente por inimigo através do \texttt{ZombieSoundManager}, que lê o 
+estado atual diretamente da máquina de estados associada a essa instância 
+específica, evitando que o som de um inimigo seja influenciado pelo estado 
+de outro caso existam vários em simultâneo no labirinto.
 
 % portas automaticas
 %falar dos scripts da balança dos pesos e do terminal da porta
