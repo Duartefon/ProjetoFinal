@@ -320,8 +320,7 @@ implementação do modelo proposto.
 \section{Análise de Requisitos}\label{sec:requisitos}
 Nesta secção é apresentada a análise de requisitos do modelo proposto, 
 incluindo a caracterização geral, as funções do sistema e os atributos do sistema.
-\subsection{Caracterização Geral}\label{ssec:caracterizacao-geral
-}
+\subsection{Caracterização Geral}\label{ssec:caracterizacao-geral}
 Síntese de objectivos: O jogo consiste na exploração de um laboratório abandonado, 
 onde o jogador deve resolver puzzles para progredir e descobrir a narrativa do jogo.
 
@@ -407,19 +406,22 @@ jogo fluída e imersiva, e mitigar efeitos secundários adversos provocados por 
     \label{tab:atributos}
 \end{table}
 
-\ldots
-
 \subsection{Casos de Utilização}\label{sec:casos-util}
-Nesta secção serão exemplificados alguns casos de utilização resumidos e apenas expandir um, por uma
+Nesta secção serão exemplificados alguns casos de utilização resumidos e apenas se expande um, por 
 questão de brevidade. Alguns exemplos de casos de utilização encontram-se apresentados
 na Figura~\ref{fig:casos_utilizacao}.
-
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.15]{Imagens/isel_logo.png}
     \caption{Exemplos de casos de utilização.}
     \label{fig:casos_utilizacao}
 \end{figure}
+
+Como cenário principal, escolheu-se o caso de utilização ``Completar o primeiro puzzle'', que engloba multiplas ações do jogador, 
+desde a navegação pelo ambiente até à interação com o painel de restabelecimento da energia. Na Tabela~\ref{tab:cenário} encontra-se 
+descrito o cenário principal, enquanto que na Tabela~\ref{tab:cenário-alternativo}, encontra-se descrito o cenário alternativo, 
+que ocorre quando o jogador cai do escadote de manutenção e morre, voltando ao último \textit{checkpoint}.
+
 % fazer o mesmo que na apresentação de FEIM (?)
 % escolher um caso e expandir para um cenário.
 \begin{table}[H]
@@ -677,19 +679,35 @@ Este ciclo contínuo visa reforçar a sensação de descoberta e manter o estado
     \label{fig:ciclo_jogo}
 \end{figure}
 
-\section{Abordagem}\label{sec:abordagem}
-Durante o desenvolvimento do projeto, foi adotada uma abordagem
-iterativa com diversas partes distintas: prototipagem, implementação e testes.
-Esta abordagem permitiu-nos avaliar as decisões tomadas e ajustar o sistema ao
-longo do desenvolvimento, podendo sempre voltar atrás para corrigir erros ou 
-funcionalidades mal implementadas.
+\section{Abordagem e \textit{Hardware}}\label{sec:abordagem}
+
+O desenvolvimento do projeto seguiu uma abordagem iterativa, estruturada em 
+várias fases distintas: pesquisa, prototipagem, implementação e testes. 
+Esta metodologia permitiu avaliar continuamente as decisões tomadas ao longo 
+do desenvolvimento e possibilitou a identificação e correção de erros, bem como o 
+aperfeiçoamento de funcionalidades sempre que necessário.
+
+Na fase de pesquisa, para além da análise dos trabalhos relacionados, foram estudadas 
+as tecnologias de \texttt{VR} disponíveis no mercado, que serviram de referência para a 
+conceção e implementação do jogo. Para esse efeito, foram utilizados os óculos \texttt{Meta Quest} e 
+\texttt{HTC Vive Pro}, disponibilizados pelo ISEL.
+
+Apesar de ambos os dispositivos terem sido considerados, optou-se pelo \texttt{Meta Quest} 
+como plataforma principal de desenvolvimento e testes. Esta decisão deveu-se às 
+limitações do \texttt{HTC Vive Pro}, nomeadamente a necessidade de um computador equipado com 
+uma porta \texttt{DisplayPort} e a utilização de bases, o que implica um processo de 
+configuração mais complexo. Em contraste, os óculos \texttt{Meta Quest} apresentam uma instalação 
+significativamente mais simples, exigindo apenas um conjunto mínimo de configuração, 
+tornando-o mais adequado para o desenvolvimento iterativo do projeto.
 
 %\cleardoublepage
 \chapter{Implementação do Modelo}
 \label{ch:implementacao-modelo}
 
 Neste capítulo é apresentada a implementação do modelo proposto, 
-estruturada em quatro secções principais. \ldots
+estruturada em quatro secções principais: Na secção~\ref{sec:arquitetura-sistema}, é apresentada a arquitetura do sistema,
+seguida pela evolução do protótipo na secção~\ref{sec:prototipo}. Na secção~\ref{sec:elementos-graficos}, são detalhados 
+os elementos gráficos e o ambiente do jogo, e por fim, na secção~\ref{sec:sistemas-interativos}, é descrita a implementação do modelo proposto.
 
 % NOTA PARA A ESCRITA DA IMPLEMENTAÇÃO:
 % - Foco: APLICAÇÃO PRÁTICA, ENGENHARIA E PRODUÇÃO PRÓPRIA.
@@ -699,7 +717,7 @@ estruturada em quatro secções principais. \ldots
 %   3. Código (Scripts C#): Mostrar a lógica dos puzzles.
 
 
-\section{Arquitetura do Sistema}
+\section{Arquitetura do Sistema}\label{sec:arquitetura-sistema}
 % Podemos incluir concept art talvez
 % Aqui faz-se um resumo visual de como o Unity se liga ao XR Interaction Toolkit.
 % Pode-se incluir um diagrama de blocos da arquitetura (Input do Utilizador -> XR Rig -> Lógica do Jogo).
@@ -707,9 +725,9 @@ estruturada em quatro secções principais. \ldots
 
 O projeto foi desenvolvido com o \texttt{Unity} e o \texttt{XR Interaction Toolkit},
 que proporcionaram uma arquitetura flexível e extensível para o desenvolvimento do jogo.
-Para definir a arquitetura do sistema, foi adotado um modelo modular baseado em eventos, no qual os 
+Para definir a arquitetura do sistema, foi adotado um modelo baseado em eventos, no qual os 
 diferentes componentes do jogo foram organizados em camadas distintas, o que permite uma separação clara de responsabilidades 
-e facilita a manutenção e evolução do código. Em vez de depender de verificações constantes que correm a cada frame, o sistema 
+e facilita a manutenção e evolução do código. Em vez de depender de verificações constantes que correm a cada \textit{frame}, o sistema 
 foi estruturado para reagir a eventos específicos, como a interação do jogador com objetos ou a conclusão de puzzles.
 
 O diagrama apresentado na Figura~\ref{fig:modelo_arquitetura} ilustra a arquitetura simplificada do jogo, 
@@ -730,7 +748,7 @@ No início do projeto, foi desenvolvido um protótipo do ambiente virtual com o
 objetivo de avaliar e iterar sobre o fluxo de navegação e a disposição do espaço.
 Esta fase inicial centrou-se na análise do nível de imersão, da escala do
 ambiente, da resposta emocional do utilizador e de potenciais efeitos adversos
-frequentemente associados à Realidade Virtual.
+frequentemente associados à realidade virtual.
 \par
 Para a construção deste cenário temporário, recorreu-se à técnica de
 \newline\textit{greyboxing}~\cite{greyboxing}, implementada através do pacote
@@ -739,7 +757,6 @@ do nível utilizando apenas formas geométricas simples, sem aplicação de text
 ou elementos visuais finais, de forma a permitir avaliar a disposição espacial e a
 interação do utilizador com o ambiente de forma mais clara.
 
-\newpage
 \section{Desenvolvimento de Elementos Gráficos e Ambiente}
 \label{sec:elementos-graficos}
 
@@ -752,6 +769,17 @@ oferece a flexibilidade necessária para modificações e reutilização de elem
  de laboratório, com o propósito de enriquecer o cenário e aumentar a 
  imersão do jogador.
 \par
+
+A Figura~\ref{fig:map_pieces} ilustra o conjunto de peças modulares e 
+alguns elementos decorativos utilizados na construção do mapa.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.40]{Imagens/map_pieces.png}
+    \caption{Peças modulares e elementos decorativos usados para construir o mapa.}
+    \label{fig:map_pieces}
+\end{figure}
+
 Adicionalmente, foram utilizados modelos \texttt{3D} de mãos humanas recolhidas 
 do sítio \texttt{Sketchfab}, feitas pelo utilizador \texttt{scribbletoad}, e adaptadas de 
 acordo com o conceito do jogo, ilustradas na Figura~\ref{fig:hand_models}.
@@ -774,16 +802,6 @@ acordo com o conceito do jogo, ilustradas na Figura~\ref{fig:hand_models}.
     
     \caption{Comparação entre os modelos adaptados e os originais das mãos.}
     \label{fig:hand_models}
-\end{figure}
-
-A Figura~\ref{fig:map_pieces} ilustra o conjunto de peças modulares e 
-alguns elementos decorativos utilizados na construção do mapa.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.40]{Imagens/map_pieces.png}
-    \caption{Peças modulares e elementos decorativos usados para construir o mapa.}
-    \label{fig:map_pieces}
 \end{figure}
 
 \subsection{Texturização e Identidade Cromática}
@@ -824,7 +842,7 @@ utilizou-se a funcionalidade \texttt{Vertex Snapping}.
 \par
 O planeamento do espaço obedeceu a um \textit{layout} pré-definido, focado 
 na fluidez de movimentos e na escala adequada para a exploração em 
-Realidade Virtual. A iluminação desempenha um papel fundamental na 
+realidade virtual. A iluminação desempenha um papel fundamental na 
 atmosfera misteriosa do ambiente e na orientação do utilizador. 
 Foram distribuídos pontos de luz focais e direcionais estrategicamente 
 posicionados, recorrendo novamente à cor vermelha para captar a atenção 
@@ -832,6 +850,25 @@ do jogador para pontos de interesse. O plano estrutural do nível
 e o resultado final da montagem encontram-se ilustrados nas 
 Figuras~\ref{fig:map_layout} e \ref{fig:final_map}, respetivamente.
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.45]{Imagens/egofr_map_layout.png}
+        \caption{Conceito da disposição do mapa - piso principal.}
+        \label{fig:map_layout_1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[scale=0.45]{Imagens/egofr_map_layout_2.png}
+        \caption{Conceito da disposição do mapa - piso -2.}
+        \label{fig:map_layout_2}
+    \end{subfigure}
+    
+    \caption{Conceito da disposição do mapa do jogo, com destaque para os dois pisos principais.}
+    \label{fig:map_layout}
+\end{figure}
 
 \section{Desenvolvimento dos Sistemas Interativos}
 \label{sec:sistemas-interativos}
@@ -1160,7 +1197,11 @@ ao longo do desenvolvimento do projeto. A \texttt{IA} foi utilizada maioritariam
 %\cleardoublepage
 \chapter{Conclusões e Trabalho Futuro}
 \label{ch:conclusoes}
-
+Durante o desenvolvimento do projeto, foi possível explorar e aplicar conceitos de 
+realidade virtual, design de jogos e interação pessoa-máquina e integrá-los num ambiente virtual interativo. 
+Ao criar todos os objetos e texturas do zero, foi possível desenvolver uma identidade visual consistente e coerente com a narrativa do jogo e
+possibilitou mais controlo sobre o desenvolvimento. No fim, foi possível implementar várias soluções de interação, como o sistema
+de poses dinâmicas, botões, botões rotativos, alavancas, elevador e portas automáticas, todas interativas a partir de movimentos reais.
 
 %\cleardoublepage
 \begin{thebibliography}{9}
