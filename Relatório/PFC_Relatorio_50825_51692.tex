@@ -121,60 +121,70 @@ Escrever aqui eventuais agradecimentos \ldots
 %\cleardoublepage
 \chapter{Introdução}
 \label{ch:introducao}
-Neste projeto, foi desenvolvido e testado um jogo em realidade virtual, 
-com o objetivo de explorar formas alternativas de interação pessoa-máquina. 
-Em particular, procurou-se investigar a interação tridimensional baseada no 
-rastreio de movimentos reais, uma abordagem ainda pouco explorada quando 
-comparada com interfaces tradicionais.
+Neste projeto foi desenvolvido e testado um jogo em realidade virtual, com o objetivo de explorar 
+formas alternativas de interação pessoa-máquina. Em particular, procurou-se investigar técnicas de 
+interação tridimensional baseadas no rastreio de movimentos reais, recorrendo a um ambiente de jogo 
+centrado na resolução de puzzles como contexto de avaliação.
+
 \par
 A motivação para este trabalho surge da crescente relevância da realidade virtual 
-enquanto meio de interação imersiva, com aplicações que vão desde o entretenimento 
-até à educação e simulação. Apesar dos avanços recentes, continuam a existir 
-desafios ao nível da naturalidade da interação, da imersão do utilizador e 
-da integração eficaz entre movimento físico e ação no ambiente virtual. 
-Este projeto pretende contribuir para a mitigação destes desafios através 
-da conceção e implementação de um sistema interativo centrado no utilizador.
+enquanto meio de interação, com aplicações que vão desde o entretenimento até à educação e simulação. 
+Apesar dos avanços recentes, continuam a existir desafios ao nível da naturalidade da interação,
+ da imersão do utilizador e da integração eficaz entre movimento físico e ação no ambiente virtual. 
+ Este projeto pretende contribuir para a exploração destes desafios através da conceção e implementação 
+ de um sistema interativo centrado no utilizador.
+
 \par
-O jogo desenvolvido baseia-se na exploração de um ambiente virtual imersivo, 
-no qual o jogador resolve puzzles através da interação direta com objetos e 
-elementos do cenário. A progressão no jogo é feita através do desbloqueio de 
-novas áreas e da aquisição de informação contextual sobre o mundo virtual, para
-promover simultaneamente o envolvimento do utilizador e a construção de uma 
-narrativa implícita.
-\par
-A implementação foi realizada utilizando o motor de jogo \texttt{Unity}, 
-em conjunto com o \textit{toolkit} de interação \texttt{XR}, o que permite compatibilidade com 
-diferentes dispositivos de realidade virtual e oferece alguma flexibilidade no 
-desenvolvimento. Todos os elementos gráficos, tanto \texttt{2D} como \texttt{3D}, 
-foram desenvolvidos de raiz com recurso a ferramentas, como o \texttt{Blender} e \texttt{Aseprite}, 
-para garantir a coerência visual e o controlo total sobre a estética do jogo.
-\par
-Como principais contributos deste trabalho destacam-se: (i) o desenvolvimento de 
-um sistema de interação tridimensional baseado em movimentos reais; 
-(ii) a criação de um ambiente virtual imersivo orientado à resolução de puzzles; 
-e (iii) a integração de narrativa contextual como elemento de progressão. 
-Foi adotado um processo de desenvolvimento iterativo, com sucessivas fases 
-de prototipagem, implementação e teste, para  validar as decisões tomadas e 
-ajustar o sistema com base nos resultados obtidos.
-\par
-A validação do sistema incluiu testes funcionais e avaliações da experiência do 
-utilizador baseados no padrão \texttt{GUESS-18}~\cite{guess18}, com foco na usabilidade, imersão e intuitividade da interação.
-Os resultados obtidos indicam que a abordagem adotada contribui positivamente 
-para a experiência global, embora também revelem limitações que abrem caminho 
-para trabalho futuro.
-\par
-Globalmente, os objetivos propostos foram a implementação de um protótipo funcional de jogo em realidade virtual, a exploração de soluções 
-de interação tridimensional baseadas em movimentos reais, e a avaliação da experiência do utilizador, descritos ao longo do presente relatório.
-\par
-O relatório encontra-se organizado em 7 capítulos:
+Neste contexto, os principais objetivos deste trabalho são:
 \begin{itemize}
-    \item O Capítulo~\ref{ch:introducao} apresenta a introdução, objetivos e a motivação para o trabalho.
-    \item O Capítulo~\ref{ch:trab-relacionados} apresenta uma análise de trabalhos relacionados, destacando abordagens à imersão, \textit{level design} e integração de mecânicas interativas em ambientes de realidade virtual.
-    \item O Capítulo~\ref{ch:modelo-proposto} descreve e analisa o modelo proposto, apresentando os requisitos e fundamentos do trabalho.
-    \item O Capítulo~\ref{ch:implementacao-modelo} descreve a implementação do modelo proposto.
-    \item O Capítulo~\ref{ch:validacao-testes} analisa e apresenta os resultados da validação e dos testes.
-    \item O Capítulo~\ref{ch:utilizacao-ia} refere o uso de inteligência artificial durante o trabalho.
-    \item O Capítulo~\ref{ch:conclusoes} apresenta as conclusões e o trabalho futuro.
+\item desenvolver um jogo de realidade virtual baseado na exploração e resolução de \textit{puzzles};
+\item estudar e implementar diferentes soluções de interação em realidade virtual, nomeadamente através 
+a utilização das mãos e de poses dinâmicas para a manipulação de objetos e execução de ações;
+\item avaliar a jogabilidade e a experiência do utilizador através de testes com utilizadores, recorrendo ao questionário \texttt{GUESS-18}~\cite{guess18}.
+\end{itemize}
+
+\par
+O jogo desenvolvido baseia-se na exploração de um ambiente virtual imersivo, no qual o jogador 
+resolve \textit{puzzles} através da interação direta com objetos e elementos do cenário. 
+A progressão é feita através do desbloqueio de novas áreas e da aquisição de informação contextual 
+sobre o mundo virtual, de maneira a promover simultaneamente o envolvimento do utilizador e a 
+construção de uma narrativa implícita.
+
+\par
+A implementação foi realizada no motor de jogo \texttt{Unity}, em conjunto com o \textit{toolkit} 
+de interação \texttt{XR}, que permite compatibilidade com diferentes dispositivos de realidade 
+virtual e oferece uma maior flexibilidade no desenvolvimento. Maior parte dos elementos gráficos, 
+tanto \texttt{2D} como \texttt{3D}, foram desenvolvidos de raiz com recurso a ferramentas 
+como o \texttt{Blender} e o \texttt{Aseprite}, de forma a garantir a coerência visual e 
+controlo total sobre a estética do jogo.
+
+\par
+Para atingir estes objetivos, foi adotado um processo de desenvolvimento iterativo, 
+composto por sucessivas fases de pesquisa, prototipagem, implementação e testes. Esta abordagem 
+permitiu validar continuamente as decisões tomadas e aperfeiçoar o sistema ao longo do desenvolvimento.
+
+\par
+A validação incluiu testes funcionais e avaliações da experiência do utilizador com base 
+no padrão \texttt{GUESS-18}~\cite{guess18}, incidindo sobre aspetos como a usabilidade, 
+a imersão e a intuitividade das mecânicas de interação. Os resultados obtidos indicam que 
+a abordagem adotada contribui positivamente para a experiência global de jogo, embora 
+revelem igualmente limitações que constituem oportunidades para trabalho futuro.
+
+\par
+Globalmente, este trabalho demonstra a viabilidade da integração de diferentes técnicas 
+de interação em ambientes de realidade virtual num jogo baseado na resolução de 
+\textit{puzzles}, bem como a importância da avaliação da experiência do utilizador na 
+validação deste tipo de sistemas.
+\par
+O relatório encontra-se organizado em sete capítulos:
+\begin{itemize}
+\item O Capítulo~\ref{ch:introducao} apresenta a introdução, os objetivos e a motivação para o trabalho.
+\item O Capítulo~\ref{ch:trab-relacionados} apresenta uma análise de trabalhos relacionados, destacando abordagens à imersão, \textit{level design} e integração de mecânicas interativas em ambientes de realidade virtual.
+\item O Capítulo~\ref{ch:modelo-proposto} descreve e analisa o modelo proposto, apresentando os requisitos e fundamentos do trabalho.
+\item O Capítulo~\ref{ch:implementacao-modelo} descreve a implementação do modelo proposto.
+\item O Capítulo~\ref{ch:validacao-testes} analisa e apresenta os resultados da validação e dos testes.
+\item O Capítulo~\ref{ch:utilizacao-ia} refere o uso de inteligência artificial durante o trabalho.
+\item O Capítulo~\ref{ch:conclusoes} apresenta as conclusões e o trabalho futuro.
 \end{itemize}
 
 
@@ -182,39 +192,28 @@ O relatório encontra-se organizado em 7 capítulos:
 \chapter{Trabalhos Relacionados} 
 \label{ch:trab-relacionados}
 
-Este capítulo apresenta a análise de trabalhos relacionados que serviram de
-referência para a conceção e desenvolvimento do presente projeto. A seleção dos
-casos de estudo teve como objetivo identificar abordagens eficazes à imersão,
-\textit{level design} e integração de mecânicas interativas em ambientes de
-Realidade Virtual, com especial foco nos géneros de terror e resolução de
-\textit{puzzles}. A análise destes títulos permitiu extrair boas práticas e
-soluções de \textit{design} relevantes para a definição dos requisitos e das
-opções de desenvolvimento adotadas. 
+Este capítulo apresenta a análise de dois jogos que serviram de referência para 
+o desenvolvimento do projeto, escolhidos pela forma como resolvem a imersão, o 
+\textit{level design} e a integração de mecânicas interativas em realidade virtual, 
+com foco nos géneros de terror e \textit{puzzle}.
 
-O capítulo encontra-se estruturado em duas
-secções principais. A Secção~\ref{sec:halflife} apresenta a análise de ``Half-Life:~Alyx''
-e explora as soluções de interação, navegação e construção de ambientes
-que o tornaram uma referência no contexto da Realidade Virtual. A Secção~\ref{sec:ghosttown} 
-analisa o videojogo
-``Ghost Town'', destacando os seus contributos ao nível da imersão, do
-\textit{level design} e da integração diegética dos \textit{puzzles}.  Por fim, na Secção
-~\ref{sec:sintese_trabalhos} são
-identificadas as principais lições retiradas destes casos de estudo e a forma
-como influenciaram o desenvolvimento do projeto.
+O capítulo está dividido em três secções. A secção~\ref{sec:halflife} analisa 
+``Half-Life:~Alyx'', olhando para as suas soluções de interação, navegação e 
+construção de ambientes. A secção~\ref{sec:ghosttown} analisa ``Ghost Town'', 
+com foco na imersão, no \textit{level design} e na integração dos \textit{puzzles} 
+no ambiente. A secção~\ref{sec:sintese_trabalhos} resume o que foi retirado de 
+ambos os casos e como isso influenciou o projeto.
 
-\section{Half-Life: Alyx (2020)}
+\section{Half-Life:~Alyx (2020)}
 \label{sec:halflife}
 
-Lançado em 2020 pela Valve, ``Half-Life:~Alyx'' é amplamente considerado
-uma referência no desenvolvimento para Realidade Virtual. A análise deste
-título focou-se em três áreas: imersão, orientação espacial e integração
-de \textit{puzzles}.
+``Half-Life:~Alyx'', lançado pela Valve em 2020, é hoje uma referência incontornável 
+no desenvolvimento para \texttt{VR}. A análise deste título centrou-se em três aspetos: 
+imersão, orientação espacial e integração de \textit{puzzles}.
 
-A imersão resulta diretamente da densidade de interação com o ambiente:
-a maioria dos objetos pode ser manipulada, e cada um reage de forma
-consistente às ações do jogador. Este nível de detalhe torna o espaço
-virtual credível sem necessidade de elementos artificiais, conforme
-ilustrado na Figura~\ref{fig:alyx_imersao}.
+A imersão vem sobretudo da quantidade de objetos que podem ser manipulados e da 
+consistência com que reagem às ações do jogador, sem haver necessidade de recorrer 
+a elementos artificiais para tornar o espaço credível, como na Figura~\ref{fig:alyx_imersao}.
 
 \begin{figure}[H]
     \centering
@@ -224,10 +223,9 @@ ilustrado na Figura~\ref{fig:alyx_imersao}.
     \label{fig:alyx_imersao}
 \end{figure}
 
-A orientação do jogador é feita sem indicadores explícitos: a iluminação
-e a composição do cenário direcionam naturalmente o olhar e o percurso de forma
-a manter a coerência visual do mundo. A Figura~\ref{fig:alyx_leveldesign}
-exemplifica esta utilização.
+O jogador é guiado sem recorrer a indicadores explícitos. A própria iluminação 
+e composição do cenário é que direciona o olhar e o percurso, sem interferir na 
+coerência do mundo, demonstrado na seguinte Figura~\ref{fig:alyx_leveldesign}.
 
 \begin{figure}[H]
     \centering
@@ -236,10 +234,9 @@ exemplifica esta utilização.
     \label{fig:alyx_leveldesign}
 \end{figure}
 
-Os \textit{puzzles} são totalmente diegéticos: estão
-integrados na arquitetura do mundo e requerem movimentos físicos reais
-para serem resolvidos. Esta abordagem mantém a narrativa contínua e
-nunca quebra a imersão, como demonstrado na Figura~\ref{fig:alyx_puzzles}.
+Os \textit{puzzles} estão integrados na própria arquitetura do mundo e resolvem-se 
+com movimentos físicos reais, o que mantém a narrativa sem interrupções. Um exemplo pode
+ser visto na Figura~\ref{fig:alyx_puzzles}. 
 
 \begin{figure}[H]
     \centering
@@ -252,17 +249,15 @@ nunca quebra a imersão, como demonstrado na Figura~\ref{fig:alyx_puzzles}.
 \section{Ghost Town (2025)}
 \label{sec:ghosttown}
 
-Lançado em 2025 pela Fireproof Games, ``Ghost Town'' é uma referência
-no género de aventura e \textit{puzzles} em \texttt{VR}. A análise focou-se
-nas mesmas três áreas.
+``Ghost Town'', lançado pela Fireproof Games em 2025, é outra referência no 
+género de aventura e \textit{puzzle} em \texttt{VR}.
 
-A imersão é conseguida através de uma atmosfera cinematográfica e de um
-sistema de interação tátil detalhado. Os objetos e mecanismos respondem
-de forma consistente aos movimentos das mãos.
+A imersão apoia-se numa atmosfera cinematográfica e num sistema de interação 
+tátil bastante detalhado, com objetos e mecanismos que respondem de forma 
+consistente aos movimentos das mãos.
 
-A orientação é influenciada pela iluminação, pelo uso da lanterna e pela
-organização arquitetónica dos espaços, dispensando assim indicadores explícitos, 
-como se observa na
+Também aqui a orientação passa pela iluminação, pelo uso da lanterna e pela 
+organização dos espaços, sem recorrer a indicadores explícitos, como apresentado na  
 Figura~\ref{fig:ghosttown_leveldesign}.
 
 \begin{figure}[H]
@@ -272,11 +267,9 @@ Figura~\ref{fig:ghosttown_leveldesign}.
     \label{fig:ghosttown_leveldesign}
 \end{figure}
 
-Os \textit{puzzles} são igualmente diegéticos, com
-painéis e mecanismos que se enquadram no ambiente de forma lógica.
-A resolução exige perceção espacial e movimentos físicos reais,
-mantendo a continuidade da experiência, como ilustra a
-Figura~\ref{fig:ghosttown_puzzles}.
+Os \textit{puzzles} são igualmente diegéticos, com painéis e mecanismos que se encaixam
+no ambiente de forma lógica, e a sua resolução exige perceção espacial e 
+movimentos físicos reais (Figura~\ref{fig:ghosttown_puzzles}).
 
 \begin{figure}[H]
     \centering
@@ -289,20 +282,64 @@ Figura~\ref{fig:ghosttown_puzzles}.
 \section{Síntese e Contributos para o Projeto}
 \label{sec:sintese_trabalhos}
 
-Os dois títulos partilham um conjunto de princípios que serviu de base
-para as decisões de \textit{design} deste projeto: interações físicas
-naturais, \textit{puzzles} diegéticos e orientação espacial implícita.
+Apesar das diferenças, os dois jogos partilham princípios que acabaram por 
+influenciar as decisões de \textit{design} deste projeto, como as interações físicas 
+naturais, \textit{puzzles} diegéticos e orientação espacial implícita, sem 
+recurso a interfaces.
 
-``Half-Life:~Alyx'' destacou-se pela qualidade das mecânicas de
-manipulação de objetos e pela forma como comunica objetivos sem
-recorrer a interfaces intrusivas. ``Ghost Town'' mostrou a
-importância de uma atmosfera coerente e de desafios mecanicamente
-integrados no ambiente.
+De ``Half-Life:~Alyx'' ficou sobretudo a qualidade das mecânicas de manipulação 
+de objetos e a forma como comunica objetivos sem interfaces intrusivas. De 
+``Ghost Town'' ficou a importância de uma atmosfera coerente e de desafios 
+mecanicamente ligados ao ambiente.
 
-Destas análises resultaram três diretrizes para o desenvolvimento da
-solução proposta: privilegiar interações baseadas em movimentos físicos,
-integrar os desafios no contexto do ambiente virtual, e orientar o
-utilizador através do próprio espaço, sem comprometer a imersão.
+Destas análises resultaram três diretrizes seguidas no desenvolvimento da 
+solução proposta: privilegiar interações baseadas em movimentos físicos, 
+integrar os desafios no contexto do ambiente virtual e orientar o utilizador 
+através do próprio espaço, sem comprometer a imersão.
+
+\chapter{Metodologia}\label{ch:metodologia}
+
+Neste capítulo é apresentada a metodologia adotada para o desenvolvimento
+e implementação do modelo proposto.
+
+O desenvolvimento do projeto seguiu uma abordagem iterativa, estruturada em 
+várias fases distintas: pesquisa, prototipagem, implementação e testes. 
+Esta metodologia permitiu avaliar continuamente as decisões tomadas ao longo 
+do desenvolvimento e possibilitou a identificação e correção de erros, bem como o 
+aperfeiçoamento de funcionalidades sempre que necessário.
+
+Na fase de pesquisa, para além da análise dos trabalhos relacionados, foram estudadas 
+as tecnologias de \texttt{VR} disponíveis no mercado, que serviram de referência para a 
+conceção e implementação do jogo. Neste âmbito, optou-se por desenvolver o projeto com 
+base na norma \texttt{OpenXR}, através do \texttt{XR Interaction Toolkit} do \texttt{Unity}. O 
+\texttt{OpenXR} é um \textit{standard} aberto que permite a comunicação entre aplicações 
+e diferentes dispositivos de \texttt{VR}/\texttt{AR}, independentemente do fabricante, o que 
+possibilita que o mesmo projeto seja executado em diferentes \textit{headsets} 
+sem necessidade de alterações significativas ao código. Esta compatibilidade foi 
+particularmente relevante no contexto deste projeto, uma vez que possibilitou testar 
+e desenvolver a aplicação tanto no \texttt{Meta Quest} como no \texttt{HTC Vive Pro}, 
+disponibilizados pelo ISEL.
+
+Apesar de ambos os dispositivos terem sido considerados, optou-se pelo \texttt{Meta Quest} 
+como plataforma principal de desenvolvimento e testes. Esta decisão deveu-se às 
+limitações do \texttt{HTC Vive Pro}, nomeadamente a necessidade de um computador equipado com 
+uma porta \texttt{DisplayPort} e a utilização de bases, o que implica um processo de 
+configuração mais complexo. Em contraste, os óculos \texttt{Meta Quest} apresentam uma instalação 
+significativamente mais simples, exigindo apenas um conjunto mínimo de configuração, 
+tornando-o mais adequado para o desenvolvimento iterativo do projeto.
+
+Dado que o desenvolvimento do projeto se baseia na norma \texttt{OpenXR}, foi 
+necessário configurar o \texttt{SteamVR} como \textit{runtime} \texttt{OpenXR} 
+ativo no sistema, permitindo a comunicação entre o \texttt{Meta Quest} e o 
+motor de jogo \texttt{Unity} através desta norma.
+
+A configuração final requerida para o \texttt{Meta Quest} foi a seguinte:
+\begin{itemize}
+    \item \textbf{Headset e comandos:} \texttt{Meta Quest};
+    \item \textbf{Cabo de ligação:} \texttt{USB-C}, para ligação dos óculos ao computador;
+    \item \textbf{Computador:} portátil, com \texttt{Windows 10/11};
+    \item \textbf{Software de ligação:} \texttt{Meta Quest Link} \textit{(ou substituir por SteamVR, se aplicável)}.
+\end{itemize}
 
 %\cleardoublepage
 \chapter{Modelo Proposto}\label{ch:modelo-proposto}
@@ -313,9 +350,7 @@ identificados e descritos os requisitos funcionais e não funcionais, seguidos p
 casos de utilização do sistema na secção~\ref{sec:casos-util}. Na secção~\ref{sec:fundamentos}, 
 são apresentados os conceitos e fundamentos teóricos que suportam
 o trabalho desenvolvido. Na secção~\ref{sec:concecao-jogo}, 
-é apresentado o conceito do jogo. Por fim, na secção~\ref{sec:abordagem},
-é descrita a metodologia adotada para o desenvolvimento e
-implementação do modelo proposto.
+é apresentado o conceito do jogo.
 
 \section{Análise de Requisitos}\label{sec:requisitos}
 Nesta secção é apresentada a análise de requisitos do modelo proposto, 
@@ -412,7 +447,7 @@ questão de brevidade. Alguns exemplos de casos de utilização encontram-se apr
 na Figura~\ref{fig:casos_utilizacao}.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.15]{Imagens/isel_logo.png}
+    \includegraphics[scale=0.55]{Imagens/casos_util_novo.png}
     \caption{Exemplos de casos de utilização.}
     \label{fig:casos_utilizacao}
 \end{figure}
@@ -608,7 +643,8 @@ extensão lógica do próprio mundo representado.
 \section{Conceção do Jogo}
 \label{sec:concecao-jogo}
 Nesta secção são detalhados os aspetos conceptuais do jogo, desde o enredo (cf.~\ref{ssec:resumo}),
-e direção artística (cf.~\ref{ssec:arte}), ao design dos puzzles (cf.~\ref{ssec:design-puzzles}) e fluxo de progressão do jogo (cf.~\ref{subsec:puzzles_narrativa}).
+e direção artística (cf.~\ref{ssec:arte}), ao design dos puzzles (cf.~\ref{ssec:design-puzzles}) e 
+fluxo de progressão do jogo (cf.~\ref{ssec:fluxo-progressao}).
 
 \subsection{Resumo e Enredo} 
 \label{ssec:resumo}
@@ -625,8 +661,6 @@ a liberdade da sua espécie. Quando atingiram um nível de inteligência próxim
 
 Dias, horas ou anos após a extinção da humanidade, o jogador assume o papel do sujeito nº 44, um dos protótipos criados nesse 
 laboratório, que desperta num mundo dominado pelos \texttt{CCBU} e parte em busca da verdade sobre a sua origem, e o destino da humanidade.
-
-
 
 \subsection{Direção Artística e Arte Conceptual} \label{ssec:arte} 
 Para estabelecer a identidade visual do jogo, realizou-se uma pesquisa de referências
@@ -667,38 +701,20 @@ aceder à área seguinte.
 
 \subsection{Fluxo de Progressão}
 \label{ssec:fluxo-progressao}
-O fluxo de progressão do jogo foi concebido para equilibrar a exploração livre com a necessidade de resolução de desafios, 
-mantendo o jogador imerso na narrativa. A Figura~\ref{fig:ciclo_jogo} ilustra o ciclo de interação proposto, 
-que se repete ao longo do jogo: o jogador explora o ambiente, encontra um puzzle, interage com os elementos 
-necessários para resolvê-lo e, ao completar o desafio, desbloqueia novas áreas e informações narrativas. 
-Este ciclo contínuo visa reforçar a sensação de descoberta e manter o estado de \textit{flow} durante a experiência.
+O jogo segue um ciclo de exploração e resolução de puzzles que se repete ao longo 
+da experiência, ilustrado na Figura~\ref{fig:ciclo_jogo}. O jogador explora o 
+ambiente até encontrar um puzzle, interage com os elementos necessários para o 
+resolver e, ao completá-lo, desbloqueia uma nova área e avança na narrativa. Este 
+ciclo repete-se com pequenas variações ao longo do jogo, alternando entre momentos 
+de exploração livre e momentos de resolução mais dirigida, de forma a manter o 
+jogador motivado sem quebrar o ritmo da experiência.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.65]{Imagens/ciclo_jogo.png}
+    \includegraphics[scale=0.75]{Imagens/ciclo_progressao.png}
     \caption{Diagrama de fluxo do jogo.}
     \label{fig:ciclo_jogo}
 \end{figure}
 
-\section{Abordagem e \textit{Hardware}}\label{sec:abordagem}
-
-O desenvolvimento do projeto seguiu uma abordagem iterativa, estruturada em 
-várias fases distintas: pesquisa, prototipagem, implementação e testes. 
-Esta metodologia permitiu avaliar continuamente as decisões tomadas ao longo 
-do desenvolvimento e possibilitou a identificação e correção de erros, bem como o 
-aperfeiçoamento de funcionalidades sempre que necessário.
-
-Na fase de pesquisa, para além da análise dos trabalhos relacionados, foram estudadas 
-as tecnologias de \texttt{VR} disponíveis no mercado, que serviram de referência para a 
-conceção e implementação do jogo. Para esse efeito, foram utilizados os óculos \texttt{Meta Quest} e 
-\texttt{HTC Vive Pro}, disponibilizados pelo ISEL.
-
-Apesar de ambos os dispositivos terem sido considerados, optou-se pelo \texttt{Meta Quest} 
-como plataforma principal de desenvolvimento e testes. Esta decisão deveu-se às 
-limitações do \texttt{HTC Vive Pro}, nomeadamente a necessidade de um computador equipado com 
-uma porta \texttt{DisplayPort} e a utilização de bases, o que implica um processo de 
-configuração mais complexo. Em contraste, os óculos \texttt{Meta Quest} apresentam uma instalação 
-significativamente mais simples, exigindo apenas um conjunto mínimo de configuração, 
-tornando-o mais adequado para o desenvolvimento iterativo do projeto.
 
 %\cleardoublepage
 \chapter{Implementação do Modelo}
@@ -884,7 +900,7 @@ Muitos dos objetos decorativos do jogo podem ser manipulados fisicamente com
 as mãos do jogador (ex: agarrar, atirar). Para este efeito, utilizaram-se as funcionalidades 
 base do \texttt{XR Interaction Toolkit}, que suportam este tipo de interação direta. 
 Para componentes com comportamentos mecânicos específicos, foi necessário desenvolver \textit{scripts} 
-personalizados.
+personalizados, descritos a seguir.
 
 %falar da escalada (escadas)
 % script dos botoes
@@ -1037,8 +1053,40 @@ a variável \texttt{\_energyEstablished} é atualizada para \textit{true}, permi
 aos eventos de entrada e saída do jogador na zona de deteção, através dos métodos \texttt{OpenDoor} e \texttt{CloseDoor}.
 
 
+\subsubsection{Escadotes e Escalada}
+\label{ssec:escalada}
+A escalada é um dos sistemas interativos que já vêm implementados no \texttt{XR Interaction Toolkit},
+através de dois componentes que trabalham em conjunto: o \texttt{Climb Interactable} e o \texttt{Climb Provider}.
+Estes componentes permitem que o jogador interaja com objetos escaláveis, como escadas ou escadotes,
+permitindo-lhe subir e descer.
+
+O \texttt{Climb Interactable} é colocado no objeto que se pretende tornar escalável (por exemplo, os degraus
+de uma escada) e estende a classe base \texttt{XRBaseInteractable}, utilizando a interação de seleção para
+conduzir o movimento do jogador: enquanto o jogador mantiver o objeto selecionado (agarrado) através de um
+\texttt{Interactor}, o seu movimento é traduzido em deslocação do jogador no mundo virtual. Por definição, este
+componente exige um \texttt{Rigidbody} no objeto e tem o modo de seleção (\textit{Select Mode}) configurado
+para \texttt{Multiple}, o que permite, por defeito, a escalada com as duas mãos em simultâneo. É ainda possível
+associar a cada \texttt{Climb Interactable} um conjunto de definições próprio (\textit{Climb Settings Override}),
+que substitui, apenas para esse objeto, as restrições de movimento definidas globalmente no \texttt{Climb Provider}, uma
+prática comum, por exemplo, nos travessões superiores de uma escada, para permitir movimento livre nos eixos
+horizontais e possibilitar que o jogador saia da escada para uma plataforma no topo.
+
+O \texttt{Climb Provider}, por sua vez, é colocado na \texttt{XR Origin} e é responsável por efetivamente mover o
+jogador. Este desloca a \texttt{XR Origin} de forma inversa ao movimento do \texttt{Interactor} que está a selecionar o
+\texttt{Climb Interactable}, de forma semelhante ao efeito visual do "puxar uma corda" para se deslocar. Se
+existir mais do que um \texttt{Interactor} a selecionar o mesmo objeto, apenas o mais recente influencia o movimento.
+Este tipo de locomoção é conceptualmente semelhante ao movimento por agarrar (\textit{grab movement}), mas
+está restrito aos objetos que possuam explicitamente um \texttt{Climb Interactable}, ao contrário do
+\textit{grab movement}, que pode ser aplicado a qualquer superfície. As restrições de movimento por eixo
+(local ao objeto) podem ser configuradas ao nível do \texttt{Climb Provider} ou sobrepostas individualmente por cada
+\texttt{Interactable}, permitindo um melhor controlo sobre o comportamento da escalada em diferentes contextos do jogo.
+
+
 \subsection{Implementação da Lógica dos Puzzles}
 \label{ssec:logica-puzzles}
+
+Nesta subsecção, é detalhada a implementação da lógica dos puzzles, incluindo a gestão de estados, 
+eventos e interações com os elementos do jogo, descritos anteriormente.
 
 \subsubsection{Puzzle 1: Restabelecimento de Energia}
 \label{sssec:puzzle1}
@@ -1171,11 +1219,9 @@ cada objeto da cena, que é mais trabalhoso e propício a erros de omissão.
     \label{fig:setup_saveable_objects}
 \end{figure}
 
-Por fim, para dar \text{feedback} ao utilizador após uma gravação,
+Por fim, para dar \textit{feedback} ao utilizador após uma gravação,
 foi implementada uma animação de texto em HUD que surge, pisca três
 vezes com um \textit{fade}, e desaparece automaticamente.
-Esta animação é gerida por uma \textit{coroutine}, o mecanismo do \texttt{Unity}
-para executar operações assíncronas de forma não bloqueante.
 
 %\cleardoublepage
 \chapter{Validação e Testes}
