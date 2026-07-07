@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class EnemyStateMachine : MonoBehaviour
 {
-    private EnemyStates _currentState = EnemyStates.Idle;
+    public EnemyStates currentState { get; private set; } = EnemyStates.Idle;
 
 
     private bool puzzleStarted = false;
@@ -16,6 +16,8 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] private float waitTimeIdle = 3.5f;
     [SerializeField] private float enemyWalkSpeed = 0.05f;
     [SerializeField] private float enemyRunSpeed = 0.15f;
+    [SerializeField] private float enemyTurnSpeed = 0.15f;
+    
     [SerializeField] private ClockDelay internalClock;
     
     public enum EnemyStates
@@ -40,14 +42,15 @@ public class EnemyStateMachine : MonoBehaviour
     private void Start()
     {
         _agent.speed = enemyWalkSpeed;
- 
+        _agent.angularSpeed = enemyTurnSpeed;
+
     }
 
 
     private void Update()
     {
 
-        switch (_currentState)
+        switch (currentState)
         {
             case EnemyStates.Idle:
                 UpdateIdleState();
@@ -69,7 +72,7 @@ public class EnemyStateMachine : MonoBehaviour
         if (!puzzleStarted) return;
         if (waitFinished)
         {
-            _currentState = EnemyStates.Wander;
+            currentState = EnemyStates.Wander;
             animState = false;
         }
         UpdateAnimator("isIdle", animState);
@@ -103,7 +106,7 @@ public class EnemyStateMachine : MonoBehaviour
         Debug.DrawRay(_rayOrigin.position, transform.forward * _rayLength, didHit ? Color.cornflowerBlue : Color.darkRed);
         if (hit.transform.gameObject.CompareTag("Player"))
         {
-            _currentState = EnemyStates.Run;
+            currentState = EnemyStates.Run;
             animState = false;
         }
         UpdateAnimator("isWalking", animState);
@@ -134,14 +137,23 @@ public class EnemyStateMachine : MonoBehaviour
         puzzleStarted = true;
         StartCoroutine(WaitIdle(waitTimeIdle));
     }
-
+    
+    /** IEnumerators
+   *
+   *
+   *
+   **/
     public IEnumerator WaitIdle(float timeToWait)
     {
         yield return new WaitForSeconds(timeToWait);
         waitFinished = true;
     }
 
-
+    /** Helpers
+   *
+   *
+   *
+   **/
     private void UpdateAgent(NavMeshAgent agent ,float moveSpeed, Vector3 goalPosition)
     {
         agent.speed = moveSpeed;
@@ -153,7 +165,7 @@ public class EnemyStateMachine : MonoBehaviour
         _animator.SetBool(parameterName, value );
     }
     
-    public static Vector3 RandomNavSphere (Vector3 origin, float distance, int layermask) {
+    private static Vector3 RandomNavSphere (Vector3 origin, float distance, int layermask) {
         Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance;
            
         randomDirection += origin;
@@ -165,6 +177,4 @@ public class EnemyStateMachine : MonoBehaviour
         return navHit.position;
     }
     
- 
-
 }

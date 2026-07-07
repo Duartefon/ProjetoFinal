@@ -1,0 +1,67 @@
+using NUnit.Framework.Internal;
+using UnityEngine;
+using EnemyStates = EnemyStateMachine.EnemyStates;
+public class ZombieSoundManager : MonoBehaviour
+{
+    public ZombieData zombieData;
+    private AudioSource audioSource;
+    private AudioClip audioClip;
+    
+    // Reference to the specific AI on THIS object
+    private float timer = 0f; 
+    private float delayBetweenAudios = 8f;
+    [SerializeField] 
+    private EnemyStateMachine _stateMachine;
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        
+        // Play one random sound at spawn
+        if(Random.value > 0.5f) 
+             audioSource.PlayOneShot(GetRandomZombieSound(zombieData.walkSound));
+    }
+
+    
+
+    void Update()
+    {
+        //if (!zombie.IsAlive) return;
+        timer -= Time.deltaTime;
+        var currentState = _stateMachine.currentState;
+        
+        // DIRECTLY read the state from our own AI component
+        // This ensures we never listen to other zombies
+     /*   if (currentState == EnemyStates.Run)
+        {
+            audioClip = GetRandomZombieSound(zombieData.attackSound);
+            delayBetweenAudios = 1.5f;
+        }*/
+        
+        if (currentState == EnemyStates.Run)
+        {
+            audioClip = GetRandomZombieSound(zombieData.runningSound);
+            delayBetweenAudios = 3f; // Added a delay so they don't spam run sounds
+        }
+        else //if(currentState == EnemyStates.Wander)
+        {
+            audioClip = GetRandomZombieSound(zombieData.walkSound);
+            delayBetweenAudios = 5f; // Explicitly set delay for wandering
+        }
+         // else()
+
+        if (timer <= 0)
+        {
+            if (audioClip != null)
+            {
+                audioSource.PlayOneShot(audioClip);
+            }
+            timer = delayBetweenAudios;
+        }
+    }
+
+    public AudioClip GetRandomZombieSound(AudioClip[] sounds)
+    {
+        if (sounds == null || sounds.Length == 0) return null;
+        return sounds[Random.Range(0, sounds.Length)];
+    }
+}
