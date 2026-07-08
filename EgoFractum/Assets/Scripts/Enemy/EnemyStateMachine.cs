@@ -24,7 +24,8 @@ public class EnemyStateMachine : MonoBehaviour
     {
         Idle,
         Wander,
-        Run
+        Run,
+        Stunned
     }
 
     [SerializeField] private Animator _animator;
@@ -63,9 +64,19 @@ public class EnemyStateMachine : MonoBehaviour
             case EnemyStates.Run:
                 UpdateRunState();
                 break;
+            case EnemyStates.Stunned:
+                UpdateStunState();
+                break;
             
         }
             
+    }
+
+    private void UpdateStunState()
+    {
+        //_agent.enabled = false;
+        _agent.isStopped = true;
+        
     }
 
     public void UpdateIdleState()
@@ -140,11 +151,19 @@ public class EnemyStateMachine : MonoBehaviour
         
         
     }
+
     /** Events
      *
      *
-     * 
+     *
      **/
+
+
+    public void OnLightStun(bool value)
+    {
+        
+        currentState = value ? EnemyStates.Stunned : EnemyStates.Wander;
+    }
 
     public void OnPuzzleStarted()
     {
