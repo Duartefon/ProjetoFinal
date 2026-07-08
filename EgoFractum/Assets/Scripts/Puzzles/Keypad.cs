@@ -6,6 +6,8 @@ public class Keypad : MonoBehaviour
     [SerializeField] private string keyCode = "";
     [SerializeField] private string puzzleKey = "Weights";
     [SerializeField] private TMPro.TMP_Text screenText;
+    [SerializeField] PuzzleScaleManager _puzzleScaleManager;
+    
     private string _inputKeyCode = string.Empty;
     private bool _puzzleFinished = false;
     
@@ -46,6 +48,7 @@ public class Keypad : MonoBehaviour
             _puzzleFinished = true;
             PuzzleManager.Instance.CompletePuzzle(puzzleKey);
             SetText("Correct!");
+            _puzzleScaleManager.OnCompletePuzzle();
             
         }
         else

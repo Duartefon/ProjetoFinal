@@ -1,13 +1,9 @@
 using System;
 using UnityEngine;
 
-public class PuzzleMazeManager : MonoBehaviour
+public class PuzzleMazeManager : PuzzleManager
 {
-    [SerializeField]
-    private bool puzzleStarted = false;
-    [SerializeField]
-
-    private EnemyStateMachine _enemyStateMachine;
+    [SerializeField] private EnemyStateMachine _enemyStateMachine;
 
     public void OnPuzzleStarted()
     {
@@ -16,7 +12,7 @@ public class PuzzleMazeManager : MonoBehaviour
 
     private void Update()
     {
-        if(puzzleStarted)
+        if (puzzleStarted)
             OnPuzzleStarted();
     }
 }

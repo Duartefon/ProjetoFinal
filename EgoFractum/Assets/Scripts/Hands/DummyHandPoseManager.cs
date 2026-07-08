@@ -12,10 +12,13 @@ public class DummyHandPoseManager : MonoBehaviour
     [SerializeField] private GameObject rightDummyHand;
     [SerializeField] private GameObject leftDummyHand;
 
-    [Header("Player Hands (Visual)")]
-    [SerializeField] private GameObject rightPlayerHand;
+    [Header("Player Hands (Visual)")] [SerializeField]
+    private GameObject rightPlayerHand;
+
     [SerializeField] private GameObject leftPlayerHand;
+
     public bool isAnimatePosition = false;
+
     //debug
     public float radius = 0.5f;
     public float offset = 0.5f;
@@ -23,9 +26,8 @@ public class DummyHandPoseManager : MonoBehaviour
 
     public Transform[] rightHandRaycastOriginList;
     public Transform[] leftHandRaycastOriginList;
-    
 
-    
+
     public GameObject debugSphere;
     [SerializeField] private LayerMask grabbableMask;
 
@@ -39,14 +41,13 @@ public class DummyHandPoseManager : MonoBehaviour
     private void OnDisable()
     {
         var xrGrab = gameObject.GetComponent<XRGrabInteractable>();
-        
+
         xrGrab.selectEntered.RemoveListener(OnGrab);
         xrGrab.selectExited.RemoveListener(OnUngrab);
     }
 
     private void OnGrab(SelectEnterEventArgs arg0)
     {
-        
         //dummyHand.SetActive(true);
         if (isAnimatePosition)
         {
@@ -54,13 +55,11 @@ public class DummyHandPoseManager : MonoBehaviour
         }
         else
         {
-         ShowHand(arg0.interactorObject, true);
-            
+            ShowHand(arg0.interactorObject, true);
         }
-        
+
 
         Debug.Log("Grabbed by: " + arg0.interactorObject);
-        
     }
 
     private void OnUngrab(SelectExitEventArgs arg0)
@@ -73,7 +72,7 @@ public class DummyHandPoseManager : MonoBehaviour
         Transform transform = interactor?.transform;
         Debug.Log("[SHOW HAND] Interactor: " + interactor);
         if (transform == null) return;
-        
+
         bool isRight = transform.CompareTag("RightHand");
         bool isLeft = transform.CompareTag("LeftHand");
         
