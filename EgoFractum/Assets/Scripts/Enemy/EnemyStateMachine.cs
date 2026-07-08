@@ -35,10 +35,12 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] private Transform _rayOrigin;
     [SerializeField] private float    _rayLength;
 
-    [SerializeField] private float wanderDelay = 2f;
+    [SerializeField] private float runDelay = 1f;
     private float timeStamp = 0f;
     private Vector3 _targetPosition;
+    [SerializeField] private float wanderDelay = 2.25f;
     
+    [SerializeField] private float attackDist = 2.25f;
     private void Start()
     {
         _agent.speed = enemyWalkSpeed;
@@ -83,6 +85,7 @@ public class EnemyStateMachine : MonoBehaviour
     public void UpdateWanderState()
     {
         var animState = true;
+       
 
         if (Time.time + timeStamp >= wanderDelay)
         {
@@ -115,9 +118,22 @@ public class EnemyStateMachine : MonoBehaviour
     public void UpdateRunState()
     {
         var animState = true;
-        
+        _agent.speed = enemyRunSpeed;
         UpdateAgent(_agent, enemyRunSpeed, _player.position);
+        if (Time.time + timeStamp >= runDelay)
+        {
+            timeStamp = Time.time;
+            
+            _targetPosition = _player.position;
+            
+            if(Vector3.Distance(transform.position, _player.position) <= attackDist ) 
+                Debug.Log("Player dead!");
+
+
+        }
         
+        UpdateAgent(_agent, enemyWalkSpeed, _player.position);
+
         
         UpdateAnimator("isRunning", animState);
         
