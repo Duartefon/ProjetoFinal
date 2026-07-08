@@ -42,6 +42,12 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] private float wanderDelay = 2.25f;
     
     [SerializeField] private float attackDist = 2.25f;
+    
+    //TODO: this manager will be static 
+    [SerializeField] private TransitionEffectManager _transitionEffectManager;
+   //TODO: MazeManager has a ref to zombie, so zmbie will emit event player dead and puzzlem anager will do its logic from there
+
+   [SerializeField] private PuzzleMazeManager _puzzleMazeManager;
     private void Start()
     {
         _agent.speed = enemyWalkSpeed;
@@ -136,9 +142,16 @@ public class EnemyStateMachine : MonoBehaviour
             timeStamp = Time.time;
             
             _targetPosition = _player.position;
-            
-            if(Vector3.Distance(transform.position, _player.position) <= attackDist ) 
+
+            if (Vector3.Distance(transform.position, _player.position) <= attackDist)
+            {
+                //TODO: all available transitions effects should be in the manager
+               //this should be the maze manager responsibility, zombie only tells player dead
+               
+                _transitionEffectManager.PlayEffect("playTransition");
+               //_puzzleMazeManager. 
                 Debug.Log("Player dead!");
+            }
 
 
         }
@@ -158,7 +171,7 @@ public class EnemyStateMachine : MonoBehaviour
      *
      **/
 
-
+    
     public void OnLightStun(bool value)
     {
         
