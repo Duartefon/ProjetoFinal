@@ -2370,6 +2370,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7765312254584034590, guid: cfbf3b8be2cfebd4b8ecd38068ac95c8, type: 3}
   m_PrefabInstance: {fileID: 86520207}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &87365368 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8383882601365793218, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
+  m_PrefabInstance: {fileID: 723096975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &88747515 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8294030939270889359, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
@@ -3358,7 +3363,7 @@ GameObject:
   - component: {fileID: 115449404}
   - component: {fileID: 115449403}
   - component: {fileID: 115449405}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Captions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3835,7 +3840,7 @@ PrefabInstance:
       addedObject: {fileID: 727625000}
     - targetCorrespondingSourceObject: {fileID: 2531377657632925948, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 727625001}
+      addedObject: {fileID: 727625007}
   m_SourcePrefab: {fileID: 100100000, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
 --- !u!1 &125694270 stripped
 GameObject:
@@ -4014,7 +4019,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1232462919}
+      addedObject: {fileID: 1232462925}
   m_SourcePrefab: {fileID: 100100000, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
 --- !u!1 &131000970 stripped
 GameObject:
@@ -6683,7 +6688,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 940288780}
+      addedObject: {fileID: 940288786}
   m_SourcePrefab: {fileID: 100100000, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
 --- !u!1 &216917302 stripped
 GameObject:
@@ -6865,7 +6870,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1643840225}
+      addedObject: {fileID: 1643840231}
   m_SourcePrefab: {fileID: 100100000, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
 --- !u!1 &232931200 stripped
 GameObject:
@@ -7004,7 +7009,7 @@ PrefabInstance:
       addedObject: {fileID: 1438598108}
     - targetCorrespondingSourceObject: {fileID: 2531377657632925948, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1438598109}
+      addedObject: {fileID: 1438598115}
   m_SourcePrefab: {fileID: 100100000, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
 --- !u!1 &238847748 stripped
 GameObject:
@@ -7392,7 +7397,7 @@ PrefabInstance:
       addedObject: {fileID: 2025485675}
     - targetCorrespondingSourceObject: {fileID: 2531377657632925948, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2025485676}
+      addedObject: {fileID: 2025485682}
   m_SourcePrefab: {fileID: 100100000, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
 --- !u!1 &259216137 stripped
 GameObject:
@@ -10405,7 +10410,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360349296}
   serializedVersion: 5
-  m_Mass: 15
+  m_Mass: 7
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -13592,7 +13597,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 737118192}
+      addedObject: {fileID: 737118198}
   m_SourcePrefab: {fileID: 100100000, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
 --- !u!1 &487534871 stripped
 GameObject:
@@ -14553,7 +14558,7 @@ GameObject:
   - component: {fileID: 520454243}
   - component: {fileID: 520454242}
   - component: {fileID: 520454241}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CardioInitializing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17866,6 +17871,11 @@ MonoBehaviour:
       m_EnablePokeAngleThreshold: 1
       m_PokeAngleThreshold: 45
     m_Variable: {fileID: 0}
+--- !u!4 &622617167 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8383882601365793218, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
+  m_PrefabInstance: {fileID: 238847747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &623412381
 GameObject:
   m_ObjectHideFlags: 0
@@ -20805,7 +20815,7 @@ PrefabInstance:
       addedObject: {fileID: 2010582947}
     - targetCorrespondingSourceObject: {fileID: 2531377657632925948, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2010582948}
+      addedObject: {fileID: 2010582954}
   m_SourcePrefab: {fileID: 100100000, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
 --- !u!1 &723096976 stripped
 GameObject:
@@ -21046,7 +21056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
   uniqueID: 8c407b75-576b-40e9-a818-5eb18fcdaa5a
---- !u!114 &727625001
+--- !u!114 &727625007
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -21055,9 +21065,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 125694270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -21128,8 +21138,8 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
-  m_PredictedVisualsTransform: {fileID: 0}
+  m_MovementType: 2
+  m_PredictedVisualsTransform: {fileID: 2130773058}
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -21175,9 +21185,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &729483650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21275,6 +21282,11 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1, y: -1, z: 3.0100002}
   m_TimeToStationary: 0.5
+--- !u!4 &730108087 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8383882601365793218, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
+  m_PrefabInstance: {fileID: 1883921762}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &732369600
 GameObject:
   m_ObjectHideFlags: 0
@@ -21370,7 +21382,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5396110116016016454, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
   m_PrefabInstance: {fileID: 487534870}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &737118192
+--- !u!114 &737118198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -21379,9 +21391,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 487534871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -21452,7 +21464,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -21499,9 +21511,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1 &739221154
 GameObject:
   m_ObjectHideFlags: 0
@@ -22812,7 +22821,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4055
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -23200,7 +23209,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 948241672}
+      addedObject: {fileID: 948241678}
   m_SourcePrefab: {fileID: 100100000, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
 --- !u!1 &771263730 stripped
 GameObject:
@@ -23778,7 +23787,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SQUARE - TRIANGLE - SQUARE - CIRCLE
+  m_text: CUBE - PYRAMID - CYLINDER - SPHERE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8350db4de03210d44a07b9d70f702635, type: 2}
   m_sharedMaterial: {fileID: 3824676518523848662, guid: 8350db4de03210d44a07b9d70f702635, type: 2}
@@ -24454,7 +24463,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 836281184}
+      addedObject: {fileID: 836281190}
   m_SourcePrefab: {fileID: 100100000, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
 --- !u!1 &787140199 stripped
 GameObject:
@@ -25685,7 +25694,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 915393879}
+      addedObject: {fileID: 915393885}
   m_SourcePrefab: {fileID: 100100000, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
 --- !u!1 &820297110 stripped
 GameObject:
@@ -25885,7 +25894,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5396110116016016454, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
   m_PrefabInstance: {fileID: 787140198}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &836281184
+--- !u!114 &836281190
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -25894,9 +25903,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 787140199}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -25967,7 +25976,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -26014,9 +26023,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &837205209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27257,14 +27263,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 887579108}
+      addedObject: {fileID: 887579114}
   m_SourcePrefab: {fileID: 100100000, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
 --- !u!1 &887579107 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
   m_PrefabInstance: {fileID: 887579106}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &887579108
+--- !u!114 &887579114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -27273,9 +27279,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 887579107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -27346,7 +27352,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -27393,9 +27399,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &889780586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27974,7 +27977,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8294030939270889359, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
   m_PrefabInstance: {fileID: 820297109}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &915393879
+--- !u!114 &915393885
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -27983,9 +27986,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 820297110}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -28056,7 +28059,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -28103,9 +28106,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!4 &915950424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8691368110230546056, guid: c2777922ccdf7f7489cdff07f9b38ae8, type: 3}
@@ -28122,7 +28122,7 @@ GameObject:
   - component: {fileID: 917004411}
   - component: {fileID: 917004414}
   - component: {fileID: 917004413}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SaveText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28788,7 +28788,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5396110116016016454, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
   m_PrefabInstance: {fileID: 216917301}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &940288780
+--- !u!114 &940288786
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -28797,9 +28797,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 216917302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -28870,7 +28870,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -28917,9 +28917,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &940635622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29484,7 +29481,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5396110116016016454, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
   m_PrefabInstance: {fileID: 771263729}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &948241672
+--- !u!114 &948241678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29493,9 +29490,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 771263730}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -29566,7 +29563,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -29613,9 +29610,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &952747455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29741,7 +29735,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1251071484}
+      addedObject: {fileID: 1251071490}
   m_SourcePrefab: {fileID: 100100000, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
 --- !u!1 &955382892 stripped
 GameObject:
@@ -30105,7 +30099,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1000513826}
+      addedObject: {fileID: 1000513832}
   m_SourcePrefab: {fileID: 100100000, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
 --- !u!1 &967437373 stripped
 GameObject:
@@ -30634,7 +30628,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1910208612}
+      addedObject: {fileID: 1910208618}
   m_SourcePrefab: {fileID: 100100000, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
 --- !u!1 &977770509 stripped
 GameObject:
@@ -30912,7 +30906,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1807334908}
+      addedObject: {fileID: 1807334914}
   m_SourcePrefab: {fileID: 100100000, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
 --- !u!1 &989294934 stripped
 GameObject:
@@ -30960,7 +30954,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8294030939270889359, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
   m_PrefabInstance: {fileID: 967437372}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1000513826
+--- !u!114 &1000513832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -30969,9 +30963,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 967437373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -31042,7 +31036,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -31089,9 +31083,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &1004418920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31544,7 +31535,7 @@ GameObject:
   - component: {fileID: 1009922244}
   - component: {fileID: 1009922243}
   - component: {fileID: 1009922242}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: 'HUD '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32341,8 +32332,8 @@ Rigidbody:
   m_GameObject: {fileID: 1039842512}
   serializedVersion: 5
   m_Mass: 15
-  m_LinearDamping: 0
-  m_AngularDamping: 0.01
+  m_LinearDamping: 1
+  m_AngularDamping: 5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -33677,7 +33668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1092113654}
   - component: {fileID: 1092113655}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SystemsOnlineText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36104,9 +36095,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162808325}
   serializedVersion: 5
-  m_Mass: 19
-  m_LinearDamping: 0
-  m_AngularDamping: 0.01
+  m_Mass: 15
+  m_LinearDamping: 1
+  m_AngularDamping: 5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -36256,7 +36247,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1.622827, y: 1.5834917, z: 1.37741}
   m_Center: {x: -0.03230184, y: -1.9222206, z: 1.764314}
@@ -37460,7 +37451,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8294030939270889359, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
   m_PrefabInstance: {fileID: 131000969}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1232462919
+--- !u!114 &1232462925
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37469,9 +37460,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 131000970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -37542,7 +37533,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -37589,9 +37580,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1 &1233394086
 GameObject:
   m_ObjectHideFlags: 0
@@ -38408,7 +38396,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8294030939270889359, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
   m_PrefabInstance: {fileID: 955382891}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1251071484
+--- !u!114 &1251071490
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38417,9 +38405,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 955382892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -38490,7 +38478,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -38537,9 +38525,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &1251835653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42541,7 +42526,7 @@ PrefabInstance:
       addedObject: {fileID: 1347546145}
     - targetCorrespondingSourceObject: {fileID: 2531377657632925948, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1347546146}
+      addedObject: {fileID: 1347546152}
   m_SourcePrefab: {fileID: 100100000, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
 --- !u!4 &1347546143 stripped
 Transform:
@@ -42566,7 +42551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
   uniqueID: 584e321c-0ac2-4068-80d9-9eb742f482ec
---- !u!114 &1347546146
+--- !u!114 &1347546152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42575,9 +42560,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1347546144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -42648,8 +42633,8 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
-  m_PredictedVisualsTransform: {fileID: 0}
+  m_MovementType: 2
+  m_PredictedVisualsTransform: {fileID: 2019459045}
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -42695,9 +42680,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1 &1348491267
 GameObject:
   m_ObjectHideFlags: 0
@@ -45410,7 +45392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
   uniqueID: aaca21fa-35ed-4989-9a02-c4562b29be88
---- !u!114 &1438598109
+--- !u!114 &1438598115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45419,9 +45401,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 238847748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -45492,8 +45474,8 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
-  m_PredictedVisualsTransform: {fileID: 0}
+  m_MovementType: 2
+  m_PredictedVisualsTransform: {fileID: 622617167}
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -45539,9 +45521,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &1438616040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46608,14 +46587,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1463874164}
+      addedObject: {fileID: 1463874170}
   m_SourcePrefab: {fileID: 100100000, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
 --- !u!1 &1463874163 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
   m_PrefabInstance: {fileID: 1463874162}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1463874164
+--- !u!114 &1463874170
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46624,9 +46603,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1463874163}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -46697,7 +46676,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -46744,9 +46723,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &1464692925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50261,14 +50237,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1544748516}
+      addedObject: {fileID: 1544748522}
   m_SourcePrefab: {fileID: 100100000, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
 --- !u!1 &1544748515 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
   m_PrefabInstance: {fileID: 1544748514}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1544748516
+--- !u!114 &1544748522
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -50277,9 +50253,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1544748515}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -50350,7 +50326,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -50397,9 +50373,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1 &1549448242
 GameObject:
   m_ObjectHideFlags: 0
@@ -50733,6 +50706,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 246029906}
   m_SourcePrefab: {fileID: 100100000, guid: e6a94d19b15a3fa48845819bedd8889e, type: 3}
+--- !u!4 &1566651542 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8383882601365793218, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
+  m_PrefabInstance: {fileID: 259216136}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1566880244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57210,6 +57188,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
   uniqueID: 20a01f84-a5dc-45ab-8061-4526fc7d22fc
+--- !u!4 &1638303946 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8383882601365793218, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
+  m_PrefabInstance: {fileID: 1749284133}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1638426275
 GameObject:
   m_ObjectHideFlags: 0
@@ -57263,7 +57246,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5396110116016016454, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
   m_PrefabInstance: {fileID: 232931199}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1643840225
+--- !u!114 &1643840231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57272,9 +57255,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 232931200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -57345,7 +57328,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -57392,9 +57375,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &1645514100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57454,14 +57434,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1645514102}
+      addedObject: {fileID: 1645514108}
   m_SourcePrefab: {fileID: 100100000, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
 --- !u!1 &1645514101 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
   m_PrefabInstance: {fileID: 1645514100}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1645514102
+--- !u!114 &1645514108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57470,9 +57450,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1645514101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -57543,7 +57523,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -57590,9 +57570,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!4 &1646220010 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3999746435640237141, guid: 5219057c6d8aa554ea87df1bd2c43e1a, type: 3}
@@ -59758,9 +59735,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688225770}
   serializedVersion: 5
-  m_Mass: 7
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_Mass: 9
+  m_LinearDamping: 5
+  m_AngularDamping: 15
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -61105,14 +61082,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1744431050}
+      addedObject: {fileID: 1744431056}
   m_SourcePrefab: {fileID: 100100000, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
 --- !u!1 &1744431049 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
   m_PrefabInstance: {fileID: 1744431048}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1744431050
+--- !u!114 &1744431056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61121,9 +61098,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1744431049}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -61194,7 +61171,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -61241,9 +61218,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1 &1746664394 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5873549220731877230, guid: 3570f0c4f2225ea478d349e506955550, type: 3}
@@ -61398,7 +61372,7 @@ PrefabInstance:
       addedObject: {fileID: 1749284136}
     - targetCorrespondingSourceObject: {fileID: 2531377657632925948, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1749284137}
+      addedObject: {fileID: 1749284143}
   m_SourcePrefab: {fileID: 100100000, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
 --- !u!4 &1749284134 stripped
 Transform:
@@ -61423,7 +61397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
   uniqueID: 584e321c-0ac2-4068-80d9-9eb742f482ec
---- !u!114 &1749284137
+--- !u!114 &1749284143
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61432,9 +61406,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1749284135}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -61505,8 +61479,8 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
-  m_PredictedVisualsTransform: {fileID: 0}
+  m_MovementType: 2
+  m_PredictedVisualsTransform: {fileID: 1638303946}
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -61552,9 +61526,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &1751695515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62218,14 +62189,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1765421210}
+      addedObject: {fileID: 1765421216}
   m_SourcePrefab: {fileID: 100100000, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
 --- !u!1 &1765421209 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
   m_PrefabInstance: {fileID: 1765421208}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1765421210
+--- !u!114 &1765421216
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62234,9 +62205,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1765421209}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -62307,7 +62278,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -62354,9 +62325,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &1766642492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63329,7 +63297,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8294030939270889359, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
   m_PrefabInstance: {fileID: 989294933}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1807334908
+--- !u!114 &1807334914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63338,9 +63306,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 989294934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -63411,7 +63379,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -63458,9 +63426,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1 &1808822831
 GameObject:
   m_ObjectHideFlags: 0
@@ -65156,9 +65121,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5577544698869207598, guid: 0246a72a06c421543ba7be5989c158e2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1863337199}
-    - targetCorrespondingSourceObject: {fileID: 5577544698869207598, guid: 0246a72a06c421543ba7be5989c158e2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1863337198}
     - targetCorrespondingSourceObject: {fileID: 7174658398276601096, guid: 0246a72a06c421543ba7be5989c158e2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1863337197}
@@ -65268,138 +65230,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1863337198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863337194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
-  m_InteractionManager: {fileID: 0}
-  m_Colliders: []
-  m_InteractionLayers:
-    m_Bits: 1
-  m_DistanceCalculationMode: 1
-  m_SelectMode: 0
-  m_FocusMode: 1
-  m_CustomReticle: {fileID: 0}
-  m_AllowGazeInteraction: 0
-  m_AllowGazeSelect: 0
-  m_OverrideGazeTimeToSelect: 0
-  m_GazeTimeToSelect: 0.5
-  m_OverrideTimeToAutoDeselectGaze: 0
-  m_TimeToAutoDeselectGaze: 3
-  m_AllowGazeAssistance: 0
-  m_FirstHoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_LastHoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_HoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_HoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FirstSelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_LastSelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_SelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_SelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FirstFocusEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_LastFocusExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FocusEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FocusExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Activated:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Deactivated:
-    m_PersistentCalls:
-      m_Calls: []
-  m_StartingHoverFilters: []
-  m_StartingSelectFilters: []
-  m_StartingInteractionStrengthFilters: []
-  m_AutoFindParentInteractableInHierarchy: 0
-  m_ParentInteractableObject: {fileID: 0}
-  m_AttachTransform: {fileID: 0}
-  m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 0
-  m_MatchAttachPosition: 1
-  m_MatchAttachRotation: 1
-  m_SnapToColliderVolume: 1
-  m_ReinitializeDynamicAttachEverySingleGrab: 1
-  m_AttachEaseInTime: 0.15
-  m_MovementType: 2
-  m_PredictedVisualsTransform: {fileID: 0}
-  m_VelocityDamping: 1
-  m_VelocityScale: 1
-  m_AngularVelocityDamping: 1
-  m_AngularVelocityScale: 1
-  m_TrackPosition: 1
-  m_SmoothPosition: 0
-  m_SmoothPositionAmount: 8
-  m_TightenPosition: 0.1
-  m_TrackRotation: 1
-  m_SmoothRotation: 0
-  m_SmoothRotationAmount: 8
-  m_TightenRotation: 0.1
-  m_TrackScale: 1
-  m_SmoothScale: 0
-  m_SmoothScaleAmount: 8
-  m_TightenScale: 0.1
-  m_ThrowOnDetach: 1
-  m_ThrowSmoothingDuration: 0.25
-  m_ThrowSmoothingCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  m_ThrowVelocityScale: 1.5
-  m_ThrowAngularVelocityScale: 1
-  m_ForceGravityOnDetach: 0
-  m_RetainTransformParent: 1
-  m_StartingSingleGrabTransformers: []
-  m_StartingMultipleGrabTransformers: []
-  m_AddDefaultGrabTransformers: 1
-  m_FarAttachMode: 0
-  m_LimitLinearVelocity: 0
-  m_LimitAngularVelocity: 0
-  m_MaxLinearVelocityDelta: 10
-  m_MaxAngularVelocityDelta: 20
-  minVel: 2
-  catchFlightTime: 0.4
-  nearGrabMaxDistance: 0.25
 --- !u!114 &1863337199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66000,7 +65830,7 @@ PrefabInstance:
       addedObject: {fileID: 1883921765}
     - targetCorrespondingSourceObject: {fileID: 2531377657632925948, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1883921766}
+      addedObject: {fileID: 1883921772}
   m_SourcePrefab: {fileID: 100100000, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
 --- !u!4 &1883921763 stripped
 Transform:
@@ -66025,7 +65855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
   uniqueID: 584e321c-0ac2-4068-80d9-9eb742f482ec
---- !u!114 &1883921766
+--- !u!114 &1883921772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66034,9 +65864,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1883921764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -66107,8 +65937,8 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
-  m_PredictedVisualsTransform: {fileID: 0}
+  m_MovementType: 2
+  m_PredictedVisualsTransform: {fileID: 730108087}
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -66154,9 +65984,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &1889872369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66647,14 +66474,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1903267661}
+      addedObject: {fileID: 1903267667}
   m_SourcePrefab: {fileID: 100100000, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
 --- !u!1 &1903267660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
   m_PrefabInstance: {fileID: 1903267659}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1903267661
+--- !u!114 &1903267667
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66663,9 +66490,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1903267660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -66736,7 +66563,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -66783,9 +66610,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &1905171911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66905,7 +66729,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8294030939270889359, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
   m_PrefabInstance: {fileID: 977770508}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1910208612
+--- !u!114 &1910208618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66914,9 +66738,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 977770509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -66987,7 +66811,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -67034,9 +66858,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &1917143616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69850,7 +69671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
   uniqueID: 4eb8d67b-125b-43bf-8c41-ce5fab26a33c
---- !u!114 &2010582948
+--- !u!114 &2010582954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69859,9 +69680,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 723096976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -69932,8 +69753,8 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
-  m_PredictedVisualsTransform: {fileID: 0}
+  m_MovementType: 2
+  m_PredictedVisualsTransform: {fileID: 87365368}
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -69979,9 +69800,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &2011202370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70215,6 +70033,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.80000013, y: 9, z: 6}
   m_Center: {x: -0.000000059604645, y: 0, z: 3.0056205}
+--- !u!4 &2019459045 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8383882601365793218, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
+  m_PrefabInstance: {fileID: 1347546142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2025075922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70381,7 +70204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
   uniqueID: c5351136-40d2-4eb6-9ee6-10d927c6c118
---- !u!114 &2025485676
+--- !u!114 &2025485682
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70390,9 +70213,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 259216137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -70463,8 +70286,8 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
-  m_PredictedVisualsTransform: {fileID: 0}
+  m_MovementType: 2
+  m_PredictedVisualsTransform: {fileID: 1566651542}
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -70510,9 +70333,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &2030749672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73429,6 +73249,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7971336016407735585, guid: 2d1e6f39baac7c24495d2f5be9567d0b, type: 3}
   m_PrefabInstance: {fileID: 2129757566}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2130773058 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8383882601365793218, guid: de2fa719c20f9004eadf7f85472f4826, type: 3}
+  m_PrefabInstance: {fileID: 125694269}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2132331073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73628,14 +73453,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2142211562}
+      addedObject: {fileID: 2142211568}
   m_SourcePrefab: {fileID: 100100000, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
 --- !u!1 &2142211561 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
   m_PrefabInstance: {fileID: 2142211560}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2142211562
+--- !u!114 &2142211568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73644,9 +73469,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2142211561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -73717,7 +73542,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -73764,9 +73589,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &2145832333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73959,14 +73781,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 256614610883919815}
+      addedObject: {fileID: 256614610883919821}
   m_SourcePrefab: {fileID: 100100000, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
 --- !u!1 &256614610883919814 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
   m_PrefabInstance: {fileID: 256614610883919813}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &256614610883919815
+--- !u!114 &256614610883919821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73975,9 +73797,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 256614610883919814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -74048,7 +73870,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -74095,9 +73917,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1001 &303213192896883377
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76575,14 +76394,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4001284569375258228}
+      addedObject: {fileID: 4001284569375258234}
   m_SourcePrefab: {fileID: 100100000, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
 --- !u!1 &4001284569375258227 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
   m_PrefabInstance: {fileID: 4001284569375258226}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4001284569375258228
+--- !u!114 &4001284569375258234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76591,9 +76410,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4001284569375258227}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -76664,7 +76483,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -76711,9 +76530,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!4 &4013649498058881934
 Transform:
   m_ObjectHideFlags: 0
@@ -76837,14 +76653,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4327157749450591552}
+      addedObject: {fileID: 4327157749450591558}
   m_SourcePrefab: {fileID: 100100000, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
 --- !u!1 &4327157749450591551 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4731318531691812604, guid: 82d66a1ffb81d604a9c64de57edeacf3, type: 3}
   m_PrefabInstance: {fileID: 4327157749450591550}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4327157749450591552
+--- !u!114 &4327157749450591558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76853,9 +76669,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4327157749450591551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -76926,7 +76742,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -76973,9 +76789,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!1 &4365552920995544284
 GameObject:
   m_ObjectHideFlags: 0
@@ -77377,14 +77190,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4730252752383547481}
+      addedObject: {fileID: 4730252752383547487}
   m_SourcePrefab: {fileID: 100100000, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
 --- !u!1 &4730252752383547480 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8669853275583374645, guid: 2814423590b1ac84bbef306e7d9b3e9c, type: 3}
   m_PrefabInstance: {fileID: 4730252752383547479}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4730252752383547481
+--- !u!114 &4730252752383547487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77393,9 +77206,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4730252752383547480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayers:
@@ -77466,7 +77279,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -77513,9 +77326,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 3
-  catchFlightTime: 0.75
-  nearGrabMaxDistance: 1.5
 --- !u!23 &4760565684574427234
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -78154,7 +77964,7 @@ PrefabInstance:
       addedObject: {fileID: 6243507262161661497}
     - targetCorrespondingSourceObject: {fileID: 5577544698869207598, guid: 0246a72a06c421543ba7be5989c158e2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6243507262161661500}
+      addedObject: {fileID: 6243507262161661503}
     - targetCorrespondingSourceObject: {fileID: 7174658398276601096, guid: 0246a72a06c421543ba7be5989c158e2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6243507262161661496}
@@ -78220,7 +78030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveableObject
   uniqueID: ec4fb7b1-afcd-4bb9-80c0-6c5994b1a2c3
---- !u!114 &6243507262161661500
+--- !u!114 &6243507262161661503
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78229,11 +78039,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1155330354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c6d7b83812dc247b5c7ae865940196, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Hands.XRAlyxGrabInteractable
+  m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 76470938}
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
@@ -78349,9 +78160,6 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  minVel: 2
-  catchFlightTime: 0.4
-  nearGrabMaxDistance: 0.25
 --- !u!59 &6243507262161661505
 HingeJoint:
   m_ObjectHideFlags: 0
