@@ -17,7 +17,7 @@ public class HandFlashLight : MonoBehaviour
     [SerializeField] private int unchargeStep = 15;
     [SerializeField] private float unchargeCooldown = 2.5f;
 
-    
+
     [SerializeField] private float baseLightIntensity = 50f;
     [SerializeField] private float baseLightThreshold = 0.35f;
 
@@ -29,10 +29,11 @@ public class HandFlashLight : MonoBehaviour
     [SerializeField] private Transform raycastOrigin;
 
     private float _timeStamp;
+
     private int _energy = 100;
+
     //TODO: make a raycast emitter class
-    [SerializeField]
-    private float rayCastLenght ;
+    [SerializeField] private float rayCastLenght;
 
 
     private EnemyStateMachine _enemyStateMachine;
@@ -78,20 +79,22 @@ public class HandFlashLight : MonoBehaviour
                     _timeStamp = Time.time;
                     DechargeLight();
                 }
-                
-                var didHit = Physics.Raycast(raycastOrigin.position, raycastOrigin.forward, out RaycastHit hit, LayerMask.GetMask("Zombie"));
-                Debug.DrawRay(raycastOrigin.position, raycastOrigin.forward * rayCastLenght, didHit ? Color.green : Color.red );
-                
+
+                var didHit = Physics.Raycast(raycastOrigin.position, raycastOrigin.forward, out RaycastHit hit,
+                    LayerMask.GetMask("Zombie"));
+                Debug.DrawRay(raycastOrigin.position, raycastOrigin.forward * rayCastLenght,
+                    didHit ? Color.green : Color.red);
+
                 if (didHit)
                 {
-                   Debug.Log("I HIT: " + hit);
-                   if (hit.transform.CompareTag("Zombie"))
-                   {
-                       _enemyStateMachine = hit.transform.GetComponent<EnemyStateMachine>(); 
-                       _enemyStateMachine.OnLightStun(true);
-                   }
+                    Debug.Log("I HIT: " + hit);
+                    if (hit.transform.CompareTag("Zombie"))
+                    {
+                        _enemyStateMachine = hit.transform.GetComponent<EnemyStateMachine>();
+                        _enemyStateMachine.OnLightStun(true);
+                    }
                 }
-                else if(_enemyStateMachine != null)
+                else if (_enemyStateMachine != null)
                 {
                     _enemyStateMachine.OnLightStun(false);
                 }
@@ -107,7 +110,7 @@ public class HandFlashLight : MonoBehaviour
                     _timeStamp = Time.time;
                     ChargeLight();
                 }
-                
+
                 break;
         }
     }
@@ -129,7 +132,6 @@ public class HandFlashLight : MonoBehaviour
 
     private void DechargeLight()
     {
-       
         _energy = Mathf.Clamp(_energy - unchargeStep, 0, 100);
 
         if (_energy <= 100 * blinkingTreshold)
@@ -141,15 +143,15 @@ public class HandFlashLight : MonoBehaviour
 
         if (_energy <= 0)
             _currentState = FlashlightStates.Off;
-        
     }
-    
-    
+
+
     private void ChargeLight()
     {
         _energy = Mathf.Clamp(_energy + rechargeStep, 0, 100);
         flashLight.intensity = Mathf.Clamp(flashLight.intensity + rechargeStep, 0, baseLightIntensity);
     }
+
     private IEnumerator BlinkingLight()
     {
         while (_currentState == FlashlightStates.On)
@@ -158,7 +160,8 @@ public class HandFlashLight : MonoBehaviour
             if (flashLight.intensity >= baseLightIntensity * baseLightThreshold)
             {
                 Debug.Log("I'm starting to decrease light ");
-                flashLight.intensity = Mathf.Clamp(flashLight.intensity - lightBlinkingDecreaseStep, 0, baseLightIntensity);
+                flashLight.intensity =
+                    Mathf.Clamp(flashLight.intensity - lightBlinkingDecreaseStep, 0, baseLightIntensity);
             }
             else if (flashLight.intensity >= 0)
             {

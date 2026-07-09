@@ -1033,7 +1033,6 @@ está restrito aos objetos que possuam explicitamente um \texttt{Climb Interacta
 (local ao objeto) podem ser configuradas ao nível do \texttt{Climb Provider} ou sobrepostas individualmente por cada
 \texttt{Interactable}, permitindo um melhor controlo sobre o comportamento da escalada em diferentes contextos do jogo.
 
-
 \subsubsection{Poses Dinâmicas}\label{sssec:poses}
 Ao interagir com objetos, o jogador deve sentir que a sua mão virtual se comporta de forma natural e 
 consistente com a ação que está a executar. Para tal, foram definidas diferentes poses de mãos (\textit{hand poses}) 
@@ -1052,6 +1051,24 @@ criando a ilusão de que a mão do jogador se molda ao objeto. Um exemplo desta 
     \caption{Pose para rodar o botão rotativo do gerador.}
     \label{fig:hand_pose_knob}
 \end{figure}
+
+\subsubsection{Lanterna}\label{sssec:lanterna}
+A lanterna, presente na mão do
+jogador, utiliza o \textit{script} \texttt{HandFlashLight.cs}. A
+execução gere a emissão de luz, calcula o valor da bateria e processa
+colisões. O processo central da lanterna consiste numa máquina de
+estados.
+
+No estado \texttt{On}, a bateria sofre um decréscimo definido por
+\texttt{unchargeStep} e \texttt{unchargeCooldown}. Se o valor desce do
+limite \texttt{blinkingTreshold}, a corrotina \texttt{BlinkingLight} inicia. 
+Esta altera a intensidade e os ângulos com operações sinusoidais. Quando a energia chega 
+a zero, o
+estado reverte para \texttt{Off}, e vai recarregando enquanto neste estado.
+
+Para além desta lógica, a lanterna tem uma função adicional, específica para o
+último puzzle. Esta função permite que, ao apontar a lanterna no inimigo, este
+sofre um efeito de \textit{``stun''}, mantendo-o parado por um breve intervalo de tempo.
 
 \subsubsection{Botões}\label{sssec:botoes}
 Cada botão interativo contém um \textit{script} dedicado (\texttt{ButtonPress.cs}) que define o seu 
@@ -1308,7 +1325,7 @@ de outro caso existam vários em simultâneo no labirinto.
 As interfaces integram o cenário. A implementação utiliza câmeras,
 \texttt{RenderTextures} e pós-processamento para apresentar elementos de \texttt{UI} em monitores.
 
-A construção de material requer: 
+A construção destes materiais requer: 
 \begin{enumerate} 
     \item Criar um \textit{canvas} com componentes de \texttt{UI}, como imagens, texto, \textit{etc}. 
     \item Posicionar uma câmera a captar o \textit{canvas}, com efeitos e \textit{output} para uma \texttt{RenderTexture}. 
@@ -1318,7 +1335,7 @@ A construção de material requer:
 Este processo se repete para cada \texttt{UI} que se deseje apresentar.
 
 % portas automaticas
-%falar dos scripts da balança dos pesos e do terminal da porta
+% falar dos scripts da balança dos pesos e do terminal da porta
 \subsection{Som e Atmosfera}
 \label{ssec:som}
 
