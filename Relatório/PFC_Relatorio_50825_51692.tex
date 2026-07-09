@@ -1505,17 +1505,6 @@ Agree}), com um ponto central neutro (\textit{Undecided}). Ao contrário do
 \texttt{GUESS-18}, este bloco não foi psicometricamente validado, pelo que os
 seus resultados devem ser interpretados de forma mais qualitativa.
 
-\section{Amostra e Procedimento}
-\label{sec:amostra-procedimento}
-Para este estudo foram feitos testes com um total de 8 participantes, com idades
-compreendidas entre os 20 e os 25 anos, com diferentes níveis de experiência com 
-jogos e Realidade Virtual (\texttt{VR}). Os participantes foram selecionados entre
-alunos do ISEL e amigos pessoais, que não estiveram envolvidos no desenvolvimento do projeto, e foram 
-convidados a experimentar o jogo e a preencher o questionário de avaliação.
-% completar com: número de participantes, critérios de seleção, contexto
-% (ex.: alunos do ISEL, idade, experiência prévia com VR), duração da sessão,
-% ordem das tarefas e momento em que o questionário foi preenchido.
-
 \section{Análise Estatística}
 \label{sec:analise-estatistica}
 
@@ -1524,9 +1513,9 @@ separadamente por bloco, dado utilizarem escalas distintas. O bloco do
 \texttt{GUESS-18} (7 pontos) e o bloco de compreensão desenvolvido para este
 projeto (5 pontos). Em ambos os casos, a opção central, \textit{``No
 Opinion''} no \texttt{GUESS-18} e \textit{``Undecided''} no bloco de
-compreensão, foi tratada de forma distinta, apenas a segunda corresponde a
-um verdadeiro ponto neutro da escala, pelo que a primeira foi tratada como
-dado em falta em vez de valor numérico central.
+compreensão, foi codificada como o ponto neutro da escala (valor 3 em 5),
+por ser a interpretação mais direta da opção intermédia oferecida ao
+participante em ambas as formulações.
 
 Dada a natureza ordinal dos dados, optou-se por reportar medianas e modas por
 item, em vez de médias, complementadas com gráficos de barras divergentes que
@@ -1550,12 +1539,168 @@ gráficos.
 \section{Resultados}
 \label{sec:resultados-validacao}
 
-% completar com: tabelas/gráficos de resultados por subescala do GUESS-18,
-% destaque para items com respostas mais divergentes (ex.: controlos do jogo,
-% desafio do inimigo no terceiro puzzle), e comentário aos dados qualitativos
-% (perguntas abertas do questionário).
+Participaram nos testes de validação 7 utilizadores, com idades entre os 16
+e os 22 anos (4 do género masculino, 2 feminino, 1 preferiu não indicar).
+Três dos sete participantes já tinham jogado títulos em Realidade Virtual
+antes, mas apenas um possuía \textit{headset} próprio. Quatro dos sete
+participantes reportaram ter tendência para sentir enjoo facilmente, um
+dado relevante para a interpretação dos items de conforto discutidos mais
+abaixo.
 
-\textit{A trabalhar nisso \ldots}
+\subsection{Compreensão de mecânicas e objetivos}
+\label{ssec:resultados-compreensao}
+
+A Figura~\ref{fig:bloco1-compreensao} apresenta a distribuição de respostas
+ao bloco de compreensão do jogo. A generalidade dos momentos-chave da
+progressão foi bem compreendida: os items relativos à abertura da porta
+inicial, ao uso da iluminação para localizar o gerador e ao regresso pelo
+elevador obtiveram todos mediana 5 (\textit{Strongly Agree}), com moda
+coincidente.
+\par
+Dois items destacam-se pela mediana mais baixa e por uma distribuição mais
+divergente de respostas: \textit{``While playing, I figured the controls of
+the game without outside help''} (mediana 4, moda 4, mas com respostas em
+todos os pontos da escala) e, sobretudo, \textit{``In the third puzzle, the
+enemy gave me a good challenge''} (mediana 3, moda 3, um participante sem
+resposta). Este último item é o único de todo o bloco cuja mediana
+corresponde ao ponto neutro da escala, sugerindo que o desafio proposto
+pelo inimigo do terceiro \textit{puzzle} não gerou uma perceção consistente
+entre os participantes — o que é corroborado pelos comentários abertos
+(secção~\ref{ssec:resultados-abertas}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{Imagens/bloco1_compreensao.png}
+    \caption{Distribuição de respostas ao bloco de compreensão do jogo
+    (escala de 5 pontos, ponto central ``Undecided'').}
+    \label{fig:bloco1-compreensao}
+\end{figure}
+
+\subsection{GUESS-18 adaptado}
+\label{ssec:resultados-guess18}
+
+Do conjunto de items do questionário orientados para a satisfação do
+jogador, doze correspondem literalmente a items do \texttt{GUESS-18}
+original, cobrindo por completo seis das suas nove subescalas:
+\textit{Usability/Playability}, \textit{Play Engrossment},
+\textit{Enjoyment}, \textit{Creative Freedom}, \textit{Audio Aesthetics} e
+\textit{Visual Aesthetics}. As restantes três subescalas do instrumento
+original (\textit{Narratives}, \textit{Personal Gratification} e
+\textit{Social Connectivity}) não foram incluídas na sua forma validada —
+a subescala de narrativa foi substituída por um item específico do
+projeto (secção~\ref{ssec:resultados-adicionais}), e as subescalas de
+\textit{Personal Gratification} e \textit{Social Connectivity}, orientadas
+para desempenho competitivo e interação social entre jogadores, não se
+aplicam diretamente a uma experiência \textit{single-player} de exploração
+como o Ego Fractum. Esta limitação face ao instrumento original é discutida
+na secção~\ref{sec:limitacoes-validacao}.
+\par
+A Tabela~\ref{tab:subescalas-guess18} resume a mediana e a moda dos
+\textit{scores} de cada subescala completa (calculados, por participante,
+como a média dos dois items que a compõem).
+
+\begin{table}[h]
+    \centering
+    \caption{Subescalas do GUESS-18 representadas na sua forma original
+    completa (escala 1-5, ``No Opinion'' codificado como ponto neutro).}
+    \label{tab:subescalas-guess18}
+    \begin{tabular}{lcc}
+        \hline
+        \textbf{Subescala} & \textbf{Mediana} & \textbf{Moda} \\
+        \hline
+        Visual Aesthetics      & 5.0 & 5.0 \\
+        Enjoyment               & 5.0 & 5.0 \\
+        Play Engrossment        & 4.5 & 5.0 \\
+        Usability/Playability   & 4.0 & 5.0 \\
+        Audio Aesthetics        & 4.0 & 4.5 \\
+        Creative Freedom        & 3.5 & 5.0 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\textit{Visual Aesthetics} e \textit{Enjoyment} obtiveram as medianas mais
+altas e maior consistência entre participantes, ao passo que
+\textit{Creative Freedom} regista a mediana mais baixa de todas as
+subescalas completas (3.5), com \textit{scores} individuais que vão de 1.5
+a 5, a maior amplitude de todo o bloco GUESS-18. \textit{Usability/
+Playability} e \textit{Audio Aesthetics} também apresentam dispersão
+considerável (Figura~\ref{fig:bloco2a-items}), refletida sobretudo no item
+\textit{``I find the controls of the game to be straightforward''}, que
+reúne respostas em ambos os extremos da escala.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{Imagens/bloco2a_items_guess18.png}
+    \caption{Distribuição de respostas aos doze items verbatim do
+    GUESS-18 (escala de 5 pontos; ``No Opinion'' codificado como ponto
+    neutro).}
+    \label{fig:bloco2a-items}
+\end{figure}
+
+\subsection{Itens adicionais}
+\label{ssec:resultados-adicionais}
+
+Os restantes items do questionário, específicos deste projeto e não
+pertencentes ao GUESS-18 validado, estão organizados por tema na
+Figura~\ref{fig:bloco2b-adicionais}. Destacam-se os seguintes resultados:
+
+\begin{itemize}
+    \item \textbf{Atmosfera e presença}: o item \textit{``I find the game
+    to be atmospheric''} obteve a mediana mais alta de todo o questionário
+    (5.0, moda 5.0), corroborando o comentário qualitativo mais recorrente
+    nas respostas abertas.
+    \item \textbf{Conforto em VR}: os items de enjoo (\textit{motion
+    sickness} durante e após o jogo) apresentam a distribuição mais
+    dispersa de todo o questionário, coerente com o facto de apenas
+    metade da amostra reportar tendência pessoal para enjoo. Este
+    resultado deve ser lido em conjunto com os comentários abertos
+    correspondentes (secção~\ref{ssec:resultados-abertas}), que indicam
+    que o desconforto foi de facto um fator relevante para os
+    participantes suscetíveis a este tipo de sintoma.
+    \item \textbf{Gratificação e desafio}: os items \textit{``I felt like
+    I completed a challenge''} e \textit{``Solving the game's puzzles
+    brings me joy''} obtiveram medianas altas (5.0 e 4.0,
+    respetivamente), e o item invertido \textit{``I found it a waste of
+    time''} confirma isto com uma mediana de 5.0 após inversão (ou seja,
+    forte discordância com a afirmação original).
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{Imagens/bloco2b_items_adicionais.png}
+    \caption{Distribuição de respostas aos items adicionais, agrupados por
+    tema.}
+    \label{fig:bloco2b-adicionais}
+\end{figure}
+
+\subsection{Respostas abertas}
+\label{ssec:resultados-abertas}
+
+Nas respostas às perguntas abertas, a atmosfera e os gráficos foram os
+aspetos mais mencionados como pontos fortes (4 em 7 participantes cada),
+seguidos pelo \textit{design} dos \textit{puzzles} e pelo som. Como pontos
+fracos, foram identificados de forma recorrente: a falta de pistas quando o
+jogador se perde, imprecisões no \textit{feedback} do \textit{puzzle} das
+balanças/\textit{keypad}, dessincronização entre o som dos passos e a
+animação, e o desconforto associado ao enjoo em \texttt{VR}. As sugestões mais
+citadas foram a introdução de um tutorial inicial e o reforço dos
+elementos de ambiente interativos (por exemplo, documentos legíveis
+espalhados pelas divisões).
+
+\subsection{Síntese}
+\label{ssec:resultados-sintese}
+
+Em conjunto, os resultados sugerem uma receção globalmente positiva,
+particularmente ao nível da atmosfera, dos gráficos e do prazer geral da
+experiência, com valores de mediana consistentemente altos (4-5 em escala
+de 5 pontos) e baixa dispersão nesses items. Os pontos de melhoria mais
+evidentes concentram-se em três áreas: (1) a clareza dos controlos e a
+curva de aprendizagem inicial, sem tutorial; (2) o desafio proposto pelo
+inimigo no terceiro \textit{puzzle}, cuja perceção não reuniu consenso; e
+(3) o conforto em \texttt{VR}, que afetou negativamente a experiência dos
+participantes mais suscetíveis a enjoo — um aspeto que a análise
+quantitativa da subescala do GUESS-18 não capta diretamente, mas que surge
+de forma consistente nos dados qualitativos.
 
 \section{Limitações}
 \label{sec:limitacoes-validacao}
@@ -1566,7 +1711,20 @@ e limita a análise a um nível descritivo/exploratório. Adicionalmente, o
 bloco de perguntas sobre compreensão do jogo, por não ser um instrumento
 validado, deve ser interpretado com maior cuidado do que os resultados do
 \texttt{GUESS-18}.
-
+\par
+Identificaram-se ainda dois desvios face à administração original do
+\texttt{GUESS-18} que devem ser assinalados. Em primeiro lugar, o
+formulário implementado disponibilizou apenas 5 pontos de resposta
+(\textit{Disagree Completely}, \textit{Disagree}, \textit{No Opinion},
+\textit{Agree}, \textit{Agree Completely}), em vez dos 7 pontos do
+instrumento original, o que reduz a granularidade das respostas
+recolhidas. Em segundo lugar, apenas seis das nove subescalas do
+\texttt{GUESS-18} foram incluídas com os seus items originais; as
+subescalas \textit{Narratives}, \textit{Personal Gratification} e
+\textit{Social Connectivity} não constam do questionário na sua forma
+validada, pelo que os resultados reportados correspondem a uma versão
+adaptada do instrumento e não devem ser diretamente comparados com
+\textit{scores} de estudos que utilizem o \texttt{GUESS-18} completo.
 
 \chapter{Utilização de Inteligência Artificial}
 \label{ch:utilizacao-ia}
