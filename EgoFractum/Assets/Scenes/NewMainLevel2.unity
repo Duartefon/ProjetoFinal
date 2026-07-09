@@ -11616,7 +11616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3436612343428998788, guid: c4c18bf0d5ea880478f3b2a86e0c39a3, type: 3}
       propertyPath: m_Volume
-      value: 0.688
+      value: 0.479
       objectReference: {fileID: 0}
     - target: {fileID: 3436612343428998788, guid: c4c18bf0d5ea880478f3b2a86e0c39a3, type: 3}
       propertyPath: MaxDistance
@@ -14795,8 +14795,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1092113654}
   m_LocalEulerAnglesHint: {x: 2.722, y: -34.934, z: 3.642}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 0, y: 1}
@@ -17081,9 +17081,10 @@ MonoBehaviour:
   _rayLength: 1.5
   runDelay: 1
   wanderDelay: 7
-  attackDist: 2.25
+  attackDist: 0.1
   _transitionEffectManager: {fileID: 588166212}
   _puzzleMazeManager: {fileID: 1318722429}
+  _playerGlitchEffect: {fileID: 768900869}
 --- !u!95 &586406195 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5963659949008910414, guid: c4c18bf0d5ea880478f3b2a86e0c39a3, type: 3}
@@ -43206,15 +43207,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8260570746176586278, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.233
+      value: 29.54
       objectReference: {fileID: 0}
     - target: {fileID: 8260570746176586278, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.646
+      value: 1.088
       objectReference: {fileID: 0}
     - target: {fileID: 8260570746176586278, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.241
+      value: -30.72
       objectReference: {fileID: 0}
     - target: {fileID: 8260570746176586278, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_LocalRotation.w
@@ -71813,6 +71814,10 @@ PrefabInstance:
     - target: {fileID: 4909253843953862048, guid: 21e179d644cf21949a23b62e933921b9, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6998765063063582395, guid: 21e179d644cf21949a23b62e933921b9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

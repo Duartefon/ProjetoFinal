@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using KinoGlitch;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -46,15 +48,24 @@ public class EnemyStateMachine : MonoBehaviour
     //TODO: MazeManager has a ref to zombie, so zmbie will emit event player dead and puzzlem anager will do its logic from there
 
     [SerializeField] private PuzzleMazeManager _puzzleMazeManager;
+    [SerializeField] private DigitalGlitchController _playerGlitchEffect;
+    private float mapRadius = 5.4f;
+    
 
     private void Start()
     {
         _agent.speed = enemyWalkSpeed;
         _agent.angularSpeed = enemyTurnSpeed;
+      
+      
+        
     }
 
     private void Update()
     {
+
+        UpdateGLitchEffect();
+        
         //Debug.Log("CurrentState:  " + currentState);
         switch (currentState)
         {
@@ -71,6 +82,9 @@ public class EnemyStateMachine : MonoBehaviour
                 UpdateStunState();
                 break;
         }
+        
+      
+
     }
 
     private void UpdateStunState()
@@ -125,6 +139,14 @@ public class EnemyStateMachine : MonoBehaviour
         UpdateAnimator("isWalking", animState);
     }
 
+    private void UpdateGLitchEffect()
+    {
+        
+        var dist = Vector3.Distance(_player.position, transform.position);
+        //var perc = 1 - dist
+        Debug.Log("Dist:" +  dist + " percent: " + ((mapRadius - dist) /mapRadius)   );
+        _playerGlitchEffect.Intensity = (mapRadius - dist) /mapRadius;
+    }
     public void UpdateRunState()
     {
         var animState = true;

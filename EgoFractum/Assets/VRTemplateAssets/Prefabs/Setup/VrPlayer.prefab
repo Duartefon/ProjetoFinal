@@ -294,14 +294,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntroSequenceManager
   blackScreen: {fileID: 5569671040027681643}
-  quoteText: {fileID: 612975864143169506}
+  introConsoleText: {fileID: 612975864143169506}
+  introHudText: {fileID: 0}
   introAudio: {fileID: 0}
-  moveProvider: {fileID: 0}
-  turnProvider: {fileID: 0}
-  leftHandModel: {fileID: 7310494215607188231}
-  rightHandModel: {fileID: 7310494216219638776}
+  locomotion: {fileID: 0}
+  leftHandModel:
+  - {fileID: 0}
+  rightHandModel:
+  - {fileID: 0}
   quoteStayTime: 4
   fadeSpeed: 1
+  introPosition: {fileID: 0}
+  introEndPosition: {fileID: 0}
+  _transitionEffectManager: {fileID: 0}
 --- !u!1001 &111434857209173971
 PrefabInstance:
   m_ObjectHideFlags: 0
