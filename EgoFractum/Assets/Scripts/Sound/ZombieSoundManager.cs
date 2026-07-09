@@ -29,6 +29,7 @@ public class ZombieSoundManager : MonoBehaviour
         //if (!zombie.IsAlive) return;
         timer -= Time.deltaTime;
         var currentState = _stateMachine.currentState;
+        Debug.Log($"CurrentState {currentState}");
         
    
         
