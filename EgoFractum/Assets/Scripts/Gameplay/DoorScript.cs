@@ -70,4 +70,9 @@ public class DoorController : MonoBehaviour
     {
         _audioSource.PlayOneShot(closeSound);
     }
+
+    public void OpenWithoutGenerator()
+    {
+        _energyEstablished = true;
+    }
 }

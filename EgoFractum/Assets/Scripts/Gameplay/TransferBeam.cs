@@ -11,7 +11,7 @@ namespace Gameplay
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private GameObject player;
 
-        [SerializeField] TransitionEffectManager _effectManager;
+        [SerializeField] TransitionEffectManager _transitionEffectManager;
         [SerializeField] private PlayerTransferData playerData;
         [SerializeField] private PlayerTransferData miniPlayerData;
         [SerializeField] private PuzzleMazeManager _puzzleMazeManager;
@@ -36,29 +36,23 @@ namespace Gameplay
 
         IEnumerator OnTransfer(TransferState transferState)
         {
-            _effectManager.PlayEffect("playTransition");
-            yield return new WaitForSeconds(_effectManager.effectTime*2); 
-        
-            if(transferState.Equals(TransferState.PlayerToPuzzle))
-                TransitionPlayerTo(miniPlayerData);
+            _transitionEffectManager.PlayEffect("playTransition");
+            yield return new WaitForSeconds(_transitionEffectManager.effectTime*2);
+
+            if (transferState.Equals(TransferState.PlayerToPuzzle))
+            {
+                _transitionEffectManager.TransitionPlayerTo(player.transform, miniPlayerData);
+                _puzzleMazeManager.OnPuzzleStarted();
+            }
             else if (transferState.Equals(TransferState.PuzzleToPlayer))
-                TransitionPlayerTo(playerData);
+                _transitionEffectManager.TransitionPlayerTo(player.transform, miniPlayerData);
 
 
         }
         
         
 
-        private void TransitionPlayerTo(PlayerTransferData plData)
-        {
-            player.transform.position = miniPlayerData.position;
-            player.transform.eulerAngles = miniPlayerData.rotation;
-            player.transform.localScale = miniPlayerData.scale;
-
-            player.GetComponent<CharacterController>().stepOffset = miniPlayerData.stepOffset;
-            _puzzleMazeManager.OnPuzzleStarted();
-        }
-    
+ 
     
     }
 }

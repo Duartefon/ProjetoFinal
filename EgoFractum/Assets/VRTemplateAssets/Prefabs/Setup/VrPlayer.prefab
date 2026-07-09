@@ -294,14 +294,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IntroSequenceManager
   blackScreen: {fileID: 5569671040027681643}
-  quoteText: {fileID: 612975864143169506}
+  introConsoleText: {fileID: 612975864143169506}
+  introHudText: {fileID: 0}
   introAudio: {fileID: 0}
-  moveProvider: {fileID: 0}
-  turnProvider: {fileID: 0}
-  leftHandModel: {fileID: 7310494215607188231}
-  rightHandModel: {fileID: 7310494216219638776}
+  locomotion: {fileID: 0}
+  leftHandModel:
+  - {fileID: 0}
+  rightHandModel:
+  - {fileID: 0}
   quoteStayTime: 4
   fadeSpeed: 1
+  introPosition: {fileID: 0}
+  introEndPosition: {fileID: 0}
+  _transitionEffectManager: {fileID: 0}
 --- !u!1001 &111434857209173971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -520,6 +525,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2826956144848070268, guid: e4f332aea9a46b34bab01d9d6d17f588, type: 3}
       propertyPath: m_ThumbstickTransform
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123834650606846029, guid: e4f332aea9a46b34bab01d9d6d17f588, type: 3}
+      propertyPath: 'm_ProvidersToDisable.Array.data[0]'
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3229012808228254544, guid: e4f332aea9a46b34bab01d9d6d17f588, type: 3}
@@ -1038,6 +1047,7 @@ PrefabInstance:
     - {fileID: 3630594832954831854, guid: e4f332aea9a46b34bab01d9d6d17f588, type: 3}
     - {fileID: 3630594833633918567, guid: e4f332aea9a46b34bab01d9d6d17f588, type: 3}
     - {fileID: 3630594833375872912, guid: e4f332aea9a46b34bab01d9d6d17f588, type: 3}
+    - {fileID: 5967421799327599467, guid: e4f332aea9a46b34bab01d9d6d17f588, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7277802327471902856, guid: e4f332aea9a46b34bab01d9d6d17f588, type: 3}
       insertIndex: 0

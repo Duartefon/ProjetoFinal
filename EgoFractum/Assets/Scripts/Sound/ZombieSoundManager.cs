@@ -25,29 +25,29 @@ public class ZombieSoundManager : MonoBehaviour
 
     void Update()
     {
+        audioClip = null;
         //if (!zombie.IsAlive) return;
         timer -= Time.deltaTime;
         var currentState = _stateMachine.currentState;
-        
-        // DIRECTLY read the state from our own AI component
-        // This ensures we never listen to other zombies
-     /*   if (currentState == EnemyStates.Run)
-        {
-            audioClip = GetRandomZombieSound(zombieData.attackSound);
-            delayBetweenAudios = 1.5f;
-        }*/
+        Debug.Log($"CurrentState {currentState}");
+
+        if (currentState == EnemyStates.Idle)
+            return;
         
         if (currentState == EnemyStates.Run)
         {
             audioClip = GetRandomZombieSound(zombieData.runningSound);
             delayBetweenAudios = 3f; // Added a delay so they don't spam run sounds
         }
-        else //if(currentState == EnemyStates.Wander)
+        else if(currentState == EnemyStates.Wander)
         {
             audioClip = GetRandomZombieSound(zombieData.walkSound);
             delayBetweenAudios = 5f; // Explicitly set delay for wandering
         }
-         // else()
+        else
+        {
+            return;
+        }
 
         if (timer <= 0)
         {
