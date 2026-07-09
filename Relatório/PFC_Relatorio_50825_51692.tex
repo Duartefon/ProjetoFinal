@@ -801,6 +801,8 @@ arquitetura, com os principais componentes e a forma como comunicam entre si.
     \label{fig:modelo_arquitetura}
 \end{figure}
 
+Estes components são descritos nas seguintes subsecções.
+
 % haver uma secção a explicar cada parte da arquitetura
 % - Jogador
 % - Sistema de interação
@@ -809,7 +811,30 @@ arquitetura, com os principais componentes e a forma como comunicam entre si.
 % - Sistema de Narrativa
 % - Sistema de Save
 
+\subsection{Jogador}\label{ssec:jogador}
+A componente do Jogador representa o jogador virtual que, com recurso
+ao \texttt{XR Interaction Toolkit}, pode interagir com os restantes componentes
+da arquitetura.
 
+\subsection{Sistema de Puzzles}\label{ssec:sys-puzzles}
+Este sistema foca-se na parte da gestão de puzzles, cuja implementação é detalhada
+na secção~\ref{ssec:gestao-puzzles}. Este sistema envolve todos os mecanismos e componentes
+usados para a implementação e gestão dos puzzles. 
+
+\subsection{Sistema de \textit{Save}}\label{ssec:sys-save}
+
+Este sistema foca-se na gestão do progresso do jogador, detalhado na secção~\ref{ssec:gestao-progresso}.
+Deve implicar a persistência de todas as posições de objetos manipuláveis, o estado dos puzzles
+e a posição do jogador. Segue o padrão de design \texttt{Singleton} para garantir que haja apenas uma instância
+em todo o jogo.
+
+\subsection{Sistema de Narrativa}\label{ssec:sys-narrativa}
+Este sistema depende da progressão do jogo e foca-se na gestão da narrativa, cuja implementação é detalhada
+na secção~\ref{ssec:gestao-narrativa}. Este sistema envolve todos os mecanismos e componentes
+usados para a implementação e gestão da narrativa, que serão feitas à base de ficheiros
+de áudio, acompanhados delegendas, que só tocam em momentos determinados.
+
+\
 \section{Evolução do Protótipo}
 \label{sec:prototipo}
 % Aqui explica-se a "fase de desenvolvimento inicial". Como o modelo é iterativo,
@@ -832,6 +857,7 @@ Figura~\ref{fig:greyboxing} mostra um exemplo de um nível montado com esta téc
     \caption{Nível montado com \textit{greyboxing}.}
     \label{fig:greyboxing}
 \end{figure}
+
 \section{Elementos Gráficos e Ambiente}
 \label{sec:elementos-graficos}
 A construção do ambiente seguiu uma abordagem modular, tal que se modelaram
@@ -955,7 +981,7 @@ Figuras~\ref{fig:map_layout} e \ref{fig:final_map}, respetivamente.
 Esta secção descreve os sistemas interativos desenvolvidos para o jogo,
 incluindo a implementação de mecânicas de interação e locomoção na subsecção~\ref{ssec:interacao-objetos}, a implementação
 da lógica dos puzzles na subsecção~\ref{ssec:logica-puzzles} e os sistemas de gestão da narrativa e do progresso do jogador 
-nas subsecções~\ref{ssec:gestao-narrativa} e~\ref{ssec:prog-jogo}, respetivamente.
+nas subsecções~\ref{ssec:gestao-narrativa} e~\ref{ssec:gestao-progresso}, respetivamente.
 
 
 \subsection{Mecânicas de Interação e Locomoção}
@@ -1159,6 +1185,19 @@ aos eventos de entrada e saída do jogador na zona de deteção, através dos m�
 Nesta subsecção, é detalhada a implementação da lógica dos puzzles, incluindo a gestão de estados, 
 eventos e interações com os elementos do jogo, descritos anteriormente.
 
+\subsubsection{Gestor de Puzzles}
+\label{ssec:gestao-puzzles}
+Toda a gestão dos puzzles é feita via um gestor \texttt{PuzzleManager}, que 
+guarda todos os puzzles num dicionário, com a chave sendo o identificador (nome)
+do puzzle, e o valor sendo se está completo ou não. Este gestor age
+como um \texttt{Singleton}, garantindo que haja apenas uma instância
+de \texttt{PuzzleManager} em toda a cena.
+
+Este expõe métodos para manipular o dicionário, como \texttt{GetPuzzle},
+\texttt{CompletePuzzle} e \texttt{SetPuzzles}. Cada vez que um puzzle é completo,
+o evento \texttt{onPuzzleCompleted} é disparado, que é utilizado pelo
+gestor de progresso para guardar o progresso do jogo (descrito na secção \ref{ssec:gestao-progresso}).
+
 \subsubsection{Puzzle 1: Restabelecimento de Energia}
 \label{sssec:puzzle1}
 
@@ -1264,6 +1303,20 @@ estado atual diretamente da máquina de estados associada a essa instância
 específica, evitando que o som de um inimigo seja influenciado pelo estado 
 de outro caso existam vários em simultâneo no labirinto.
 
+\subsection{Interfaces Diegéticas}\label{ssec:interfaces}
+
+As interfaces integram o cenário. A implementação utiliza câmeras,
+\texttt{RenderTextures} e pós-processamento para apresentar elementos de \texttt{UI} em monitores.
+
+A construção de material requer: 
+\begin{enumerate} 
+    \item Criar um \textit{canvas} com componentes de \texttt{UI}, como imagens, texto, \textit{etc}. 
+    \item Posicionar uma câmera a captar o \textit{canvas}, com efeitos e \textit{output} para uma \texttt{RenderTexture}. 
+    \item Atribuir a \texttt{RenderTexture} a um material.
+\end{enumerate}
+
+Este processo se repete para cada \texttt{UI} que se deseje apresentar.
+
 % portas automaticas
 %falar dos scripts da balança dos pesos e do terminal da porta
 \subsection{Som e Atmosfera}
@@ -1304,7 +1357,7 @@ na zona de deteção. Estes \textit{triggers} só serão ativados consoante a su
 a evitar que o jogador ouça mensagens fora de contexto.
 
 \subsection{Gestão do Progresso do Jogo}
-\label{ssec:prog-jogo}
+\label{ssec:gestao-progresso}
 Para permitir uma melhor experiência de utilizador, foi implementado
 um sistema para guardar e carregar o progresso do jogo. Este sistema
 divide-se em três partes: a posição do jogador, o estado dos puzzles
@@ -1380,7 +1433,7 @@ cada objeto da cena, que é mais trabalhoso e propício a erros de omissão.
 \end{figure}
 
 Por fim, para dar \textit{feedback} ao utilizador após uma gravação,
-foi implementada uma animação de texto em HUD que surge, pisca três
+foi implementada uma animação de texto em \texttt{HUD} que surge, pisca três
 vezes com um \textit{fade}, e desaparece automaticamente.
 
 %\cleardoublepage
@@ -1569,28 +1622,28 @@ Unity Technologies.
 \textit{Unity Official Website}.
 \url{https://unity.com/pt}
 
-\bibitem[XR Interaction Toolkit, Unity, site]{xri}
+\bibitem[XR Interaction Toolkit, 2025, site]{xri}
 Unity Technologies.
 \textit{XR Interaction Toolkit Documentation}.
 \url{https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@3.0/manual/index.html}
 
-\bibitem[ProBuilder, Unity, site]{probuilder}
+\bibitem[ProBuilder, 2017, site]{probuilder}
 Unity Technologies.
 \textit{ProBuilder Documentation}.
 \url{https://docs.unity3d.com/Packages/com.unity.probuilder@4.0/manual/index.html}
 
 
-\bibitem[Neil Blevins, Greyboxing, site]{greyboxing}
+\bibitem[Neil Blevins, 2022, site]{greyboxing}
 Neil Blevins.
 \textit{Greyboxing in Game Development}.
 \url{http://www.neilblevins.com/art_lessons/greybox/greybox.htm}
 
-\bibitem[Keebler et al., GUESS-18, 2016]{guess18}
+\bibitem[Keebler \textit{et al.}, 2016]{guess18}
 The Journal of Usability Studies.
 \textit{GUESS-18 Scoring Guidelines}.
 \url{https://uxpajournal.org/wp-content/uploads/sites/7/pdf/JUS_Keebler_GUESS-18%20Scoring%20Guidelines.pdf}
 
-\bibitem[Phan, Keebler \& Chaparro, 2016, Human Factors]{guess}
+\bibitem[Phan, Keebler \& Chaparro, 2016]{guess}
 ResearchGate.
 \textit{The Development and Validation of the Game User Experience Satisfaction Scale (GUESS)}
 \url{https://www.researchgate.net/publication/308343588_The_Development_and_Validation_of_the_Game_User_Experience_Satisfaction_Scale_GUESS}
@@ -1610,13 +1663,13 @@ Mihaly Csikszentmihalyi.
 \textit{Flow: The Psychology of Optimal Experience}.
 Harper \& Row, 1990.
 
-\bibitem[Carson, Environmental Storytelling, site]{env_story}
+\bibitem[Carson, 2000, site]{env_story}
 Don Carson.
 \textit{Environmental Storytelling: Creating Immersive \texttt{3D} Worlds Using Lessons Learned from the Theme Park Industry}.
 Game Developer.
 \url{https://www.gamedeveloper.com/design/environmental-storytelling-creating-immersive-3d-worlds-using-lessons-learned-from-the-theme-park-industry}
 
-\bibitem[Jenkins, Spatial Stories]{spatial_stories}
+\bibitem[Jenkins, 2004]{spatial_stories}
 Henry Jenkins.
 \textit{Game Design as Narrative Architecture}.
 2004.
