@@ -383,7 +383,7 @@ as funções de persistência, respetivamente.
         R1.1 & O jogador deve voltar ao último \textit{checkpoint} quando morre & Evidente \\ \hline
         R1.2 & O jogador deve desbloquear a narrativa ao completar puzzles & Evidente \\ \hline
         R1.3 & O progresso do jogador deve ser guardado ao completar \textit{puzzles} & Evidente \\ \hline
-        R1.4 & Objetos interagíveis devem estar bem sinalizados & Evidente \\ \hline
+        R1.4 & Objetos manipuláveis devem estar bem sinalizados & Evidente \\ \hline
     \end{tabular}
     \caption{Tabela de funções de regras do jogo.}
     \label{tab:regras_jogo}
@@ -767,11 +767,13 @@ jogador motivado sem quebrar o ritmo da experiência.
 %\cleardoublepage
 \chapter{Implementação do Modelo}
 \label{ch:implementacao-modelo}
-
-Neste capítulo é apresentada a implementação do modelo proposto, 
-estruturada em quatro secções principais: Na secção~\ref{sec:arquitetura-sistema}, é apresentada a arquitetura do sistema,
-seguida pela evolução do protótipo na secção~\ref{sec:prototipo}. Na secção~\ref{sec:elementos-graficos}, são detalhados 
-os elementos gráficos e o ambiente do jogo, e por fim, na secção~\ref{sec:sistemas-interativos}, é descrita a implementação do modelo proposto.
+Neste capítulo é apresentada a implementação do modelo proposto, estruturada
+em quatro secções principais. Na secção~\ref{sec:arquitetura-sistema} é
+apresentada a arquitetura do sistema, seguida pela evolução do protótipo na
+secção~\ref{sec:prototipo}. Na secção~\ref{sec:elementos-graficos} são
+detalhados os elementos gráficos e o ambiente do jogo e, por fim, na
+secção~\ref{sec:sistemas-interativos}, são descritos os sistemas
+interativos que sustentam a jogabilidade.
 
 % NOTA PARA A ESCRITA DA IMPLEMENTAÇÃO:
 % - Foco: APLICAÇÃO PRÁTICA, ENGENHARIA E PRODUÇÃO PRÓPRIA.
@@ -780,20 +782,24 @@ os elementos gráficos e o ambiente do jogo, e por fim, na secção~\ref{sec:sis
 %   2. Assets: O processo de modelação no \texttt{Blender} e texturas no \texttt{Aseprite}.
 %   3. Código (Scripts C#): Mostrar a lógica dos puzzles.
 
-
 \section{Arquitetura do Sistema}\label{sec:arquitetura-sistema}
 % Podemos incluir concept art talvez
 % Aqui faz-se um resumo visual de como o Unity se liga ao XR Interaction Toolkit.
 % Pode-se incluir um diagrama de blocos da arquitetura (Input do Utilizador -> XR Rig -> Lógica do Jogo).
 % Explicar o que é abstraído e o que já vem implementado.
-O jogo foi desenvolvido em \texttt{Unity}, com recurso ao \texttt{XR Interaction Toolkit}.
-A arquitetura assenta num modelo baseado em eventos, com os componentes do jogo
-organizados em camadas distintas, o que separa responsabilidades e facilita
-alterações futuras ao código. Em vez de verificações constantes a cada
-\textit{frame}, o sistema reage por eventos, por exemplo, o 
-jogador interagir com um objeto ou terminar um puzzle.
+
+O jogo foi desenvolvido em \texttt{Unity}, com recurso ao \texttt{XR
+Interaction Toolkit}. A arquitetura assenta num modelo baseado em eventos,
+com os componentes do jogo organizados em camadas distintas, o que separa
+responsabilidades e facilita alterações futuras ao código. Em vez de
+verificações constantes a cada \textit{frame}, o sistema reage a eventos,
+como, por exemplo, o jogador interagir com um objeto ou terminar um
+\textit{puzzle}.
+\par
 A Figura~\ref{fig:modelo_arquitetura} mostra uma versão simplificada desta
-arquitetura, com os principais componentes e a forma como comunicam entre si.
+arquitetura, com os principais componentes e a forma como comunicam entre
+si.
+
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.2]{Imagens/modelo_arquitetura.png}
@@ -801,7 +807,7 @@ arquitetura, com os principais componentes e a forma como comunicam entre si.
     \label{fig:modelo_arquitetura}
 \end{figure}
 
-Estes components são descritos nas seguintes subsecções.
+Estes componentes são descritos nas subsecções seguintes.
 
 % haver uma secção a explicar cada parte da arquitetura
 % - Jogador
@@ -812,29 +818,30 @@ Estes components são descritos nas seguintes subsecções.
 % - Sistema de Save
 
 \subsection{Jogador}\label{ssec:jogador}
-A componente do Jogador representa o jogador virtual que, com recurso
-ao \texttt{XR Interaction Toolkit}, pode interagir com os restantes componentes
-da arquitetura.
+Esta componente representa o jogador dentro do ambiente virtual e, com
+recurso ao \texttt{XR Interaction Toolkit}, permite a interação com os
+restantes componentes da arquitetura.
 
 \subsection{Sistema de Puzzles}\label{ssec:sys-puzzles}
-Este sistema foca-se na parte da gestão de puzzles, cuja implementação é detalhada
-na secção~\ref{ssec:gestao-puzzles}. Este sistema envolve todos os mecanismos e componentes
-usados para a implementação e gestão dos puzzles. 
+Este sistema é responsável por todos os mecanismos e componentes usados na
+implementação e gestão dos \textit{puzzles}, sendo detalhado na
+secção~\ref{ssec:gestao-puzzles}.
 
 \subsection{Sistema de \textit{Save}}\label{ssec:sys-save}
-
-Este sistema foca-se na gestão do progresso do jogador, detalhado na secção~\ref{ssec:gestao-progresso}.
-Deve implicar a persistência de todas as posições de objetos manipuláveis, o estado dos puzzles
-e a posição do jogador. Segue o padrão de design \texttt{Singleton} para garantir que haja apenas uma instância
-em todo o jogo.
+Este sistema é responsável pela gestão do progresso do jogador, sendo
+detalhado na secção~\ref{ssec:gestao-progresso}. Garante a persistência de
+todas as posições dos objetos manipuláveis, do estado dos \textit{puzzles}
+e da posição do jogador, seguindo o padrão de \textit{design}
+\texttt{Singleton} para garantir que existe apenas uma instância ao longo
+de todo o jogo.
 
 \subsection{Sistema de Narrativa}\label{ssec:sys-narrativa}
-Este sistema depende da progressão do jogo e foca-se na gestão da narrativa, cuja implementação é detalhada
-na secção~\ref{ssec:gestao-narrativa}. Este sistema envolve todos os mecanismos e componentes
-usados para a implementação e gestão da narrativa, que serão feitas à base de ficheiros
-de áudio, acompanhados delegendas, que só tocam em momentos determinados.
+Este sistema depende da progressão do jogo e é responsável pela gestão da
+narrativa, sendo detalhado na secção~\ref{ssec:gestao-narrativa}. A
+narrativa é transmitida através de ficheiros de áudio, acompanhados de
+legendas, que são reproduzidos apenas em momentos determinados da
+progressão do jogador.
 
-\
 \section{Evolução do Protótipo}
 \label{sec:prototipo}
 % Aqui explica-se a "fase de desenvolvimento inicial". Como o modelo é iterativo,
@@ -1378,7 +1385,7 @@ a evitar que o jogador ouça mensagens fora de contexto.
 Para permitir uma melhor experiência de utilizador, foi implementado
 um sistema para guardar e carregar o progresso do jogo. Este sistema
 divide-se em três partes: a posição do jogador, o estado dos puzzles
-e a posição de todos os objetos interagíveis.
+e a posição de todos os objetos manipuláveis.
 \par
 A classe central deste sistema é o \texttt{GameDataManager}, que segue
 o padrão \texttt{Singleton}, demonstrado no excerto de código~\ref{lst:singleton}, garantindo que existe
@@ -1435,7 +1442,7 @@ De modo a automatizar a configuração inicial, foi desenvolvido uma
 ferramenta de editor acessível através do menu
 \texttt{Tools > Setup Saveable Objects}, exemplificado na Figura~\ref{fig:setup_saveable_objects}. 
 Esta ferramenta percorre
-toda a cena em busca de objetos com comportamentos interagíveis,
+toda a cena em busca de objetos com comportamentos manipuláveis,
 nomeadamente objetos com \texttt{XRGrabInteractable} ou com
 \texttt{Rigidbody} não cinemático, e adiciona-lhes automaticamente
 o componente \texttt{SaveableObject}. Este procedimento elimina a necessidade 
@@ -1445,7 +1452,7 @@ cada objeto da cena, que é mais trabalhoso e propício a erros de omissão.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=1.1]{Imagens/tool_saveable_objects.png}
-    \caption{Janela de configuração inicial dos objetos interagíveis.}
+    \caption{Janela de configuração inicial dos objetos manipuláveis.}
     \label{fig:setup_saveable_objects}
 \end{figure}
 
@@ -1464,8 +1471,7 @@ e a análise estatística realizada aos resultados obtidos.
 O capítulo está dividido em cinco secções. A secção~\ref{sec:objetivos-validacao}
 apresenta os objetivos dos testes de validação. A secção~\ref{sec:instrumento}
 descreve o questionário utilizado, baseado no \texttt{GUESS-18}, e as adaptações
-feitas ao mesmo. A secção~\ref{sec:amostra-procedimento} caracteriza a amostra e
-o procedimento seguido durante as sessões de teste. Na secção~\ref{sec:analise-estatistica}
+feitas ao mesmo. Na secção~\ref{sec:analise-estatistica}
 é detalhada a abordagem de análise estatística adotada, e a secção~\ref{sec:resultados-validacao}
 apresenta e discute os resultados obtidos. Por fim, a secção~\ref{sec:limitacoes-validacao}
 identifica as principais limitações deste processo de validação.
@@ -1698,7 +1704,7 @@ evidentes concentram-se em três áreas: (1) a clareza dos controlos e a
 curva de aprendizagem inicial, sem tutorial; (2) o desafio proposto pelo
 inimigo no terceiro \textit{puzzle}, cuja perceção não reuniu consenso; e
 (3) o conforto em \texttt{VR}, que afetou negativamente a experiência dos
-participantes mais suscetíveis a enjoo — um aspeto que a análise
+participantes mais suscetíveis a enjoo, um aspeto que a análise
 quantitativa da subescala do GUESS-18 não capta diretamente, mas que surge
 de forma consistente nos dados qualitativos.
 
