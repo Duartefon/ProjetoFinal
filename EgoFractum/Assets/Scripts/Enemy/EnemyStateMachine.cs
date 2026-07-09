@@ -90,8 +90,7 @@ public class EnemyStateMachine : MonoBehaviour
     private void UpdateStunState()
     {
         //_agent.enabled = false;
-        _agent.isStopped = true;
-    }
+        _agent.isStopped = true; }
 
     public void UpdateIdleState()
     {
@@ -164,7 +163,7 @@ public class EnemyStateMachine : MonoBehaviour
                 //this should be the maze manager responsibility, zombie only tells player dead
 
                 _transitionEffectManager.PlayEffect("playTransition");
-                //_puzzleMazeManager. 
+                 
                 Debug.Log("Player dead!");
             }
         }
@@ -182,6 +181,7 @@ public class EnemyStateMachine : MonoBehaviour
      **/
     public void OnLightStun(bool value)
     {
+         
         currentState = value ? EnemyStates.Stunned : EnemyStates.Wander;
     }
 
