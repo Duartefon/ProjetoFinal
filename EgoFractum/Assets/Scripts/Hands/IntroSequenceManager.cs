@@ -57,6 +57,8 @@ public class IntroSequenceManager : MonoBehaviour
         yield return StartCoroutine(FadeUI(blackScreen, 0f));
         //introAudio.Play();
         
+        
+        
 
 
         leftHandModel.SetActive(true);
