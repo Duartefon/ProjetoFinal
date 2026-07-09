@@ -75,47 +75,58 @@ real, servindo os resultados obtidos como base para iterações futuras com
 uma amostra de utilizadores mais alargada.
 
 %\cleardoublepage
-\chapter{Abstract}
-This work presents the development of a virtual reality game focused on 
-three-dimensional interaction. The main goal is to explore forms of 
-interaction that go beyond conventional input methods, taking advantage of 
-real physical movement.
-\par
-The motivation stems from the limited exploration of this area in higher 
-education, despite its potential and growing relevance in the multimedia 
-field.
-\par
-The proposed solution consists of an exploration game based on puzzle 
-solving. The player interacts directly with objects in the environment in 
-order to progress. The narrative is revealed gradually, encouraging 
+\chapter{Abstract}\label{ch:abstract}
+This work presents the development of a Virtual Reality (VR) game focused
+on three-dimensional interaction. The main goal is to explore interaction
+methods that differ from conventional ones, leveraging real-world
+movements.
+
+The motivation stems from the relatively limited exploration of this area,
+despite its potential and growing relevance within the multimedia
+landscape.
+
+The proposed solution consists of an exploration game built around puzzle
+solving. The player interacts directly with objects in the environment
+in order to progress. The narrative is revealed gradually, encouraging
 discovery and player engagement.
-\par
-The system was developed using the \texttt{Unity}~\cite{unity} game engine, with 
-the \texttt{XR Interaction Toolkit}~\cite{xri}. An iterative approach was 
-adopted, with successive prototyping, implementation, and testing. All 
-graphical elements were created from scratch.
-\par
-The main contributions include a three-dimensional interaction system based 
-on real physical movement, a puzzle-oriented immersive environment, and the 
-integration of narrative elements into the progression process.
-\par
-The evaluation included functional testing and user experience analysis 
-based on the \texttt{GUESS-18}~\cite{guess18} scale. Aspects such as 
-usability, immersion, and intuitiveness were considered. Preliminary 
-results, gathered from a small number of participants, show a positive 
-reception of the game's atmosphere, graphics, and audio, with no 
-significant signs of discomfort or motion sickness, although some points 
-for improvement were identified regarding the clarity of certain controls 
-and mechanics.
-\par
-It is concluded that the adopted approach is viable and promising for the 
-development of immersive experiences based on real physical interaction, 
-with the results obtained serving as a basis for future iterations with a 
-larger user sample.
+
+The system was developed using the Unity game engine \cite{unity} together
+with the \texttt{XR Interaction Toolkit} \cite{xri}. An iterative,
+user-centered approach was adopted, involving successive prototyping,
+implementation, and testing cycles. All graphical assets were created
+from scratch.
+
+The main contributions include a three-dimensional interaction system
+based on real-world movements, an immersive puzzle-oriented environment,
+and the integration of narrative elements into the progression process.
+
+The evaluation included functional testing and user experience testing,
+using a questionnaire based on the standard GUESS-18 questionnaire
+\cite{guess18} as the data collection method. Aspects such as
+usability, immersion, and intuitiveness were assessed. Preliminary
+results, obtained from a small number of participants, show a positive
+reception regarding the game's atmosphere and its graphical and audio
+elements, with no significant signs of discomfort or motion sickness,
+although some points for improvement were identified regarding the
+clarity of certain controls and mechanics.
+
+It is concluded that the adopted approach is viable and promising for
+the development of immersive experiences based on real physical
+interaction, with the obtained results serving as a basis for future
+iterations involving a larger user sample.
+
 
 %\cleardoublepage
 \chapter{Agradecimentos}
-Escrever aqui eventuais agradecimentos \ldots
+
+Gostaríamos de agradecer aos professores orientadores, Rui Jesus e
+Letícia Lucas, por se terem disponibilizado para nos orientar e ajudar
+durante todo o processo de desenvolvimento do trabalho, e ao professor
+Pedro Mendes Jorge pela ajuda relativamente aos \textit{headsets} de
+Realidade Virtual. Para além disso, queremos agradecer também ao
+professor Hugo Cordeiro, pela sua disponibilidade para nos arguir e
+nos ensinar as bases de \texttt{Blender} e \texttt{Unity} que nos permitiram desenvolver
+este trabalho.
 
 %\cleardoublepage
 \begin{myDedication}
@@ -1264,7 +1275,7 @@ momento da colisão e reproduzem um som de toque ou de impacto consoante
 essa velocidade.
 \par
 O jogo inclui ainda diversos sons ambiente, como luzes, ar condicionado
-e passos. O som dos passos é gerido por um \textit{script} que efetua, em cada
+e passos. O som dos passos é gerido por um \textit{script} que faz, em cada
 \textit{FixedUpdate}, um \textit{SphereCast} vertical a partir do
 jogador para detetar se este se encontra no chão. Quando o jogador está
 no chão e a sua velocidade excede um limiar definido, é reproduzido um
