@@ -98,7 +98,7 @@ public class HandFlashLight : MonoBehaviour
 
                 break;
             case FlashlightStates.Off:
-                light.enabled = false;
+                flashLight.enabled = false;
                 if (_blinkingCoroutine != null)
                     StopCoroutine(_blinkingCoroutine);
 
@@ -115,16 +115,16 @@ public class HandFlashLight : MonoBehaviour
     public void Update()
     {
         text.text =
-            $"{_energy}%, isOn {light.enabled} ,Light Level{light.intensity}";
-        Debug.Log($"{_energy}%, isOn {light.enabled} ,Light Level{light.intensity}");
+            $"{_energy}%, isOn {flashLight.enabled} ,Light Level{flashLight.intensity}";
+        Debug.Log($"{_energy}%, isOn {flashLight.enabled} ,Light Level{flashLight.intensity}");
     }
 
     private void OnFlashlightButtonPress(InputAction.CallbackContext callbackContext)
     {
         Debug.Log("Button pressed" + callbackContext.ReadValue<float>());
-        light.enabled = !light.enabled;
+        flashLight.enabled = !flashLight.enabled;
 
-        _currentState = light.enabled ? FlashlightStates.On : FlashlightStates.Off;
+        _currentState = flashLight.enabled ? FlashlightStates.On : FlashlightStates.Off;
     }
 
     private void DechargeLight()
@@ -148,25 +148,25 @@ public class HandFlashLight : MonoBehaviour
     private void ChargeLight()
     {
         _energy = Mathf.Clamp(_energy + rechargeStep, 0, 100);
-        light.intensity = Mathf.Clamp(light.intensity + rechargeStep, 0, baseLightIntensity);
+        flashLight.intensity = Mathf.Clamp(flashLight.intensity + rechargeStep, 0, baseLightIntensity);
     }
     private IEnumerator BlinkingLight()
     {
         while (_currentState == FlashlightStates.On)
         {
             //Debug.Log(Mathf.Sin(Time.time) * 50);
-            if (light.intensity >= baseLightIntensity * baseLightThreshold)
+            if (flashLight.intensity >= baseLightIntensity * baseLightThreshold)
             {
                 Debug.Log("I'm starting to decrease light ");
-                light.intensity = Mathf.Clamp(light.intensity - lightBlinkingDecreaseStep, 0, baseLightIntensity);
+                flashLight.intensity = Mathf.Clamp(flashLight.intensity - lightBlinkingDecreaseStep, 0, baseLightIntensity);
             }
-            else if (light.intensity >= 0)
+            else if (flashLight.intensity >= 0)
             {
                 //TODO: mudar isto para animation curves, salvo num scrip.obj
-                light.intensity = 16 / 2f * Mathf.Sin(Time.time * 2) + 10;
-                light.spotAngle = Mathf.Clamp(baseLightOuterSpot / 2 * Mathf.Sin(Time.time * 1 / 3) + 10, 25,
+                flashLight.intensity = 16 / 2f * Mathf.Sin(Time.time * 2) + 10;
+                flashLight.spotAngle = Mathf.Clamp(baseLightOuterSpot / 2 * Mathf.Sin(Time.time * 1 / 3) + 10, 25,
                     baseLightOuterSpot);
-                light.innerSpotAngle = Mathf.Clamp(baseLightInnerSpot / 2 * Mathf.Sin(Time.time * 1 / 3) + 10, 5,
+                flashLight.innerSpotAngle = Mathf.Clamp(baseLightInnerSpot / 2 * Mathf.Sin(Time.time * 1 / 3) + 10, 5,
                     baseLightInnerSpot);
             }
 
