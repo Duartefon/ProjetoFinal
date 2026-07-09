@@ -55,7 +55,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("CurrentState:  " + currentState);
+        //Debug.Log("CurrentState:  " + currentState);
         switch (currentState)
         {
             case EnemyStates.Idle:
