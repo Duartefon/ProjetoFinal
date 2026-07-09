@@ -2,20 +2,22 @@ using UnityEngine;
 
 public class FootStepSoundManager : MonoBehaviour
 {
-    [Header("Footstep Sound Settings")]
-    public float delayBetweenSteps;
-    public AudioSource footStepsSource;
-    public float velocityToTriggerStepSound;
-    public float volume = 0.05f;
-    public float earOffset = 0.25f;
-    public float maxPitch = 1.5f;
-    private float timeLastStep = 0;
-    private float timestamp;
-    public AudioClip normalStepSound, metalStepSound;
+    [Header("Footstep Sound Settings")] 
+    [SerializeField] private float delayBetweenSteps;
+    [SerializeField] private AudioSource footStepsSource;
+    [SerializeField] private float velocityToTriggerStepSound;
+    [SerializeField] private float volume = 0.05f;
+    [SerializeField] private float earOffset = 0.25f;
+    [SerializeField] private float maxPitch = 1.5f;
+    [SerializeField] private LayerMask metalLayer;
+    [SerializeField] private AudioClip normalStepSound, metalStepSound;
 
-    [Header("Player")]
-    public CharacterController player;
-    private bool boolAux = false;
+    [Header("Player")] 
+    [SerializeField] private CharacterController player;
+
+    private float _timeLastStep = 0;
+    private float _timestamp;
+    private bool _boolAux = false;
 
     void Start()
     {
@@ -25,42 +27,48 @@ public class FootStepSoundManager : MonoBehaviour
             Debug.LogError($"Não existe CharacterController no parent: {gameObject.transform.parent.name}");
     }
 
+    /**
+     * Verifica se o jogador está no chão (grounded) e toca o som de passos, alternando
+     * entre o canal da direita e da esquerda para simular os passos reais. Cada passo, tem
+     * um intervalo.
+     */
     void FixedUpdate()
     {
-        timestamp += Time.deltaTime;
-        //Debug.Log(player.velocity.magnitude);
-        //Debug.Log("Time: " + timestamp + "timeLastStep: " + timeLastStep + delayBetweenSteps + "Player grounded: " + player.isGrounded );
-        float rayDistance = (player.height) - player.radius + 0.1f;
-        Vector3 sphereOrigin = player.transform.position + player.center;
-        bool isManuallyGrounded = Physics.SphereCast(sphereOrigin, player.radius, Vector3.down, out RaycastHit hit, rayDistance);
-        if (player.velocity.magnitude > velocityToTriggerStepSound
-            && timestamp > timeLastStep + delayBetweenSteps && isManuallyGrounded)
-        {
-            timeLastStep = Time.fixedTime;
+        _timestamp += Time.deltaTime;
+        var rayDistance = (player.height) - player.radius + 0.1f;
+        var sphereOrigin = player.transform.position + player.center;
+        
+        var isManuallyGrounded =
+            Physics.SphereCast(sphereOrigin, player.radius, Vector3.down, out RaycastHit hit, rayDistance);
 
-            footStepsSource.clip = IsOnMetal() ? metalStepSound : normalStepSound;
-            footStepsSource.pitch = Random.Range(1, maxPitch);
-            footStepsSource.volume = Random.Range(volume * 0.5f, volume * 1.2f);
-            boolAux = !boolAux;
-            footStepsSource.panStereo = boolAux ? -1 + earOffset : 1 - earOffset;
-            footStepsSource.Play();
-        }
+        if (!(player.velocity.magnitude > velocityToTriggerStepSound)
+            || !(_timestamp > _timeLastStep + delayBetweenSteps) || !isManuallyGrounded) return;
+       
+        _timeLastStep = Time.fixedTime;
+        footStepsSource.clip = IsOnMetal() ? metalStepSound : normalStepSound;
+        footStepsSource.pitch = Random.Range(1, maxPitch);
+        footStepsSource.volume = Random.Range(volume * 0.5f, volume * 1.2f);
+        _boolAux = !_boolAux;
+        footStepsSource.panStereo = _boolAux ? -1 + earOffset : 1 - earOffset;
+        footStepsSource.Play();
     }
 
+    /**
+     * Verifica se a superfície (layer) onde o jogador se encontra é metal ou não.
+     */
     private bool IsOnMetal()
     {
         var origin = player.transform.position;
         var direction = Vector3.down;
         var maxDistance = 0.5f;
-        
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, maxDistance))
+
+        if (Physics.Raycast(origin, direction, out RaycastHit hit, maxDistance, metalLayer))
         {
-            var onMetal = hit.collider.gameObject.CompareTag("Metal");
-            Debug.DrawRay(origin, direction , onMetal ? Color.yellow : Color.red);
-            return onMetal;
+            Debug.DrawRay(origin, direction, Color.yellow);
+            return true;
         }
 
-      
+        Debug.DrawRay(origin, direction * maxDistance, Color.red);
         return false;
     }
 }

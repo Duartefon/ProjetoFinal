@@ -2,22 +2,22 @@ using UnityEngine;
 
 public class StoryTrigger : MonoBehaviour
 {
-    private StoryManager sm;
+    private StoryManager _storyManager;
     public AudioClip voiceLine;
 
     private void Awake()
     {
-        sm = GetComponentInParent<StoryManager>();
+        _storyManager = GetComponentInParent<StoryManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-            sm.PlayVoiceLine(voiceLine);
+            _storyManager.PlayVoiceLine(voiceLine);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

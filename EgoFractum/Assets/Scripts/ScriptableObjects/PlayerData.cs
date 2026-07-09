@@ -8,12 +8,7 @@ namespace ScriptableObjects
         public Vector3  position;
         public Vector3 rotation;
         public Vector3 scale;
-
         public float moveSpeed;
         public float stepOffset;
-    
-    
-    
-    
     }
 }

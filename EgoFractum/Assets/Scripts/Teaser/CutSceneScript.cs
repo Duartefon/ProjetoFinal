@@ -4,81 +4,83 @@ using System.Collections;
 
 public class CutSceneScript : MonoBehaviour
 {
-    public Transform waypoint1, waypoint2;
-    public Camera mainCamera;
+    [SerializeField] private Transform waypoint1, waypoint2;
+    [SerializeField] private Camera mainCamera;
 
-    public float smoothTime = 1f;
+    [SerializeField] private float smoothTime = 1f;
 
-    public bool playCutscene = false;
-    public bool triggerFlicker = false;
-    public bool everythingOn = true;
+    [SerializeField] private bool playCutscene = false;
+    [SerializeField] private bool triggerFlicker = false;
+    [SerializeField] private bool everythingOn = true;
 
-    public Image eyeIcon;
-    public Light[] pcLights;
+    [SerializeField] private Image eyeIcon;
+    [SerializeField] private Light[] pcLights;
 
-    private Vector3 velocity = Vector3.zero;
+    private Vector3 _velocity = Vector3.zero;
 
     void Start()
     {
         mainCamera = GetComponent<Camera>();
         mainCamera.transform.position = waypoint1.position;
     }
+    
+    /**
+     * Este script foi apenas utilizado para gravar o "teaser" usado na apresentação
+     * no FEIM 2026. Fora isso, não tem uso prático durante o jogo.
+     */
 
     void Update()
     {
-        // Replay cutscene from Inspector
         if (playCutscene)
         {
             PlayCutscene();
             playCutscene = false;
         }
-
-        // Trigger flicker from Inspector
+        
         if (triggerFlicker)
         {
             FlickerAndOff();
             triggerFlicker = false;
         }
 
-        // Turn everything on from Inspector
         if (everythingOn && !eyeIcon.enabled)
         {
             eyeIcon.enabled = true;
-            foreach (Light light in pcLights)
+            foreach (Light pcLight in pcLights)
             {
-                light.enabled = true;
+                pcLight.enabled = true;
             }
+
             everythingOn = false;
         }
 
-        // Camera movement
-        if (velocity != Vector3.zero)
+        if (_velocity != Vector3.zero)
         {
             mainCamera.transform.position = Vector3.SmoothDamp(
                 mainCamera.transform.position,
                 waypoint2.position,
-                ref velocity,
+                ref _velocity,
                 smoothTime
             );
 
             if (Vector3.Distance(mainCamera.transform.position, waypoint2.position) < 0.01f)
             {
                 mainCamera.transform.position = waypoint2.position;
-                velocity = Vector3.zero;
+                _velocity = Vector3.zero;
             }
         }
     }
 
-    public void PlayCutscene()
+    private void PlayCutscene()
     {
         mainCamera.transform.position = waypoint1.position;
 
-        velocity = Vector3.zero;
+        _velocity = Vector3.zero;
 
-        velocity = Vector3.one * 0.01f;
+        _velocity = Vector3.one * 0.01f;
     }
 
-    public void FlickerAndOff()
+    private void FlickerAndOff()
     {
         StartCoroutine(FlickerRoutine());
     }
@@ -87,24 +89,21 @@ public class CutSceneScript : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            // Toggle eye icon
             eyeIcon.enabled = !eyeIcon.enabled;
 
-            // Toggle all lights
-            foreach (Light light in pcLights)
+            foreach (Light pcLight in pcLights)
             {
-                light.enabled = !light.enabled;
+                pcLight.enabled = !pcLight.enabled;
             }
 
             yield return new WaitForSeconds(Random.Range(0.05f, 0.2f));
         }
 
-        // Final OFF state
         eyeIcon.enabled = false;
 
-        foreach (Light light in pcLights)
+        foreach (Light pcLight in pcLights)
         {
-            light.enabled = false;
+            pcLight.enabled = false;
         }
     }
 }

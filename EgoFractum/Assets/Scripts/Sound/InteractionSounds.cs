@@ -1,17 +1,23 @@
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class InteractionSounds : MonoBehaviour
 {
-    public enum SoundType
+    private enum SoundType
     {
-        Hit, // quando um item bate nalgo
+        Hit, // quando um item bate em algo
         Touch, // quando um item é tocado
     }
 
-    public SoundType soundType;
-    public float hitThreshold = 3f; // velocidade mínima para considerar um impacto
-    public AudioClip soundEffect;
-    private AudioSource audioSource;
+    [SerializeField] private SoundType soundType;
+    [SerializeField] private float hitThreshold = 3f; // velocidade mínima para considerar um impacto
+    [SerializeField] private AudioClip soundEffect;
+    private AudioSource _audioSource;
+
+    void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -21,12 +27,12 @@ public class InteractionSounds : MonoBehaviour
 
             if (impactVelocity > hitThreshold)
             {
-                audioSource.PlayOneShot(soundEffect);
+                _audioSource.PlayOneShot(soundEffect);
             }
 
         } else if (soundType == SoundType.Touch && collision.gameObject.CompareTag("Player"))
         {
-            audioSource.PlayOneShot(soundEffect);
+            _audioSource.PlayOneShot(soundEffect);
         }
     }
 }

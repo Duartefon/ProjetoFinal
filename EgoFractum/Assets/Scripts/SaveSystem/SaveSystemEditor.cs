@@ -5,6 +5,12 @@ using System.Collections.Generic;
 
 public class SaveSystemEditor
 {
+    /**
+     * Este script permite que, a partir do menu "Tools" do Unity, seja
+     * adicionado automaticamente o script SaveableObject a todos os objetos
+     * interativos (com Rigidbody ou Interactable), atribuindo-lhes um ID
+     * aleatório que os identifica.
+     */
     [MenuItem("Tools/Setup Saveable Objects")]
     public static void SetupAllXRObjects()
     {

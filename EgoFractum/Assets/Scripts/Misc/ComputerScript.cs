@@ -5,24 +5,29 @@ public class ComputerScript : MonoBehaviour
 {
     [SerializeField] private Light screenLight;
     [SerializeField] private Material screenOnMaterial, screenOffMaterial;
-    private GeneratorScript generatorScript;
     [SerializeField] private MeshRenderer screenMesh;
-    void Start()
+
+    private void OnEnable()
+    { 
+        GeneratorScript.OnEnergyEstablished += TurnOn;
+        GeneratorScript.OnEnergyLost += TurnOff;
+    }
+    
+    private void OnDisable()
     {
-        generatorScript = GameObject.FindWithTag("Generator").GetComponent<GeneratorScript>();
+        GeneratorScript.OnEnergyEstablished -= TurnOn;
+        GeneratorScript.OnEnergyLost -= TurnOff;
     }
 
-    void Update()
+    private void TurnOn()
     {
-        if (generatorScript.EnergyEstablished)
-        {
-            screenMesh.material = screenOnMaterial;
-            screenLight.enabled = true;
-        }
-        else
-        {
-            screenMesh.material = screenOffMaterial;
-            screenLight.enabled = false;
-        }
+        screenMesh.material = screenOnMaterial;
+        screenLight.enabled = true;
+    }
+
+    private void TurnOff()
+    {
+        screenMesh.material = screenOffMaterial;
+        screenLight.enabled = false;
     }
 }

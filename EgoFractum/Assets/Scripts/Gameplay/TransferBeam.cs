@@ -15,7 +15,6 @@ namespace Gameplay
         [SerializeField] private PlayerTransferData playerData;
         [SerializeField] private PlayerTransferData miniPlayerData;
         [SerializeField] private PuzzleMazeManager _puzzleMazeManager;
-
         
         private enum TransferState
         {

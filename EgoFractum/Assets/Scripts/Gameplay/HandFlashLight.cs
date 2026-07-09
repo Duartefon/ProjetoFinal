@@ -2,24 +2,24 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
+using UnityEngine.Serialization;
 
 public class HandFlashLight : MonoBehaviour
 {
     private bool _isLightOn = false;
-    [SerializeField] private Light light = null;
+
+    [FormerlySerializedAs("light")] [SerializeField]
+    private Light flashLight = null;
 
     private int _energy = 100;
     [SerializeField] private int rechargeStep = 15;
     [SerializeField] private float rechargeCooldown = 0.5f;
     [SerializeField] private int unchargeStep = 15;
     [SerializeField] private float unchargeCooldown = 2.5f;
-
-
     [SerializeField] private float baseLightIntensity = 50f;
     [SerializeField] private float baseLightThreshold = 0.35f;
     private float _timeStamp;
-    
+
     [SerializeField] private float lightBlinkingDecreaseStep = 0.2f;
     [SerializeField] private float baseLightInnerSpot = 23.9f;
     [SerializeField] private float baseLightOuterSpot = 56.7f;
@@ -38,7 +38,7 @@ public class HandFlashLight : MonoBehaviour
     {
         flashlightAction.action.performed += OnFlashlightButtonPress;
     }
-    
+
     public void OnDisable()
     {
         flashlightAction.action.performed -= OnFlashlightButtonPress;
@@ -47,7 +47,7 @@ public class HandFlashLight : MonoBehaviour
     public void Update()
     {
         text.text =
-            $"{_energy}%, isOn {_isLightOn} ,Light Level{light.intensity}";
+            $"{_energy}%, isOn {_isLightOn} ,Light Level{flashLight.intensity}";
     }
 
     IEnumerator FlashlightOn()
@@ -70,14 +70,6 @@ public class HandFlashLight : MonoBehaviour
 
             yield return null;
         } while (_energy > 0);
- 
-        
-     
-
-
-
-
-
     }
 
     private IEnumerator BlinkingLight()
@@ -86,20 +78,21 @@ public class HandFlashLight : MonoBehaviour
         while (_isLightOn)
         {
             //Debug.Log(Mathf.Sin(Time.time) * 50);
-            if (light.intensity >= baseLightIntensity * baseLightThreshold)
+            if (flashLight.intensity >= baseLightIntensity * baseLightThreshold)
             {
                 Debug.Log("I'm starting to decrease light ");
-                light.intensity = Mathf.Clamp( light.intensity - lightBlinkingDecreaseStep, 0, baseLightIntensity);
+                flashLight.intensity =
+                    Mathf.Clamp(flashLight.intensity - lightBlinkingDecreaseStep, 0, baseLightIntensity);
             }
-            else if (light.intensity >= 0)
+            else if (flashLight.intensity >= 0)
             {
-                light.intensity = 16/2f * Mathf.Sin(Time.time*2) + 10;
-                light.spotAngle = Mathf.Clamp(baseLightOuterSpot / 2 * Mathf.Sin(Time.time * 1/3) + 10, 25,
+                flashLight.intensity = 16 / 2f * Mathf.Sin(Time.time * 2) + 10;
+                flashLight.spotAngle = Mathf.Clamp(baseLightOuterSpot / 2 * Mathf.Sin(Time.time * 1 / 3) + 10, 25,
                     baseLightOuterSpot);
-                light.innerSpotAngle =   Mathf.Clamp( baseLightInnerSpot/2 * Mathf.Sin(Time.time*1/3)+10, 5, 
+                flashLight.innerSpotAngle = Mathf.Clamp(baseLightInnerSpot / 2 * Mathf.Sin(Time.time * 1 / 3) + 10, 5,
                     baseLightInnerSpot);
-                
             }
+
             yield return null;
         }
     }
@@ -107,12 +100,12 @@ public class HandFlashLight : MonoBehaviour
     private void OnFlashlightButtonPress(InputAction.CallbackContext callbackContext)
     {
         Debug.Log("Button pressed" + callbackContext.ReadValue<float>());
-        light.enabled = !light.enabled;
-        if (light.enabled)
+        flashLight.enabled = !flashLight.enabled;
+        if (flashLight.enabled)
         {
             _isLightOn = true;
             _coroutine = StartCoroutine(FlashlightOn());
-            if(_chargeCoroutine != null) StopCoroutine(ChargeLight());
+            if (_chargeCoroutine != null) StopCoroutine(ChargeLight());
         }
         else if (_coroutine != null)
         {
@@ -126,8 +119,8 @@ public class HandFlashLight : MonoBehaviour
 
     IEnumerator ChargeLight()
     {
-        light.enabled = false;
-        
+        flashLight.enabled = false;
+
         _isLightOn = false;
         do
         {
@@ -135,11 +128,10 @@ public class HandFlashLight : MonoBehaviour
             {
                 _timeStamp = Time.time;
                 _energy = Mathf.Clamp(_energy + rechargeStep, 0, 100);
-                light.intensity =  Mathf.Clamp( light.intensity + rechargeStep, 0, baseLightIntensity);;
-                
+                flashLight.intensity = Mathf.Clamp(flashLight.intensity + rechargeStep, 0, baseLightIntensity);
             }
 
             yield return null;
-        } while (_energy <100);
+        } while (_energy < 100);
     }
 }

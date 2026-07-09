@@ -38,13 +38,12 @@
 
 %\cleardoublepage
 \chapter{Resumo}
-
-Este trabalho apresenta o desenvolvimento de um jogo em realidade virtual focado 
+Este trabalho apresenta o desenvolvimento de um jogo em Realidade Virtual (\texttt{VR}) focado 
 na interação tridimensional. O objetivo principal é explorar formas de 
-interação alternativas às conventionais, aproveitando movimentos reais.
+interação alternativas às convencionais, aproveitando movimentos reais.
 \par
-A motivação surge da reduzida exploração desta área no ensino superior, apesar 
-do seu potencial e crescente relevância no mundo da multimédia.
+A motivação surge da menor exploração desta área, apesar 
+do seu potencial e crescente relevância no universo da multimédia.
 \par
 A solução proposta consiste num jogo de exploração baseado na resolução de 
 puzzles. O jogador interage diretamente com objetos do ambiente para progredir. 
@@ -52,47 +51,67 @@ A narrativa é revelada de forma gradual, de maneira a incentivar a descoberta e
 o envolvimento do jogador.
 \par
 O sistema foi desenvolvido com o motor de jogo \texttt{Unity}~\cite{unity} com recurso ao 
-\texttt{XR Interaction Toolkit}~\cite{xr}. 
-Foi adotada uma abordagem iterativa, com prototipagem, implementação e 
+\texttt{XR Interaction Toolkit}~\cite{xri}. 
+Foi adotada uma abordagem iterativa e focada no utilizador, com prototipagem, implementação e 
 testes sucessivos. Todos os elementos gráficos foram criados de raiz.
 \par
 Os principais contributos incluem um sistema de interação tridimensional baseado 
 em movimentos reais, um ambiente imersivo orientado a puzzles e a integração de 
 elementos narrativos no processo de progressão.
 \par
-A avaliação incluiu testes funcionais e análise da experiência do utilizador 
-a partir do padrão \texttt{GUESS-18}~\cite{guess18}. 
+A avaliação incluiu testes funcionais e testes de avaliação da experiência do utilizador, 
+usando como método de recolha de informação um questionário baseado no questionário padrão 
+\texttt{GUESS-18}~\cite{guess18}. 
 Foram considerados aspetos como usabilidade, imersão e intuitividade. 
-Os resultados mostram \dots
+Os resultados preliminares, obtidos junto de um número reduzido de 
+participantes, mostram uma receção positiva em relação à atmosfera, dos elementos gráficos 
+e sonoros do jogo, sem indícios relevantes de desconforto ou enjoo, ainda 
+que tenham sido identificados alguns pontos de melhoria ao nível da 
+clareza de determinados controlos e mecânicas.
 \par
-Conclui-se que a abordagem adotada é \dots
+Conclui-se que a abordagem adotada é viável e promissora para o 
+desenvolvimento de experiências imersivas baseadas em interação física 
+real, servindo os resultados obtidos como base para iterações futuras com 
+uma amostra de utilizadores mais alargada.
 
 %\cleardoublepage
 \chapter{Abstract}
-
 This work presents the development of a virtual reality game focused on 
-three-dimensional interaction. The main objective is to explore more natural 
-forms of human-computer interaction through real-time motion tracking.
+three-dimensional interaction. The main goal is to explore forms of 
+interaction that go beyond conventional input methods, taking advantage of 
+real physical movement.
 \par
 The motivation stems from the limited exploration of this area in higher 
-education, despite its potential and growing relevance in the multimedia field.
+education, despite its potential and growing relevance in the multimedia 
+field.
 \par
-The proposed solution consists of an exploration-based game centered on puzzle 
-solving. The player interacts directly with objects in the environment to progress. The narrative is revealed gradually, encouraging discovery and user engagement.
+The proposed solution consists of an exploration game based on puzzle 
+solving. The player interacts directly with objects in the environment in 
+order to progress. The narrative is revealed gradually, encouraging 
+discovery and player engagement.
 \par
-The system was developed using the \texttt{Unity}~\cite{unity} game engine and the \texttt{XR Interaction Toolkit}~\cite{xr}. 
-An iterative approach was adopted, including prototyping, implementation, and 
-successive testing phases. All graphical assets were created from scratch.
+The system was developed using the \texttt{Unity}~\cite{unity} game engine, with 
+the \texttt{XR Interaction Toolkit}~\cite{xri}. An iterative approach was 
+adopted, with successive prototyping, implementation, and testing. All 
+graphical elements were created from scratch.
 \par
-The main contributions include a three-dimensional interaction system based on 
-real movements, an immersive puzzle-oriented environment, and the integration of 
-narrative elements into the progression system.
+The main contributions include a three-dimensional interaction system based 
+on real physical movement, a puzzle-oriented immersive environment, and the 
+integration of narrative elements into the progression process.
 \par
-The evaluation included functional testing and user experience analysis. 
-Aspects such as usability, immersion, and intuitiveness were considered. 
-The results show \dots
-
-It is concluded that the adopted approach is \dots
+The evaluation included functional testing and user experience analysis 
+based on the \texttt{GUESS-18}~\cite{guess18} scale. Aspects such as 
+usability, immersion, and intuitiveness were considered. Preliminary 
+results, gathered from a small number of participants, show a positive 
+reception of the game's atmosphere, graphics, and audio, with no 
+significant signs of discomfort or motion sickness, although some points 
+for improvement were identified regarding the clarity of certain controls 
+and mechanics.
+\par
+It is concluded that the adopted approach is viable and promising for the 
+development of immersive experiences based on real physical interaction, 
+with the results obtained serving as a basis for future iterations with a 
+larger user sample.
 
 %\cleardoublepage
 \chapter{Agradecimentos}
@@ -121,13 +140,13 @@ Escrever aqui eventuais agradecimentos \ldots
 %\cleardoublepage
 \chapter{Introdução}
 \label{ch:introducao}
-Neste projeto foi desenvolvido e testado um jogo em realidade virtual, com o objetivo de explorar 
+Neste projeto foi desenvolvido, e avaliado, um jogo em Realidade Virtual (\texttt{VR}), com o objetivo de explorar 
 formas alternativas de interação pessoa-máquina. Em particular, procurou-se investigar técnicas de 
 interação tridimensional baseadas no rastreio de movimentos reais, recorrendo a um ambiente de jogo 
 centrado na resolução de puzzles como contexto de avaliação.
 
 \par
-A motivação para este trabalho surge da crescente relevância da realidade virtual 
+A motivação para este trabalho surge da crescente relevância da Realidade Virtual (\texttt{VR}) 
 enquanto meio de interação, com aplicações que vão desde o entretenimento até à educação e simulação. 
 Apesar dos avanços recentes, continuam a existir desafios ao nível da naturalidade da interação,
  da imersão do utilizador e da integração eficaz entre movimento físico e ação no ambiente virtual. 
@@ -137,10 +156,10 @@ Apesar dos avanços recentes, continuam a existir desafios ao nível da naturali
 \par
 Neste contexto, os principais objetivos deste trabalho são:
 \begin{itemize}
-\item desenvolver um jogo de realidade virtual baseado na exploração e resolução de \textit{puzzles};
-\item estudar e implementar diferentes soluções de interação em realidade virtual, nomeadamente através 
+\item desenvolver um jogo de Realidade Virtual (\texttt{VR}) baseado na exploração e resolução de \textit{puzzles};
+\item estudar e implementar diferentes soluções de interação em Realidade Virtual (\texttt{VR}), nomeadamente através 
 a utilização das mãos e de poses dinâmicas para a manipulação de objetos e execução de ações;
-\item avaliar a jogabilidade e a experiência do utilizador através de testes com utilizadores, recorrendo ao questionário \texttt{GUESS-18}~\cite{guess18}.
+\item avaliar a jogabilidade através de testes com utilizadores, recorrendo ao questionário \texttt{GUESS-18}~\cite{guess18}.
 \end{itemize}
 
 \par
@@ -151,8 +170,7 @@ sobre o mundo virtual, de maneira a promover simultaneamente o envolvimento do u
 construção de uma narrativa implícita.
 
 \par
-A implementação foi realizada no motor de jogo \texttt{Unity}, em conjunto com o \textit{toolkit} 
-de interação \texttt{XR}, que permite compatibilidade com diferentes dispositivos de realidade 
+A implementação foi realizada no motor de jogo \texttt{Unity}, em conjunto com o \texttt{XR Interaction Toolkit}, que permite compatibilidade com diferentes dispositivos de realidade 
 virtual e oferece uma maior flexibilidade no desenvolvimento. Maior parte dos elementos gráficos, 
 tanto \texttt{2D} como \texttt{3D}, foram desenvolvidos de raiz com recurso a ferramentas 
 como o \texttt{Blender} e o \texttt{Aseprite}, de forma a garantir a coerência visual e 
@@ -165,21 +183,19 @@ permitiu validar continuamente as decisões tomadas e aperfeiçoar o sistema ao 
 
 \par
 A validação incluiu testes funcionais e avaliações da experiência do utilizador com base 
-no padrão \texttt{GUESS-18}~\cite{guess18}, incidindo sobre aspetos como a usabilidade, 
-a imersão e a intuitividade das mecânicas de interação. Os resultados obtidos indicam que 
-a abordagem adotada contribui positivamente para a experiência global de jogo, embora 
-revelem igualmente limitações que constituem oportunidades para trabalho futuro.
+no questionário \texttt{GUESS-18}~\cite{guess18}, incidindo sobre aspetos como a usabilidade, 
+a imersão e a intuitividade das mecânicas de interação.
 
 \par
 Globalmente, este trabalho demonstra a viabilidade da integração de diferentes técnicas 
-de interação em ambientes de realidade virtual num jogo baseado na resolução de 
+de interação em ambientes de Realidade Virtual (\texttt{VR}) num jogo baseado na resolução de 
 \textit{puzzles}, bem como a importância da avaliação da experiência do utilizador na 
 validação deste tipo de sistemas.
 \par
 O relatório encontra-se organizado em sete capítulos:
 \begin{itemize}
 \item O Capítulo~\ref{ch:introducao} apresenta a introdução, os objetivos e a motivação para o trabalho.
-\item O Capítulo~\ref{ch:trab-relacionados} apresenta uma análise de trabalhos relacionados, destacando abordagens à imersão, \textit{level design} e integração de mecânicas interativas em ambientes de realidade virtual.
+\item O Capítulo~\ref{ch:trab-relacionados} apresenta uma análise de trabalhos relacionados, destacando abordagens à imersão, \textit{level design} e integração de mecânicas interativas em ambientes de Realidade Virtual (\texttt{VR}).
 \item O Capítulo~\ref{ch:modelo-proposto} descreve e analisa o modelo proposto, apresentando os requisitos e fundamentos do trabalho.
 \item O Capítulo~\ref{ch:implementacao-modelo} descreve a implementação do modelo proposto.
 \item O Capítulo~\ref{ch:validacao-testes} analisa e apresenta os resultados da validação e dos testes.
@@ -194,7 +210,7 @@ O relatório encontra-se organizado em sete capítulos:
 
 Este capítulo apresenta a análise de dois jogos que serviram de referência para 
 o desenvolvimento do projeto, escolhidos pela forma como resolvem a imersão, o 
-\textit{level design} e a integração de mecânicas interativas em realidade virtual, 
+\textit{level design} e a integração de mecânicas interativas em Realidade Virtual (\texttt{VR}), 
 com foco nos géneros de terror e \textit{puzzle}.
 
 O capítulo está dividido em três secções. A secção~\ref{sec:halflife} analisa 
@@ -297,49 +313,7 @@ solução proposta: privilegiar interações baseadas em movimentos físicos,
 integrar os desafios no contexto do ambiente virtual e orientar o utilizador 
 através do próprio espaço, sem comprometer a imersão.
 
-\chapter{Metodologia}\label{ch:metodologia}
 
-Neste capítulo é apresentada a metodologia adotada para o desenvolvimento
-e implementação do modelo proposto.
-
-O desenvolvimento do projeto seguiu uma abordagem iterativa, estruturada em 
-várias fases distintas: pesquisa, prototipagem, implementação e testes. 
-Esta metodologia permitiu avaliar continuamente as decisões tomadas ao longo 
-do desenvolvimento e possibilitou a identificação e correção de erros, bem como o 
-aperfeiçoamento de funcionalidades sempre que necessário.
-
-Na fase de pesquisa, para além da análise dos trabalhos relacionados, foram estudadas 
-as tecnologias de \texttt{VR} disponíveis no mercado, que serviram de referência para a 
-conceção e implementação do jogo. Neste âmbito, optou-se por desenvolver o projeto com 
-base na norma \texttt{OpenXR}, através do \texttt{XR Interaction Toolkit} do \texttt{Unity}. O 
-\texttt{OpenXR} é um \textit{standard} aberto que permite a comunicação entre aplicações 
-e diferentes dispositivos de \texttt{VR}/\texttt{AR}, independentemente do fabricante, o que 
-possibilita que o mesmo projeto seja executado em diferentes \textit{headsets} 
-sem necessidade de alterações significativas ao código. Esta compatibilidade foi 
-particularmente relevante no contexto deste projeto, uma vez que possibilitou testar 
-e desenvolver a aplicação tanto no \texttt{Meta Quest} como no \texttt{HTC Vive Pro}, 
-disponibilizados pelo ISEL.
-
-Apesar de ambos os dispositivos terem sido considerados, optou-se pelo \texttt{Meta Quest} 
-como plataforma principal de desenvolvimento e testes. Esta decisão deveu-se às 
-limitações do \texttt{HTC Vive Pro}, nomeadamente a necessidade de um computador equipado com 
-uma porta \texttt{DisplayPort} e a utilização de bases, o que implica um processo de 
-configuração mais complexo. Em contraste, os óculos \texttt{Meta Quest} apresentam uma instalação 
-significativamente mais simples, exigindo apenas um conjunto mínimo de configuração, 
-tornando-o mais adequado para o desenvolvimento iterativo do projeto.
-
-Dado que o desenvolvimento do projeto se baseia na norma \texttt{OpenXR}, foi 
-necessário configurar o \texttt{SteamVR} como \textit{runtime} \texttt{OpenXR} 
-ativo no sistema, permitindo a comunicação entre o \texttt{Meta Quest} e o 
-motor de jogo \texttt{Unity} através desta norma.
-
-A configuração final requerida para o \texttt{Meta Quest} foi a seguinte:
-\begin{itemize}
-    \item \textbf{Headset e comandos:} \texttt{Meta Quest};
-    \item \textbf{Cabo de ligação:} \texttt{USB-C}, para ligação dos óculos ao computador;
-    \item \textbf{Computador:} portátil, com \texttt{Windows 10/11};
-    \item \textbf{Software de ligação:} \texttt{Meta Quest Link} \textit{(ou substituir por SteamVR, se aplicável)}.
-\end{itemize}
 
 %\cleardoublepage
 \chapter{Modelo Proposto}\label{ch:modelo-proposto}
@@ -361,7 +335,7 @@ deve resolver puzzles para progredir e descobrir a narrativa por trás do
 espaço que percorre. Destina-se sobretudo a adolescentes e jovens adultos, 
 público habitualmente mais familiarizado com jogos, e para quem a experiência 
 de imersão proporcionada pela 
-realidade virtual tende a ser particularmente relevante.
+Realidade Virtual (\texttt{VR}) tende a ser particularmente relevante.
 
 Para concretizar esta proposta, foram definidas quatro metas principais que 
 orientaram o desenvolvimento do projeto:
@@ -537,14 +511,14 @@ que ocorre quando o jogador cai do escadote de manutenção e morre, voltando ao
 % Pequeno parágrafo introdutório
 Nesta secção são apresentados os conceitos teóricos e 
 tecnológicos que servem de base para o desenvolvimento do modelo 
-proposto, englobando os princípios de interação em realidade virtual 
+proposto, englobando os princípios de interação em Realidade Virtual (\texttt{VR}) 
 (cf.~subsecção~\ref{subsec:interacao_presenca}), 
 a arquitetura do ecossistema \texttt{XR} (cf.~subsecção~\ref{subsec:interactor_interactable}),
  e as teorias de design de jogos aplicadas (cf.~subsecção~\ref{subsec:puzzles_narrativa}).
 
 \subsection{Interação Tridimensional e Presença em \texttt{VR}}
 \label{subsec:interacao_presenca}
-A interação em ambientes de realidade virtual distingue-se das interfaces 
+A interação em ambientes de Realidade Virtual (\texttt{VR}) distingue-se das interfaces 
 bidimensionais tradicionais pela capacidade de captar e traduzir o movimento 
 do utilizador em seis graus de liberdade (\textit{6 DoF}, do inglês 
 \textit{Degrees of Freedom})~\cite{sixdof}. Este conceito decompõe o movimento humano em 
@@ -646,13 +620,57 @@ interativos não é apenas contada, mas também descoberta progressivamente
 pelo utilizador através da exploração.
 \par
 A combinação destes dois fundamentos teóricos é particularmente relevante 
-em ambientes de realidade virtual, onde a presença e a interação física 
+em ambientes de Realidade Virtual (\texttt{VR}), onde a presença e a interação física 
 direta reforçam tanto o envolvimento cognitivo exigido pela resolução de 
 puzzles como a capacidade de leitura do espaço enquanto suporte narrativo. 
 Um puzzle bem integrado num ambiente narrativamente coerente deixa de ser 
 percebido como um obstáculo artificial e passa a ser interpretado como uma 
 extensão lógica do próprio mundo representado.
 \par
+
+\section{Metodologia}\label{sec:metodologia}
+
+Nesta secção, é apresentada a metodologia adotada para o desenvolvimento
+e implementação do modelo proposto.
+
+O desenvolvimento do projeto seguiu uma abordagem iterativa, estruturada em 
+várias fases distintas: pesquisa, prototipagem, implementação e testes. 
+Esta metodologia permitiu avaliar continuamente as decisões tomadas ao longo 
+do desenvolvimento e possibilitou a identificação e correção de erros, bem como o 
+aperfeiçoamento de funcionalidades sempre que necessário.
+
+Na fase de pesquisa, para além da análise dos trabalhos relacionados, foram estudadas 
+as tecnologias de \texttt{VR} disponíveis no mercado, que serviram de referência para a 
+conceção e implementação do jogo. Neste âmbito, optou-se por desenvolver o projeto com 
+base na norma \texttt{OpenXR}, através do \texttt{XR Interaction Toolkit} do \texttt{Unity}. O 
+\texttt{OpenXR} é um \textit{standard} aberto que permite a comunicação entre aplicações 
+e diferentes dispositivos de \texttt{VR}/\texttt{AR}, independentemente do fabricante, o que 
+possibilita que o mesmo projeto seja executado em diferentes \textit{headsets} 
+sem necessidade de alterações significativas ao código. Esta compatibilidade foi 
+particularmente relevante no contexto deste projeto, uma vez que possibilitou testar 
+e desenvolver a aplicação tanto no \textit{headset} \texttt{Meta Quest} como no \textit{headset} \texttt{HTC Vive Pro}, 
+disponibilizados pelo ISEL.
+
+Apesar de ambos os dispositivos terem sido considerados, optou-se pelo \texttt{Meta Quest} 
+como plataforma principal de desenvolvimento e testes. Esta decisão deveu-se às 
+limitações do \textit{headset} \texttt{HTC Vive Pro}, nomeadamente a necessidade de um computador equipado com 
+uma porta \texttt{DisplayPort} e a utilização de bases, o que implica um processo de 
+configuração mais complexo. Em contraste, os óculos \texttt{Meta Quest} apresentam uma instalação 
+significativamente mais simples, exigindo apenas um conjunto mínimo de configuração, 
+tornando-o mais adequado para o desenvolvimento iterativo do projeto.
+
+Dado que o desenvolvimento do projeto se baseia na norma \texttt{OpenXR}, foi 
+necessário configurar o \texttt{SteamVR} como \textit{runtime} \texttt{OpenXR} 
+ativo no sistema, permitindo a comunicação entre o \textit{headset} \texttt{Meta Quest} e o 
+motor de jogo \texttt{Unity} através desta norma.
+
+A configuração final requerida para o \texttt{Meta Quest} foi a seguinte:
+\begin{itemize}
+    \item \textbf{Headset e comandos:} \texttt{Meta Quest};
+    \item \textbf{Cabo de ligação:} \texttt{USB-C}, para ligação dos óculos ao computador;
+    \item \textbf{Computador:} portátil, com \texttt{Windows 10/11};
+    \item \textbf{Software de ligação:} \texttt{Meta Quest Link} e \texttt{SteamVR}.
+\end{itemize}
 
 \section{Conceção do Jogo}
 \label{sec:concecao-jogo}
@@ -712,10 +730,9 @@ puzzle obriga o utilizador a recorrer à manipulação tridimensional dos objeto
 para pesar e validar os resultados, de forma a descobrir a sequência correta e
 aceder à área seguinte. 
 \item \textbf{Puzzle 3:} O último desafio implica a exploração de um labirinto
-digital, projetado para testar a memória espacial do jogador. Através de um terminal, 
-o jogador acede a uma representação virtual do labirinto, que deve percorrer fisicamente 
-no espaço real. O objetivo é chegar à saída do labirinto, evitando um inimigo que o
-persegue. No fim, o jogador interage com um botão que desbloqueia o fim do jogo.
+em ponto pequeno. O jogador deve navegar pelo labirinto, evitando o inimigo que 
+vagueia no ambiente, e descobrir o caminho para o botão final, desbloqueando assim
+o fim do jogo.
 \end{itemize}
 
 \newpage
@@ -772,6 +789,16 @@ arquitetura, com os principais componentes e a forma como comunicam entre si.
     \caption{Diagrama simplificado da arquitetura do jogo.}
     \label{fig:modelo_arquitetura}
 \end{figure}
+
+% haver uma secção a explicar cada parte da arquitetura
+% - Jogador
+% - Sistema de interação
+% - Sistema de puzzles
+% - Sistema de UI
+% - Sistema de Narrativa
+% - Sistema de Save
+
+
 \section{Evolução do Protótipo}
 \label{sec:prototipo}
 % Aqui explica-se a "fase de desenvolvimento inicial". Como o modelo é iterativo,
@@ -786,8 +813,15 @@ Este cenário temporário foi construído com recurso a
 \textit{greyboxing}~\cite{greyboxing}, com o pacote \texttt{ProBuilder}~\cite{probuilder}
 do \texttt{Unity}. A técnica consiste em montar o nível apenas com formas
 geométricas simples, sem texturas nem elementos visuais finais, para
-concentrar a avaliação na disposição espacial e na interação com o ambiente.
-\section{Desenvolvimento de Elementos Gráficos e Ambiente}
+concentrar a avaliação na disposição espacial e na interação com o ambiente. A
+Figura~\ref{fig:greyboxing} mostra um exemplo de um nível montado com esta técnica.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.15]{Imagens/isel_logo.png}
+    \caption{Nível montado com \textit{greyboxing}.}
+    \label{fig:greyboxing}
+\end{figure}
+\section{Elementos Gráficos e Ambiente}
 \label{sec:elementos-graficos}
 A construção do ambiente seguiu uma abordagem modular, tal que se modelaram
 componentes estruturais base, como paredes retas, cantos, portas, que
@@ -868,10 +902,12 @@ utilizou-se a funcionalidade \texttt{Vertex Snapping}.
 \par
 O planeamento do espaço obedeceu a um \textit{layout} pré-definido, focado 
 na fluidez de movimentos e na escala adequada para a exploração em 
-realidade virtual. A iluminação desempenha um papel fundamental na 
-atmosfera misteriosa do ambiente e na orientação do utilizador. 
-Foram distribuídos pontos de luz focais e direcionais estrategicamente 
-posicionados, recorrendo novamente à cor vermelha para captar a atenção 
+Realidade Virtual (\texttt{VR}), estudado e avaliado durante a fase de \textit{grayboxing}. 
+Para além das peças estruturais, a iluminação desempenha um papel importante na 
+atmosfera do ambiente e na orientação do utilizador. 
+Para tal, foram distribuídos pontos de luz focais e direcionais  
+posicionados de forma deliberada, recorrendo novamente à cor vermelha 
+para captar a atenção 
 do jogador para pontos de interesse. O plano estrutural do nível 
 e o resultado final da montagem encontram-se ilustrados nas 
 Figuras~\ref{fig:map_layout} e \ref{fig:final_map}, respetivamente.
@@ -903,7 +939,7 @@ Figuras~\ref{fig:map_layout} e \ref{fig:final_map}, respetivamente.
     \label{fig:final_map}
 \end{figure}
 
-\section{Desenvolvimento dos Sistemas Interativos}
+\section{Sistemas Interativos}
 \label{sec:sistemas-interativos}
 Esta secção descreve os sistemas interativos desenvolvidos para o jogo,
 incluindo a implementação de mecânicas de interação e locomoção na subsecção~\ref{ssec:interacao-objetos}, a implementação
@@ -919,10 +955,47 @@ base do \texttt{XR Interaction Toolkit}, que suportam este tipo de interação d
 Para componentes com comportamentos mecânicos específicos, foi necessário desenvolver \textit{scripts} 
 personalizados, descritos a seguir.
 
-%falar da escalada (escadas)
-% script dos botoes
-% script da alavanca
-% elevador
+\subsubsection{Locomoção}\label{sssec:locomocao}
+A locomoção do jogador já vem implementada no \texttt{XR Interaction Toolkit}, 
+com recurso ao componente \texttt{Character Controller}. O jogador pode se locomover
+de forma contínua, com um analógico semelhante a jogos tradicionais, ou com recurso
+a teletransporte. Estas duas opções permitem ao utilizador escolher a sua preferência,
+tendo em causa a mitigação das náuseas normalmente causadas por movimentos contínuos.
+
+Mesmo com esse risco, a velocidade do jogador foi reduzida para que mesmo 
+utilizadores mais sensíveis consigam tirar partido do movimento contínuo.
+
+Para locomoção vertical, existe ainda a opção da escalada, também implementada
+no \texttt{XR Interaction Toolkit}, descrita na seguinte subsecção~\ref{ssec:escada}.
+
+\subsubsection{Escadotes e Escalada}
+\label{ssec:escada}
+A escalada é um dos sistemas interativos que já vêm implementados no \texttt{XR Interaction Toolkit},
+através de dois componentes que trabalham em conjunto: o \texttt{Climb Interactable} e o \texttt{Climb Provider}.
+Estes componentes permitem que o jogador interaja com objetos escaláveis, como escadas ou escadotes,
+permitindo-lhe subir e descer.
+
+O \texttt{Climb Interactable} é colocado no objeto que se pretende tornar escalável (por exemplo, os degraus
+de uma escada) e estende a classe base \texttt{XRBaseInteractable}, utilizando a interação de seleção para
+conduzir o movimento do jogador: enquanto o jogador mantiver o objeto selecionado (agarrado) através de um
+\texttt{Interactor}, o seu movimento é traduzido em deslocação do jogador no mundo virtual. Por definição, este
+componente exige um \texttt{Rigidbody} no objeto e tem o modo de seleção (\textit{Select Mode}) configurado
+para \texttt{Multiple}, o que permite, por defeito, a escalada com as duas mãos em simultâneo. É ainda possível
+associar a cada \texttt{Climb Interactable} um conjunto de definições próprio (\textit{Climb Settings Override}),
+que substitui, apenas para esse objeto, as restrições de movimento definidas globalmente no \texttt{Climb Provider}, uma
+prática comum, por exemplo, nos travessões superiores de uma escada, para permitir movimento livre nos eixos
+horizontais e possibilitar que o jogador saia da escada para uma plataforma no topo.
+
+O \texttt{Climb Provider}, por sua vez, é colocado na \texttt{XR Origin} e é responsável por efetivamente mover o
+jogador. Este desloca a \texttt{XR Origin} de forma inversa ao movimento do \texttt{Interactor} que está a selecionar o
+\texttt{Climb Interactable}, de forma semelhante ao efeito visual do "puxar uma corda" para se deslocar. Se
+existir mais do que um \texttt{Interactor} a selecionar o mesmo objeto, apenas o mais recente influencia o movimento.
+Este tipo de locomoção é conceptualmente semelhante ao movimento por agarrar (\textit{grab movement}), mas
+está restrito aos objetos que possuam explicitamente um \texttt{Climb Interactable}, ao contrário do
+\textit{grab movement}, que pode ser aplicado a qualquer superfície. As restrições de movimento por eixo
+(local ao objeto) podem ser configuradas ao nível do \texttt{Climb Provider} ou sobrepostas individualmente por cada
+\texttt{Interactable}, permitindo um melhor controlo sobre o comportamento da escalada em diferentes contextos do jogo.
+
 
 \subsubsection{Poses Dinâmicas}\label{sssec:poses}
 Ao interagir com objetos, o jogador deve sentir que a sua mão virtual se comporta de forma natural e 
@@ -1069,36 +1142,6 @@ independentemente da deteção do jogador. Após a conclusão do Puzzle 1 e o co
 a variável \texttt{\_energyEstablished} é atualizada para \textit{true}, permitindo que a porta responda normalmente 
 aos eventos de entrada e saída do jogador na zona de deteção, através dos métodos \texttt{OpenDoor} e \texttt{CloseDoor}.
 
-
-\subsubsection{Escadotes e Escalada}
-\label{ssec:escalada}
-A escalada é um dos sistemas interativos que já vêm implementados no \texttt{XR Interaction Toolkit},
-através de dois componentes que trabalham em conjunto: o \texttt{Climb Interactable} e o \texttt{Climb Provider}.
-Estes componentes permitem que o jogador interaja com objetos escaláveis, como escadas ou escadotes,
-permitindo-lhe subir e descer.
-
-O \texttt{Climb Interactable} é colocado no objeto que se pretende tornar escalável (por exemplo, os degraus
-de uma escada) e estende a classe base \texttt{XRBaseInteractable}, utilizando a interação de seleção para
-conduzir o movimento do jogador: enquanto o jogador mantiver o objeto selecionado (agarrado) através de um
-\texttt{Interactor}, o seu movimento é traduzido em deslocação do jogador no mundo virtual. Por definição, este
-componente exige um \texttt{Rigidbody} no objeto e tem o modo de seleção (\textit{Select Mode}) configurado
-para \texttt{Multiple}, o que permite, por defeito, a escalada com as duas mãos em simultâneo. É ainda possível
-associar a cada \texttt{Climb Interactable} um conjunto de definições próprio (\textit{Climb Settings Override}),
-que substitui, apenas para esse objeto, as restrições de movimento definidas globalmente no \texttt{Climb Provider}, uma
-prática comum, por exemplo, nos travessões superiores de uma escada, para permitir movimento livre nos eixos
-horizontais e possibilitar que o jogador saia da escada para uma plataforma no topo.
-
-O \texttt{Climb Provider}, por sua vez, é colocado na \texttt{XR Origin} e é responsável por efetivamente mover o
-jogador. Este desloca a \texttt{XR Origin} de forma inversa ao movimento do \texttt{Interactor} que está a selecionar o
-\texttt{Climb Interactable}, de forma semelhante ao efeito visual do "puxar uma corda" para se deslocar. Se
-existir mais do que um \texttt{Interactor} a selecionar o mesmo objeto, apenas o mais recente influencia o movimento.
-Este tipo de locomoção é conceptualmente semelhante ao movimento por agarrar (\textit{grab movement}), mas
-está restrito aos objetos que possuam explicitamente um \texttt{Climb Interactable}, ao contrário do
-\textit{grab movement}, que pode ser aplicado a qualquer superfície. As restrições de movimento por eixo
-(local ao objeto) podem ser configuradas ao nível do \texttt{Climb Provider} ou sobrepostas individualmente por cada
-\texttt{Interactable}, permitindo um melhor controlo sobre o comportamento da escalada em diferentes contextos do jogo.
-
-
 \subsection{Implementação da Lógica dos Puzzles}
 \label{ssec:logica-puzzles}
 
@@ -1175,7 +1218,7 @@ Em caso de falha, a \textit{string} introduzida é reiniciada, obrigando o jogad
 Cada botão do teclado possui o componente \texttt{ButtonPress}, descrito anteriormente, que deteta a interação do jogador 
 e invoca o método correspondente no \texttt{Keypad}, seja este um valor numérico ou um \textit{clear}.
 
-\subsubsection{Puzzle 3: Labirinto Digital}
+\subsubsection{Puzzle 3: Labirinto Miniatura}
 O terceiro puzzle inicia-se quando o jogador aponta para um feixe de 
 transferência, identificado no código através da \textit{tag} 
 \texttt{"Transfer"} e detetado por um \textit{raycast} contínuo lançado a 
@@ -1212,6 +1255,34 @@ de outro caso existam vários em simultâneo no labirinto.
 
 % portas automaticas
 %falar dos scripts da balança dos pesos e do terminal da porta
+\subsection{Som e Atmosfera}
+\label{ssec:som}
+
+Foram implementados diversos efeitos sonoros para reforçar a imersão
+do jogador. Os objetos interativos medem a velocidade do impacto no
+momento da colisão e reproduzem um som de toque ou de impacto consoante
+essa velocidade.
+\par
+O jogo inclui ainda diversos sons ambiente, como luzes, ar condicionado
+e passos. O som dos passos é gerido por um \textit{script} que efetua, em cada
+\textit{FixedUpdate}, um \textit{SphereCast} vertical a partir do
+jogador para detetar se este se encontra no chão. Quando o jogador está
+no chão e a sua velocidade excede um limiar definido, é reproduzido um
+som de passo, escolhido através de um \textit{raycast} adicional para
+baixo que verifica se o objeto sob o jogador pertence a uma
+\textit{layer} específica. Atualmente distinguem-se duas superfícies:
+chão normal e chão de ferro (identificado pela \textit{layer}
+``Metal''), cada uma associada ao respetivo som. Para evitar repetição
+mecânica, o \textit{pitch}, o volume e o \textit{panning} estéreo do
+som são ligeiramente variados a cada passo, este último alternando
+entre os dois lados de forma a simular o movimento entre pé esquerdo e
+direito.
+\par
+Por fim, foram adicionados efeitos de partículas de pó e névoa,
+distribuídos pelo mapa, para reforçar a ambiência visual e sonora do
+espaço.
+
+
 \subsection{Gestão da Narrativa}
 \label{ssec:gestao-narrativa}
 A narrativa do jogo funciona como uma série de diálogos e mensagens apresentadas ao jogador
@@ -1357,8 +1428,8 @@ seus resultados devem ser interpretados de forma mais qualitativa.
 \label{sec:amostra-procedimento}
 Para este estudo foram feitos testes com um total de 8 participantes, com idades
 compreendidas entre os 20 e os 25 anos, com diferentes níveis de experiência com 
-jogos e realidade virtual. Os participantes foram selecionados com alguns
-alunos do ISEL e amigos pessoais, que não tinham participado no desenvolvimento do projeto, e foram 
+jogos e Realidade Virtual (\texttt{VR}). Os participantes foram selecionados entre
+alunos do ISEL e amigos pessoais, que não estiveram envolvidos no desenvolvimento do projeto, e foram 
 convidados a experimentar o jogo e a preencher o questionário de avaliação.
 % completar com: número de participantes, critérios de seleção, contexto
 % (ex.: alunos do ISEL, idade, experiência prévia com VR), duração da sessão,
@@ -1391,8 +1462,7 @@ identificar tendências e possíveis pontos de melhoria a validar em futuras
 iterações com uma amostra mais alargada.
 
 O processamento e visualização dos dados foi feito através de um
-\textit{script} em \texttt{Python}, utilizando as bibliotecas
-\texttt{openpyxl} para leitura das respostas, \texttt{NumPy} para o cálculo
+\textit{script} em \texttt{Python}, utilizando as bibliotecas \texttt{NumPy} para o cálculo
 das estatísticas descritivas e \texttt{Matplotlib} para a geração dos
 gráficos.
 
@@ -1413,7 +1483,7 @@ A principal limitação deste processo de validação prende-se com a dimensão
 reduzida da amostra, o que impede a generalização estatística dos resultados
 e limita a análise a um nível descritivo/exploratório. Adicionalmente, o
 bloco de perguntas sobre compreensão do jogo, por não ser um instrumento
-validado, deve ser interpretado com maior cautela do que os resultados do
+validado, deve ser interpretado com maior cuidado do que os resultados do
 \texttt{GUESS-18}.
 
 
@@ -1428,7 +1498,7 @@ ao longo do desenvolvimento do projeto. A \texttt{IA} foi utilizada maioritariam
 \chapter{Conclusões e Trabalho Futuro}
 \label{ch:conclusoes}
 Durante o desenvolvimento do projeto, foi possível explorar e aplicar conceitos de 
-realidade virtual, \textit{design} de jogos e interação pessoa-máquina e integrá-los num ambiente virtual 
+Realidade Virtual (\texttt{VR}), \textit{design} de jogos e interação pessoa-máquina e integrá-los num ambiente virtual 
 interativo. Ao criar todos os objetos e texturas do zero, foi possível desenvolver uma identidade visual 
 consistente e coerente com a narrativa do jogo e possibilitou mais controlo sobre o desenvolvimento. 
 No fim, foi possível implementar várias soluções de interação, como o sistema

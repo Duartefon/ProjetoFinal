@@ -69,10 +69,10 @@ namespace Gameplay
 
         void Update()
         {
-            if (generator.EnergyEstablished && _voltage != goodVoltage)
+            if (generator.EnergyEstablished && !Mathf.Approximately(_voltage, goodVoltage))
                 SetVoltage(goodVoltage);
 
-            if (_voltage != _previousVoltage)
+            if (!Mathf.Approximately(_voltage, _previousVoltage))
             {
                 PlayFeedbackSound();
                 generator.SetVoltage(_voltage);
@@ -102,12 +102,12 @@ namespace Gameplay
             
         }
 
-        public void AdjustVoltage(float delta)
+        private void AdjustVoltage(float delta)
         {
             SetVoltage(Mathf.Clamp(_voltage + delta, 0f, maxVoltage));
         }
 
-        public void SetVoltage(float newVoltage)
+        private void SetVoltage(float newVoltage)
         {
             if (!generator.IsOn) return;
             _voltage = Mathf.Clamp(newVoltage, 0f, maxVoltage);
@@ -138,7 +138,7 @@ namespace Gameplay
         {
             if (!audioSource) return;
 
-            if (_voltage == goodVoltage && beepSuccessSound)
+            if (Mathf.Approximately(_voltage, goodVoltage) && beepSuccessSound)
                 audioSource.PlayOneShot(beepSuccessSound);
             else if (beepSound)
                 audioSource.PlayOneShot(beepSound);

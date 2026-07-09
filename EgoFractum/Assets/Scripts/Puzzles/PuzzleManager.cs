@@ -1,11 +1,15 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 
 public class PuzzleManager : MonoBehaviour
 {
     public static PuzzleManager Instance { get; private set; } // Singleton
+
     [Tooltip("Os puzzles são indexados por um 'key' que corresponde ao nome do puzzle.")]
-    public Dictionary<string, bool> puzzles = new Dictionary<string, bool>();
+    private Dictionary<string, bool> _puzzles = new Dictionary<string, bool>();
+
+    public static event Action OnPuzzleCompleted;
 
     private void Awake()
     {
@@ -16,33 +20,33 @@ public class PuzzleManager : MonoBehaviour
         else
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); 
+            DontDestroyOnLoad(gameObject);
         }
     }
 
-    public Dictionary<string, bool> GetPuzzles() { return puzzles; }
+    public Dictionary<string, bool> GetPuzzles()
+    {
+        return _puzzles;
+    }
 
-    public void SetPuzzles(Dictionary<string, bool> puzzles) { this.puzzles = puzzles; }
+    public void SetPuzzles(Dictionary<string, bool> puzzles)
+    {
+        this._puzzles = puzzles;
+    }
 
-    public void AddPuzzle(string key, bool completed) { puzzles.Add(key, completed); }
+    public void AddPuzzle(string key, bool completed)
+    {
+        _puzzles.Add(key, completed);
+    }
 
     public void CompletePuzzle(string key)
     {
-        puzzles[key] = true;
-
-        // talvez dar save aqui
-        if (GameDataManager.Instance != null)
-        {
-            GameDataManager.Instance.SaveGame();
-        }
-        else
-        {
-            Debug.LogWarning("[PUZZLE-MANAGER] GameDataManager is missing.");
-        }
+        _puzzles[key] = true;
+        OnPuzzleCompleted?.Invoke();
     }
 
     public bool IsPuzzleCompleted(string key)
     {
-        return puzzles.ContainsKey(key) && puzzles[key];
+        return _puzzles.ContainsKey(key) && _puzzles[key];
     }
 }

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class ClockDelay
 {
-
     public float TimeStamp { get; set; } //t1
     public float CurrentTime { set; get; }
 
@@ -11,13 +10,11 @@ public class ClockDelay
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     public ClockDelay(float startTime)
-    { //for milliseconds
+    {
+        //for milliseconds
         TimeStamp = startTime;
-
-
     }
 
- 
 
     public bool HasExceededTime()
     {
@@ -27,14 +24,11 @@ public class ClockDelay
     public void UpdateTick(float tick)
     {
         CurrentTime += tick;
-      //  Debug.Log($"Bool: {HasExceededTime()}, boolValue{CurrentTime - TimeStamp}, WaitTime: {WaitTime} , time: {CurrentTime}, timeStamp: {TimeStamp}");
-
+        //  Debug.Log($"Bool: {HasExceededTime()}, boolValue{CurrentTime - TimeStamp}, WaitTime: {WaitTime} , time: {CurrentTime}, timeStamp: {TimeStamp}");
     }
 
     public void UpdateTimeStamp()
     {
         TimeStamp = CurrentTime;
     }
-
- 
 }

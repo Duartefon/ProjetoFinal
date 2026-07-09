@@ -39,9 +39,9 @@ public class DoorController : MonoBehaviour
             _energyEstablished = true;
     }
 
-    public void OnEnergyEstablished() => _energyEstablished = true;
+    private void OnEnergyEstablished() => _energyEstablished = true;
 
-    public void OnEnergyLost() => _energyEstablished = false;
+    private void OnEnergyLost() => _energyEstablished = false;
 
     public void OpenDoor()
     {

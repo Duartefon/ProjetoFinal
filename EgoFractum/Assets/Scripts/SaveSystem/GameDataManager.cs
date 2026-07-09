@@ -7,32 +7,40 @@ public class GameDataManager : MonoBehaviour
 {
     public static GameDataManager Instance { get; private set; } //Singleton
 
-    [Header("Player Position")]
-    public Transform playerTransform;
+    [Header("Player Position")] public Transform playerTransform;
 
-    [Header("UI Elements")]
-    public TMP_Text saveText;
+    [Header("UI Elements")] public TMP_Text saveText;
 
-    [Header("Test")]
-    public bool triggerSaveUI;
+    [Header("Test")] public bool triggerSaveUI;
     public bool saveGame;
+
     [Tooltip("Ligar isto para testar o 'Load' ao começar o 'Play Mode'.")]
     public bool loadGameOnStart;
 
     // O save poderá ser periódico ou apenas ao fim de cada puzzle.
 
     private void Awake()
+    {
+        if (Instance != null && Instance != this)
         {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
+            Destroy(gameObject);
         }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    private void OnEnable()
+    {
+        PuzzleManager.OnPuzzleCompleted += SaveGame;
+    }
+
+    private void OnDisable()
+    {
+        PuzzleManager.OnPuzzleCompleted -=  SaveGame;
+    }
 
     private void Start()
     {
@@ -45,10 +53,8 @@ public class GameDataManager : MonoBehaviour
         {
             saveText.gameObject.SetActive(false);
         }
-        
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        
 
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
@@ -56,26 +62,21 @@ public class GameDataManager : MonoBehaviour
         if (triggerSaveUI)
         {
             triggerSaveUI = false;
-            if (saveText != null)
+            if (saveText)
             {
                 StopAllCoroutines();
                 StartCoroutine(BlinkSaveTextRoutine());
             }
         }
-
-        if (saveGame)
-        {
-            saveGame = false;
-            SaveGame();
-            Debug.Log("[TEST] Saving game...");
-        }
     }
 
-    public void SaveGame()
+    private void SaveGame()
     {
         Debug.Log("Saving game...");
         PlayerData data = new PlayerData();
-        data.transform = new float[] { playerTransform.position.x, playerTransform.position.y, playerTransform.position.z };
+        
+        data.transform = new float[]
+            { playerTransform.position.x, playerTransform.position.y, playerTransform.position.z };
 
         Dictionary<string, bool> currentPuzzles = PuzzleManager.Instance.GetPuzzles();
         foreach (var kvp in currentPuzzles)
@@ -95,11 +96,12 @@ public class GameDataManager : MonoBehaviour
                 rotation = obj.transform.rotation
             });
         }
+
         string json = JsonUtility.ToJson(data);
         string path = Application.persistentDataPath + "/playerData.json";
         System.IO.File.WriteAllText(path, json);
 
-        if (saveText != null)
+        if (saveText)
         {
             StopAllCoroutines();
             StartCoroutine(BlinkSaveTextRoutine());
@@ -137,7 +139,6 @@ public class GameDataManager : MonoBehaviour
                     }
                 }
             }
-
         }
     }
 
@@ -181,5 +182,4 @@ public class GameDataManager : MonoBehaviour
         color.a = endAlpha;
         saveText.color = color;
     }
-
 }

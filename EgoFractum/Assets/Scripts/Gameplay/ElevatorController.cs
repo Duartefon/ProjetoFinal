@@ -7,23 +7,24 @@ public class ElevatorController : MonoBehaviour
     private static readonly int ElevatorDown = Animator.StringToHash("ElevatorDown");
     private static readonly int ElevatorUp = Animator.StringToHash("ElevatorUp");
 
-    [Header("Audio")]
+    [Header("Audio")] 
     [SerializeField] private AudioClip moveSound;
     [SerializeField] private AudioClip stopSound;
-    [Header("Smoke")]
+    
+    [Header("Smoke")] 
     [SerializeField] private ParticleSystem smoke;
-    
-    private bool isMoving = false;
-    private bool energyEstablished = false;
-    private Animator animator;
-    private AudioSource audioSource;
-    
+
+    private bool _isMoving = false;
+    private bool _energyEstablished = false;
+    private Animator _animator;
+    private AudioSource _audioSource;
+
     private void OnEnable()
-    { 
+    {
         GeneratorScript.OnEnergyEstablished += OnEnergyEstablished;
         GeneratorScript.OnEnergyLost += OnEnergyLost;
     }
-    
+
     private void OnDisable()
     {
         GeneratorScript.OnEnergyEstablished -= OnEnergyEstablished;
@@ -32,47 +33,46 @@ public class ElevatorController : MonoBehaviour
 
     void Start()
     {
-        animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
         smoke = GetComponentInChildren<ParticleSystem>();
         smoke.Stop();
     }
 
     void Update()
     {
-        if (isMoving && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (_isMoving && _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
-            isMoving = false;
+            _isMoving = false;
         }
     }
 
-    private void OnEnergyEstablished() => energyEstablished = true;
-    private void OnEnergyLost() => energyEstablished = false;
+    private void OnEnergyEstablished() => _energyEstablished = true;
+    private void OnEnergyLost() => _energyEstablished = false;
 
     public void GoUp()
     {
-        if (!isMoving && energyEstablished)
+        if (!_isMoving && _energyEstablished)
         {
-            isMoving = true;
-            animator.SetTrigger(ElevatorUp);
+            _isMoving = true;
+            _animator.SetTrigger(ElevatorUp);
             Debug.Log("Going Up");
         }
     }
 
     public void GoDown()
     {
-        if (!isMoving && energyEstablished)
+        if (!_isMoving && _energyEstablished)
         {
-            isMoving = true;
-            animator.SetTrigger(ElevatorDown);
+            _isMoving = true;
+            _animator.SetTrigger(ElevatorDown);
             Debug.Log("Going Down");
         }
-
     }
-    
+
     public void OnArrived()
     {
-        isMoving = false;
+        _isMoving = false;
     }
 
     public void PlaySmoke()
@@ -87,11 +87,11 @@ public class ElevatorController : MonoBehaviour
 
     public void PlayStopSound()
     {
-        audioSource.PlayOneShot(stopSound);
+        _audioSource.PlayOneShot(stopSound);
     }
 
     public void PlayMoveSound()
     {
-        audioSource.PlayOneShot(moveSound);
+        _audioSource.PlayOneShot(moveSound);
     }
 }

@@ -2,12 +2,6 @@ using UnityEngine;
 
 public class ElevatorTrigger : MonoBehaviour
 {
-    private ElevatorController elevatorController;
-    void Start()
-    {
-        elevatorController = GetComponentInParent<ElevatorController>();
-    }
-
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Player")) {
             other.transform.SetParent(transform.parent);
