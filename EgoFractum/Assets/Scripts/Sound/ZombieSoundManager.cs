@@ -25,6 +25,7 @@ public class ZombieSoundManager : MonoBehaviour
 
     void Update()
     {
+        audioClip = null;
         //if (!zombie.IsAlive) return;
         timer -= Time.deltaTime;
         var currentState = _stateMachine.currentState;

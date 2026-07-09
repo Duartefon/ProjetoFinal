@@ -22,13 +22,13 @@ public class IntroSequenceManager : MonoBehaviour
     public GameObject rightHandModel;
 
     [Header("Timings")]
-    public float quoteStayTime = 4f;
+    public float quoteStayTime = 6.5f;
     public float fadeSpeed = 1f;
 
     void Start()
     {
  
-
+        quoteText.enabled = false;
          StartIntro(); 
     }
 
@@ -39,11 +39,15 @@ public class IntroSequenceManager : MonoBehaviour
 
     private IEnumerator PlayIntroSequence()
     {
+        
         Debug.Log("I'M starting to fade");
         LockMovement(true);
-       leftHandModel.SetActive(false);
-       rightHandModel.SetActive(false);
-       yield return new WaitForSeconds(1.5f);
+         leftHandModel.SetActive(false);
+         
+        rightHandModel.SetActive(false);
+        quoteText.enabled = true;
+        yield return new WaitForSeconds(3f);
+    
         yield return StartCoroutine(FadeText(quoteText, 1f));
         yield return new WaitForSeconds(quoteStayTime);
         yield return StartCoroutine(FadeText(quoteText, -0.01f));
