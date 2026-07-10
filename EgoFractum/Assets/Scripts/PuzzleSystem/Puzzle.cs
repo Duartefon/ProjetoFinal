@@ -7,5 +7,7 @@ namespace PuzzleSystem
         [SerializeField] protected string puzzleKey;
         [SerializeField] protected bool puzzleStarted;
         [SerializeField] protected bool puzzleSolved;
+        
+        
     }
 }

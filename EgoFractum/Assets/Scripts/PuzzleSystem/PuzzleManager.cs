@@ -13,19 +13,11 @@ namespace PuzzleSystem
 
         public static event Action OnPuzzleCompleted;
 
-   
-        [SerializeField] protected string puzzleName;
-
-        [SerializeField] protected bool puzzleFinished = false;
-
-        //TODO: Remove serializefield after debugging
-        [SerializeField] protected bool puzzleStarted = false;
-
         private void Awake()
         {
             if (Instance != null && Instance != this)
             {
-            
+                Destroy(gameObject);
             }
             else
             {

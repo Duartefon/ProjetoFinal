@@ -1,8 +1,11 @@
 using UnityEngine;
 
-public class StoryManager : MonoBehaviour
+namespace StorySystem
 {
-    public AudioSource audioSource;
+    public class StoryManager : MonoBehaviour
+    {
+        public AudioSource audioSource;
 
-    public void PlayVoiceLine(AudioClip voiceLine) => audioSource.PlayOneShot(voiceLine);
+        public void PlayVoiceLine(AudioClip voiceLine) => audioSource.PlayOneShot(voiceLine);
+    }
 }

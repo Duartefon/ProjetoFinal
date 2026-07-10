@@ -1,21 +1,24 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class SaveableObject : MonoBehaviour
+namespace SaveSystem
 {
-    [Tooltip("ID permanente do objeto")]
-    public string uniqueID;
-
-    // todos os objetos que são saveable
-    public static HashSet<SaveableObject> AllSaveableObjects = new HashSet<SaveableObject>();
-
-    void Awake()
+    public class SaveableObject : MonoBehaviour
     {
-        AllSaveableObjects.Add(this);
-    }
+        [Tooltip("ID permanente do objeto")]
+        public string uniqueID;
 
-    void OnDestroy()
-    {
-        AllSaveableObjects.Remove(this);
+        // todos os objetos que são saveable
+        public static HashSet<SaveableObject> AllSaveableObjects = new HashSet<SaveableObject>();
+
+        void Awake()
+        {
+            AllSaveableObjects.Add(this);
+        }
+
+        void OnDestroy()
+        {
+            AllSaveableObjects.Remove(this);
+        }
     }
 }

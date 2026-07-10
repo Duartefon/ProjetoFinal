@@ -7,13 +7,13 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class GrabHandPose : MonoBehaviour
 {
     public HandData handPose;
-    private Vector3 initialPosition;
-    private Quaternion initialRotation;
-    private Vector3 finalPosition;
-    private Quaternion finalRotation;
+    private Vector3 _initialPosition;
+    private Quaternion _initialRotation;
+    private Vector3 _finalPosition;
+    private Quaternion _finalRotation;
 
-    private Quaternion[] startFingerRotations;
-    private Quaternion[] finalFingerRotations;
+    private Quaternion[] _startFingerRotations;
+    private Quaternion[] _finalFingerRotations;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class GrabHandPose : MonoBehaviour
         handPose.gameObject.SetActive(false);
     }
 
-    public void SetupPose(BaseInteractionEventArgs args)
+    private void SetupPose(BaseInteractionEventArgs args)
     {
         if (args.interactorObject is XRDirectInteractor)
         {
@@ -31,28 +31,28 @@ public class GrabHandPose : MonoBehaviour
             handData.animator.enabled = false;
 
             SetHandDataValues(handData, handPose);
-            SetHandData(handData, finalPosition, finalRotation, finalFingerRotations);
+            SetHandData(handData, _finalPosition, _finalRotation, _finalFingerRotations);
         }
     }
 
-    public void SetHandDataValues(HandData hand1, HandData hand2) 
+    private void SetHandDataValues(HandData hand1, HandData hand2) 
     {
-        initialPosition = hand1.root.localPosition;
-        initialRotation = hand1.root.localRotation;
-        finalPosition = hand2.root.localPosition;
-        finalRotation = hand2.root.localRotation;
+        _initialPosition = hand1.root.localPosition;
+        _initialRotation = hand1.root.localRotation;
+        _finalPosition = hand2.root.localPosition;
+        _finalRotation = hand2.root.localRotation;
 
-        startFingerRotations = new Quaternion[hand1.fingers.Length];
-        finalFingerRotations = new Quaternion[hand2.fingers.Length];
+        _startFingerRotations = new Quaternion[hand1.fingers.Length];
+        _finalFingerRotations = new Quaternion[hand2.fingers.Length];
 
         for (int i = 0; i < hand1.fingers.Length; i++)
         {
-            startFingerRotations[i] = hand1.fingers[i].localRotation;
-            finalFingerRotations[i] = hand2.fingers[i].localRotation;
+            _startFingerRotations[i] = hand1.fingers[i].localRotation;
+            _finalFingerRotations[i] = hand2.fingers[i].localRotation;
         }
     }
 
-    public void SetHandData(HandData hand, Vector3 newPos, Quaternion newRot, Quaternion[] newFingerRots)
+    private void SetHandData(HandData hand, Vector3 newPos, Quaternion newRot, Quaternion[] newFingerRots)
     {
         hand.root.localPosition = newPos;
         hand.root.localRotation = newRot;
