@@ -16,7 +16,8 @@ namespace Gameplay
         [SerializeField] private PlayerTransferData playerData;
         [SerializeField] private PlayerTransferData miniPlayerData;
         [SerializeField] private PuzzleMazeManager _puzzleMazeManager;
-        
+        [SerializeField] private TransferVFXSettings _VFXSettings;
+      
         private enum TransferState
         {
             PlayerToPuzzle,
@@ -25,14 +26,16 @@ namespace Gameplay
         private Coroutine _coroutine;
         private void Update()
         {
-            var didHit=  Physics.Raycast(_raycastOrigin.position, _raycastOrigin.forward * _rayLength, out var hit, layerMask );
+            bool didHit = Physics.Raycast(_raycastOrigin.position, _raycastOrigin.forward,
+                out var hit, _rayLength, layerMask);
             Debug.DrawRay(_raycastOrigin.position, _raycastOrigin.forward * _rayLength);
-            if (didHit && hit.transform.gameObject.CompareTag("Transfer"))
-            {
-                if (_coroutine != null) return;
-                _coroutine = StartCoroutine(OnTransfer(TransferState.PlayerToPuzzle));
-            }
 
+            bool aimingAtTransfer = didHit && hit.transform.gameObject.CompareTag("Transfer");
+
+            _VFXSettings.Tick(aimingAtTransfer, Time.deltaTime);
+
+            if (_VFXSettings.IsFull && _coroutine == null)
+                _coroutine = StartCoroutine(OnTransfer(TransferState.PlayerToPuzzle));
         }
 
         IEnumerator OnTransfer(TransferState transferState)
