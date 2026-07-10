@@ -132,13 +132,13 @@ public class KnobRotator : MonoBehaviour
     {
         linkedDial.Rotate(snapRotationAmount, 0f, 0f, Space.Self);
         OnValueChanged?.Invoke(snapRotationAmount);
-        audioSource.Play();
+        audioSource.PlayOneShot(rotationSound);
     }
 
     private void RotateDialAntiClockwise()
     {
         linkedDial.Rotate(-snapRotationAmount, 0f, 0f, Space.Self);
         OnValueChanged?.Invoke(-snapRotationAmount);
-        audioSource.Play();
+        audioSource.PlayOneShot(rotationSound);
     }
 }
