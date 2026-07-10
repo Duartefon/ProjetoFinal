@@ -31,14 +31,14 @@ namespace PuzzleSystem
             var rightMass = rightScalePlate.GetCurrentMass();
             if (Mathf.Approximately(leftMass, 0) || Mathf.Approximately(rightMass, 0))
             {
-                diffText.text = "0";
+                diffText.text = "L - R = 0";
             }
             else
             {
                 int diff = Mathf.RoundToInt(leftMass - rightMass);
-                Debug.Log("Diferença dos pesos: " + diff);
+               
                 // vai buscar o numero ao canvas e liga a set filha do numero
-                diffText.text = diff.ToString();
+                diffText.text = "L - R = " + diff;
             }
            
         }

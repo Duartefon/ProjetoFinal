@@ -96,7 +96,7 @@ public class HandFlashLight : MonoBehaviour
                     
               
                 }
-                else  
+                else  if(_enemyStateMachine)
                 {
                     Debug.Log("Zombie is out of light");
                     _enemyStateMachine.OnLightStun(false);
