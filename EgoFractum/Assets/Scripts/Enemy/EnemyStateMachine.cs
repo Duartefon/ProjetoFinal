@@ -12,6 +12,7 @@ using Random = UnityEngine.Random;
 public class EnemyStateMachine : MonoBehaviour
 {
     public EnemyStates currentState { get; private set; } = EnemyStates.Idle;
+    private EnemyStates _lastState; //excluding stunned
 
     private bool puzzleStarted = false;
     private bool waitFinished = false;
@@ -20,9 +21,11 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] private float enemyRunSpeed = 0.15f;
     [SerializeField] private float enemyStunSpeed = 0.05f;
     [SerializeField] private float enemyTurnSpeed = 0.15f;
-    
+
 
     [SerializeField] private ClockDelay internalClock;
+        
+ 
 
     public enum EnemyStates
     {
@@ -31,6 +34,7 @@ public class EnemyStateMachine : MonoBehaviour
         Run,
         Stunned
     }
+
 
     [SerializeField] private Animator _animator;
     [SerializeField] private NavMeshAgent _agent;
@@ -53,13 +57,25 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] private PuzzleMazeManager _puzzleMazeManager;
     [SerializeField] private DigitalGlitchController _playerGlitchEffect;
     private float mapRadius = 0.5f;
-
     private bool _isPlayerDead = false;
+    [SerializeField]
+    private PlayerTransferData _startingPoint; // reusing this to avoid creating another scriptable object
+
+    
+    //TODO: convert paramNames to constants strings
+    private void Awake()
+    {
+        
+          
+    }
 
     private void Start()
     {
+      
+        
         _agent.speed = enemyWalkSpeed;
         _agent.angularSpeed = enemyTurnSpeed;
+        
     }
 
     private void Update()
@@ -67,8 +83,8 @@ public class EnemyStateMachine : MonoBehaviour
         if (!puzzleStarted) return;
 
         _agent.isStopped = false;
-        
-        //Debug.Log("CurrentState:  " + currentState);
+        if (currentState != _lastState && currentState != EnemyStates.Stunned) _lastState = currentState;
+
         switch (currentState)
         {
             case EnemyStates.Idle:
@@ -91,8 +107,10 @@ public class EnemyStateMachine : MonoBehaviour
     private void UpdateStunState()
     {
         //_agent.enabled = false;
-       // _agent.isStopped = true;
-       UpdateAgent(_agent,enemyStunSpeed, _player.position );
+        _agent.isStopped = true;
+        UpdateAnimator("isRunning", false);
+        UpdateAnimator("isWalking", false);
+        UpdateAgent(_agent, enemyStunSpeed, _player.position);
     }
 
     public void UpdateIdleState()
@@ -137,6 +155,7 @@ public class EnemyStateMachine : MonoBehaviour
             animState = false;
         }
 
+
         UpdateAnimator("isWalking", animState);
     }
 
@@ -165,14 +184,12 @@ public class EnemyStateMachine : MonoBehaviour
             {
                 //TODO: all available transitions effects should be in the manager
                 //this should be the maze manager responsibility, zombie only tells player dead
-
+                _puzzleMazeManager.OnPuzzleReset();
                 _transitionEffectManager.PlayEffect("playTransition");
-
-                Debug.Log("Player dead!");
             }
         }
 
-        UpdateAgent(_agent, enemyWalkSpeed, _player.position);
+        UpdateAgent(_agent, enemyRunSpeed, _player.position);
 
 
         UpdateAnimator("isRunning", animState);
@@ -185,9 +202,9 @@ public class EnemyStateMachine : MonoBehaviour
      **/
     public void OnLightStun(bool value)
     {
-        currentState = value ? EnemyStates.Stunned : EnemyStates.Wander;
-       
-        Debug.Log("IM STUNNED: " + currentState);
+        currentState = value ? EnemyStates.Stunned : _lastState;
+
+        UpdateAnimator("isStunned", value);
     }
 
     public void OnPuzzleStarted()
@@ -196,6 +213,34 @@ public class EnemyStateMachine : MonoBehaviour
 
         puzzleStarted = true;
         StartCoroutine(WaitIdle(waitTimeIdle));
+    }
+
+    public void OnPuzzleRestarted()
+    {
+        if (!puzzleStarted) return;
+
+        _agent.isStopped = true;
+        
+        transform.localPosition  = _startingPoint.position;
+      
+        
+        UpdateAnimator("isIdle", true);
+        UpdateAnimator("isWalking", false);
+        UpdateAnimator("isRunning", false);
+        UpdateAnimator("isStunned", false);
+
+        puzzleStarted = false;
+        waitFinished = false;
+        currentState = EnemyStates.Idle;
+        
+        
+    }
+
+    public void OnPuzzleEnded()
+    {
+        puzzleStarted = false;
+
+        currentState = EnemyStates.Idle;
     }
 
     /** IEnumerators
@@ -218,11 +263,14 @@ public class EnemyStateMachine : MonoBehaviour
     {
         agent.speed = moveSpeed;
         agent.destination = goalPosition;
+        Debug.Log($"Current State: {currentState} LastState {_lastState} Movespeed: {moveSpeed} ");
     }
 
     private void UpdateAnimator(string parameterName, bool value)
     {
         //_animator.GetCurrentAnimatorStateInfo(-1);
+
+
         _animator.SetBool(parameterName, value);
     }
 

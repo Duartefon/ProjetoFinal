@@ -124,7 +124,7 @@ public class HandFlashLight : MonoBehaviour
     {
         text.text =
             $"{_energy}%, isOn {flashLight.enabled} ,Light Level{flashLight.intensity}";
-        Debug.Log($"{_energy}%, isOn {flashLight.enabled} ,Light Level{flashLight.intensity}");
+      //  Debug.Log($"{_energy}%, isOn {flashLight.enabled} ,Light Level{flashLight.intensity}");
     }
 
     private void OnFlashlightButtonPress(InputAction.CallbackContext callbackContext)

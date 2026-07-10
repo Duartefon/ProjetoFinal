@@ -48,7 +48,24 @@ namespace Gameplay
             else if (transferState.Equals(TransferState.PuzzleToPlayer))
                 _transitionEffectManager.TransitionPlayerTo(player.transform, miniPlayerData);
 
+            StopAllCoroutines();
+        }
+        IEnumerator OnTransferReset( )
+        {
+            _transitionEffectManager.PlayEffect();
+            yield return new WaitForSeconds(_transitionEffectManager.effectTime);
+            
+            _transitionEffectManager.TransitionPlayerToPositionRotation(player.transform, miniPlayerData);
+            _puzzleMazeManager.OnPuzzleStarted();
+           
+            StopAllCoroutines();
+        }
 
+
+        public void OnResetPlayer()
+        {
+           
+            StartCoroutine(OnTransferReset( ));
         }
         
         
