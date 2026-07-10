@@ -1221,12 +1221,12 @@ disparado um efeito de transição visual e, decorrido o tempo desse efeito, o
 jogador é reposicionado de acordo com 
 valores predefinidos num \textit{ScriptableObject} (\texttt{PlayerTransferData}). 
 É esta mudança de escala que sustenta, a nível narrativo e mecânico, a 
-passagem do jogador para uma versão miniaturizada e ``digital'' de si 
+passagem do jogador para uma versão miniaturizada de si 
 próprio dentro do labirinto.
 
-A entrada no labirinto despoleta também o inimigo que o jogador terá de 
+A entrada no labirinto ativa também o inimigo que o jogador terá de 
 evitar. O \texttt{PuzzleMazeManager} funciona como ponto de entrada desta 
-fase: ao ser notificado do início do puzzle, ativa a máquina de estados do 
+fase: ao ser notificado do início do \textit{puzzle}, ativa a máquina de estados do 
 inimigo (\texttt{EnemyStateMachine}), que alterna entre três estados: 
 \textit{Idle}, \textit{Wander} e \textit{Run}. O inimigo permanece parado 
 durante um intervalo inicial, após o qual passa a vaguear pelo labirinto nas 
@@ -1234,10 +1234,12 @@ imediações do jogador, recorrendo à \textit{NavMesh} do \texttt{Unity} para s
 deslocar. Enquanto vagueia, um segundo \textit{raycast}, lançado a partir do 
 próprio inimigo, verifica se este tem o jogador diretamente à sua frente; 
 caso o detete, transita para o estado de perseguição, aumentando a sua 
-velocidade de deslocação.
+velocidade de deslocação. Neste estado, caso o jogador seja apanhado 
+pelo inimigo, este perde, e o \textit{puzzle} é reiniciado. O inimigo
+pode ser parado ao ser atingido pela lanterna do jogador (cf.~\ref{sssec:lanterna}).
 
 O comportamento e os parâmetros de cada inimigo, como a velocidade, dano de 
-ataque, alcance de ataque e mordida, bem como os conjuntos de sons 
+ataque, alcance de ataque, bem como os conjuntos de sons 
 associados a cada estado, estão isolados num \textit{ScriptableObject} 
 próprio (\texttt{ZombieData}), separando a configuração da lógica de 
 comportamento e permitindo reutilizar a mesma máquina de estados para 
