@@ -31,26 +31,25 @@ public class ZombieSoundManager : MonoBehaviour
         var currentState = _stateMachine.currentState;
         Debug.Log($"CurrentState {currentState}");
 
-        if (currentState == EnemyStates.Idle)
-            return;
-        
-        if (currentState == EnemyStates.Run)
+        switch (currentState)
         {
-            audioClip = GetRandomZombieSound(zombieData.runningSound);
-            delayBetweenAudios = 3f; // Added a delay so they don't spam run sounds
-        }
-        else if(currentState == EnemyStates.Wander)
-        {
-            audioClip = GetRandomZombieSound(zombieData.walkSound);
-            delayBetweenAudios = 5f; // Explicitly set delay for wandering
-        }
-        else
-        {
-            return;
+            case EnemyStates.Idle:
+                return;
+            case EnemyStates.Run:
+                audioClip = GetRandomZombieSound(zombieData.runningSound);
+                delayBetweenAudios = 3f; // Added a delay so they don't spam run sounds
+                break;
+            case EnemyStates.Wander:
+                audioClip = GetRandomZombieSound(zombieData.walkSound);
+                delayBetweenAudios = 5f; // Explicitly set delay for wandering
+                break;
+            default:
+                return;
         }
 
         if (timer <= 0)
         {
+            Debug.Log("Cheguei ao timer");
             if (audioClip != null)
             {
                 audioSource.PlayOneShot(audioClip);

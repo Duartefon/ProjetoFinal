@@ -49,8 +49,9 @@ public class EnemyStateMachine : MonoBehaviour
 
     [SerializeField] private PuzzleMazeManager _puzzleMazeManager;
     [SerializeField] private DigitalGlitchController _playerGlitchEffect;
-    private float mapRadius = 5.4f;
+    private float mapRadius = 0.5f;
     
+    private bool _isPlayerDead = false;
 
     private void Start()
     {
@@ -63,8 +64,9 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Update()
     {
+        if (!puzzleStarted) return;
 
-        UpdateGLitchEffect();
+       
         
         //Debug.Log("CurrentState:  " + currentState);
         switch (currentState)
@@ -74,9 +76,11 @@ public class EnemyStateMachine : MonoBehaviour
                 break;
             case EnemyStates.Wander:
                 UpdateWanderState();
+                UpdateGLitchEffect();
                 break;
             case EnemyStates.Run:
                 UpdateRunState();
+                UpdateGLitchEffect();
                 break;
             case EnemyStates.Stunned:
                 UpdateStunState();
@@ -95,7 +99,6 @@ public class EnemyStateMachine : MonoBehaviour
     public void UpdateIdleState()
     {
         var animState = true;
-        if (!puzzleStarted) return;
         if (waitFinished)
         {
             currentState = EnemyStates.Wander;
@@ -134,17 +137,18 @@ public class EnemyStateMachine : MonoBehaviour
             currentState = EnemyStates.Run;
             animState = false;
         }
-
+        
         UpdateAnimator("isWalking", animState);
     }
 
     private void UpdateGLitchEffect()
     {
-        
+        _transitionEffectManager.SetAnimator(false);
         var dist = Vector3.Distance(_player.position, transform.position);
         //var perc = 1 - dist
-        Debug.Log("Dist:" +  dist + " percent: " + ((mapRadius - dist) /mapRadius)   );
-        _playerGlitchEffect.Intensity = (mapRadius - dist) /mapRadius;
+        var perc  = (mapRadius - dist) /(mapRadius *2);
+        Debug.Log("Dist:" +  dist + " percent: " + perc   );
+        _playerGlitchEffect.Intensity = perc;
     }
     public void UpdateRunState()
     {
@@ -183,6 +187,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
          
         currentState = value ? EnemyStates.Stunned : EnemyStates.Wander;
+        Debug.Log("IM STUNNED: "+ currentState);
     }
 
     public void OnPuzzleStarted()

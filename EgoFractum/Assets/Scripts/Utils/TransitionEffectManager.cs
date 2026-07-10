@@ -32,4 +32,9 @@ public class TransitionEffectManager : MonoBehaviour
 
         player.GetComponent<CharacterController>().stepOffset = destinyData.stepOffset;
     }
+
+    public void SetAnimator(bool active)
+    {
+        _effectAnimator.enabled = active;
+    }
 }

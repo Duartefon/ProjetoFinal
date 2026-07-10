@@ -93,11 +93,16 @@ public class HandFlashLight : MonoBehaviour
                         _enemyStateMachine = hit.transform.GetComponent<EnemyStateMachine>();
                         _enemyStateMachine.OnLightStun(true);
                     }
+                    
+              
                 }
                 else if (_enemyStateMachine != null)
                 {
+                    Debug.Log("Zombie is out of light");
                     _enemyStateMachine.OnLightStun(false);
                 }
+                Debug.Log($"[Flashlight] Enemy State: {_enemyStateMachine} DidHit:  {didHit}");
+                
 
                 break;
             case FlashlightStates.Off:
