@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using KinoGlitch;
+using PuzzleSystem;
 using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.AI;
