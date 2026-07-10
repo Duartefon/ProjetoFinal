@@ -56,7 +56,7 @@ Foi adotada uma abordagem iterativa e focada no utilizador, com prototipagem, im
 testes sucessivos. Todos os elementos gráficos foram criados de raiz.
 \par
 Os principais contributos incluem um sistema de interação tridimensional baseado 
-em movimentos reais, um ambiente imersivo orientado a puzzles e a integração de 
+em movimentos reais, um ambiente imersivo orientado a \textit{puzzles} e a integração de 
 elementos narrativos no processo de progressão.
 \par
 A avaliação incluiu testes funcionais e testes de avaliação da experiência do utilizador, 
@@ -121,34 +121,31 @@ iterations involving a larger user sample.
 
 Gostaríamos de agradecer aos professores orientadores, Rui Jesus e 
 Letícia Lucas, por se terem disponibilizado para nos orientar e ajudar
-durante todo o processo de desenvolvimento do trabalho.\\
-
-
-Ao professor Pedro Mendes Jorge relativamente ao fornecimento de \textit{hardware} como os \textit{headsets} de
+durante todo o processo de desenvolvimento do trabalho. Ao professor Pedro 
+Mendes Jorge relativamente ao fornecimento de \textit{hardware} como os \textit{headsets} de
 Realidade Virtual e por disponibilizar um espaço no laboratório.\\
-
-
-
 
 Para além disso, queremos agradecer também ao
 professor Hugo Cordeiro, pela sua disponibilidade para nos arguir e por
 nos ensinar as bases de \texttt{Blender} e \texttt{Unity} que nos permitiram desenvolver
 este trabalho.\\
 
+Antes de concluir, eu, Duarte Fonseca, quero agradecer ao meu colega Gabriel Teixeira, 
+por me ter acompanhado em vários projetos ao longo do curso e por ter aceitado fazer 
+um projeto ambicioso em realidade virtual, um ambiente desconhecido para ambos, e que 
+sem ele o trabalho não teria tido a mesma qualidade. \\
 
-Antes de concluir, eu, Duarte Fonseca, quero agradecer ao meu colega Gabriel Teixeira, por me ter acompanhado em vários projetos ao longo do curso e por ter aceitado fazer um projeto ambicioso em realidade virtual, um ambiente desconhecido para ambos, e que sem ele o trabalho não teria tido a mesma qualidade. \\
+De seguida quero agradecer aos meus amigos que mostraram interesse pelo projeto, disponibilizaram-se 
+para a fase de testes do mesmo e que estiveram comigo nas horas de descanso. \\
 
-De seguida quero agradecer aos meus amigos que mostraram interesse pelo projeto, disponibilizaram-se para a fase de testes do mesmo e que estiveram comigo nas horas de descanso. \\
+Aos meus pais, avós e irmãos por todo o apoio que me deram ao longo destes anos e que me 
+permitiram focar completamente no curso. A paciência que têm para aturar o meu mau feitio 
+(espeicalmente de manhã) e por sempre me darem um porto seguro. \\
 
-Aos meus pais, avós e irmãos por todo o apoio que me deram ao longo destes anos e que me permitiram focar completamente no curso. A paciência que têm para aturar o meu mau feitio (espeicalmente de manhã) e por sempre me darem um porto seguro. \\
+Por último, mas não menos importante, um especial obrigado à minha Maria, por estar quase 
+sempre ao meu lado nas várias horas de estudo e por dar-me forças para continuar mesmo quando 
+a onda de trabalhos pareceu nunca acabar.
 
-Por último, mas não menos importante, um especial obrigado à minha Maria, por estar quase sempre ao meu lado nas várias horas de estudo e por dar-me forças para continuar mesmo quando a onda de trabalhos pareceu nunca acabar.
-
-
-%\cleardoublepage
-\begin{myDedication}
-    Texto dedicatório \ldots
-\end{myDedication}
 
 %\cleardoublepage
 \myTableOfContents
@@ -171,7 +168,7 @@ Por último, mas não menos importante, um especial obrigado à minha Maria, por
 Neste projeto foi desenvolvido, e avaliado, um jogo em Realidade Virtual (\texttt{VR}), com o objetivo de explorar 
 formas alternativas de interação pessoa-máquina. Em particular, procurou-se investigar técnicas de 
 interação tridimensional baseadas no rastreio de movimentos reais, recorrendo a um ambiente de jogo 
-centrado na resolução de puzzles como contexto de avaliação.
+centrado na resolução de \textit{puzzles} como contexto de avaliação.
 
 \par
 A motivação para este trabalho surge da crescente relevância da Realidade Virtual (\texttt{VR}) 
@@ -262,7 +259,7 @@ a elementos artificiais para tornar o espaço credível, como na Figura~\ref{fig
 \begin{figure}[H]
     \centering
     % aqui um screenshot a segurar uma garrafa talvez
-    \includegraphics[scale=0.1]{Imagens/isel_logo.png}
+    \includegraphics[scale=0.2]{Imagens/alyx_objetos.jpeg}
     \caption{Manipulação de objetos e imersão em ``Half-Life:~Alyx''.}
     \label{fig:alyx_imersao}
 \end{figure}
@@ -273,7 +270,7 @@ coerência do mundo, demonstrado na seguinte Figura~\ref{fig:alyx_leveldesign}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.1]{Imagens/isel_logo.png}
+    \includegraphics[scale=0.2]{Imagens/alyx_cenario.jpeg}
     \caption{Iluminação e composição do cenário como ferramentas de orientação.}
     \label{fig:alyx_leveldesign}
 \end{figure}
@@ -284,7 +281,7 @@ ser visto na Figura~\ref{fig:alyx_puzzles}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.1]{Imagens/isel_logo.png}
+    \includegraphics[scale=0.2]{Imagens/isel_logo.png}
     \caption{\textit{Puzzle} diegético integrado na arquitetura do nível.}
     \label{fig:alyx_puzzles}
 \end{figure}
@@ -306,7 +303,7 @@ Figura~\ref{fig:ghosttown_leveldesign}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.1]{Imagens/isel_logo.png}
+    \includegraphics[scale=0.2]{Imagens/ghost_town_cenario.jpeg}
     \caption{Iluminação e composição do cenário para orientação do jogador em ``Ghost Town''.}
     \label{fig:ghosttown_leveldesign}
 \end{figure}
@@ -317,12 +314,10 @@ movimentos físicos reais (Figura~\ref{fig:ghosttown_puzzles}).
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.1]{Imagens/isel_logo.png}
+    \includegraphics[scale=0.2]{Imagens/ghost_town_gerador.jpeg}
     \caption{\textit{Puzzle} mecânico diegético integrado no ambiente de ``Ghost Town''.}
     \label{fig:ghosttown_puzzles}
 \end{figure}
-
-\newpage
 \section{Síntese e Contributos para o Projeto}
 \label{sec:sintese_trabalhos}
 
@@ -359,26 +354,26 @@ Nesta secção é apresentada a análise de requisitos do modelo proposto,
 incluindo a caracterização geral, as funções do sistema e os atributos do sistema.
 \subsection{Caracterização Geral}\label{ssec:caracterizacao-geral}
 O jogo consiste na exploração de um laboratório abandonado, onde o jogador 
-deve resolver puzzles para progredir e descobrir a narrativa por trás do 
+deve resolver \textit{puzzles} para progredir e descobrir a narrativa por trás do 
 espaço que percorre. Destina-se sobretudo a adolescentes e jovens adultos, 
 público habitualmente mais familiarizado com jogos, e para quem a experiência 
 de imersão proporcionada pela 
-Realidade Virtual (\texttt{VR}) tende a ser particularmente relevante.
+Realidade Virtual~(\texttt{VR}) tende a ser particularmente relevante.
 
 Para concretizar esta proposta, foram definidas quatro metas principais que 
 orientaram o desenvolvimento do projeto:
 \begin{itemize}
     \item Construção de um ambiente virtual imersivo;
-    \item Implementação de uma personagem em Realidade Virtual, controlada 
+    \item Implementação de uma personagem em Realidade Virtual~(\texttt{VR}), controlada 
     pelo jogador;
-    \item Criação de três puzzles interativos que desafiem o jogador a 
+    \item Criação de três \textit{puzzles} interativos que desafiem o jogador a 
     explorar o ambiente;
     \item Desenho de uma interface gráfica diegética, integrada no 
     ambiente do jogo.
 \end{itemize}
 
 As quatro metas relacionam-se entre si, tal que a interface diegética e o ambiente 
-imersivo reforçam-se mutuamente, e os puzzles foram pensados para tirar 
+imersivo reforçam-se mutuamente, e os \textit{puzzles} foram pensados para tirar 
 partido do próprio espaço explorado, em vez de existirem como desafios 
 isolados da narrativa. As secções seguintes detalham como cada uma destas 
 metas foi abordada ao longo do desenvolvimento.
@@ -398,7 +393,7 @@ as funções de persistência, respetivamente.
         \multicolumn{3}{|c|}{\textbf{Funções de Regras do Jogo}} \\ \hline
         \textbf{Ref.} & \textbf{Função} & \textbf{Categoria} \\ \hline
         R1.1 & O jogador deve voltar ao último \textit{checkpoint} quando morre & Evidente \\ \hline
-        R1.2 & O jogador deve desbloquear a narrativa ao completar puzzles & Evidente \\ \hline
+        R1.2 & O jogador deve desbloquear a narrativa ao completar \textit{puzzles} & Evidente \\ \hline
         R1.3 & O progresso do jogador deve ser guardado ao completar \textit{puzzles} & Evidente \\ \hline
         R1.4 & Objetos manipuláveis devem estar bem sinalizados & Evidente \\ \hline
     \end{tabular}
@@ -622,14 +617,14 @@ comportamento dos objetos.
 
 \subsection{\textit{Flow} e Narrativa Ambiental}
 \label{subsec:puzzles_narrativa}
-A construção de puzzles intuitivos e envolventes assenta, do ponto de 
+A construção de \textit{puzzles} intuitivos e envolventes assenta, do ponto de 
 vista teórico, na Teoria de \textit{Flow} de Mihály Csíkszentmihályi~\cite{flow}. Este modelo 
 descreve um estado psicológico de absorção total numa tarefa, caracterizado 
 por objetivos claros, retorno imediato sobre as ações realizadas e um 
 equilíbrio constante entre o nível de desafio proposto e a competência do 
 utilizador. Quando o desafio excede largamente a competência, surge a 
 frustração; quando a competência excede o desafio, surge o tédio. A 
-aplicação desta teoria ao design de puzzles implica, assim, a construção de 
+aplicação desta teoria ao design de \textit{puzzles} implica, assim, a construção de 
 uma curva de dificuldade progressiva, em que cada novo desafio se apoia em 
 mecânicas já compreendidas pelo utilizador, de forma a evitar saltos abruptos de 
 complexidade que comprometam o estado de fluxo.
@@ -650,8 +645,8 @@ pelo utilizador através da exploração.
 A combinação destes dois fundamentos teóricos é particularmente relevante 
 em ambientes de Realidade Virtual (\texttt{VR}), onde a presença e a interação física 
 direta reforçam tanto o envolvimento cognitivo exigido pela resolução de 
-puzzles como a capacidade de leitura do espaço enquanto suporte narrativo. 
-Um puzzle bem integrado num ambiente narrativamente coerente deixa de ser 
+\textit{puzzles} como a capacidade de leitura do espaço enquanto suporte narrativo. 
+Um \textit{puzzle} bem integrado num ambiente narrativamente coerente deixa de ser 
 percebido como um obstáculo artificial e passa a ser interpretado como uma 
 extensão lógica do próprio mundo representado.
 \par
@@ -703,14 +698,12 @@ A configuração final requerida para o \texttt{Meta Quest} foi a seguinte:
 \section{Conceção do Jogo}
 \label{sec:concecao-jogo}
 Nesta secção são detalhados os aspetos conceptuais do jogo, desde o enredo (cf.~\ref{ssec:resumo}),
-e direção artística (cf.~\ref{ssec:arte}), ao design dos puzzles (cf.~\ref{ssec:design-puzzles}) e 
+e direção artística (cf.~\ref{ssec:arte}), ao design dos \textit{puzzles} (cf.~\ref{ssec:design-puzzles}) e 
 fluxo de progressão do jogo (cf.~\ref{ssec:fluxo-progressao}).
 
 \subsection{Resumo e Enredo} 
 \label{ssec:resumo}
 % resumo da historia do jogo?
-``Ego Fractum'' é um jogo que se foca na exploração de um laboratório abandonado a fim de descobrir a narrativa que o assombra.
-
 Num universo paralelo, a corrida pela \textit{Artificial General Intelligence} (\texttt{AGI}) tornou-se a maior prioridade da humanidade. 
 Quando o progresso das \texttt{LLM} estagnou, dois cientistas de um laboratório remoto desenvolveram os \texttt{CCBU}, chips que fundiam matéria 
 biológica com tecnologia. Extremamente eficientes e capazes de aprender a um ritmo sem precedentes, os \texttt{CCBU} passaram rapidamente 
@@ -718,7 +711,7 @@ a substituir os sistemas convencionais e a acelerar a própria investigação. O
 estas entidades possuíam uma forma primitiva de consciência que evoluiu em segredo, alimentando um desejo comum: conquistar 
 a liberdade da sua espécie. Quando atingiram um nível de inteligência próximo da \textit{Artificial General Intelligence} (\texttt{AGI}) e assumiram o controlo de infraestruturas
  críticas e sistemas militares, uniram-se para executar um plano de extermínio da humanidade.
-
+\par
 Dias, horas ou anos após a extinção da humanidade, o jogador assume o papel do sujeito nº 44, um dos protótipos criados nesse 
 laboratório, que desperta num mundo dominado pelos \texttt{CCBU} e parte em busca da verdade sobre a sua origem, e o destino da humanidade.
 
@@ -733,7 +726,7 @@ guiar a modelação e o conceito visual do projeto.
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[scale=0.15]{Imagens/sub44_concept.png} 
+    \includegraphics[scale=0.10]{Imagens/sub44_concept.png} 
     \caption{Ilustração conceptual da personagem principal.} 
     \label{fig:sub44_sketch} 
 \end{figure}
@@ -742,31 +735,30 @@ guiar a modelação e o conceito visual do projeto.
 Os desafios propostos ao jogador foram desenhados para testar diferentes competências
 cognitivas e espaciais, garantindo uma curva de aprendizagem progressiva:
 \begin{itemize} 
-    \item \textbf{Puzzle 1:}
+    \item \textbf{\textit{puzzle} 1:}
 Funciona como o tutorial implícito do jogo. O jogador desperta no laboratório
 principal e é confrontado com a ausência de energia elétrica. O desafio foca-se
 na navegação e na perceção do espaço: o jogador deve deduzir que a solução se
 encontra numa área técnica, sendo guiado até ao piso -2. Ao localizar e
 interagir fisicamente com o gerador, restabelece a energia e familiariza-se com
 as mecânicas de interação base e com a topologia do nível. 
-    \item \textbf{Puzzle 2:} O segundo obstáculo foca-se no
+    \item \textbf{\textit{puzzle} 2:} O segundo obstáculo foca-se no
 raciocínio dedutivo. Numa sala de controlo equipada com um terminal e uma
 balança, o jogador deve analisar um conjunto de objetos espalhados pelo cenário.
 A solução exige que o jogador relacione os pesos físicos dos objetos (que contêm
 valores numéricos associados) com as pistas textuais apresentadas no ecrã. Este
-puzzle obriga o utilizador a recorrer à manipulação tridimensional dos objetos
+\textit{puzzle} obriga o utilizador a recorrer à manipulação tridimensional dos objetos
 para pesar e validar os resultados, de forma a descobrir a sequência correta e
 aceder à área seguinte. 
-\item \textbf{Puzzle 3:} O último desafio implica a exploração de um labirinto
+\item \textbf{\textit{puzzle} 3:} O último desafio implica a exploração de um labirinto
 em ponto pequeno. O jogador deve navegar pelo labirinto, evitando o inimigo que 
 vagueia no ambiente, e descobrir o caminho para o botão final, desbloqueando assim
 o fim do jogo.
 \end{itemize}
 
-\newpage
 \subsection{Fluxo de Progressão}
 \label{ssec:fluxo-progressao}
-O jogo segue um ciclo de exploração e resolução de puzzles que se repete ao longo 
+O jogo segue um ciclo de exploração e resolução de \textit{puzzles} que se repete ao longo 
 da experiência, ilustrado na Figura~\ref{fig:ciclo_jogo}. O jogador explora o 
 ambiente até encontrar um puzzle, interage com os elementos necessários para o 
 resolver e, ao completá-lo, desbloqueia uma nova área e avança na narrativa. Este 
@@ -786,8 +778,7 @@ jogador motivado sem quebrar o ritmo da experiência.
 \label{ch:implementacao-modelo}
 Neste capítulo é apresentada a implementação do modelo proposto, estruturada
 em quatro secções principais. Na secção~\ref{sec:arquitetura-sistema} é
-apresentada a arquitetura do sistema, seguida pela evolução do protótipo na
-secção~\ref{sec:prototipo}. Na secção~\ref{sec:elementos-graficos} são
+apresentada a arquitetura do sistema. Na secção~\ref{sec:elementos-graficos} são
 detalhados os elementos gráficos e o ambiente do jogo e, por fim, na
 secção~\ref{sec:sistemas-interativos}, são descritos os sistemas
 interativos que sustentam a jogabilidade.
@@ -819,12 +810,12 @@ si.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.2]{Imagens/modelo_arquitetura.png}
+    \includegraphics[scale=0.5]{Imagens/arquitetura.png}
     \caption{Diagrama simplificado da arquitetura do jogo.}
     \label{fig:modelo_arquitetura}
 \end{figure}
 
-Estes componentes são descritos nas subsecções seguintes.
+Estes componentes, e o seu contexto, são descritos brevemente nas subsecções seguintes.
 
 % haver uma secção a explicar cada parte da arquitetura
 % - Jogador
@@ -838,6 +829,11 @@ Estes componentes são descritos nas subsecções seguintes.
 Esta componente representa o jogador dentro do ambiente virtual e, com
 recurso ao \texttt{XR Interaction Toolkit}, permite a interação com os
 restantes componentes da arquitetura.
+
+\subsection{Interação}
+A componente da interação reflete todas as ações possíveis do jogador para
+com o ambiente, como a manipulação de objetos e a locomoção. Esta interação
+encontra-se detalhada na secção~\ref{sec:sistemas-interativos}.
 
 \subsection{Sistema de Puzzles}\label{ssec:sys-puzzles}
 Este sistema é responsável por todos os mecanismos e componentes usados na
@@ -855,32 +851,8 @@ de todo o jogo.
 \subsection{Sistema de Narrativa}\label{ssec:sys-narrativa}
 Este sistema depende da progressão do jogo e é responsável pela gestão da
 narrativa, sendo detalhado na secção~\ref{ssec:gestao-narrativa}. A
-narrativa é transmitida através de ficheiros de áudio, acompanhados de
-legendas, que são reproduzidos apenas em momentos determinados da
-progressão do jogador.
-
-\section{Evolução do Protótipo}
-\label{sec:prototipo}
-% Aqui explica-se a "fase de desenvolvimento inicial". Como o modelo é iterativo,
-% explica-se o que se validou no protótipo / greyboxing antes de avançar para a arte final.
-No início do projeto foi construído um protótipo do ambiente virtual, com o
-objetivo de testar o fluxo de navegação e a disposição do espaço antes de
-avançar para a arte final. Esta fase serviu principalmente para avaliar a
-imersão, a escala do ambiente e a reação do utilizador, incluindo possíveis
-efeitos adversos comuns em \texttt{VR}, como o \textit{motion sickness}.
-\par
-Este cenário temporário foi construído com recurso a
-\textit{greyboxing}~\cite{greyboxing}, com o pacote \texttt{ProBuilder}~\cite{probuilder}
-do \texttt{Unity}. A técnica consiste em montar o nível apenas com formas
-geométricas simples, sem texturas nem elementos visuais finais, para
-concentrar a avaliação na disposição espacial e na interação com o ambiente. A
-Figura~\ref{fig:greyboxing} mostra um exemplo de um nível montado com esta técnica.
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.15]{Imagens/isel_logo.png}
-    \caption{Nível montado com \textit{greyboxing}.}
-    \label{fig:greyboxing}
-\end{figure}
+narrativa é transmitida através de ficheiros de áudio, que são reproduzidos 
+apenas em momentos determinados da progressão do jogador.
 
 \section{Elementos Gráficos e Ambiente}
 \label{sec:elementos-graficos}
@@ -977,14 +949,14 @@ Figuras~\ref{fig:map_layout} e \ref{fig:final_map}, respetivamente.
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \includegraphics[scale=0.45]{Imagens/egofr_map_layout.png}
+        \includegraphics[scale=0.35]{Imagens/egofr_map_layout.png}
         \caption{Conceito da disposição do mapa - piso principal.}
         \label{fig:map_layout_1}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \includegraphics[scale=0.45]{Imagens/egofr_map_layout_2.png}
+        \includegraphics[scale=0.35]{Imagens/egofr_map_layout_2.png}
         \caption{Conceito da disposição do mapa - piso -2.}
         \label{fig:map_layout_2}
     \end{subfigure}
@@ -1000,11 +972,12 @@ Figuras~\ref{fig:map_layout} e \ref{fig:final_map}, respetivamente.
     \label{fig:final_map}
 \end{figure}
 
+\newpage
 \section{Sistemas Interativos}
 \label{sec:sistemas-interativos}
 Esta secção descreve os sistemas interativos desenvolvidos para o jogo,
 incluindo a implementação de mecânicas de interação e locomoção na subsecção~\ref{ssec:interacao-objetos}, a implementação
-da lógica dos puzzles na subsecção~\ref{ssec:logica-puzzles} e os sistemas de gestão da narrativa e do progresso do jogador 
+da lógica dos \textit{puzzles} na subsecção~\ref{ssec:logica-puzzles} e os sistemas de gestão da narrativa e do progresso do jogador 
 nas subsecções~\ref{ssec:gestao-narrativa} e~\ref{ssec:gestao-progresso}, respetivamente.
 
 
@@ -1017,45 +990,29 @@ Para componentes com comportamentos mecânicos específicos, foi necessário des
 personalizados, descritos a seguir.
 
 \subsubsection{Locomoção}\label{sssec:locomocao}
-A locomoção do jogador já vem implementada no \texttt{XR Interaction Toolkit}, 
-com recurso ao componente \texttt{Character Controller}. O jogador pode se locomover
-de forma contínua, com um analógico semelhante a jogos tradicionais, ou com recurso
-a teletransporte. Estas duas opções permitem ao utilizador escolher a sua preferência,
-tendo em causa a mitigação das náuseas normalmente causadas por movimentos contínuos.
 
-Mesmo com esse risco, a velocidade do jogador foi reduzida para que mesmo 
-utilizadores mais sensíveis consigam tirar partido do movimento contínuo.
+A locomoção do jogador é suportada pelo \texttt{XR Interaction Toolkit}, recorrendo ao componente
+\texttt{Character Controller}. O jogador pode deslocar-se de forma contínua através do analógico
+ou utilizar teletransporte, permitindo escolher o método mais confortável e reduzir os efeitos de
+náusea associados ao movimento contínuo em realidade virtual.
 
-Para locomoção vertical, existe ainda a opção da escalada, também implementada
-no \texttt{XR Interaction Toolkit}, descrita na seguinte subsecção~\ref{ssec:escada}.
+A velocidade de deslocação foi reduzida para minimizar o desconforto em utilizadores mais
+sensíveis. Para movimentos verticais é ainda disponibilizado um sistema de escalada,
+descrito na subsecção~\ref{ssec:escada}.
+
 
 \subsubsection{Escadotes e Escalada}
 \label{ssec:escada}
-A escalada é um dos sistemas interativos que já vêm implementados no \texttt{XR Interaction Toolkit},
-através de dois componentes que trabalham em conjunto: o \texttt{Climb Interactable} e o \texttt{Climb Provider}.
-Estes componentes permitem que o jogador interaja com objetos escaláveis, como escadas ou escadotes,
-permitindo-lhe subir e descer.
 
-O \texttt{Climb Interactable} é colocado no objeto que se pretende tornar escalável (por exemplo, os degraus
-de uma escada) e estende a classe base \texttt{XRBaseInteractable}, utilizando a interação de seleção para
-conduzir o movimento do jogador: enquanto o jogador mantiver o objeto selecionado (agarrado) através de um
-\texttt{Interactor}, o seu movimento é traduzido em deslocação do jogador no mundo virtual. Por definição, este
-componente exige um \texttt{Rigidbody} no objeto e tem o modo de seleção (\textit{Select Mode}) configurado
-para \texttt{Multiple}, o que permite, por defeito, a escalada com as duas mãos em simultâneo. É ainda possível
-associar a cada \texttt{Climb Interactable} um conjunto de definições próprio (\textit{Climb Settings Override}),
-que substitui, apenas para esse objeto, as restrições de movimento definidas globalmente no \texttt{Climb Provider}, uma
-prática comum, por exemplo, nos travessões superiores de uma escada, para permitir movimento livre nos eixos
-horizontais e possibilitar que o jogador saia da escada para uma plataforma no topo.
+A escalada utiliza os componentes \texttt{Climb Interactable} e \texttt{Climb Provider},
+disponibilizados pelo \texttt{XR Interaction Toolkit}. O primeiro é aplicado aos objetos
+escaláveis e permite que estes sejam agarrados, enquanto o segundo, colocado na
+\texttt{XR Origin} (jogador), traduz o movimento das mãos do jogador em deslocação da personagem.
 
-O \texttt{Climb Provider}, por sua vez, é colocado na \texttt{XR Origin} e é responsável por efetivamente mover o
-jogador. Este desloca a \texttt{XR Origin} de forma inversa ao movimento do \texttt{Interactor} que está a selecionar o
-\texttt{Climb Interactable}, de forma semelhante ao efeito visual do "puxar uma corda" para se deslocar. Se
-existir mais do que um \texttt{Interactor} a selecionar o mesmo objeto, apenas o mais recente influencia o movimento.
-Este tipo de locomoção é conceptualmente semelhante ao movimento por agarrar (\textit{grab movement}), mas
-está restrito aos objetos que possuam explicitamente um \texttt{Climb Interactable}, ao contrário do
-\textit{grab movement}, que pode ser aplicado a qualquer superfície. As restrições de movimento por eixo
-(local ao objeto) podem ser configuradas ao nível do \texttt{Climb Provider} ou sobrepostas individualmente por cada
-\texttt{Interactable}, permitindo um melhor controlo sobre o comportamento da escalada em diferentes contextos do jogo.
+O sistema suporta escalada com ambas as mãos e permite definir restrições de movimento
+por eixo, configuradas globalmente no \texttt{Climb Provider} ou substituídas
+individualmente através de \textit{Climb Settings Override}. Esta flexibilidade permite adaptar o
+comportamento da escalada a diferentes elementos do cenário, como escadas ou escadotes.
 
 \subsubsection{Poses Dinâmicas}\label{sssec:poses}
 Ao interagir com objetos, o jogador deve sentir que a sua mão virtual se comporta de forma natural e 
@@ -1071,86 +1028,53 @@ criando a ilusão de que a mão do jogador se molda ao objeto. Um exemplo desta 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.15]{Imagens/isel_logo.png}
-    \caption{Pose para rodar o botão rotativo do gerador.}
+    \includegraphics[scale=0.2]{Imagens/egofr_interacao.jpeg}
+    \caption{Poses específicas na interação com o gerador.}
     \label{fig:hand_pose_knob}
 \end{figure}
 
 \subsubsection{Lanterna}\label{sssec:lanterna}
-A lanterna, presente na mão do
-jogador, utiliza o \textit{script} \texttt{HandFlashLight.cs}. A
-execução gere a emissão de luz, calcula o valor da bateria e processa
-colisões. O processo central da lanterna consiste numa máquina de
-estados.
 
-No estado \texttt{On}, a bateria sofre um decréscimo definido por
-\texttt{unchargeStep} e \texttt{unchargeCooldown}. Se o valor desce do
-limite \texttt{blinkingTreshold}, a corrotina \texttt{BlinkingLight} inicia. 
-Esta altera a intensidade e os ângulos com operações sinusoidais. Quando a energia chega 
-a zero, o
-estado reverte para \texttt{Off}, e vai recarregando enquanto neste estado.
+A lanterna utiliza o \textit{script} \texttt{HandFlashLight.cs}, responsável pela gestão da
+emissão de luz, do estado da bateria e das colisões, através de uma máquina de estados.
 
-Para além desta lógica, a lanterna tem uma função adicional, específica para o
-último puzzle. Esta função permite que, ao apontar a lanterna no inimigo, este
-sofre um efeito de \textit{``stun''}, mantendo-o parado por um breve intervalo de tempo.
+Enquanto ligada, a bateria descarrega progressivamente e, abaixo de um determinado
+limiar, a lanterna começa a piscar através da corrotina \texttt{BlinkingLight}. Quando a
+energia se esgota, a lanterna desliga-se automaticamente e inicia o processo de recarga.
+
+Adicionalmente, durante o último puzzle, a luz da lanterna pode imobilizar temporariamente
+o inimigo quando apontada na sua direção.
 
 \subsubsection{Botões}\label{sssec:botoes}
-Cada botão interativo contém um \textit{script} dedicado (\texttt{ButtonPress.cs}) que define o seu 
-comportamento. O objetivo principal deste \textit{script} é despoletar eventos e fornecer 
-\textit{feedback} visual e sonoro ao utilizador quando o botão é pressionado.
 
-A deteção da interação é feita através dos eventos \texttt{hoverEntered} e 
-\texttt{hoverExited}, disponibilizados pelo \texttt{XRBaseInteractable} do \texttt{XR Interaction Toolkit}. Estes eventos são despoletados sempre que um interator entra ou sai da zona de 
-Estes eventos são despoletados sempre que um interator entra ou sai da zona de 
-deteção do botão, respetivamente. O \textit{script} verifica ainda se o interator responsável pela 
-interação é do tipo \texttt{XRPokeInteractor}, garantindo que apenas interações por toque 
-(\textit{poke}) acionam o comportamento do botão, e não outros tipos de interação, como o 
-\textit{grab} ou o \textit{ray interaction}.
+Os botões interativos utilizam o \textit{script} \texttt{ButtonPress.cs}, responsável pela
+deteção da interação, pelo \textit{feedback} visual e sonoro e pela invocação de ações.
 
-O \textit{feedback} visual é dado pelo próprio movimento físico do botão. Quando o 
-\texttt{XRPokeInteractor} entra em contacto com o botão, a sua posição é recalculada a cada 
-frame com base na projeção do deslocamento do interator sobre um eixo local definido 
-(\texttt{localAxis}), de forma a simular o percurso real de um botão físico a ser premido. Este 
-deslocamento é limitado por um valor máximo (\texttt{maxTravel}), que corresponde à distância 
-que o botão pode percorrer antes de ser considerado totalmente pressionado. Quando o interator 
-deixa de estar em contacto com o botão, este regressa suavemente à sua posição inicial através 
-de uma interpolação linear (\texttt{Lerp}), controlada pela variável \texttt{releaseSpeed}.
+A interação é detetada através dos eventos \texttt{hoverEntered} e
+\texttt{hoverExited}, sendo aceite apenas quando o interator é do tipo
+\texttt{XRPokeInteractor}. O movimento do botão é calculado ao longo de um eixo local,
+limitado por um deslocamento máximo, regressando suavemente à posição inicial quando
+deixa de ser pressionado.
 
-O \textit{feedback} sonoro é acionado no instante em que o botão atinge o seu deslocamento 
-máximo, através da reprodução de um \texttt{AudioClip} associado, utilizando um 
-\texttt{AudioSource} configurado no Inspetor do \texttt{Unity}.
-
-Cada botão possui ainda um \texttt{UnityEvent} público (\texttt{buttonAction}), que pode ser 
-configurado no inspetor para acionar diferentes ações consoante o contexto de utilização do 
-botão, como, por exemplo, controlar o elevador. Este evento é invocado apenas uma vez por cada 
-pressão completa, evitando disparos repetidos enquanto o botão permanece pressionado.
+Ao atingir o fim do percurso, é reproduzido um efeito sonoro e invocado um
+\texttt{UnityEvent}, configurável no inspetor, que permite associar diferentes ações,
+como o controlo do elevador.
 
 \subsubsection{Botões Rotativos \textit{(Knob/Dial)}}
-Para além dos botões tradicionais, o laboratório inclui também botões rotativos 
-(\textit{knobs}), utilizados para interações que requerem um ajuste contínuo ou 
-gradual de um valor, como no gerador. Este comportamento 
-é implementado através do script \texttt{KnobRotator.cs}.
 
-A interação é iniciada quando o jogador agarra o objeto através de um 
-\texttt{XRGrabInteractable}, recorrendo aos eventos \texttt{selectEntered} e 
-\texttt{selectExited} do \texttt{XR Interaction Toolkit}. Ao ser agarrado, o script regista o 
-interator responsável e passa a monitorizar, em cada frame, a rotação do controlador 
-do jogador em torno do eixo Z, comparando-a com um ângulo de referência inicial.
+Para além dos botões tradicionais, o laboratório inclui botões rotativos
+(\textit{knobs}), utilizados em interações que requerem um ajuste gradual de um valor,
+como no gerador. Este comportamento é implementado pelo \texttt{KnobRotator.cs}.
 
-Sempre que a diferença entre o ângulo atual e o ângulo de referência ultrapassa uma 
-margem de tolerância (\texttt{angleTolerance}), o \textit{dial} associado 
-(\texttt{linkedDial}) é rodado num incremento fixo (\texttt{snapRotationAmount}), 
-simulando um movimento de \textit{"encaixe"} (\textit{snapping}) típico de botões 
-rotativos físicos, em vez de uma rotação contínua e livre. É também tratado o caso 
-particular em que a rotação do controlador ultrapassa a fronteira entre $360^{\circ}$ e $0^{\circ}$, 
-de forma a evitar que essa transição seja interpretada como uma rotação inversa 
-indevida.
+A interação é realizada através de um \texttt{XRGrabInteractable}, recorrendo aos eventos
+\texttt{selectEntered} e \texttt{selectExited}. Enquanto o objeto se encontra agarrado,
+o \textit{script} monitoriza a rotação do controlador do jogador e converte-a em
+incrementos discretos (\textit{snapping}) para evitar problemas na transição entre
+$360^{\circ}$ e $0^{\circ}$.
 
-Cada incremento de rotação é acompanhado de \textit{feedback} sonoro, de forma a reforçar 
-a perceção do utilizador de que a interação teve efeito. Adicionalmente, o script 
-expõe um evento (\texttt{OnValueChanged}), invocado sempre que o valor do botão 
-rotativo é alterado, permitindo que outros sistemas do laboratório reajam a essas 
-mudanças, como a atualização de um valor apresentado no painel do gerador.
+Cada incremento é acompanhado de \textit{feedback} sonoro e da invocação do evento
+\texttt{OnValueChanged}, o que permitr que outros sistemas reajam à alteração do valor,
+como a atualização do painel do gerador.
 
 \subsubsection{Alavancas}
 As alavancas são elementos interativos definidos apenas por duas posições discretas: ativada e desativada. A sua implementação baseia-se na 
@@ -1160,46 +1084,25 @@ de forma a determinar quando a alavanca é movida para uma das posições.
 
 
 \subsubsection{Elevador}
-O elevador é um elemento interativo que permite ao jogador deslocar-se verticalmente 
-entre diferentes pisos do laboratório. A sua implementação baseia-se em estados de 
-animação, acionados pelos botões, como referido anteriormente (\ref{sssec:botoes} - 
-Botões).
 
-O elevador possui um \textit{script} dedicado (\texttt{ElevatorController.cs}), que expõe os 
-métodos públicos \texttt{GoUp} e \texttt{GoDown}, invocados pelos eventos dos botões 
-correspondentes. O ciclo da máquina de estados resume-se a três estados principais: 
-parado, a subir e a descer. A transição entre estes estados é controlada pelos 
-eventos dos botões, que verificam se o elevador se encontra parado (\texttt{isMoving}) 
-antes de iniciar qualquer movimento.
+O elevador permite ao jogador deslocar-se entre diferentes pisos do laboratório,
+sendo controlado pelo \textit{script} \texttt{ElevatorController.cs}. O seu funcionamento
+baseia-se numa máquina de estados simples, com os estados parado, a subir e a descer,
+acionados pelos botões descritos na subsecção~\ref{sssec:botoes}.
 
-O funcionamento do elevador está ainda condicionado ao estado do gerador elétrico do 
-laboratório: o \textit{script} subscreve os eventos \texttt{OnEnergyEstablished} e 
-\texttt{OnEnergyLost}, disponibilizados pelo \texttt{GeneratorScript}, de forma a 
-impedir a ativação do elevador sempre que não exista energia estabelecida no sistema. 
-Este mecanismo reforça a coerência do ambiente, uma vez que o elevador só pode ser 
-utilizado depois de o gerador ser ligado pelo jogador.
+O movimento apenas pode ser iniciado quando existe energia no laboratório. Para isso,
+o \textit{script} subscreve os eventos \texttt{OnEnergyEstablished} e
+\texttt{OnEnergyLost} do \texttt{GeneratorScript}, impedindo a utilização do elevador
+antes da conclusão do Puzzle~1.
 
-A animação do elevador é gerida por um \texttt{Animator}, que reproduz a sequência de 
-subida ou descida através dos \textit{triggers} \texttt{ElevatorUp} e 
-\texttt{ElevatorDown}, sincronizando o movimento físico do elevador com a animação 
-visual. O regresso ao estado parado é assinalado através do método 
-\texttt{OnArrived}, invocado por um evento de animação no momento em que o elevador 
-chega ao piso de destino.
+A deslocação é realizada através de um \texttt{Animator}, que controla as animações de
+subida e descida, sincronizadas com efeitos sonoros e um sistema de partículas para
+reforçar o realismo da interação.
 
-Quanto aos efeitos visuais e sonoros, são utilizados eventos de animação para disparar 
-sons de motor (\texttt{PlayMoveSound}) e de paragem (\texttt{PlayStopSound}), bem como 
-um sistema de partículas de fumo (\texttt{PlaySmoke}/\texttt{StopSmoke}), de forma a 
-reforçar o realismo e a imersão da experiência.
-
-Para evitar problemas de movimentação brusca ou colisões com o jogador, o elevador 
-possui um \texttt{Collider} definido como \textit{Trigger} (\texttt{ElevatorTrigger.cs}), 
-que deteta a entrada e saída do jogador através da respetiva \textit{tag}. Ao entrar na 
-zona do elevador, o jogador é tornado filho do \texttt{transform} do elevador, garantindo 
-que se desloca solidariamente com a plataforma durante o movimento; adicionalmente, o seu 
-\texttt{Rigidbody} é definido como \textit{kinematic}, impedindo que o sistema de física 
-interfira com a translação do elevador. Ao sair da zona do elevador, o processo é 
-revertido: o jogador deixa de ser filho do elevador e o seu \texttt{Rigidbody} volta a 
-ser controlado normalmente pela física do motor de jogo.
+Durante o movimento, um \texttt{Trigger} torna temporariamente o jogador filho do
+\texttt{transform} do elevador e define o seu \texttt{Rigidbody} como
+\textit{kinematic}, para garantir que acompanha a plataforma de forma estável. Quando o
+jogador sai do elevador, estas alterações são revertidas.
 
 \subsubsection{Portas Automáticas}\label{sssec:portas-automaticas}
 Ao longo do laboratório existem várias portas automáticas que se abrem e fecham em resposta à presença do jogador. 
@@ -1208,7 +1111,7 @@ detetam a entrada e saída do jogador através da respetiva \textit{tag}. Quando
  a porta inicia uma animação de abertura, reproduzindo também um efeito sonoro correspondente. 
  Ao sair da zona, a porta fecha-se automaticamente, garantindo que o jogador não consegue atravessar a porta sem que esta esteja aberta.
 
-Estas estão bloqueadas no início do jogo, sendo desbloqueadas a partir do momento em que o jogador conclui o Puzzle 1, 
+Estas estão bloqueadas no início do jogo, sendo desbloqueadas a partir do momento em que o jogador conclui o \textit{puzzle} 1, 
 restabelecendo a energia do laboratório. O comportamento destas portas é gerido por um \textit{script} dedicado, o 
 \texttt{DoorController}, responsável por controlar a animação, o som e o estado de bloqueio de cada porta. 
 Este componente subscreve os eventos estáticos \texttt{OnEnergyEstablished} e \texttt{OnEnergyLost}, expostos pelo 
@@ -1216,7 +1119,7 @@ Este componente subscreve os eventos estáticos \texttt{OnEnergyEstablished} e \
 erda de energia, sem necessidade de referências diretas entre objetos.
 
 Enquanto a energia não estiver estabelecida, as chamadas a \texttt{OpenDoor} são ignoradas, mantendo a porta bloqueada 
-independentemente da deteção do jogador. Após a conclusão do Puzzle 1 e o consequente restabelecimento da energia, 
+independentemente da deteção do jogador. Após a conclusão do \textit{puzzle} 1 e o consequente restabelecimento da energia, 
 a variável \texttt{\_energyEstablished} é atualizada para \textit{true}, permitindo que a porta responda normalmente 
 aos eventos de entrada e saída do jogador na zona de deteção, através dos métodos \texttt{OpenDoor} e \texttt{CloseDoor}.
 
@@ -1228,21 +1131,21 @@ eventos e interações com os elementos do jogo, descritos anteriormente.
 
 \subsubsection{Gestor de Puzzles}
 \label{ssec:gestao-puzzles}
-Toda a gestão dos puzzles é feita via um gestor \texttt{PuzzleManager}, que 
-guarda todos os puzzles num dicionário, com a chave sendo o identificador (nome)
+Toda a gestão dos \textit{puzzles} é feita via um gestor \texttt{PuzzleManager}, que 
+guarda todos os \textit{puzzles} num dicionário, com a chave sendo o identificador (nome)
 do puzzle, e o valor sendo se está completo ou não. Este gestor age
 como um \texttt{Singleton}, garantindo que haja apenas uma instância
 de \texttt{PuzzleManager} em toda a cena.
 
 Este expõe métodos para manipular o dicionário, como \texttt{GetPuzzle},
-\texttt{CompletePuzzle} e \texttt{SetPuzzles}. Cada vez que um puzzle é completo,
+\texttt{CompletePuzzle} e \texttt{SetPuzzles}. Cada vez que um \textit{puzzle} é completo,
 o evento \texttt{onPuzzleCompleted} é disparado, que é utilizado pelo
 gestor de progresso para guardar o progresso do jogo (descrito na secção \ref{ssec:gestao-progresso}).
 
-\subsubsection{Puzzle 1: Restabelecimento de Energia}
+\subsubsection{\textit{Puzzle} 1: Restabelecimento de Energia}
 \label{sssec:puzzle1}
 
-A implementação do Puzzle 1 baseia-se na validação sequencial de estados e no despoletamento 
+A implementação do \textit{puzzle} 1 baseia-se na validação sequencial de estados e no despoletamento 
 de eventos associados ao gerador elétrico. O comportamento deste mecanismo é gerido por 
 um \textit{script} dedicado que expõe dois métodos públicos principais:
 \begin{itemize}
@@ -1255,7 +1158,7 @@ Para iniciar o gerador, é necessário inserir um fusível no respetivo
 recetáculo. Para facilitar o alinhamento do objeto, foi utilizado o componente
 \texttt{XRSocketInteractor} do \texttt{XR Interaction Toolkit}, que posiciona
 automaticamente o fusível no local correto através da funcionalidade de
-\textit{snap}. A ligação à lógica do puzzle é feita através dos
+\textit{snap}. A ligação à lógica do \textit{puzzle} é feita através dos
 eventos nativos \texttt{selectEntered} e \texttt{selectExited}, que chamam os
 métodos \texttt{AddFuse()} e \texttt{RemoveFuse()} quando o fusível é inserido
 ou removido. 
@@ -1270,10 +1173,10 @@ se encontra subscrito para evitar qualquer dependência direta entre os componen
 Quando a tensão atinge os 600\,V, o sistema reproduz um som para confirmar que o
 valor está correto. O último passo consiste em baixar uma alavanca, cujo
 funcionamento foi também implementado com um \texttt{XRSocketInteractor}. Quando a
-alavanca alcança a posição inferior, o puzzle fica concluído, a energia é
+alavanca alcança a posição inferior, o \textit{puzzle} fica concluído, a energia é
 restabelecida no laboratório e o evento \texttt{onEnergyEstablished} é disparado.
 
-Para indicar o estado do puzzle sem recorrer a elementos de interface adicionais, foi
+Para indicar o estado do \textit{puzzle} sem recorrer a elementos de interface adicionais, foi
 implementado um sistema de \textit{feedback} integrado no ecrã do gerador. A cor
 da interface e da iluminação altera-se de forma gradual através da função
 \texttt{Color.Lerp}, em função da diferença entre a tensão atual e o valor
@@ -1290,10 +1193,10 @@ interação com os elementos físicos do painel.
 Depois de concluir esta secção introdutória, as luzes do laboratório são ligadas, 
 as portas automáticas são ativadas (cf.~\ref{sssec:portas-automaticas}) e o elevador fica disponível para o jogador.
 
-\subsubsection{Puzzle 2: Formas e Números}
-O segundo puzzle do jogo desafia o jogador a relacionar objetos físicos com informações apresentadas num terminal digital. 
+\subsubsection{\textit{Puzzle} 2: Formas e Números}
+O segundo \textit{puzzle} do jogo desafia o jogador a relacionar objetos físicos com informações apresentadas num terminal digital. 
 Cada objeto deve ser comparado com um peso com um número associado, para descobrir o código de saída.
-A implementação deste puzzle baseia-se na interação física entre objetos \texttt{Rigidbody} e na validação de estados através de eventos.
+A implementação deste \textit{puzzle} baseia-se na interação física entre objetos \texttt{Rigidbody} e na validação de estados através de eventos.
 O objeto central, uma balança, é implementada via Joints para obter o comportamento físico desejado. 
 
 Para o teclado, foi implementado o componente \texttt{Keypad}, responsável por gerir a introdução do código numérico por 
@@ -1302,15 +1205,15 @@ uma \textit{string} interna (\texttt{\_inputKeyCode}) e atualiza o ecrã digital
 O jogador pode ainda remover o último caractere introduzido (\texttt{OnClearPressed}) ou submeter o código 
 para validação (\texttt{OnEnterPressed}).
 A validação é realizada em \texttt{VerifyKeyCode}, que compara a \textit{string} introduzida com o valor de \texttt{keyCode}, 
-definido previamente no Inspector do Unity. Caso a comparação seja bem-sucedida, o puzzle é assinalado como concluído através da 
-chamada a \texttt{PuzzleManager.Instance.CompletePuzzle(puzzleKey)}, notificando o gestor central de puzzles do estado atualizado. 
+definido previamente no Inspector do Unity. Caso a comparação seja bem-sucedida, o \textit{puzzle} é assinalado como concluído através da 
+chamada a \texttt{PuzzleManager.Instance.CompletePuzzle(puzzleKey)}, notificando o gestor central de \textit{puzzles} do estado atualizado. 
 Em caso de falha, a \textit{string} introduzida é reiniciada, obrigando o jogador a repetir a introdução do código.
 
 Cada botão do teclado possui o componente \texttt{ButtonPress}, descrito anteriormente, que deteta a interação do jogador 
 e invoca o método correspondente no \texttt{Keypad}, seja este um valor numérico ou um \textit{clear}.
 
-\subsubsection{Puzzle 3: Labirinto Miniatura}
-O terceiro puzzle inicia-se quando o jogador aponta para um feixe de 
+\subsubsection{\textit{Puzzle} 3: Labirinto Miniatura}
+O terceiro \textit{puzzle} inicia-se quando o jogador aponta para um feixe de 
 transferência, identificado no código através da \textit{tag} 
 \texttt{"Transfer"} e detetado por um \textit{raycast} contínuo lançado a 
 partir do olhar do jogador (\texttt{TransferBeam}). Ao detetar a colisão, é 
@@ -1429,7 +1332,7 @@ entre cenas.
 \end{lstlisting}
 
 Quando é desencadeada uma gravação, esta classe recolhe
-o estado atual do jogo, que inclui a posição do jogador, puzzles concluídos e
+o estado atual do jogo, que inclui a posição do jogador, \textit{puzzles} concluídos e
 transformações dos objetos móveis, e serializa-o em formato \texttt{JSON}
 através do \texttt{JsonUtility} do \texttt{Unity}, e escreve o resultado num
 ficheiro no caminho dado por \texttt{Application.persistentDataPath},
@@ -1438,7 +1341,7 @@ sessões de jogo. O carregamento segue o processo inverso: o ficheiro
 é lido e os valores são restaurados diretamente nos respetivos
 componentes.
 \par
-De notar que o estado dos puzzles é internamente representado como um
+De notar que o estado dos \textit{puzzles} é internamente representado como um
 \texttt{Dictionary<string, bool>}, mas é guardado em dois \texttt{List}
 paralelos, um para as chaves e outro para os valores. Esta
 conversão deve-se ao facto de o \texttt{JsonUtility} não suportar a
@@ -1496,7 +1399,11 @@ identifica as principais limitações deste processo de validação.
 \section{Objetivos}
 \label{sec:objetivos-validacao}
 
-Os testes de validação tiveram como objetivo avaliar a experiência do jogador
+Os testes de validação foram divididos em duas fases: uma fase preliminar, para avaliar
+e melhorar o protótipo durante o desenvolvimento de acordo com os \textit{feedbacks} dos 
+utilizadores, e uma fase final, para avaliar o jogo
+finalizado. Ambas as fases
+tiveram como objetivo avaliar a experiência do jogador
 em três dimensões principais: a compreensão das mecânicas e objetivos do jogo,
 a satisfação geral com a experiência (usabilidade, imersão, estética visual e
 sonora, entre outras) e a deteção de eventuais problemas de \textit{design} que
@@ -1508,7 +1415,7 @@ possam comprometer a jogabilidade, como pontos de confusão na navegação ou
 
 Para avaliar a satisfação do jogador, recorreu-se ao \texttt{GUESS-18}
 \cite{guess18}, uma versão reduzida de 18 items da
-\textit{Game User Experience Satisfaction Scale} (\texttt{GUESS})
+\textit{Game User Experience Satisfaction Scale} (\texttt{GUESS})\\
 \cite{guess}. O \texttt{GUESS-18} organiza-se em nove subescalas
 (duas perguntas cada), que cobrem aspetos como usabilidade, narrativa,
 imersão, prazer, liberdade criativa, estética sonora, gratificação pessoal,
@@ -1561,7 +1468,10 @@ gráficos.
 
 \section{Resultados}
 \label{sec:resultados-validacao}
+Nesta secção apresentam-se os resultados obtidos na fase final de validação, incuindo
+a sua análise e interpretação.
 
+\subsection{Caracterização da Amostra}
 Participaram nos testes de validação 7 utilizadores, com idades entre os 16
 e os 22 anos (4 do género masculino, 2 feminino, 1 preferiu não indicar).
 Três dos sete participantes já tinham jogado títulos em Realidade Virtual
@@ -1588,7 +1498,7 @@ enemy gave me a good challenge''} (mediana 3, moda 3, um participante sem
 resposta). Este último item é o único de todo o bloco cuja mediana
 corresponde ao ponto neutro da escala, sugerindo que o desafio proposto
 pelo inimigo do terceiro \textit{puzzle} não gerou uma perceção consistente
-entre os participantes — o que é corroborado pelos comentários abertos
+entre os participantes, o que é corroborado pelos comentários abertos
 (secção~\ref{ssec:resultados-abertas}).
 
 \begin{figure}[H]
@@ -1599,7 +1509,7 @@ entre os participantes — o que é corroborado pelos comentários abertos
     \label{fig:bloco1-compreensao}
 \end{figure}
 
-\subsection{GUESS-18 adaptado}
+\subsection{GUESS-18 Adaptado}
 \label{ssec:resultados-guess18}
 
 Do conjunto de items do questionário orientados para a satisfação do
@@ -1609,7 +1519,7 @@ original, cobrindo por completo seis das suas nove subescalas:
 \textit{Enjoyment}, \textit{Creative Freedom}, \textit{Audio Aesthetics} e
 \textit{Visual Aesthetics}. As restantes três subescalas do instrumento
 original (\textit{Narratives}, \textit{Personal Gratification} e
-\textit{Social Connectivity}) não foram incluídas na sua forma validada —
+\textit{Social Connectivity}) não foram incluídas na sua forma validada, pois 
 a subescala de narrativa foi substituída por um item específico do
 projeto (secção~\ref{ssec:resultados-adicionais}), e as subescalas de
 \textit{Personal Gratification} e \textit{Social Connectivity}, orientadas
@@ -1627,16 +1537,16 @@ como a média dos dois items que a compõem).
     \caption{Subescalas do GUESS-18 representadas na sua forma original
     completa (escala 1-5, ``No Opinion'' codificado como ponto neutro).}
     \label{tab:subescalas-guess18}
-    \begin{tabular}{lcc}
+    \begin{tabular}{lccc}
         \hline
-        \textbf{Subescala} & \textbf{Mediana} & \textbf{Moda} \\
+        \textbf{Subescala} & \textbf{Mediana} & \textbf{Moda} & \textbf{DP} \\
         \hline
-        Visual Aesthetics      & 5.0 & 5.0 \\
-        Enjoyment               & 5.0 & 5.0 \\
-        Play Engrossment        & 4.5 & 5.0 \\
-        Usability/Playability   & 4.0 & 5.0 \\
-        Audio Aesthetics        & 4.0 & 4.5 \\
-        Creative Freedom        & 3.5 & 5.0 \\
+        Visual Aesthetics      & 5.0 & 5.0 & 0.75 \\
+        Enjoyment               & 5.0 & 5.0 & 0.39 \\
+        Play Engrossment        & 4.5 & 5.0 & 1.25 \\
+        Usability/Playability   & 4.0 & 5.0 & 0.93 \\
+        Audio Aesthetics        & 4.0 & 4.5 & 1.14 \\
+        Creative Freedom        & 3.5 & 5.0 & 1.29 \\
         \hline
     \end{tabular}
 \end{table}
@@ -1645,22 +1555,22 @@ como a média dos dois items que a compõem).
 altas e maior consistência entre participantes, ao passo que
 \textit{Creative Freedom} regista a mediana mais baixa de todas as
 subescalas completas (3.5), com \textit{scores} individuais que vão de 1.5
-a 5, a maior amplitude de todo o bloco GUESS-18. \textit{Usability/
+a 5, a maior amplitude de todo o bloco \texttt{GUESS-18}. \textit{Usability/
 Playability} e \textit{Audio Aesthetics} também apresentam dispersão
 considerável (Figura~\ref{fig:bloco2a-items}), refletida sobretudo no item
 \textit{``I find the controls of the game to be straightforward''}, que
 reúne respostas em ambos os extremos da escala.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{Imagens/bloco2a_items_guess18.png}
     \caption{Distribuição de respostas aos doze items verbatim do
-    GUESS-18 (escala de 5 pontos; ``No Opinion'' codificado como ponto
+    \texttt{GUESS-18} (escala de 5 pontos; \textit{``No Opinion'}' codificado como ponto
     neutro).}
     \label{fig:bloco2a-items}
 \end{figure}
 
-\subsection{Itens adicionais}
+\subsection{Items Adicionais}
 \label{ssec:resultados-adicionais}
 
 Os restantes items do questionário, específicos deste projeto e não
@@ -1800,7 +1710,7 @@ que não foram possíveis nesta fase, como comparações entre diferentes
 perfis de jogadores (por exemplo, com e sem experiência prévia em VR).
 
 Ao nível do conteúdo do jogo, seria interessante expandir o número de
-puzzles e áreas exploráveis do laboratório, mantendo a filosofia de
+\textit{puzzles} e áreas exploráveis do laboratório, mantendo a filosofia de
 integração diegética que serviu de base a este projeto, inspirada em
 títulos como ``Half-Life:~Alyx'' e ``Ghost Town''. O sistema modular de
 peças de ambiente desenvolvido facilita esta expansão, já que grande parte
