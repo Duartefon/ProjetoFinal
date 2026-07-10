@@ -64,7 +64,7 @@ usando como método de recolha de informação um questionário baseado no quest
 \texttt{GUESS-18}~\cite{guess18}. 
 Foram considerados aspetos como usabilidade, imersão e intuitividade. 
 Os resultados preliminares, obtidos junto de um número reduzido de 
-participantes, mostram uma receção positiva em relação à atmosfera, dos elementos gráficos 
+participantes, mostram uma receção positiva em relação à atmosfera e aos elementos gráficos 
 e sonoros do jogo, sem indícios relevantes de desconforto ou enjoo, ainda 
 que tenham sido identificados alguns pontos de melhoria ao nível da 
 clareza de determinados controlos e mecânicas.
@@ -119,29 +119,29 @@ iterations involving a larger user sample.
 %\cleardoublepage
 \chapter{Agradecimentos}
 
-Gostaríamos de agradecer aos professores orientadores, Rui Jesus e 
-Letícia Lucas, por se terem disponibilizado para nos orientar e ajudar
-durante todo o processo de desenvolvimento do trabalho. Ao professor Pedro 
-Mendes Jorge relativamente ao fornecimento de \textit{hardware} como os \textit{headsets} de
-Realidade Virtual e por disponibilizar um espaço no laboratório.\\
-
-Para além disso, queremos agradecer também ao
-professor Hugo Cordeiro, pela sua disponibilidade para nos arguir e por
-nos ensinar as bases de \texttt{Blender} e \texttt{Unity} que nos permitiram desenvolver
-este trabalho.\\
-
+Gostaríamos de expressar o nosso agradecimento aos professores orientadores, Rui
+Jesus e Letícia Lucas, pela orientação, disponibilidade e apoio prestados ao
+longo de todo o desenvolvimento deste trabalho. Agradecemos igualmente ao
+professor Pedro Mendes Jorge pela disponibilização dos \textit{headsets} de 
+Realidade Virtual, bem como pelo acesso ao espaço do laboratório.
+\par
+Gostaríamos também de agradecer ao professor Hugo Cordeiro pela disponibilidade
+para nos arguir e pelos conhecimentos transmitidos sobre \texttt{Blender} e
+\texttt{Unity}, que constituíram uma base importante para o desenvolvimento
+deste projeto.
+\par
 Antes de concluir, eu, Duarte Fonseca, quero agradecer ao meu colega Gabriel Teixeira, 
 por me ter acompanhado em vários projetos ao longo do curso e por ter aceitado fazer 
-um projeto ambicioso em realidade virtual, um ambiente desconhecido para ambos, e que 
-sem ele o trabalho não teria tido a mesma qualidade. \\
-
+um projeto ambicioso em Realidade Virtual, um ambiente desconhecido para ambos, e que 
+sem ele o trabalho não teria tido a mesma qualidade. 
+\par
 De seguida quero agradecer aos meus amigos que mostraram interesse pelo projeto, disponibilizaram-se 
-para a fase de testes do mesmo e que estiveram comigo nas horas de descanso. \\
-
+para a fase de testes do mesmo e que estiveram comigo nas horas de descanso. 
+\par
 Aos meus pais, avós e irmãos por todo o apoio que me deram ao longo destes anos e que me 
 permitiram focar completamente no curso. A paciência que têm para aturar o meu mau feitio 
-(espeicalmente de manhã) e por sempre me darem um porto seguro. \\
-
+(especialmente de manhã) e por sempre me darem um porto seguro. 
+\par
 Por último, mas não menos importante, um especial obrigado à minha Maria, por estar quase 
 sempre ao meu lado nas várias horas de estudo e por dar-me forças para continuar mesmo quando 
 a onda de trabalhos pareceu nunca acabar.
@@ -183,7 +183,7 @@ Neste contexto, os principais objetivos deste trabalho são:
 \begin{itemize}
 \item desenvolver um jogo de Realidade Virtual (\texttt{VR}) baseado na exploração e resolução de \textit{puzzles};
 \item estudar e implementar diferentes soluções de interação em Realidade Virtual (\texttt{VR}), nomeadamente através 
-a utilização das mãos e de poses dinâmicas para a manipulação de objetos e execução de ações;
+da utilização das mãos e de poses dinâmicas para a manipulação de objetos e execução de ações;
 \item avaliar a jogabilidade através de testes com utilizadores, recorrendo ao questionário \texttt{GUESS-18}~\cite{guess18}.
 \end{itemize}
 
@@ -196,7 +196,7 @@ construção de uma narrativa implícita.
 
 \par
 A implementação foi realizada no motor de jogo \texttt{Unity}, em conjunto com o \texttt{XR Interaction Toolkit}, que permite compatibilidade com diferentes dispositivos de realidade 
-virtual e oferece uma maior flexibilidade no desenvolvimento. Maior parte dos elementos gráficos, 
+virtual e oferece uma maior flexibilidade no desenvolvimento. A maior parte dos elementos gráficos, 
 tanto \texttt{2D} como \texttt{3D}, foram desenvolvidos de raiz com recurso a ferramentas 
 como o \texttt{Blender} e o \texttt{Aseprite}, de forma a garantir a coerência visual e 
 controlo total sobre a estética do jogo.
@@ -248,9 +248,11 @@ ambos os casos e como isso influenciou o projeto.
 \section{Half-Life:~Alyx (2020)}
 \label{sec:halflife}
 
-``Half-Life:~Alyx'', lançado pela Valve em 2020, é hoje uma referência incontornável 
-no desenvolvimento para \texttt{VR}. A análise deste título centrou-se em três aspetos: 
-imersão, orientação espacial e integração de \textit{puzzles}.
+``Half-Life:~Alyx'', desenvolvido e publicado pela Valve em 2020
+\cite{valve}, é frequentemente apontado como uma referência no
+desenvolvimento para Realidade Virtual (\texttt{VR}). A análise deste título
+centrou-se em três aspetos: imersão, orientação espacial e integração de
+\textit{puzzles}.
 
 A imersão vem sobretudo da quantidade de objetos que podem ser manipulados e da 
 consistência com que reagem às ações do jogador, sem haver necessidade de recorrer 
@@ -259,7 +261,7 @@ a elementos artificiais para tornar o espaço credível, como na Figura~\ref{fig
 \begin{figure}[H]
     \centering
     % aqui um screenshot a segurar uma garrafa talvez
-    \includegraphics[scale=0.2]{Imagens/alyx_objetos.jpeg}
+    \includegraphics[scale=0.17]{Imagens/alyx_objetos.jpeg}
     \caption{Manipulação de objetos e imersão em ``Half-Life:~Alyx''.}
     \label{fig:alyx_imersao}
 \end{figure}
@@ -270,7 +272,7 @@ coerência do mundo, demonstrado na seguinte Figura~\ref{fig:alyx_leveldesign}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.2]{Imagens/alyx_cenario.jpeg}
+    \includegraphics[scale=0.17]{Imagens/alyx_cenario.jpeg}
     \caption{Iluminação e composição do cenário como ferramentas de orientação.}
     \label{fig:alyx_leveldesign}
 \end{figure}
@@ -290,20 +292,21 @@ ser visto na Figura~\ref{fig:alyx_puzzles}.
 \section{Ghost Town (2025)}
 \label{sec:ghosttown}
 
-``Ghost Town'', lançado pela Fireproof Games em 2025, é outra referência no 
-género de aventura e \textit{puzzle} em \texttt{VR}.
+``Ghost Town'', desenvolvido e publicado pela Fireproof Games em 2025\\
+\cite{fireproof}, é um jogo de aventura e \textit{puzzle} para
+Realidade Virtual (\texttt{VR}).
 
-A imersão apoia-se numa atmosfera cinematográfica e num sistema de interação 
-tátil bastante detalhado, com objetos e mecanismos que respondem de forma 
-consistente aos movimentos das mãos.
+A imersão apoia-se numa atmosfera cinematográfica e num sistema de interação
+tátil detalhado, com objetos e mecanismos que respondem de forma consistente
+aos movimentos das mãos.
 
-Também aqui a orientação passa pela iluminação, pelo uso da lanterna e pela 
+Também aqui, a orientação passa pela iluminação, pelo uso da lanterna e pela 
 organização dos espaços, sem recorrer a indicadores explícitos, como apresentado na  
 Figura~\ref{fig:ghosttown_leveldesign}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.2]{Imagens/ghost_town_cenario.jpeg}
+    \includegraphics[scale=0.17]{Imagens/ghost_town_cenario.jpeg}
     \caption{Iluminação e composição do cenário para orientação do jogador em ``Ghost Town''.}
     \label{fig:ghosttown_leveldesign}
 \end{figure}
@@ -314,7 +317,7 @@ movimentos físicos reais (Figura~\ref{fig:ghosttown_puzzles}).
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.2]{Imagens/ghost_town_gerador.jpeg}
+    \includegraphics[scale=0.17]{Imagens/ghost_town_gerador.jpeg}
     \caption{\textit{Puzzle} mecânico diegético integrado no ambiente de ``Ghost Town''.}
     \label{fig:ghosttown_puzzles}
 \end{figure}
@@ -381,11 +384,11 @@ metas foi abordada ao longo do desenvolvimento.
 % Casos de Utilização
 % Resultado da fase de avaliação de requisitos
 \subsection{Funções do Sistema}\label{ssec:funcoes}
-Nesta secção são apresentados os requisitos funcionais
-e não funcionais do modelo proposto. Nas seguintes tabelas
-\ref{tab:regras_jogo}, \ref{tab:controlo_jogador} e \ref{tab:persistencia}, 
-encontram-se as funções principais do sistema, nomadamente as funções de regras do jogo, o controlo do jogador e 
-as funções de persistência, respetivamente.
+Nesta secção são apresentados os requisitos funcionais do sistema. Estes
+descrevem as principais funcionalidades disponibilizadas ao jogador e o
+comportamento esperado da aplicação. As Tabelas~\ref{tab:regras_jogo}, 
+\ref{tab:controlo_jogador} e \ref{tab:persistencia} agrupam os requisitos funcionais em
+três categorias: regras do jogo, controlo do jogador e persistência.
 \begin{table}[H]
     \centering
     \begin{tabular}{|l|p{9cm}|l|}
@@ -430,11 +433,18 @@ as funções de persistência, respetivamente.
     \label{tab:persistencia}
 \end{table}
 
-\newpage
+Em conjunto, estes requisitos definem as funcionalidades essenciais da aplicação,
+servindo de base para a implementação e para a validação do sistema.
+
 \subsection{Atributos do Sistema}\label{ssec:atributos}
-Quanto aos atributos do sistema, focou-se principalemente no tempo de resposta do sistema e 
-da taxa de \textit{frames} por segundo (\texttt{FPS}) do jogo, de forma a garantir uma experiência de 
-jogo fluída e imersiva, e mitigar efeitos secundários adversos provocados por \texttt{VR} mal otimizado.
+Nesta secção são apresentados os requisitos não funcionais do sistema. Estes
+definem restrições relacionadas com o desempenho, a compatibilidade, a
+usabilidade e a apresentação visual da aplicação.
+
+Em aplicações de Realidade Virtual (\texttt{VR}), os requisitos de desempenho
+assumem particular importância, uma vez que uma taxa de atualização elevada e um
+baixo tempo de resposta contribuem para uma experiência mais fluida e ajudam a
+reduzir o desconforto do utilizador.
 
 \begin{table}[H]
     \centering
@@ -452,22 +462,54 @@ jogo fluída e imersiva, e mitigar efeitos secundários adversos provocados por 
     \label{tab:atributos}
 \end{table}
 
+Os atributos apresentados estabeleceram os critérios utilizados durante o
+desenvolvimento para garantir a qualidade técnica e a experiência de utilização
+da aplicação.
+
 \subsection{Casos de Utilização}\label{sec:casos-util}
-Nesta secção serão exemplificados alguns casos de utilização resumidos e apenas se expande um, por 
+Os casos de utilização descrevem as principais funcionalidades disponibilizadas
+ao jogador e a forma como este interage com o sistema. Nesta secção
+apresentam-se alguns casos de utilização de forma resumida, sendo posteriormente
+detalhado apenas um deles através da descrição dos respetivos cenários, por uma
 questão de brevidade. Alguns exemplos de casos de utilização encontram-se apresentados
 na Figura~\ref{fig:casos_utilizacao}.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.55]{Imagens/casos_util_novo.png}
+    \includegraphics[scale=0.6]{Imagens/casos_util_novo.png}
     \caption{Exemplos de casos de utilização.}
     \label{fig:casos_utilizacao}
 \end{figure}
 
-\newpage
-Como cenário principal, escolheu-se o caso de utilização ``Completar o primeiro puzzle'', que engloba multiplas ações do jogador, 
-desde a navegação pelo ambiente até à interação com o painel de restabelecimento da energia. Na Tabela~\ref{tab:cenário} encontra-se 
-descrito o cenário principal, enquanto que na Tabela~\ref{tab:cenário-alternativo}, encontra-se descrito o cenário alternativo, 
-que ocorre quando o jogador cai do escadote de manutenção e morre, voltando ao último \textit{checkpoint}.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{9cm}|l|}
+        \hline
+        \multicolumn{3}{|c|}{\textbf{Cabeçalho}} \\ \hline
+        Nome & Explorar o ambiente. \\ \hline
+        Resumo & Navegar sobre o ambiente e interagir com os objetos nele presentes. \\ \hline
+        Referências & R.1.*, R.2.* \\ \hline
+    \end{tabular}
+    \caption{Caso de utilização resumido - ``Explorar o ambiente''.}
+    \label{tab:casos-util-1}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|p{9cm}|l|}
+        \hline
+        \multicolumn{3}{|c|}{\textbf{Cabeçalho}} \\ \hline
+        Nome & Completar o segundo \textit{puzzle}. \\ \hline
+        Resumo & Depois de completar o primeiro \textit{puzzle}, navegar pelo ambiente e completar o segundo. \\ \hline
+        Referências & R.1.*, R.2.*, R.3.* \\ \hline
+    \end{tabular}
+    \caption{Caso de utilização resumido - ``Completar o segundo \textit{puzzle}''.}
+    \label{tab:casos-util-2}
+\end{table}
+Os casos de utilização resumidos ilustram as principais ações realizadas pelo
+jogador ao longo da experiência. Entre estes, foi selecionado o caso de
+utilização ``Completar o primeiro \textit{puzzle}'' para uma descrição mais detalhada, por
+envolver diferentes tipos de interação, nomeadamente a navegação no ambiente, a
+manipulação de objetos e a resolução de um \textit{puzzle}.
 
 % fazer o mesmo que na apresentação de FEIM (?)
 % escolher um caso e expandir para um cenário.
@@ -476,13 +518,13 @@ que ocorre quando o jogador cai do escadote de manutenção e morre, voltando ao
     \begin{tabular}{|l|p{9cm}|l|}
         \hline
         \multicolumn{3}{|c|}{\textbf{Cabeçalho}} \\ \hline
-        Nome & Completar o primeiro puzzle. \\ \hline
+        Nome & Completar o primeiro \textit{puzzle}. \\ \hline
         Resumo & Iniciar o jogo, navegar pelo ambiente e completar a sequência de
         restabelecimento da energia. \\ \hline
         Referências & R.1.*, R.2.*, R.3.* \\ \hline
     \end{tabular}
-    \caption{Tabela de casos de utilização.}
-    \label{tab:casos-util}
+    \caption{Caso de utilização resumido - ``Completar o primeiro \textit{puzzle}''.}
+    \label{tab:casos-util-3}
 \end{table}
 
 \begin{table}[H]
@@ -497,14 +539,14 @@ que ocorre quando o jogador cai do escadote de manutenção e morre, voltando ao
         & \textbf{4.} O ambiente do jogo é carregado. \\ \hline
         & \textbf{5.} A sequência introdutória é reproduzida. \\ \hline
         \textbf{6.} O jogador navega pelo ambiente & \\\hline
-        \textbf{7.} O jogador dirige-se ao compartimnento do elevador & \\\hline
+        \textbf{7.} O jogador dirige-se ao compartimento do elevador & \\\hline
         \textbf{8.} O jogador desce o escadote de manutenção & \\\hline
         \textbf{9.} O jogador interage com o painel de restabelecimento da energia & \\\hline
         & \textbf{10.} A energia é restabelecida ao laboratório. \\\hline
         \textbf{11.} O jogador utiliza o elevador para voltar para o átrio principal. & \\\hline
 
     \end{tabular}
-    \caption{Cenário principal - ``Completar o primeiro puzzle.''}
+    \caption{Cenário principal - ``Completar o primeiro \textit{puzzle.}''}
     \label{tab:cenário}
 \end{table}
 
@@ -514,11 +556,15 @@ que ocorre quando o jogador cai do escadote de manutenção e morre, voltando ao
         \hline
         \multicolumn{2}{|c|}{\textbf{Cenário Alternativo}} \\ \hline
         Número de Sequência & Alternativa \\ \hline
-        \textbf{8.} O jogador cai do escadote de manutenção e morre & O jogador volta ao último \textit{chekpoint}\\\hline
+        \textbf{8.} O jogador cai do escadote de manutenção e morre & O jogador volta ao último \textit{checkpoint}\\\hline
     \end{tabular}
-    \caption{Cenário alternativo - ``Completar o primeiro puzzle.''}
+    \caption{Cenário alternativo - ``Completar o primeiro \textit{puzzle.}''}
     \label{tab:cenário-alternativo}
 \end{table}
+
+A descrição dos cenários principal e alternativo permite identificar a sequência
+esperada de interações entre o jogador e o sistema, bem como o comportamento
+previsto perante situações excecionais, como a morte do jogador.
 
 \section{Fundamentos}\label{sec:fundamentos}
 
@@ -671,30 +717,31 @@ e diferentes dispositivos de \texttt{VR}/\texttt{AR}, independentemente do fabri
 possibilita que o mesmo projeto seja executado em diferentes \textit{headsets} 
 sem necessidade de alterações significativas ao código. Esta compatibilidade foi 
 particularmente relevante no contexto deste projeto, uma vez que possibilitou testar 
-e desenvolver a aplicação tanto no \textit{headset} \texttt{Meta Quest} como no \textit{headset} \texttt{HTC Vive Pro}, 
+e desenvolver a aplicação tanto no \textit{headset} \texttt{Meta Quest 3} como no \textit{headset} \texttt{HTC Vive Pro}, 
 disponibilizados pelo ISEL.
 
 Apesar de ambos os dispositivos terem sido considerados, optou-se pelo \texttt{Meta Quest} 
 como plataforma principal de desenvolvimento e testes. Esta decisão deveu-se às 
 limitações do \textit{headset} \texttt{HTC Vive Pro}, nomeadamente a necessidade de um computador equipado com 
 uma porta \texttt{DisplayPort} e a utilização de bases, o que implica um processo de 
-configuração mais complexo. Em contraste, os óculos \texttt{Meta Quest} apresentam uma instalação 
+configuração mais complexo. Em contraste, os óculos \texttt{Meta Quest 3} apresentam uma instalação 
 significativamente mais simples, exigindo apenas um conjunto mínimo de configuração, 
 tornando-o mais adequado para o desenvolvimento iterativo do projeto.
 
 Dado que o desenvolvimento do projeto se baseia na norma \texttt{OpenXR}, foi 
 necessário configurar o \texttt{SteamVR} como \textit{runtime} \texttt{OpenXR} 
-ativo no sistema, permitindo a comunicação entre o \textit{headset} \texttt{Meta Quest} e o 
+ativo no sistema, permitindo a comunicação entre o \textit{headset} \texttt{Meta Quest 3} e o 
 motor de jogo \texttt{Unity} através desta norma.
 
-A configuração final requerida para o \texttt{Meta Quest} foi a seguinte:
+A configuração final requerida para os \textit{headset} \texttt{Meta Quest 3} foi a seguinte:
 \begin{itemize}
-    \item \textbf{Headset e comandos:} \texttt{Meta Quest};
+    \item \textbf{Headset e comandos:} \texttt{Meta Quest 3};
     \item \textbf{Cabo de ligação:} \texttt{USB-C}, para ligação dos óculos ao computador;
     \item \textbf{Computador:} portátil, com \texttt{Windows 10/11};
     \item \textbf{Software de ligação:} \texttt{Meta Quest Link} e \texttt{SteamVR}.
 \end{itemize}
 
+\newpage
 \section{Conceção do Jogo}
 \label{sec:concecao-jogo}
 Nesta secção são detalhados os aspetos conceptuais do jogo, desde o enredo (cf.~\ref{ssec:resumo}),
@@ -874,7 +921,7 @@ dos elementos decorativos usados na construção do mapa.
 \end{figure}
 
 Adicionalmente, foram utilizados modelos \texttt{3D} de mãos humanas recolhidas 
-do sítio \texttt{Sketchfab}, feitas pelo utilizador \texttt{scribbletoad}, e adaptadas de 
+do sítio \texttt{Sketchfab}, feitas pelo utilizador \texttt{scribbletoad}~\cite{scribbletoad}, e adaptadas de 
 acordo com o conceito do jogo, ilustradas na Figura~\ref{fig:hand_models}.
 
 \begin{figure}[H]
@@ -933,7 +980,7 @@ no espaço. Para assegurar o alinhamento preciso
 dos objetos e evitar falhas na geometria, 
 utilizou-se a funcionalidade \texttt{Vertex Snapping}.
 \par
-O planeamento do espaço obedeceu a um \textit{layout} pré-definido, focado 
+O planeamento do espaço obedeceu a um \textit{layout} predefinido, focado 
 na fluidez de movimentos e na escala adequada para a exploração em 
 Realidade Virtual (\texttt{VR}), estudado e avaliado durante a fase de \textit{grayboxing}. 
 Para além das peças estruturais, a iluminação desempenha um papel importante na 
@@ -1023,12 +1070,14 @@ transmitam a sensação de realismo e coerência com o objeto interativo. Quando
 longo, onde as posições das mãos podem variar, foram implementadas poses dinâmicas que se ajustam à posição do momento de interação.
 \par
 Para estas poses, foram introduzidas cópias dos modelos das mãos (esquerda e direita) com a pose desejada, que foram posicionadas no 
-espaço de forma a coincidir com a posição do objeto interativo. Ao interagir com o objeto, o modelo da mão do jogador é substituído pelo modelo da pose correspondente, 
-criando a ilusão de que a mão do jogador se molda ao objeto. Um exemplo desta abordagem é a pose para rodar o botão rotativo do gerador, ilustrada na Figura~\ref{fig:hand_pose_knob}.
+espaço de forma a coincidir com a posição do objeto interativo. Ao interagir com o objeto, o modelo da mão do jogador é substituído 
+pelo modelo da pose correspondente, 
+criando a ilusão de que a mão do jogador se molda ao objeto. Dois exemplos desta 
+abordagem encontram-se ilustrados na Figura~\ref{fig:hand_pose_knob}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.2]{Imagens/egofr_interacao.jpeg}
+    \includegraphics[scale=0.17]{Imagens/egofr_interacao.jpeg}
     \caption{Poses específicas na interação com o gerador.}
     \label{fig:hand_pose_knob}
 \end{figure}
@@ -1073,7 +1122,7 @@ incrementos discretos (\textit{snapping}) para evitar problemas na transição e
 $360^{\circ}$ e $0^{\circ}$.
 
 Cada incremento é acompanhado de \textit{feedback} sonoro e da invocação do evento
-\texttt{OnValueChanged}, o que permitr que outros sistemas reajam à alteração do valor,
+\texttt{OnValueChanged}, o que permite que outros sistemas reajam à alteração do valor,
 como a atualização do painel do gerador.
 
 \subsubsection{Alavancas}
@@ -1166,7 +1215,7 @@ ou removido.
 Depois de validada a presença do fusível, é ativado um ecrã digital que apresenta
 a tensão do gerador, inicialmente igual a 0\,V. Para alterar este valor, o jogador
 interage com um botão rotativo, que aumenta a tensão incrementalmente, de acordo
-com a mecânica descrita na sub-secção anterior. Cada alteração de tensão é
+com a mecânica descrita na subsecção anterior. Cada alteração de tensão é
 propagada através de um evento, ao qual o \textit{script} do gerador
 se encontra subscrito para evitar qualquer dependência direta entre os componentes.
 
@@ -1205,18 +1254,19 @@ uma \textit{string} interna (\texttt{\_inputKeyCode}) e atualiza o ecrã digital
 O jogador pode ainda remover o último caractere introduzido (\texttt{OnClearPressed}) ou submeter o código 
 para validação (\texttt{OnEnterPressed}).
 A validação é realizada em \texttt{VerifyKeyCode}, que compara a \textit{string} introduzida com o valor de \texttt{keyCode}, 
-definido previamente no Inspector do Unity. Caso a comparação seja bem-sucedida, o \textit{puzzle} é assinalado como concluído através da 
-chamada a \texttt{PuzzleManager.Instance.CompletePuzzle(puzzleKey)}, notificando o gestor central de \textit{puzzles} do estado atualizado. 
-Em caso de falha, a \textit{string} introduzida é reiniciada, obrigando o jogador a repetir a introdução do código.
+definido previamente no Inspector do Unity. Caso a comparação seja bem-sucedida, o \textit{puzzle} é assinalado como concluído,
+ notificando o gestor central de \textit{puzzles} do estado atualizado. 
+Em caso de falha, a \textit{string} introduzida é reiniciada e obriga o jogador a repetir a introdução do código.
 
-Cada botão do teclado possui o componente \texttt{ButtonPress}, descrito anteriormente, que deteta a interação do jogador 
+Cada botão do teclado possui o componente \texttt{ButtonPress}, descrito anteriormente na secção \ref{sssec:botoes}, que deteta a interação 
+do jogador 
 e invoca o método correspondente no \texttt{Keypad}, seja este um valor numérico ou um \textit{clear}.
 
 \subsubsection{\textit{Puzzle} 3: Labirinto Miniatura}
 O terceiro \textit{puzzle} inicia-se quando o jogador aponta para um feixe de 
 transferência, identificado no código através da \textit{tag} 
 ``\texttt{Transfer}'' e detetado por um \textit{raycast} contínuo lançado a 
-partir do olhar do jogador (\texttt{TransferBeam}). Ao detetar a colisão, é 
+partir da mão do jogador (\texttt{TransferBeam}). Ao detetar a colisão, é 
 disparado um efeito de transição visual e, decorrido o tempo desse efeito, o 
 jogador é reposicionado de acordo com 
 valores predefinidos num \textit{ScriptableObject} (\texttt{PlayerTransferData}). 
@@ -1230,7 +1280,7 @@ fase: ao ser notificado do início do \textit{puzzle}, ativa a máquina de estad
 inimigo (\texttt{EnemyStateMachine}), que alterna entre três estados: 
 \textit{Idle}, \textit{Wander} e \textit{Run}. O inimigo permanece parado 
 durante um intervalo inicial, após o qual passa a vaguear pelo labirinto nas 
-imediações do jogador, recorrendo à \textit{NavMesh} do \texttt{Unity} para se 
+imediações do jogador, recorrendo à \texttt{NavMesh} do \texttt{Unity} para se 
 deslocar. Enquanto vagueia, um segundo \textit{raycast}, lançado a partir do 
 próprio inimigo, verifica se este tem o jogador diretamente à sua frente; 
 caso o detete, transita para o estado de perseguição, aumentando a sua 
@@ -1240,7 +1290,7 @@ pode ser parado ao ser atingido pela lanterna do jogador (cf.~\ref{sssec:lantern
 
 O comportamento e os parâmetros de cada inimigo, como a velocidade, dano de 
 ataque, alcance de ataque, bem como os conjuntos de sons 
-associados a cada estado, estão isolados num \textit{ScriptableObject} 
+associados a cada estado, estão isolados num \texttt{ScriptableObject} 
 próprio (\texttt{ZombieData}), separando a configuração da lógica de 
 comportamento e permitindo reutilizar a mesma máquina de estados para 
 diferentes variantes de inimigo. A resposta sonora é gerida de forma 
@@ -1252,16 +1302,17 @@ de outro caso existam vários em simultâneo no labirinto.
 \subsection{Interfaces Diegéticas}\label{ssec:interfaces}
 
 As interfaces integram o cenário. A implementação utiliza câmeras,
-\texttt{RenderTextures} e pós-processamento para apresentar elementos de \texttt{UI} em monitores.
+\texttt{RenderTextures} e pós-processamento para apresentar elementos da
+interface de utilizador em monitores.
 
-A construção destes materiais requer: 
-\begin{enumerate} 
-    \item Criar um \textit{canvas} com componentes de \texttt{UI}, como imagens, texto, \textit{etc}. 
-    \item Posicionar uma câmera a captar o \textit{canvas}, com efeitos e \textit{output} para uma \texttt{RenderTexture}. 
+A construção destes materiais requer:
+\begin{enumerate}
+    \item Criar um \texttt{Canvas} com componentes da interface de utilizador, como imagens, texto, \textit{etc.}
+    \item Posicionar uma câmera a captar o \texttt{Canvas}, com efeitos e saída para uma \texttt{RenderTexture}.
     \item Atribuir a \texttt{RenderTexture} a um material.
 \end{enumerate}
 
-Este processo se repete para cada \texttt{UI} que se deseje apresentar.
+Este processo repete-se para cada interface de utilizador que se deseje apresentar.
 
 % portas automaticas
 % falar dos scripts da balança dos pesos e do terminal da porta
@@ -1269,13 +1320,13 @@ Este processo se repete para cada \texttt{UI} que se deseje apresentar.
 \label{ssec:som}
 
 Foram implementados diversos efeitos sonoros para reforçar a imersão
-do jogador. Os objetos interativos medem a velocidade do impacto no
-momento da colisão e reproduzem um som de toque ou de impacto consoante
-essa velocidade.
+do jogador. Por exemplo, cada objeto interativo mede a sua velocidade de impacto no
+momento da colisão e reproduz um som de toque ou de impacto consoante
+essa velocidade, reforçando a sua existência no ambiente.
 \par
 O jogo inclui ainda diversos sons ambiente, como luzes, ar condicionado
 e passos. O som dos passos é gerido por um \textit{script} que faz, em cada
-\textit{FixedUpdate}, um \textit{SphereCast} vertical a partir do
+\texttt{FixedUpdate}, um \texttt{SphereCast} vertical a partir do
 jogador para detetar se este se encontra no chão. Quando o jogador está
 no chão e a sua velocidade excede um limiar definido, é reproduzido um
 som de passo, escolhido através de um \textit{raycast} adicional para
@@ -1289,28 +1340,29 @@ entre os dois lados de forma a simular o movimento entre pé esquerdo e
 direito.
 \par
 Por fim, foram adicionados efeitos de partículas de pó e névoa,
-distribuídos pelo mapa, para reforçar a ambiência visual e sonora do
+distribuídos pelo mapa, para reforçar a ambiência visual do
 espaço.
 
 
 \subsection{Gestão da Narrativa}
 \label{ssec:gestao-narrativa}
 A narrativa do jogo funciona como uma série de diálogos e mensagens apresentadas ao jogador
-em momentos especiais, como ao iniciar ou concluir um puzzle. O sistema funciona à base
+em momentos especiais, como ao iniciar ou concluir um \textit{puzzle}. O sistema funciona à base
 de \textit{triggers} colocados em pontos estratégicos do mapa. Estes \textit{triggers} narrativos são compostos
-por um ficheiro de áudio e um componente AudioSource, que reproduz o áudio quando o jogador entra 
-na zona de deteção. Estes \textit{triggers} só serão ativados consoante a sua progressão no jogo, de forma 
+por um ficheiro de áudio e um componente \texttt{AudioSource}, que reproduz o áudio quando o jogador entra 
+na zona de deteção. Estes \textit{triggers} só serão ativados consoante a progressão no jogo, de forma 
 a evitar que o jogador ouça mensagens fora de contexto.
 
 \subsection{Gestão do Progresso do Jogo}
 \label{ssec:gestao-progresso}
 Para permitir uma melhor experiência de utilizador, foi implementado
 um sistema para guardar e carregar o progresso do jogo. Este sistema
-divide-se em três partes: a posição do jogador, o estado dos puzzles
+divide-se em três partes: a posição do jogador, o estado dos \textit{puzzles}
 e a posição de todos os objetos manipuláveis.
 \par
 A classe central deste sistema é o \texttt{GameDataManager}, que segue
-o padrão \texttt{Singleton}, demonstrado no excerto de código~\ref{lst:singleton}, garantindo que existe
+o padrão \texttt{Singleton}, demonstrado no excerto de código~\ref{lst:singleton}, 
+de forma a garantir que existe
 apenas uma instância ativa em toda a aplicação e que esta persiste
 entre cenas. 
 
@@ -1360,7 +1412,7 @@ o sistema percorre esta coleção e restaura a posição e rotação de
 cada objeto com base no seu identificador, de forma independente
 da ordem ou hierarquia da cena.
 
-De modo a automatizar a configuração inicial, foi desenvolvido uma
+De modo a automatizar a configuração inicial, foi desenvolvida uma
 ferramenta de editor acessível através do menu
 \texttt{Tools > Setup Saveable Objects}, exemplificado na Figura~\ref{fig:setup_saveable_objects}. 
 Esta ferramenta percorre
@@ -1416,7 +1468,7 @@ possam comprometer a jogabilidade, como pontos de confusão na navegação ou
 \label{sec:instrumento}
 
 Para avaliar a satisfação do jogador, recorreu-se ao \texttt{GUESS-18}
-\cite{guess18}, uma versão reduzida de 18 items da
+\cite{guess18}, uma versão reduzida de 18 itens da
 \textit{Game User Experience Satisfaction Scale} (\texttt{GUESS})\\
 \cite{guess}. O \texttt{GUESS-18} organiza-se em nove subescalas
 (duas perguntas cada), que cobrem aspetos como usabilidade, narrativa,
@@ -1470,7 +1522,7 @@ gráficos.
 
 \section{Resultados}
 \label{sec:resultados-validacao}
-Nesta secção apresentam-se os resultados obtidos na fase final de validação, incuindo
+Nesta secção apresentam-se os resultados obtidos na fase final de validação, incluindo
 a sua análise e interpretação.
 
 \subsection{Caracterização da Amostra}
@@ -1479,7 +1531,7 @@ e os 22 anos (4 do género masculino, 2 feminino, 1 preferiu não indicar).
 Três dos sete participantes já tinham jogado títulos em Realidade Virtual
 antes, mas apenas um possuía \textit{headset} próprio. Quatro dos sete
 participantes reportaram ter tendência para sentir enjoo facilmente, um
-dado relevante para a interpretação dos items de conforto discutidos mais
+dado relevante para a interpretação dos itens de conforto discutidos mais
 abaixo.
 
 \subsection{Compreensão de mecânicas e objetivos}
@@ -1487,12 +1539,12 @@ abaixo.
 
 A Figura~\ref{fig:bloco1-compreensao} apresenta a distribuição de respostas
 ao bloco de compreensão do jogo. A generalidade dos momentos-chave da
-progressão foi bem compreendida: os items relativos à abertura da porta
+progressão foi bem compreendida: os itens relativos à abertura da porta
 inicial, ao uso da iluminação para localizar o gerador e ao regresso pelo
 elevador obtiveram todos mediana 5 (\textit{Strongly Agree}), com moda
 coincidente.
 \par
-Dois items destacam-se pela mediana mais baixa e por uma distribuição mais
+Dois itens destacam-se pela mediana mais baixa e por uma distribuição mais
 divergente de respostas: \textit{``While playing, I figured the controls of
 the game without outside help''} (mediana 4, moda 4, mas com respostas em
 todos os pontos da escala) e, sobretudo, \textit{``In the third puzzle, the
@@ -1514,8 +1566,8 @@ entre os participantes, o que é corroborado pelos comentários abertos
 \subsection{GUESS-18 Adaptado}
 \label{ssec:resultados-guess18}
 
-Do conjunto de items do questionário orientados para a satisfação do
-jogador, doze correspondem literalmente a items do \texttt{GUESS-18}
+Do conjunto de itens do questionário orientados para a satisfação do
+jogador, doze correspondem literalmente a itens do \texttt{GUESS-18}
 original, cobrindo por completo seis das suas nove subescalas:
 \textit{Usability/Playability}, \textit{Play Engrossment},
 \textit{Enjoyment}, \textit{Creative Freedom}, \textit{Audio Aesthetics} e
@@ -1532,7 +1584,7 @@ na secção~\ref{sec:limitacoes-validacao}.
 \par
 A Tabela~\ref{tab:subescalas-guess18} resume a mediana e a moda dos
 \textit{scores} de cada subescala completa (calculados, por participante,
-como a média dos dois items que a compõem).
+como a média dos dois itens que a compõem).
 
 \begin{table}[h]
     \centering
@@ -1559,23 +1611,23 @@ altas e maior consistência entre participantes, ao passo que
 subescalas completas (3.5), com \textit{scores} individuais que vão de 1.5
 a 5, a maior amplitude de todo o bloco \texttt{GUESS-18}. \textit{Usability/
 Playability} e \textit{Audio Aesthetics} também apresentam dispersão
-considerável (Figura~\ref{fig:bloco2a-items}), refletida sobretudo no item
+considerável (Figura~\ref{fig:bloco2a-itens}), refletida sobretudo no item
 \textit{``I find the controls of the game to be straightforward''}, que
 reúne respostas em ambos os extremos da escala.
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{Imagens/bloco2a_items_guess18.png}
-    \caption{Distribuição de respostas aos doze items verbatim do
+    \caption{Distribuição de respostas aos doze itens verbatim do
     \texttt{GUESS-18} (escala de 5 pontos; \textit{``No Opinion'}' codificado como ponto
     neutro).}
-    \label{fig:bloco2a-items}
+    \label{fig:bloco2a-itens}
 \end{figure}
 
-\subsection{Items Adicionais}
+\subsection{Itens Adicionais}
 \label{ssec:resultados-adicionais}
 
-Os restantes items do questionário, específicos deste projeto e não
+Os restantes itens do questionário, específicos deste projeto e não
 pertencentes ao GUESS-18 validado, estão organizados por tema na
 Figura~\ref{fig:bloco2b-adicionais}. Destacam-se os seguintes resultados:
 
@@ -1584,7 +1636,7 @@ Figura~\ref{fig:bloco2b-adicionais}. Destacam-se os seguintes resultados:
     to be atmospheric''} obteve a mediana mais alta de todo o questionário
     (5.0, moda 5.0), corroborando o comentário qualitativo mais recorrente
     nas respostas abertas.
-    \item \textbf{Conforto em VR}: os items de enjoo (\textit{motion
+    \item \textbf{Conforto em VR}: os itens de enjoo (\textit{motion
     sickness} durante e após o jogo) apresentam a distribuição mais
     dispersa de todo o questionário, coerente com o facto de apenas
     metade da amostra reportar tendência pessoal para enjoo. Este
@@ -1592,7 +1644,7 @@ Figura~\ref{fig:bloco2b-adicionais}. Destacam-se os seguintes resultados:
     correspondentes (secção~\ref{ssec:resultados-abertas}), que indicam
     que o desconforto foi de facto um fator relevante para os
     participantes suscetíveis a este tipo de sintoma.
-    \item \textbf{Gratificação e desafio}: os items \textit{``I felt like
+    \item \textbf{Gratificação e desafio}: os itens \textit{``I felt like
     I completed a challenge''} e \textit{``Solving the game's puzzles
     brings me joy''} obtiveram medianas altas (5.0 e 4.0,
     respetivamente), e o item invertido \textit{``I found it a waste of
@@ -1603,7 +1655,7 @@ Figura~\ref{fig:bloco2b-adicionais}. Destacam-se os seguintes resultados:
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.5]{Imagens/bloco2b_items_adicionais.png}
-    \caption{Distribuição de respostas aos items adicionais, agrupados por
+    \caption{Distribuição de respostas aos itens adicionais, agrupados por
     tema.}
     \label{fig:bloco2b-adicionais}
 \end{figure}
@@ -1628,7 +1680,7 @@ espalhados pelas divisões).
 Em conjunto, os resultados sugerem uma receção globalmente positiva,
 particularmente ao nível da atmosfera, dos gráficos e do prazer geral da
 experiência, com valores de mediana consistentemente altos (4-5 em escala
-de 5 pontos) e baixa dispersão nesses items. Os pontos de melhoria mais
+de 5 pontos) e baixa dispersão nesses itens. Os pontos de melhoria mais
 evidentes concentram-se em três áreas: (1) a clareza dos controlos e a
 curva de aprendizagem inicial, sem tutorial; (2) o desafio proposto pelo
 inimigo no terceiro \textit{puzzle}, cuja perceção não reuniu consenso; e
@@ -1654,20 +1706,21 @@ formulário implementado disponibilizou apenas 5 pontos de resposta
 \textit{Agree}, \textit{Agree Completely}), em vez dos 7 pontos do
 instrumento original, o que reduz a granularidade das respostas
 recolhidas. Em segundo lugar, apenas seis das nove subescalas do
-\texttt{GUESS-18} foram incluídas com os seus items originais; as
+\texttt{GUESS-18} foram incluídas com os seus itens originais; as
 subescalas \textit{Narratives}, \textit{Personal Gratification} e
 \textit{Social Connectivity} não constam do questionário na sua forma
 validada, pelo que os resultados reportados correspondem a uma versão
 adaptada do instrumento e não devem ser diretamente comparados com
 \textit{scores} de estudos que utilizem o \texttt{GUESS-18} completo.
 
-\chapter{Utilização de Inteligência Artificial}
-\label{ch:utilizacao-ia}
-Este capítulo detalha o uso de Inteligência Artificial (\texttt{IA}) utilizada
-ao longo do desenvolvimento do projeto. A \texttt{IA} foi utilizada maioritariamente para correção de escrita,
- e esclarecimente de dúvidas sobre a organização do relatório. Quanto ao jogo, 
- a \texttt{IA} foi apenas utilizada para esclarecimento de dúvidas sobre a implementação, não tendo sido utilizada 
- para gerar código ou \textit{assets}.
+\chapter{Utilização de Inteligência Artificial} \label{ch:utilizacao-ia}
+
+Este capítulo descreve a utilização de Inteligência Artificial (\texttt{IA})
+durante o desenvolvimento do projeto. No relatório, a \texttt{IA} serviu de
+apoio à revisão da escrita e ao esclarecimento de dúvidas relacionadas com a sua
+organização. No desenvolvimento do jogo, foi utilizada apenas para esclarecer
+questões de implementação, não tendo sido empregue na geração de código nem de
+\textit{assets}.
 %\cleardoublepage
 \chapter{Conclusões e Trabalho Futuro}
 \label{ch:conclusoes}
@@ -1727,23 +1780,23 @@ nos testes de validação.
 %\cleardoublepage
 \begin{thebibliography}{9}
 
-\bibitem[Unity, site]{unity}
+\bibitem[Unity, \textit{site}]{unity}
 Unity Technologies.
 \textit{Unity Official Website}.
 \url{https://unity.com/pt}
 
-\bibitem[XR Interaction Toolkit, 2025, site]{xri}
+\bibitem[XR Interaction Toolkit, 2025, \textit{site}]{xri}
 Unity Technologies.
 \textit{XR Interaction Toolkit Documentation}.
 \url{https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@3.0/manual/index.html}
 
-\bibitem[ProBuilder, 2017, site]{probuilder}
+\bibitem[ProBuilder, 2017, \textit{site}]{probuilder}
 Unity Technologies.
 \textit{ProBuilder Documentation}.
 \url{https://docs.unity3d.com/Packages/com.unity.probuilder@4.0/manual/index.html}
 
 
-\bibitem[Neil Blevins, 2022, site]{greyboxing}
+\bibitem[Neil Blevins, 2022, \textit{site}]{greyboxing}
 Neil Blevins.
 \textit{Greyboxing in Game Development}.
 \url{http://www.neilblevins.com/art_lessons/greybox/greybox.htm}
@@ -1758,7 +1811,7 @@ ResearchGate.
 \textit{The Development and Validation of the Game User Experience Satisfaction Scale (GUESS)}
 \url{https://www.researchgate.net/publication/308343588_The_Development_and_Validation_of_the_Game_User_Experience_Satisfaction_Scale_GUESS}
 
-\bibitem[Six Degrees of Freedom, Wikipedia, site]{sixdof}
+\bibitem[Six Degrees of Freedom, Wikipedia, \textit{site}]{sixdof}
 Wikipedia contributors.
 \textit{Six Degrees of Freedom}.
 \url{https://en.wikipedia.org/wiki/Six_degrees_of_freedom}
@@ -1773,7 +1826,7 @@ Mihaly Csikszentmihalyi.
 \textit{Flow: The Psychology of Optimal Experience}.
 Harper \& Row, 1990.
 
-\bibitem[Carson, 2000, site]{env_story}
+\bibitem[Carson, 2000, \textit{site}]{env_story}
 Don Carson.
 \textit{Environmental Storytelling: Creating Immersive \texttt{3D} Worlds Using Lessons Learned from the Theme Park Industry}.
 Game Developer.
@@ -1783,6 +1836,23 @@ Game Developer.
 Henry Jenkins.
 \textit{Game Design as Narrative Architecture}.
 2004.
+
+\bibitem[\texttt{scribbletoad}, 2015, \textit{site}]{scribbletoad}
+\texttt{scribbletoad}. 
+\textit{Sketchfab}.
+\url{https://sketchfab.com/scribbletoad}
+
+\bibitem[Valve, 2020, \textit{site}]{valve}
+Valve.
+\textit{Half-Life: Alyx}.
+2020.
+\url{https://www.half-life.com/en/alyx}
+
+\bibitem[Fireproof Games, 2025, \textit{site}]{fireproof}
+Fireproof Games.
+\textit{Ghost Town}.
+2025.
+\url{https://www.fireproofgames.com/games/ghost-town}
 
 
 \end{thebibliography}
