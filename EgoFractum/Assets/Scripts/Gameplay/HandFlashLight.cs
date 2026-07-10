@@ -81,7 +81,7 @@ public class HandFlashLight : MonoBehaviour
                 }
 
                 var didHit = Physics.Raycast(raycastOrigin.position, raycastOrigin.forward, out RaycastHit hit,
-                    LayerMask.GetMask("Zombie"));
+                    rayCastLenght , LayerMask.GetMask("Zombie"));
                 Debug.DrawRay(raycastOrigin.position, raycastOrigin.forward * rayCastLenght,
                     didHit ? Color.green : Color.red);
 
@@ -96,12 +96,12 @@ public class HandFlashLight : MonoBehaviour
                     
               
                 }
-                else if (_enemyStateMachine != null)
+                else  
                 {
                     Debug.Log("Zombie is out of light");
                     _enemyStateMachine.OnLightStun(false);
                 }
-                Debug.Log($"[Flashlight] Enemy State: {_enemyStateMachine} DidHit:  {didHit}");
+                
                 
 
                 break;

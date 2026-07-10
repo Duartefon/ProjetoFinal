@@ -11,13 +11,15 @@ using Random = UnityEngine.Random;
 public class EnemyStateMachine : MonoBehaviour
 {
     public EnemyStates currentState { get; private set; } = EnemyStates.Idle;
-    
+
     private bool puzzleStarted = false;
     private bool waitFinished = false;
     [SerializeField] private float waitTimeIdle = 3.5f;
     [SerializeField] private float enemyWalkSpeed = 0.05f;
     [SerializeField] private float enemyRunSpeed = 0.15f;
+    [SerializeField] private float enemyStunSpeed = 0.05f;
     [SerializeField] private float enemyTurnSpeed = 0.15f;
+    
 
     [SerializeField] private ClockDelay internalClock;
 
@@ -50,23 +52,20 @@ public class EnemyStateMachine : MonoBehaviour
     [SerializeField] private PuzzleMazeManager _puzzleMazeManager;
     [SerializeField] private DigitalGlitchController _playerGlitchEffect;
     private float mapRadius = 0.5f;
-    
+
     private bool _isPlayerDead = false;
 
     private void Start()
     {
         _agent.speed = enemyWalkSpeed;
         _agent.angularSpeed = enemyTurnSpeed;
-      
-      
-        
     }
 
     private void Update()
     {
         if (!puzzleStarted) return;
 
-       
+        _agent.isStopped = false;
         
         //Debug.Log("CurrentState:  " + currentState);
         switch (currentState)
@@ -86,15 +85,14 @@ public class EnemyStateMachine : MonoBehaviour
                 UpdateStunState();
                 break;
         }
-        
-      
-
     }
 
     private void UpdateStunState()
     {
         //_agent.enabled = false;
-        _agent.isStopped = true; }
+       // _agent.isStopped = true;
+       UpdateAgent(_agent,enemyStunSpeed, _player.position );
+    }
 
     public void UpdateIdleState()
     {
@@ -137,7 +135,7 @@ public class EnemyStateMachine : MonoBehaviour
             currentState = EnemyStates.Run;
             animState = false;
         }
-        
+
         UpdateAnimator("isWalking", animState);
     }
 
@@ -146,10 +144,11 @@ public class EnemyStateMachine : MonoBehaviour
         _transitionEffectManager.SetAnimator(false);
         var dist = Vector3.Distance(_player.position, transform.position);
         //var perc = 1 - dist
-        var perc  = (mapRadius - dist) /(mapRadius *2);
-        Debug.Log("Dist:" +  dist + " percent: " + perc   );
+        var perc = (mapRadius - dist) / (mapRadius * 2);
+        Debug.Log("Dist:" + dist + " percent: " + perc);
         _playerGlitchEffect.Intensity = perc;
     }
+
     public void UpdateRunState()
     {
         var animState = true;
@@ -167,7 +166,7 @@ public class EnemyStateMachine : MonoBehaviour
                 //this should be the maze manager responsibility, zombie only tells player dead
 
                 _transitionEffectManager.PlayEffect("playTransition");
-                 
+
                 Debug.Log("Player dead!");
             }
         }
@@ -185,9 +184,9 @@ public class EnemyStateMachine : MonoBehaviour
      **/
     public void OnLightStun(bool value)
     {
-         
         currentState = value ? EnemyStates.Stunned : EnemyStates.Wander;
-        Debug.Log("IM STUNNED: "+ currentState);
+       
+        Debug.Log("IM STUNNED: " + currentState);
     }
 
     public void OnPuzzleStarted()

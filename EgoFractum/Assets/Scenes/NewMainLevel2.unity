@@ -14811,8 +14811,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1092113654}
   m_LocalEulerAnglesHint: {x: 2.722, y: -34.934, z: 3.642}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 0, y: 1}
@@ -17092,9 +17092,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStateMachine
   waitTimeIdle: 3.5
-  enemyWalkSpeed: 0.1
-  enemyRunSpeed: 0.25
-  enemyTurnSpeed: 165
+  enemyWalkSpeed: 0.15
+  enemyRunSpeed: 0.4
+  enemyStunSpeed: 0.06
+  enemyTurnSpeed: 240
   _animator: {fileID: 586406195}
   _agent: {fileID: 586406197}
   _player: {fileID: 1211013005}
@@ -43551,7 +43552,7 @@ MonoBehaviour:
   baseLightOuterSpot: 56.7
   blinkingTreshold: 0.943
   raycastOrigin: {fileID: 1321750424}
-  rayCastLenght: 3
+  rayCastLenght: 0.6
   text: {fileID: 1713335217}
   flashlightAction: {fileID: 7224615724586139641, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!4 &1345906329 stripped
