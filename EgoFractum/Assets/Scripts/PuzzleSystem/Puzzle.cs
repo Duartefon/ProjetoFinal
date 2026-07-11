@@ -7,7 +7,16 @@ namespace PuzzleSystem
         [SerializeField] protected string puzzleKey;
         [SerializeField] protected bool puzzleStarted;
         [SerializeField] protected bool puzzleSolved;
-        
-        
+        [SerializeField] protected DoorController[] doorsToUnlock;
+
+
+
+        protected void UnlockDoors()
+        {
+            foreach (var door in doorsToUnlock)
+            {
+                door.OpenWithoutGenerator();
+            }
+        }
     }
 }
