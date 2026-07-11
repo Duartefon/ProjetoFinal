@@ -58,6 +58,7 @@ public class IntroSequenceManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI creditsText;
 
     private Coroutine _sequence;
+    private bool _hasIntroPlayed = false;
 
     /// <summary>True while an intro or ending sequence is playing.</summary>
     public bool IsPlaying => _sequence != null;
@@ -75,6 +76,13 @@ public class IntroSequenceManager : MonoBehaviour
         SetTextVisible(introHudText, false);
         SetTextVisible(endingConsoleText, false, 0f);
         SetGraphicAlpha(blackScreen, 0f);
+    }
+
+    public void Start()
+    {
+        if (_hasIntroPlayed) return;
+        StartIntro();
+        _hasIntroPlayed = true;
     }
 
     public void StartIntro()
