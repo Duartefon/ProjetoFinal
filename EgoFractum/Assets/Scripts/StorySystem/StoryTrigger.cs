@@ -1,3 +1,4 @@
+using PuzzleSystem;
 using UnityEngine;
 
 namespace StorySystem
@@ -7,6 +8,10 @@ namespace StorySystem
         private StoryManager _storyManager;
         public AudioClip voiceLine;
 
+        [SerializeField]
+        private string puzzleKey;
+        
+    
         private void Awake()
         {
             _storyManager = GetComponentInParent<StoryManager>();
@@ -14,6 +19,8 @@ namespace StorySystem
 
         private void OnTriggerEnter(Collider other)
         {
+            if (!PuzzleManager.Instance.IsPuzzleCompleted(puzzleKey)) return;
+          
             if (other.CompareTag("Player"))
                 _storyManager.PlayVoiceLine(voiceLine);
         }

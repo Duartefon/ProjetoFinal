@@ -9,7 +9,7 @@ public class TransitionEffectManager : MonoBehaviour
 
     [SerializeField] private float _effectTime = 2.1f;
 
-    
+    [SerializeField] private GameObject _locomotion;
     public float effectTime => _effectTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -27,17 +27,27 @@ public class TransitionEffectManager : MonoBehaviour
     
     public void TransitionPlayerTo(Transform player, PlayerTransferData destinyData )
     {
+        var  _characterController = player.GetComponent<CharacterController>();
+        _characterController.enabled = false;
+        _locomotion.SetActive(false);
+        
         player.transform.position = destinyData.position;
         player.transform.eulerAngles = destinyData.rotation;
         player.transform.localScale = destinyData.scale;
-
-        player.GetComponent<CharacterController>().stepOffset = destinyData.stepOffset;
+        
+        _locomotion.SetActive(true);
+        _characterController.enabled = true;
+        _characterController.stepOffset = destinyData.stepOffset;
     }
+
+ 
 
     public void TransitionPlayerToPositionRotation(Transform player, PlayerTransferData destinyData)
     {
+        
         player.transform.position = destinyData.position;
         player.transform.eulerAngles = destinyData.rotation;
+ 
      
     }
     public void SetAnimator(bool active)
