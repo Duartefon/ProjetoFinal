@@ -1437,6 +1437,104 @@ Por fim, para dar \textit{feedback} ao utilizador após uma gravação,
 foi implementada uma animação de texto em \texttt{HUD} que surge, pisca três
 vezes com um \textit{fade}, e desaparece automaticamente.
 
+\section{\textit{Ego Fractum}}
+
+Esta secção apresenta uma visão geral de \textit{Ego Fractum} através de
+capturas de ecrã representativas dos principais momentos da experiência de jogo.
+O objetivo é ilustrar os ambientes, a progressão e as mecânicas principais para
+facilitar a compreensão das decisões de desenvolvimento descritas ao longo
+deste relatório.
+\par
+Ao longo do jogo, o jogador explora um laboratório abandonado, interage com
+objetos do ambiente e resolve uma sequência de \textit{puzzles} para progredir
+na narrativa. As figuras seguintes apresentam diferentes momentos do jogo,
+acompanhados de uma breve descrição do contexto e das ações realizadas pelo
+jogador.
+
+%
+%Figura 1 – Introdução ao jogo
+% (a) Menu principal
+% (b) Átrio inicial
+% (c) Primeiro objetivo
+%Figura 2 – Progressão
+% (a) Exploração do laboratório
+% (b) Resolução de um puzzle
+% (c) Interface diegética
+%Figura 3 – Fase final
+%( a) Último puzzle
+%( b) Inimigo
+% (c) Cena final
+%
+
+\begin{figure}[H]
+    \centering
+
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Imagens/isel_logo.png}
+        \caption{Menu principal.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Imagens/isel_logo.png}
+        \caption{Início do jogo.}
+    \end{subfigure}
+
+    \caption{Primeiros momentos de \textit{Ego Fractum}.}
+    \label{fig:ego_1}
+\end{figure}
+
+O jogo inicia-se no menu principal, onde o jogador pode iniciar uma nova
+partida ou carregar o progresso anteriormente guardado. Após o início da
+sessão, o jogador é colocado no laboratório, onde começa a exploração do
+ambiente.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Imagens/isel_logo.png}
+        \caption{Exploração do laboratório.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Imagens/egofr_interacao.jpeg}
+        \caption{Primeiro \textit{puzzle}.}
+    \end{subfigure}
+
+    \caption{Exploração e interação com o ambiente.}
+    \label{fig:ego_2}
+\end{figure}
+
+Ao longo do jogo, o jogador percorre diferentes áreas do laboratório,
+interage com objetos do ambiente e resolve \textit{puzzles} para desbloquear
+novas zonas e progredir na narrativa.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Imagens/isel_logo.png}
+        \caption{Último \textit{puzzle}.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Imagens/isel_logo.png}
+        \caption{Momento final do jogo.}
+    \end{subfigure}
+
+    \caption{Momentos finais da experiência de jogo.}
+    \label{fig:ego_3}
+\end{figure}
+
+A progressão culmina na resolução do último \textit{puzzle}, seguida da
+sequência final que conclui a narrativa do jogo.
+
 %\cleardoublepage
 \chapter{Validação e Testes}
 \label{ch:validacao-testes}
@@ -1476,11 +1574,12 @@ Para avaliar a satisfação do jogador, recorreu-se ao \texttt{GUESS-18}
 \cite{guess}. O \texttt{GUESS-18} organiza-se em nove subescalas
 (duas perguntas cada), que cobrem aspetos como usabilidade, narrativa,
 imersão, prazer, liberdade criativa, estética sonora, gratificação pessoal,
-ligação social e estética visual. As respostas são recolhidas numa escala de
-Likert de 7 pontos, de \textit{``Disagree Completely''} a \textit{``Agree
-Completely''}, com um item de formulação negativa (\textit{``I feel bored
-while playing the game''}) que é invertido antes da agregação por subescala.
-
+ligação social e estética visual. As respostas são recolhidas através de uma 
+escala de Likert de 7 pontos, que varia entre \textit{`Disagree Completely''} 
+e \textit{`Agree Completely''}. O questionário inclui um item formulado de forma 
+negativa (\textit{``I feel bored while playing the game''}), cuja pontuação é 
+invertida antes do cálculo dos resultados de cada subescala.
+\par
 Uma vez que o \texttt{GUESS-18} não avalia diretamente a compreensão dos
 objetivos e mecânicas do jogo, o questionário foi complementado com um
 segundo bloco de perguntas, desenvolvido especificamente para este projeto.
@@ -1532,7 +1631,7 @@ a sua análise e interpretação.
 Participaram nos testes de validação 7 utilizadores, com idades entre os 16
 e os 22 anos (4 do género masculino, 2 feminino, 1 preferiu não indicar).
 Três dos sete participantes já tinham jogado títulos em Realidade Virtual
-antes, mas apenas um possuía \textit{headset} próprio. Quatro dos sete
+antes e apenas um possuía \textit{headset} próprio. Quatro dos sete
 participantes reportaram ter tendência para sentir enjoo facilmente, um
 dado relevante para a interpretação dos itens de conforto discutidos mais
 abaixo.
