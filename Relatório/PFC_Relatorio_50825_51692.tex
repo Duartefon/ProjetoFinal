@@ -828,7 +828,8 @@ em quatro secções principais. Na secção~\ref{sec:arquitetura-sistema} é
 apresentada a arquitetura do sistema. Na secção~\ref{sec:elementos-graficos} são
 detalhados os elementos gráficos e o ambiente do jogo e, por fim, na
 secção~\ref{sec:sistemas-interativos}, são descritos os sistemas
-interativos que sustentam a jogabilidade.
+interativos que sustentam a jogabilidade. Para concluir, na secção~\ref{sec:egofr}, é 
+descrito e ilustrado o resultado final do jogo.
 
 % NOTA PARA A ESCRITA DA IMPLEMENTAÇÃO:
 % - Foco: APLICAÇÃO PRÁTICA, ENGENHARIA E PRODUÇÃO PRÓPRIA.
@@ -1417,7 +1418,7 @@ da ordem ou hierarquia da cena.
 
 De modo a automatizar a configuração inicial, foi desenvolvida uma
 ferramenta de editor acessível através do menu
-\texttt{Tools > Setup Saveable Objects}, exemplificado na Figura~\ref{fig:setup_saveable_objects}. 
+\texttt{Tools > Setup Saveable Objects}. 
 Esta ferramenta percorre
 toda a cena em busca de objetos com comportamentos manipuláveis,
 nomeadamente objetos com \texttt{XRGrabInteractable} ou com
@@ -1426,58 +1427,35 @@ o componente \texttt{SaveableObject}. Este procedimento elimina a necessidade
 de configurar manualmente
 cada objeto da cena, que é mais trabalhoso e propício a erros de omissão.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=1.1]{Imagens/tool_saveable_objects.png}
-    \caption{Janela de configuração inicial dos objetos manipuláveis.}
-    \label{fig:setup_saveable_objects}
-\end{figure}
-
 Por fim, para dar \textit{feedback} ao utilizador após uma gravação,
 foi implementada uma animação de texto em \texttt{HUD} que surge, pisca três
 vezes com um \textit{fade}, e desaparece automaticamente.
 
-\section{\textit{Ego Fractum}}
+\section{\textit{Ego Fractum}}\label{egofr}
 
 Esta secção apresenta uma visão geral de \textit{Ego Fractum} através de
 capturas de ecrã representativas dos principais momentos da experiência de jogo.
 O objetivo é ilustrar os ambientes, a progressão e as mecânicas principais para
-facilitar a compreensão das decisões de desenvolvimento descritas ao longo
-deste relatório.
-\par
+facilitar a compreensão das decisões de desenvolvimento descritas ao longo deste
+relatório.
+
 Ao longo do jogo, o jogador explora um laboratório abandonado, interage com
 objetos do ambiente e resolve uma sequência de \textit{puzzles} para progredir
-na narrativa. As figuras seguintes apresentam diferentes momentos do jogo,
-acompanhados de uma breve descrição do contexto e das ações realizadas pelo
-jogador.
-
-%
-%Figura 1 – Introdução ao jogo
-% (a) Menu principal
-% (b) Átrio inicial
-% (c) Primeiro objetivo
-%Figura 2 – Progressão
-% (a) Exploração do laboratório
-% (b) Resolução de um puzzle
-% (c) Interface diegética
-%Figura 3 – Fase final
-%( a) Último puzzle
-%( b) Inimigo
-% (c) Cena final
-%
+na narrativa. As Figuras~\ref{fig:ego_1}, \ref{fig:ego_2} e \ref{fig:ego_3}
+apresentam diferentes momentos da experiência de jogo.
 
 \begin{figure}[H]
     \centering
 
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Imagens/isel_logo.png}
+        \includegraphics[width=\textwidth]{Imagens/egofr_menu.jpeg}
         \caption{Menu principal.}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Imagens/isel_logo.png}
+        \includegraphics[width=\textwidth]{Imagens/egofr_intro.png}
         \caption{Início do jogo.}
     \end{subfigure}
 
@@ -1485,17 +1463,17 @@ jogador.
     \label{fig:ego_1}
 \end{figure}
 
-O jogo inicia-se no menu principal, onde o jogador pode iniciar uma nova
-partida ou carregar o progresso anteriormente guardado. Após o início da
-sessão, o jogador é colocado no laboratório, onde começa a exploração do
-ambiente.
+O jogo inicia-se no menu principal, onde o jogador pode iniciar um novo jogo ou
+carregar o progresso anteriormente guardado. Conforme ilustrado na
+Figura~\ref{fig:ego_1}, após o início da sessão o jogador é colocado no
+laboratório, onde começa a exploração do ambiente.
 
 \begin{figure}[H]
     \centering
 
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Imagens/isel_logo.png}
+        \includegraphics[width=\textwidth]{Imagens/egofr_exploracao.png}
         \caption{Exploração do laboratório.}
     \end{subfigure}
     \hfill
@@ -1509,31 +1487,33 @@ ambiente.
     \label{fig:ego_2}
 \end{figure}
 
-Ao longo do jogo, o jogador percorre diferentes áreas do laboratório,
-interage com objetos do ambiente e resolve \textit{puzzles} para desbloquear
-novas zonas e progredir na narrativa.
+Como se observa na Figura~\ref{fig:ego_2}, o jogador percorre diferentes áreas
+do laboratório, interage com objetos do ambiente e resolve \textit{puzzles} para
+desbloquear novas zonas e progredir na narrativa.
 
 \begin{figure}[H]
     \centering
 
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Imagens/isel_logo.png}
-        \caption{Último \textit{puzzle}.}
+        \includegraphics[width=\textwidth]{Imagens/egofr_puzzle2.png}
+        \caption{Segundo \textit{puzzle}.}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Imagens/isel_logo.png}
-        \caption{Momento final do jogo.}
+        \includegraphics[width=\textwidth]{Imagens/egofr_final.png}
+        \caption{Terceiro \textit{puzzle}.}
     \end{subfigure}
 
-    \caption{Momentos finais da experiência de jogo.}
+    \caption{\textit{Puzzles} e momentos finais da experiência de jogo.}
     \label{fig:ego_3}
 \end{figure}
 
-A progressão culmina na resolução do último \textit{puzzle}, seguida da
-sequência final que conclui a narrativa do jogo.
+A Figura~\ref{fig:ego_3} apresenta os momentos finais 
+da experiência, nos quais
+o jogador resolve os últimos \textit{puzzles} e desencadeia a sequência que
+conclui a narrativa.
 
 %\cleardoublepage
 \chapter{Validação e Testes}
