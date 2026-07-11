@@ -1742,6 +1742,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2846913617094168697, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: m_Volume
+      value: 0.356
+      objectReference: {fileID: 0}
     - target: {fileID: 6133986819431208580, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: thumbPressAction
       value: 
