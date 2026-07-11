@@ -10,19 +10,28 @@ namespace PuzzleSystem
         [SerializeField] private GameObject[] interactorsToDisable;
         [SerializeField] private TransferBeam _transferBeam;
         [SerializeField] private IntroSequenceManager _introSequenceManager;
+
+        [SerializeField] private DoorController _doorController;
+        [SerializeField] private GameObject _miniPlayerModel;
+
+
         //for debbuging to delete
         public bool resetPuzzle = false;
+
         public void OnPuzzleStarted()
         {
             _enemyStateMachine.OnPuzzleStarted();
+            _miniPlayerModel.SetActive(false);
             DisableInteractorComponents();
+            _introSequenceManager.OnPlayMazeSequence();
+
+            UnlockDoors();
         }
 
         public void OnPuzzleReset()
         {
             Reset();
             DisableInteractorComponents();
-
         }
 
         private void Reset()
@@ -30,14 +39,19 @@ namespace PuzzleSystem
             _enemyStateMachine.OnPuzzleRestarted();
             resetPuzzle = false;
             puzzleStarted = false;
-                    
-                    
+
+
             _transferBeam.OnResetPlayer();
         }
+
         public void OnPuzzleEnded()
         {
             _enemyStateMachine.OnPuzzleRestarted();
-            if(!_introSequenceManager.gameObject.activeSelf) _introSequenceManager.gameObject.SetActive(true);
+            if (!_introSequenceManager.gameObject.activeSelf) _introSequenceManager.gameObject.SetActive(true);
+
+
+            PuzzleManager.Instance.CompletePuzzle(puzzleKey);
+
             _introSequenceManager.StartEnding();
         }
 
@@ -54,8 +68,7 @@ namespace PuzzleSystem
             if (puzzleStarted)
             {
                 OnPuzzleStarted();
-              
-
+                _doorController.OpenWithoutGenerator();
             }
         }
     }

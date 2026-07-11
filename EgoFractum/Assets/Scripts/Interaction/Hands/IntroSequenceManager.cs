@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -10,54 +12,69 @@ using UnityEngine.UI;
 /// </summary>
 public class IntroSequenceManager : MonoBehaviour
 {
-    [Header("UI Elements")]
-    [SerializeField] private Image blackScreen;
+    [Header("UI Elements")] [SerializeField]
+    private Image blackScreen;
+
     [SerializeField] private TextMeshProUGUI introConsoleText;
     [SerializeField] private TextMeshProUGUI endingConsoleText;
     [SerializeField] private TextMeshProUGUI introHudText;
+    [SerializeField] private TextMeshProUGUI mazeHudText;
 
-    [Header("Audio")]
-    [SerializeField] private AudioSource introAudio;
+    [Header("Audio")] [SerializeField] private AudioSource introAudio;
 
-    [Header("Player")]
-    [Tooltip("Locomotion root. Disabled while a sequence plays.")]
-    [SerializeField] private GameObject locomotion;
-    [Tooltip("Leave empty to resolve by the 'Player' tag at runtime.")]
-    [SerializeField] private Transform player;
+    [Header("Player")] [Tooltip("Locomotion root. Disabled while a sequence plays.")] [SerializeField]
+    private GameObject locomotion;
+
+    [Tooltip("Leave empty to resolve by the 'Player' tag at runtime.")] [SerializeField]
+    private Transform player;
+
     [SerializeField] private GameObject[] leftHandModel;
     [SerializeField] private GameObject[] rightHandModel;
 
-    [Header("Transfer Points")]
-    [SerializeField] private PlayerTransferData introStartPosition;
+    [Header("Transfer Points")] [SerializeField]
+    private PlayerTransferData introStartPosition;
+
     [SerializeField] private PlayerTransferData introEndPosition;
     [SerializeField] private PlayerTransferData endingStartPosition;
     [SerializeField] private TransitionEffectManager transitionEffectManager;
 
-    [Header("Intro Timings (seconds)")]
-    [Tooltip("Silence before the intro quote appears.")]
-    [SerializeField, Min(0f)] private float delayBeforeQuote = 3f;
-    [Tooltip("How long the intro quote stays on screen.")]
-    [SerializeField, Min(0f)] private float quoteStayTime = 6.5f;
-    [Tooltip("How long the HUD hint stays up after the player arrives.")]
-    [SerializeField, Min(0f)] private float hudHintDuration = 6.5f;
+    [Header("Intro Timings (seconds)")] [Tooltip("Silence before the intro quote appears.")] [SerializeField, Min(0f)]
+    private float delayBeforeQuote = 3f;
+
+    [Tooltip("How long the intro quote stays on screen.")] [SerializeField, Min(0f)]
+    private float quoteStayTime = 6.5f;
+
+    [Tooltip("How long the HUD hint stays up after the player arrives.")] [SerializeField, Min(0f)]
+    private float hudHintDuration = 6.5f;
 
     [Header("Credits (ending only)")]
     [Tooltip("Pause after the transition effect before the credits fade in.")]
-    [SerializeField, Min(0f)] private float delayBeforeCredits = 1f;
-    [Tooltip("How long the credits stay fully visible.")]
-    [SerializeField, Min(0f)] private float creditsHoldTime = 8f;
-    [Tooltip("Alpha change per second. Only used by the credits fade.")]
-    [SerializeField, Min(0.01f)] private float fadeSpeed = 1f;
-    [Tooltip("Fade the black screen in behind the credits.")]
-    [SerializeField] private bool fadeToBlackForCredits = true;
-    [Tooltip("How long the ending quote stays on screen.")]
-    [SerializeField, Min(0f)] private float endingQuoteStayTime = 6.5f;
+    [SerializeField, Min(0f)]
+    private float delayBeforeCredits = 1f;
+
+    [Tooltip("How long the credits stay fully visible.")] [SerializeField, Min(0f)]
+    private float creditsHoldTime = 8f;
+
+    [Tooltip("Alpha change per second. Only used by the credits fade.")] [SerializeField, Min(0.01f)]
+    private float fadeSpeed = 1f;
+
+    [Tooltip("Fade the black screen in behind the credits.")] [SerializeField]
+    private bool fadeToBlackForCredits = true;
+
+    [Tooltip("How long the ending quote stays on screen.")] [SerializeField, Min(0f)]
+    private float endingQuoteStayTime = 6.5f;
 
     [Header("Credits (ending only)")]
     [Tooltip("The credits roll. Can be the same object as endingConsoleText if you reuse it.")]
-    [SerializeField] private TextMeshProUGUI creditsText;
+    [SerializeField]
+    private GameObject endingPanel;
 
+    [SerializeField] private TextMeshProUGUI thankyouText;
+    [SerializeField] private TextMeshProUGUI endingText;
+    [SerializeField] private Image logo;
+    [SerializeField] private TextMeshProUGUI specialThanksText;
     private Coroutine _sequence;
+    private bool _hasIntroPlayed = false;
 
     /// <summary>True while an intro or ending sequence is playing.</summary>
     public bool IsPlaying => _sequence != null;
@@ -75,6 +92,14 @@ public class IntroSequenceManager : MonoBehaviour
         SetTextVisible(introHudText, false);
         SetTextVisible(endingConsoleText, false, 0f);
         SetGraphicAlpha(blackScreen, 0f);
+    }
+
+
+    public void Start()
+    {
+        if (_hasIntroPlayed) return;
+        StartIntro();
+        _hasIntroPlayed = true;
     }
 
     public void StartIntro()
@@ -139,6 +164,18 @@ public class IntroSequenceManager : MonoBehaviour
         Debug.Log("Intro finished. Waiting for player to open the door...");
     }
 
+    public void OnPlayMazeSequence()
+    {
+        StartCoroutine(MazeSequence());
+    }
+
+    private IEnumerator MazeSequence()
+    {
+        SetTextVisible(mazeHudText, true);
+        yield return new WaitForSeconds(hudHintDuration);
+        SetTextVisible(mazeHudText, false);
+    }
+
     private IEnumerator PlayEndSequence()
     {
         transitionEffectManager.TransitionPlayerTo(player, endingStartPosition);
@@ -151,7 +188,7 @@ public class IntroSequenceManager : MonoBehaviour
 
         // Same as the intro: snap the quote on, hold, snap it off.
         SetTextVisible(endingConsoleText, true, 1f);
-        yield return new WaitForSeconds(endingQuoteStayTime);
+        yield return new WaitForSeconds(quoteStayTime);
         SetTextVisible(endingConsoleText, false);
 
         transitionEffectManager.PlayEffect();
@@ -163,15 +200,29 @@ public class IntroSequenceManager : MonoBehaviour
         yield return FadeGraphic(blackScreen, 1f);
         yield return new WaitForSeconds(delayBeforeCredits);
 
-        SetTextVisible(creditsText, true, 0f);
-        yield return FadeGraphic(creditsText, 1f);
+        endingPanel.SetActive(true);
+
+        yield return FadeGraphic(thankyouText, 1f);
+        yield return FadeGraphic(logo, 1f);
         yield return new WaitForSeconds(creditsHoldTime);
-        yield return FadeGraphic(creditsText, 0f);
-        SetTextVisible(creditsText, false);
+        yield return FadeGraphic(thankyouText, 0f);
+        yield return FadeGraphic(logo, 0f);
+
+
+        yield return FadeGraphic(endingText, 1f);
+        yield return new WaitForSeconds(creditsHoldTime);
+        yield return FadeGraphic(endingText, 0f);
+
+        yield return FadeGraphic(specialThanksText, 1f);
+        yield return new WaitForSeconds(creditsHoldTime);
+        yield return FadeGraphic(specialThanksText, 0f);
+        yield return new WaitForSeconds(creditsHoldTime);
 
         _sequence = null;
+        SceneManager.LoadScene("MenuScene");
         Debug.Log("Ending finished. Credits complete.");
     }
+
     public void UnlockFinalMovement()
     {
         LockMovement(false);
