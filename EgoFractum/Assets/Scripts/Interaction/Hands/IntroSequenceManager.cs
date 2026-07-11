@@ -95,7 +95,6 @@ public class IntroSequenceManager : MonoBehaviour
     }
 
 
-
     public void Start()
     {
         if (_hasIntroPlayed) return;
@@ -164,10 +163,12 @@ public class IntroSequenceManager : MonoBehaviour
 
         Debug.Log("Intro finished. Waiting for player to open the door...");
     }
+
     public void OnPlayMazeSequence()
     {
         StartCoroutine(MazeSequence());
     }
+
     private IEnumerator MazeSequence()
     {
         SetTextVisible(mazeHudText, true);
@@ -187,7 +188,7 @@ public class IntroSequenceManager : MonoBehaviour
 
         // Same as the intro: snap the quote on, hold, snap it off.
         SetTextVisible(endingConsoleText, true, 1f);
-        yield return new WaitForSeconds(endingQuoteStayTime);
+        yield return new WaitForSeconds(quoteStayTime);
         SetTextVisible(endingConsoleText, false);
 
         transitionEffectManager.PlayEffect();
@@ -218,7 +219,7 @@ public class IntroSequenceManager : MonoBehaviour
         yield return new WaitForSeconds(creditsHoldTime);
 
         _sequence = null;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MenuScene");
         Debug.Log("Ending finished. Credits complete.");
     }
 

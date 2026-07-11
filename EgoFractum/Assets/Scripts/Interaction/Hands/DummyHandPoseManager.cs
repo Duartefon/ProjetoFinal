@@ -134,7 +134,8 @@ public class DummyHandPoseManager : MonoBehaviour
             }
 
             leftDummyHand.SetActive(showDummy);
-            leftDummyHand.transform.position = hit.point;
+            rightDummyHand.transform.position = new Vector3(hit.point.x, leftDummyHand.transform.position.y,
+                leftDummyHand.transform.position.z);
             leftPlayerHand.SetActive(!showDummy);
         }
     }
