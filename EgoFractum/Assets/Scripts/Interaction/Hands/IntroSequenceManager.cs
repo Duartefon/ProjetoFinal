@@ -2,6 +2,7 @@ using System.Collections;
 using ScriptableObjects;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -55,8 +56,11 @@ public class IntroSequenceManager : MonoBehaviour
 
     [Header("Credits (ending only)")]
     [Tooltip("The credits roll. Can be the same object as endingConsoleText if you reuse it.")]
-    [SerializeField] private TextMeshProUGUI creditsText;
-
+    [SerializeField] private GameObject endingPanel;
+    [SerializeField] private TextMeshProUGUI thankyouText;
+    [SerializeField] private TextMeshProUGUI endingText;
+    [SerializeField] private Image  logo;
+    [SerializeField] private TextMeshProUGUI  specialThanksText;
     private Coroutine _sequence;
     private bool _hasIntroPlayed = false;
 
@@ -170,14 +174,27 @@ public class IntroSequenceManager : MonoBehaviour
         // Now fade to black, then roll the credits on top of it.
         yield return FadeGraphic(blackScreen, 1f);
         yield return new WaitForSeconds(delayBeforeCredits);
-
-        SetTextVisible(creditsText, true, 0f);
-        yield return FadeGraphic(creditsText, 1f);
+        
+        endingPanel.SetActive(true);
+        
+        yield return FadeGraphic(thankyouText, 1f);
+        yield return FadeGraphic(logo, 1f);
         yield return new WaitForSeconds(creditsHoldTime);
-        yield return FadeGraphic(creditsText, 0f);
-        SetTextVisible(creditsText, false);
+        yield return FadeGraphic(thankyouText, 0f);
+        yield return FadeGraphic(logo, 0f);
+        
+        
+        yield return FadeGraphic(endingText, 1f);
+        yield return new WaitForSeconds(creditsHoldTime);
+        yield return FadeGraphic(endingText, 0f);
+        
+        yield return FadeGraphic(specialThanksText, 1f);
+        yield return new WaitForSeconds(creditsHoldTime);
+        yield return FadeGraphic(specialThanksText, 0f);
+        yield return new WaitForSeconds(creditsHoldTime);
 
         _sequence = null;
+        SceneManager.LoadScene("MainMenu");
         Debug.Log("Ending finished. Credits complete.");
     }
     public void UnlockFinalMovement()

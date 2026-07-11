@@ -12,11 +12,14 @@ namespace PuzzleSystem
         [SerializeField] private IntroSequenceManager _introSequenceManager;
         
         [SerializeField] private DoorController _doorController;
+        [SerializeField] private GameObject _miniPlayerModel;
+        
         //for debbuging to delete
         public bool resetPuzzle = false;
         public void OnPuzzleStarted()
         {
             _enemyStateMachine.OnPuzzleStarted();
+            _miniPlayerModel.SetActive(false); 
             DisableInteractorComponents();
         }
 
