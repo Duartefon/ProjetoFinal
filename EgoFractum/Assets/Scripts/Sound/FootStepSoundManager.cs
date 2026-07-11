@@ -45,12 +45,12 @@ public class FootStepSoundManager : MonoBehaviour
             || !(_timestamp > _timeLastStep + delayBetweenSteps) || !isManuallyGrounded) return;
        
         _timeLastStep = Time.fixedTime;
-        footStepsSource.clip = IsOnMetal() ? metalStepSound : normalStepSound;
+        //footStepsSource.clip = 
         footStepsSource.pitch = Random.Range(1, maxPitch);
         footStepsSource.volume = Random.Range(volume * 0.5f, volume * 1.2f);
         _boolAux = !_boolAux;
         footStepsSource.panStereo = _boolAux ? -1 + earOffset : 1 - earOffset;
-        footStepsSource.Play();
+        footStepsSource.PlayOneShot( IsOnMetal() ? metalStepSound : normalStepSound);
     }
 
     /**
