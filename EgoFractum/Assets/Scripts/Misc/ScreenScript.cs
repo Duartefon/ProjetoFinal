@@ -1,11 +1,12 @@
     using Gameplay;
 using UnityEngine;
 
-public class ComputerScript : MonoBehaviour
+public class ScreenScript : MonoBehaviour
 {
     [SerializeField] private Light screenLight;
     [SerializeField] private Material screenOnMaterial, screenOffMaterial;
     [SerializeField] private MeshRenderer screenMesh;
+    private GeneratorScript _generator;
 
     private void OnEnable()
     { 
@@ -17,6 +18,16 @@ public class ComputerScript : MonoBehaviour
     {
         GeneratorScript.OnEnergyEstablished -= TurnOn;
         GeneratorScript.OnEnergyLost -= TurnOff;
+    }
+    
+    private void Start()
+    {
+        _generator = GameObject.FindWithTag("Generator").GetComponent<GeneratorScript>();
+        
+        if (_generator != null && _generator.EnergyEstablished)
+            TurnOn();
+        else
+            TurnOff();
     }
 
     private void TurnOn()
