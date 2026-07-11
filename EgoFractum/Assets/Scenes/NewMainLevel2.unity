@@ -14443,6 +14443,18 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2285369336240298610, guid: c4c18bf0d5ea880478f3b2a86e0c39a3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2285369336240298610, guid: c4c18bf0d5ea880478f3b2a86e0c39a3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2285369336240298610, guid: c4c18bf0d5ea880478f3b2a86e0c39a3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2285369336240298610, guid: c4c18bf0d5ea880478f3b2a86e0c39a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.164
       objectReference: {fileID: 0}
@@ -32542,7 +32554,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856616931}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -34303,13 +34315,14 @@ GameObject:
   - component: {fileID: 917004411}
   - component: {fileID: 917004414}
   - component: {fileID: 917004413}
+  - component: {fileID: 917004415}
   m_Layer: 5
   m_Name: SaveText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &917004411
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34336,7 +34349,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917004410}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -34349,7 +34362,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' '
+  m_text: "> Writing to Memory Module... \n> Save Complete!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8350db4de03210d44a07b9d70f702635, type: 2}
   m_sharedMaterial: {fileID: 3824676518523848662, guid: 8350db4de03210d44a07b9d70f702635, type: 2}
@@ -34429,6 +34442,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917004410}
   m_CullTransparentMesh: 1
+--- !u!114 &917004415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917004410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85cdd9a08acad7e4da37fd3dffa4ecd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scenes.TP3.Scripts.UI.TypewriterEffect
+  testText: 
+  charactersPerSecond: 35
+  interpunctuationDelay: 0.5
+  quickSkip: 0
+  skipSpeedup: 5
+  sendDoneDelay: 0.25
 --- !u!1001 &921929580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62523,8 +62554,8 @@ MonoBehaviour:
   endingStartPosition: {fileID: 11400000, guid: 2031a1850d7a0e44e8a833aa17b17269, type: 2}
   transitionEffectManager: {fileID: 588166212}
   delayBeforeQuote: 1
-  quoteStayTime: 2
-  hudHintDuration: 6.5
+  quoteStayTime: 24
+  hudHintDuration: 5
   delayBeforeCredits: 24
   creditsHoldTime: 8
   fadeSpeed: 1
