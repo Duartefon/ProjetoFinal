@@ -30,7 +30,7 @@ public class IntroSequenceManager : MonoBehaviour
     [SerializeField] private PlayerTransferData introPosition;
     
     [SerializeField] private PlayerTransferData introEndPosition;
-    
+    [SerializeField] private PlayerTransferData endingEndPosition;
     [SerializeField] private TransitionEffectManager _transitionEffectManager;
     private GameObject player;
     void Start()
@@ -41,15 +41,20 @@ public class IntroSequenceManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         _transitionEffectManager.TransitionPlayerTo(player.transform, introPosition);
         
-        StartIntro(); 
+       // StartIntro(); 
     }
 
     public void StartIntro()
     {
-        StartCoroutine(PlayIntroSequence());
+        StartCoroutine(PlayIntroSequence(introPosition));
+    }
+    
+    public void StartEnding()
+    {
+        StartCoroutine(PlayIntroSequence(endingEndPosition));
     }
 
-    private IEnumerator PlayIntroSequence()
+    private IEnumerator PlayIntroSequence(PlayerTransferData positionData )
     {
           
         Debug.Log("I'M starting to fade");
@@ -76,7 +81,7 @@ public class IntroSequenceManager : MonoBehaviour
         
     
         
-        _transitionEffectManager.TransitionPlayerTo(player.transform, introEndPosition);
+        _transitionEffectManager.TransitionPlayerTo(player.transform, positionData);
         
         DisableHand(leftHandModel, false);
         DisableHand(rightHandModel, false);

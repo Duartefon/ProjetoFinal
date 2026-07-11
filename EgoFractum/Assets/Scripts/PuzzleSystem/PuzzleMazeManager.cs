@@ -9,7 +9,7 @@ namespace PuzzleSystem
         [SerializeField] private EnemyStateMachine _enemyStateMachine;
         [SerializeField] private GameObject[] interactorsToDisable;
         [SerializeField] private TransferBeam _transferBeam;
-        
+        [SerializeField] private IntroSequenceManager _introSequenceManager;
         //for debbuging to delete
         public bool resetPuzzle = false;
         public void OnPuzzleStarted()
@@ -37,6 +37,8 @@ namespace PuzzleSystem
         public void OnPuzzleEnded()
         {
             _enemyStateMachine.OnPuzzleRestarted();
+            if(!_introSequenceManager.gameObject.activeSelf) _introSequenceManager.gameObject.SetActive(true);
+            _introSequenceManager.StartEnding();
         }
 
         private void DisableInteractorComponents()
