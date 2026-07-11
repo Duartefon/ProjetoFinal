@@ -1,10 +1,10 @@
 using System.Text.RegularExpressions;
+using PuzzleSystem;
 using UnityEngine;
 
 public class Keypad : MonoBehaviour
 {
     [SerializeField] private string keyCode = "";
-    [SerializeField] private string puzzleKey = "Weights";
     [SerializeField] private TMPro.TMP_Text screenText;
     [SerializeField] PuzzleScaleManager _puzzleScaleManager;
     
@@ -46,7 +46,6 @@ public class Keypad : MonoBehaviour
         if (_inputKeyCode.Equals(keyCode))
         {
             _puzzleFinished = true;
-            PuzzleManager.Instance.CompletePuzzle(puzzleKey);
             SetText("Correct!");
             _puzzleScaleManager.OnCompletePuzzle();
             

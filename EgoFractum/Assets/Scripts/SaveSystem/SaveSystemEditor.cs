@@ -1,57 +1,60 @@
-using UnityEngine;
-using UnityEditor;
-using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-public class SaveSystemEditor
+namespace SaveSystem
 {
-    /**
+    public abstract class SaveSystemEditor
+    {
+        /**
      * Este script permite que, a partir do menu "Tools" do Unity, seja
      * adicionado automaticamente o script SaveableObject a todos os objetos
      * interativos (com Rigidbody ou Interactable), atribuindo-lhes um ID
      * aleatório que os identifica.
      */
-    [MenuItem("Tools/Setup Saveable Objects")]
-    public static void SetupAllXRObjects()
-    {
-        var allGrabbables = Object.FindObjectsByType<XRGrabInteractable>(FindObjectsSortMode.InstanceID);
-        var allRigidbodies = Object.FindObjectsByType<Rigidbody>(FindObjectsSortMode.InstanceID);
-        HashSet<GameObject> objectsToSetup = new HashSet<GameObject>();
-
-        foreach (var grabbable in allGrabbables)
+        [MenuItem("Tools/Setup Saveable Objects")]
+        public static void SetupAllXRObjects()
         {
-            objectsToSetup.Add(grabbable.gameObject);
-        }
+            var allGrabbables = Object.FindObjectsByType<XRGrabInteractable>(FindObjectsSortMode.InstanceID);
+            var allRigidbodies = Object.FindObjectsByType<Rigidbody>(FindObjectsSortMode.InstanceID);
+            HashSet<GameObject> objectsToSetup = new HashSet<GameObject>();
 
-        foreach (var rb in allRigidbodies)
-        {
-            if (!rb.isKinematic && !rb.gameObject.CompareTag("Player"))
+            foreach (var grabbable in allGrabbables)
             {
-                objectsToSetup.Add(rb.gameObject);
-            }
-        }
-
-        int addedScripts = 0;
-        int addedIDs = 0;
-
-        foreach (GameObject obj in objectsToSetup)
-        {
-            SaveableObject saveScript = obj.GetComponent<SaveableObject>();
-            if (saveScript == null)
-            {
-                saveScript = obj.AddComponent<SaveableObject>();
-                addedScripts++;
+                objectsToSetup.Add(grabbable.gameObject);
             }
 
-            if (string.IsNullOrEmpty(saveScript.uniqueID))
+            foreach (var rb in allRigidbodies)
             {
-                Undo.RecordObject(saveScript, "Generated Unique ID"); 
-                saveScript.uniqueID = System.Guid.NewGuid().ToString();
-                EditorUtility.SetDirty(saveScript); 
-                addedIDs++;
+                if (!rb.isKinematic && !rb.gameObject.CompareTag("Player"))
+                {
+                    objectsToSetup.Add(rb.gameObject);
+                }
             }
-        }
 
-        Debug.Log($"Setup de objetos completo. Adicionados {addedScripts} scripts e gerados {addedIDs} IDs em {objectsToSetup.Count} objetos totais.");
+            int addedScripts = 0;
+            int addedIDs = 0;
+
+            foreach (GameObject obj in objectsToSetup)
+            {
+                SaveableObject saveScript = obj.GetComponent<SaveableObject>();
+                if (saveScript == null)
+                {
+                    saveScript = obj.AddComponent<SaveableObject>();
+                    addedScripts++;
+                }
+
+                if (string.IsNullOrEmpty(saveScript.uniqueID))
+                {
+                    Undo.RecordObject(saveScript, "Generated Unique ID"); 
+                    saveScript.uniqueID = System.Guid.NewGuid().ToString();
+                    EditorUtility.SetDirty(saveScript); 
+                    addedIDs++;
+                }
+            }
+
+            Debug.Log($"Setup de objetos completo. Adicionados {addedScripts} scripts e gerados {addedIDs} IDs em {objectsToSetup.Count} objetos totais.");
+        }
     }
 }

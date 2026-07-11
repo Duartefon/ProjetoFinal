@@ -16,6 +16,7 @@ public class TransitionEffectManager : MonoBehaviour
 
     public void PlayEffect()
     {
+        if (!_effectAnimator.enabled) _effectAnimator.enabled = true;
         _effectAnimator.SetTrigger(_effectTrigger);
     }
     
@@ -24,7 +25,7 @@ public class TransitionEffectManager : MonoBehaviour
         _effectAnimator.SetTrigger(effectName);
     }
     
-    public void TransitionPlayerTo(Transform player,PlayerTransferData destinyData )
+    public void TransitionPlayerTo(Transform player, PlayerTransferData destinyData )
     {
         player.transform.position = destinyData.position;
         player.transform.eulerAngles = destinyData.rotation;
@@ -33,6 +34,12 @@ public class TransitionEffectManager : MonoBehaviour
         player.GetComponent<CharacterController>().stepOffset = destinyData.stepOffset;
     }
 
+    public void TransitionPlayerToPositionRotation(Transform player, PlayerTransferData destinyData)
+    {
+        player.transform.position = destinyData.position;
+        player.transform.eulerAngles = destinyData.rotation;
+     
+    }
     public void SetAnimator(bool active)
     {
         _effectAnimator.enabled = active;

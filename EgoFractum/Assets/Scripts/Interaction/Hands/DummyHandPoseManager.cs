@@ -7,9 +7,9 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class DummyHandPoseManager : MonoBehaviour
 {
     // Temos de dar check a qual mão é que interagiu -> esquerda ou direita
-    [Header("Dummy Hands")]
-    [Tooltip("As dummy hands substituem a mão controlada pelo jogador.")]
-    [SerializeField] private GameObject rightDummyHand;
+    [Header("Dummy Hands")] [Tooltip("As dummy hands substituem a mão controlada pelo jogador.")] [SerializeField]
+    private GameObject rightDummyHand;
+
     [SerializeField] private GameObject leftDummyHand;
 
     [Header("Player Hands (Visual)")] [SerializeField]
@@ -59,7 +59,7 @@ public class DummyHandPoseManager : MonoBehaviour
         }
 
 
-        Debug.Log("Grabbed by: " + arg0.interactorObject);
+        //Debug.Log("Grabbed by: " + arg0.interactorObject);
     }
 
     private void OnUngrab(SelectExitEventArgs arg0)
@@ -70,87 +70,72 @@ public class DummyHandPoseManager : MonoBehaviour
     private void ShowHand(IXRSelectInteractor interactor, bool showDummy)
     {
         Transform transform = interactor?.transform;
-        Debug.Log("[SHOW HAND] Interactor: " + interactor);
+        //Debug.Log("[SHOW HAND] Interactor: " + interactor);
         if (transform == null) return;
 
         bool isRight = transform.CompareTag("RightHand");
         bool isLeft = transform.CompareTag("LeftHand");
-        
-        Debug.Log("Is Right? " + isRight + " | " + "Is Left? " +  isLeft);
-        
-        if(!isRight && !isLeft) return;
+
+        //Debug.Log("Is Right? " + isRight + " | " + "Is Left? " +  isLeft);
+
+        if (!isRight && !isLeft) return;
 
         if (isRight)
         {
             rightDummyHand.SetActive(showDummy);
             rightPlayerHand.SetActive(!showDummy);
-        } else if (isLeft)
+        }
+        else if (isLeft)
         {
             leftDummyHand.SetActive(showDummy);
             leftPlayerHand.SetActive(!showDummy);
         }
     }
- 
-    private void ShowHandPosition(IXRSelectInteractor interactor,IXRSelectInteractable interactable, bool showDummy)
+
+    private void ShowHandPosition(IXRSelectInteractor interactor, IXRSelectInteractable interactable, bool showDummy)
     {
-        
-        
         var didHit = false;
-    
-        
+
+
         Transform transformInteractor = interactor?.transform;
         bool isRight = transformInteractor.CompareTag("RightHand");
         bool isLeft = transformInteractor.CompareTag("LeftHand");
-        
+
         if (!transformInteractor || !isRight && !isLeft) return;
-        
 
-    
-
-
-     
-        
-      
-        
-      
-        
-        
-        
-        Debug.Log("CHEGUEI");
         if (isRight)
-        {    
+        {
             RaycastHit hit = new RaycastHit();
             foreach (var raycastOrigin in rightHandRaycastOriginList)
             {
-                didHit =   Physics.Raycast(raycastOrigin.position, -Vector3.up , out hit, rayLenght, grabbableMask );
-                Debug.DrawRay(raycastOrigin.position, -Vector3.up* rayLenght, didHit ? Color.green:Color.red, 2f); // stays visible 2 seconds
+                didHit = Physics.Raycast(raycastOrigin.position, -Vector3.up, out hit, rayLenght, grabbableMask);
+                Debug.DrawRay(raycastOrigin.position, -Vector3.up * rayLenght, didHit ? Color.green : Color.red,
+                    2f); // stays visible 2 seconds
                 if (didHit) break;
             }
-            
-            if( !didHit ) return;
-            
+
+            if (!didHit) return;
+
             rightDummyHand.SetActive(showDummy);
-            rightDummyHand.transform.position = new Vector3( hit.point.x,  rightDummyHand.transform.position.y,  rightDummyHand.transform.position.z);
+            rightDummyHand.transform.position = new Vector3(hit.point.x, rightDummyHand.transform.position.y,
+                rightDummyHand.transform.position.z);
             rightPlayerHand.SetActive(!showDummy);
-        } 
-        if(isLeft) 
+        }
+
+        if (isLeft)
         {
             RaycastHit hit = new RaycastHit();
             foreach (var raycastOrigin in leftHandRaycastOriginList)
             {
-                didHit =   Physics.Raycast(raycastOrigin.position, -Vector3.up , out hit, rayLenght, grabbableMask );
-                Debug.DrawRay(raycastOrigin.position, -Vector3.up* rayLenght, didHit ? Color.green:Color.red, 2f); // stays visible 2 seconds
+                didHit = Physics.Raycast(raycastOrigin.position, -Vector3.up, out hit, rayLenght, grabbableMask);
+                Debug.DrawRay(raycastOrigin.position, -Vector3.up * rayLenght, didHit ? Color.green : Color.red,
+                    2f);
                 if (didHit) break;
             }
-            
-            leftDummyHand.SetActive(showDummy); 
+
+            leftDummyHand.SetActive(showDummy);
             leftDummyHand.transform.position = hit.point;
             leftPlayerHand.SetActive(!showDummy);
         }
-     
     }
-
-
-
-
 }
