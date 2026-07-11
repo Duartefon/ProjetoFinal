@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using PuzzleSystem;
 using ScriptableObjects;
@@ -23,19 +24,26 @@ namespace Gameplay
             PlayerToPuzzle,
             PuzzleToPlayer
         }
+
         private Coroutine _coroutine;
+        
+        private void Awake() => _VFXSettings.Initialize();
         private void Update()
         {
             bool didHit = Physics.Raycast(_raycastOrigin.position, _raycastOrigin.forward,
                 out var hit, _rayLength, layerMask);
+            
             Debug.DrawRay(_raycastOrigin.position, _raycastOrigin.forward * _rayLength);
 
             bool aimingAtTransfer = didHit && hit.transform.gameObject.CompareTag("Transfer");
 
+       
             _VFXSettings.Tick(aimingAtTransfer, Time.deltaTime);
 
             if (_VFXSettings.IsFull && _coroutine == null)
+             
                 _coroutine = StartCoroutine(OnTransfer(TransferState.PlayerToPuzzle));
+                
         }
 
         IEnumerator OnTransfer(TransferState transferState)
@@ -46,6 +54,7 @@ namespace Gameplay
             if (transferState.Equals(TransferState.PlayerToPuzzle))
             {
                 _transitionEffectManager.TransitionPlayerTo(player.transform, miniPlayerData);
+              
                 _puzzleMazeManager.OnPuzzleStarted();
             }
             else if (transferState.Equals(TransferState.PuzzleToPlayer))

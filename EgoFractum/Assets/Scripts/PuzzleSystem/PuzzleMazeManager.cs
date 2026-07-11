@@ -10,6 +10,8 @@ namespace PuzzleSystem
         [SerializeField] private GameObject[] interactorsToDisable;
         [SerializeField] private TransferBeam _transferBeam;
         [SerializeField] private IntroSequenceManager _introSequenceManager;
+        
+        [SerializeField] private DoorController _doorController;
         //for debbuging to delete
         public bool resetPuzzle = false;
         public void OnPuzzleStarted()
@@ -54,9 +56,12 @@ namespace PuzzleSystem
             if (puzzleStarted)
             {
                 OnPuzzleStarted();
+                _doorController.OpenWithoutGenerator();
               
 
             }
         }
+
+ 
     }
 }
