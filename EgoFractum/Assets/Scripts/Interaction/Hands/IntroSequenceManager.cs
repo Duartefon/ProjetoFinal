@@ -1,175 +1,233 @@
 using System.Collections;
 using ScriptableObjects;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.Serialization;
-using UnityEngine.XR.Interaction.Toolkit;
 
+/// <summary>
+/// Drives the opening and closing cinematics. The intro shows a console quote and hands
+/// control back to the player; the ending plays out and rolls the credits.
+/// </summary>
 public class IntroSequenceManager : MonoBehaviour
 {
     [Header("UI Elements")]
-    public Image blackScreen;
-    [FormerlySerializedAs("quoteText")] public TextMeshProUGUI introConsoleText;
-    public TextMeshProUGUI introHudText;
+    [SerializeField] private Image blackScreen;
+    [SerializeField] private TextMeshProUGUI introConsoleText;
+    [SerializeField] private TextMeshProUGUI endingConsoleText;
+    [SerializeField] private TextMeshProUGUI introHudText;
 
     [Header("Audio")]
-    public AudioSource introAudio; //I'm thinking this should be the sound of the different machines. Could also make a seperate sound manager that will be told by this manager to start played the sounds
+    [SerializeField] private AudioSource introAudio;
 
-    [Header("Player Controllers")]
-    [SerializeField] private  GameObject locomotion; 
-     
+    [Header("Player")]
+    [Tooltip("Locomotion root. Disabled while a sequence plays.")]
+    [SerializeField] private GameObject locomotion;
+    [Tooltip("Leave empty to resolve by the 'Player' tag at runtime.")]
+    [SerializeField] private Transform player;
+    [SerializeField] private GameObject[] leftHandModel;
+    [SerializeField] private GameObject[] rightHandModel;
 
-  //Trying out hiding the hands at the start of the intro
-    public GameObject[] leftHandModel;
-    public GameObject[] rightHandModel;
-
-    [Header("Timings")]
-    public float quoteStayTime = 6.5f;
-    public float fadeSpeed = 1f;
-    [SerializeField] private PlayerTransferData introPosition;
-    
+    [Header("Transfer Points")]
+    [SerializeField] private PlayerTransferData introStartPosition;
     [SerializeField] private PlayerTransferData introEndPosition;
-    [SerializeField] private PlayerTransferData endingEndPosition;
-    [SerializeField] private TransitionEffectManager _transitionEffectManager;
-    private GameObject player;
-    void Start()
+    [SerializeField] private PlayerTransferData endingStartPosition;
+    [SerializeField] private TransitionEffectManager transitionEffectManager;
+
+    [Header("Intro Timings (seconds)")]
+    [Tooltip("Silence before the intro quote appears.")]
+    [SerializeField, Min(0f)] private float delayBeforeQuote = 3f;
+    [Tooltip("How long the intro quote stays on screen.")]
+    [SerializeField, Min(0f)] private float quoteStayTime = 6.5f;
+    [Tooltip("How long the HUD hint stays up after the player arrives.")]
+    [SerializeField, Min(0f)] private float hudHintDuration = 6.5f;
+
+    [Header("Credits (ending only)")]
+    [Tooltip("Pause after the transition effect before the credits fade in.")]
+    [SerializeField, Min(0f)] private float delayBeforeCredits = 1f;
+    [Tooltip("How long the credits stay fully visible.")]
+    [SerializeField, Min(0f)] private float creditsHoldTime = 8f;
+    [Tooltip("Alpha change per second. Only used by the credits fade.")]
+    [SerializeField, Min(0.01f)] private float fadeSpeed = 1f;
+    [Tooltip("Fade the black screen in behind the credits.")]
+    [SerializeField] private bool fadeToBlackForCredits = true;
+    [Tooltip("How long the ending quote stays on screen.")]
+    [SerializeField, Min(0f)] private float endingQuoteStayTime = 6.5f;
+
+    [Header("Credits (ending only)")]
+    [Tooltip("The credits roll. Can be the same object as endingConsoleText if you reuse it.")]
+    [SerializeField] private TextMeshProUGUI creditsText;
+
+    private Coroutine _sequence;
+
+    /// <summary>True while an intro or ending sequence is playing.</summary>
+    public bool IsPlaying => _sequence != null;
+
+    private void Awake()
     {
- 
-        introConsoleText.enabled = false;
-        
-        player = GameObject.FindGameObjectWithTag("Player");
-        _transitionEffectManager.TransitionPlayerTo(player.transform, introPosition);
-        
-       // StartIntro(); 
+        if (player == null)
+        {
+            GameObject found = GameObject.FindGameObjectWithTag("Player");
+            if (found != null) player = found.transform;
+            else Debug.LogError($"{nameof(IntroSequenceManager)}: no GameObject tagged 'Player' found.", this);
+        }
+
+        SetTextVisible(introConsoleText, false);
+        SetTextVisible(introHudText, false);
+        SetTextVisible(endingConsoleText, false, 0f);
+        SetGraphicAlpha(blackScreen, 0f);
     }
 
     public void StartIntro()
     {
-        StartCoroutine(PlayIntroSequence(introPosition));
+        if (!CanStart(introStartPosition)) return;
+        _sequence = StartCoroutine(PlayIntroSequence());
     }
-    
+
     public void StartEnding()
     {
-        StartCoroutine(PlayIntroSequence(endingEndPosition));
+        if (!CanStart(endingStartPosition)) return;
+        _sequence = StartCoroutine(PlayEndSequence());
     }
 
-    private IEnumerator PlayIntroSequence(PlayerTransferData positionData )
+    private bool CanStart(PlayerTransferData startPoint)
     {
-          
-        Debug.Log("I'M starting to fade");
-        LockMovement(true);
-        
-        DisableHand(leftHandModel, true);
-        DisableHand(rightHandModel, true);
- 
-        
-        introConsoleText.enabled = true;
-        introAudio.Play();
-        yield return new WaitForSeconds(3f);
-    
-        yield return StartCoroutine(FadeText(introConsoleText, 1f));
-        yield return new WaitForSeconds(quoteStayTime);
-        yield return StartCoroutine(FadeText(introConsoleText, -0.01f));
-     
-
-        _transitionEffectManager.PlayEffect();
-        
-        yield return new WaitForSeconds(_transitionEffectManager.effectTime);
-        
-        
-        
-    
-        
-        _transitionEffectManager.TransitionPlayerTo(player.transform, positionData);
-        
-        DisableHand(leftHandModel, false);
-        DisableHand(rightHandModel, false);
-        introAudio.Stop();
-        introHudText.enabled = true;
-        yield return new WaitForSeconds(2f);
-        
-        yield return new WaitForSeconds(4.5f);
-        introHudText.enabled = false;
-        
-        LockMovement(false);
-        Debug.Log("Intro finished. Waiting for player to open the door...");
-        
-        
-    }
-
-    private void DisableHand(GameObject[] hand, bool active)
-    {
-        foreach (var handObject in hand)
+        if (_sequence != null)
         {
-            handObject.SetActive(!active);
+            Debug.LogWarning($"{nameof(IntroSequenceManager)}: sequence already playing, ignoring request.", this);
+            return false;
         }
-            
-    }
-    //Old version
-    private IEnumerator PlayTextIntroSequence()
-    {
-        
-        Debug.Log("I'M starting to fade");
-        LockMovement(true);
-    /*     leftHandModel.SetActive(false);
-         
-        rightHandModel.SetActive(false);*/
-        introConsoleText.enabled = true;
-        yield return new WaitForSeconds(3f);
-    
-        yield return StartCoroutine(FadeText(introConsoleText, 1f));
-        yield return new WaitForSeconds(quoteStayTime);
-        yield return StartCoroutine(FadeText(introConsoleText, -0.01f));
-     
 
-        yield return new WaitForSeconds(1f);
-        yield return StartCoroutine(FadeUI(blackScreen, 0f));
-        //introAudio.Play();
-        
-        
-        
-    
-        
-        _transitionEffectManager.PlayEffect("playTransition");
-        
-     
-        
+        if (startPoint == null)
+        {
+            Debug.LogError($"{nameof(IntroSequenceManager)}: start point not assigned.", this);
+            return false;
+        }
+
+        return true;
+    }
+
+    private IEnumerator PlayIntroSequence()
+    {
+        transitionEffectManager.TransitionPlayerTo(player, introStartPosition);
+
+        LockMovement(true);
+        SetHandsVisible(false);
+        introAudio.Play();
+
+        yield return new WaitForSeconds(delayBeforeQuote);
+
+        // Snap on/off — no fade on the intro quote.
+        SetTextVisible(introConsoleText, true, 1f);
+        yield return new WaitForSeconds(quoteStayTime);
+        SetTextVisible(introConsoleText, false);
+
+        transitionEffectManager.PlayEffect();
+        yield return new WaitForSeconds(transitionEffectManager.effectTime);
+
+        transitionEffectManager.TransitionPlayerTo(player, introEndPosition);
+
+        SetHandsVisible(true);
+        introAudio.Stop();
+
+        SetTextVisible(introHudText, true);
+        yield return new WaitForSeconds(hudHintDuration);
+        SetTextVisible(introHudText, false);
+
+        LockMovement(false);
+        _sequence = null;
+
         Debug.Log("Intro finished. Waiting for player to open the door...");
     }
 
+    private IEnumerator PlayEndSequence()
+    {
+        transitionEffectManager.TransitionPlayerTo(player, endingStartPosition);
 
+        LockMovement(true);
+        SetHandsVisible(false);
+        introAudio.Play();
+
+        yield return new WaitForSeconds(delayBeforeQuote);
+
+        // Same as the intro: snap the quote on, hold, snap it off.
+        SetTextVisible(endingConsoleText, true, 1f);
+        yield return new WaitForSeconds(endingQuoteStayTime);
+        SetTextVisible(endingConsoleText, false);
+
+        transitionEffectManager.PlayEffect();
+        yield return new WaitForSeconds(transitionEffectManager.effectTime);
+
+        introAudio.Stop();
+
+        // Now fade to black, then roll the credits on top of it.
+        yield return FadeGraphic(blackScreen, 1f);
+        yield return new WaitForSeconds(delayBeforeCredits);
+
+        SetTextVisible(creditsText, true, 0f);
+        yield return FadeGraphic(creditsText, 1f);
+        yield return new WaitForSeconds(creditsHoldTime);
+        yield return FadeGraphic(creditsText, 0f);
+        SetTextVisible(creditsText, false);
+
+        _sequence = null;
+        Debug.Log("Ending finished. Credits complete.");
+    }
     public void UnlockFinalMovement()
     {
         LockMovement(false);
         Debug.Log("Door opened! Player can now move freely.");
     }
 
-    private void LockMovement(bool lockState)
+    private void LockMovement(bool locked) => locomotion.SetActive(!locked);
+
+    private void SetHandsVisible(bool visible)
     {
-        locomotion.SetActive(!lockState);
+        SetActiveAll(leftHandModel, visible);
+        SetActiveAll(rightHandModel, visible);
     }
 
-    private IEnumerator FadeUI(Image img, float targetAlpha)
+    private static void SetActiveAll(GameObject[] objects, bool active)
     {
-       
-        Color c = img.color;
-        while (Mathf.Abs(c.a - targetAlpha) > 0.01f)
+        if (objects == null) return;
+
+        foreach (GameObject obj in objects)
         {
-            c.a = Mathf.MoveTowards(c.a, targetAlpha, fadeSpeed * Time.deltaTime);
-            img.color = c;
-            Debug.Log($"imgColorTarget: {c.a} imgColorActual {img.color.a}");
-            yield return null;
+            if (obj != null) obj.SetActive(active);
         }
     }
 
-    private IEnumerator FadeText(TextMeshProUGUI text, float targetAlpha)
+    private static void SetTextVisible(TextMeshProUGUI text, bool enabled, float? alpha = null)
     {
-        Color c = text.color;
-        while (Mathf.Abs(c.a - targetAlpha) > 0.01f)
+        if (text == null) return;
+
+        if (alpha.HasValue) SetGraphicAlpha(text, alpha.Value);
+        text.enabled = enabled;
+    }
+
+    private static void SetGraphicAlpha(Graphic graphic, float alpha)
+    {
+        if (graphic == null) return;
+
+        Color c = graphic.color;
+        c.a = Mathf.Clamp01(alpha);
+        graphic.color = c;
+    }
+
+    /// <summary>
+    /// Fades any Graphic (Image, TextMeshProUGUI, ...) to a target alpha at <see cref="fadeSpeed"/> per second.
+    /// Converges exactly on the target, so 0f and 1f are both safe end values.
+    /// </summary>
+    private IEnumerator FadeGraphic(Graphic graphic, float targetAlpha)
+    {
+        if (graphic == null) yield break;
+
+        targetAlpha = Mathf.Clamp01(targetAlpha);
+        Color color = graphic.color;
+
+        while (!Mathf.Approximately(color.a, targetAlpha))
         {
-            c.a = Mathf.MoveTowards(c.a, targetAlpha, fadeSpeed * Time.deltaTime);
-            text.color = c;
+            color.a = Mathf.MoveTowards(color.a, targetAlpha, fadeSpeed * Time.deltaTime);
+            graphic.color = color;
             yield return null;
         }
     }

@@ -25,7 +25,7 @@ public class TransitionEffectManager : MonoBehaviour
         _effectAnimator.SetTrigger(effectName);
     }
     
-    public void TransitionPlayerTo(Transform player,PlayerTransferData destinyData )
+    public void TransitionPlayerTo(Transform player, PlayerTransferData destinyData )
     {
         player.transform.position = destinyData.position;
         player.transform.eulerAngles = destinyData.rotation;
