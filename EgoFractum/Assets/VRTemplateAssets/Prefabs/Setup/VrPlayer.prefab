@@ -297,6 +297,7 @@ MonoBehaviour:
   introConsoleText: {fileID: 612975864143169506}
   endingConsoleText: {fileID: 0}
   introHudText: {fileID: 0}
+  mazeHudText: {fileID: 0}
   introAudio: {fileID: 0}
   locomotion: {fileID: 0}
   player: {fileID: 0}
@@ -316,7 +317,11 @@ MonoBehaviour:
   fadeSpeed: 1
   fadeToBlackForCredits: 1
   endingQuoteStayTime: 6.5
-  creditsText: {fileID: 0}
+  endingPanel: {fileID: 0}
+  thankyouText: {fileID: 0}
+  endingText: {fileID: 0}
+  logo: {fileID: 0}
+  specialThanksText: {fileID: 0}
 --- !u!1001 &111434857209173971
 PrefabInstance:
   m_ObjectHideFlags: 0

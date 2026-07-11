@@ -10942,6 +10942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   voiceLine: {fileID: 0}
+  puzzleKey: Generator
 --- !u!1001 &282146661
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14783,10 +14784,10 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 29.467388, y: 1.0170001, z: -28.206053}
+      - m_Value: {x: 29.669538, y: 1.0737001, z: -28.188005}
         m_Name: Pos1
         m_Overridden: 1
-      - m_Value: {x: 29.510695, y: 1.0248102, z: -28.10863}
+      - m_Value: {x: 29.673868, y: 1.074481, z: -28.178263}
         m_Name: Pos2
         m_Overridden: 1
       - m_Value: {x: 30.828978, y: 1.2225015, z: -29.270601}
@@ -16560,7 +16561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59d72fdfe96ab6c4fb28925bb88f251e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.7814
+      value: 30.8259
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59d72fdfe96ab6c4fb28925bb88f251e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16568,11 +16569,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59d72fdfe96ab6c4fb28925bb88f251e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -29.3636
+      value: -29.6513
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59d72fdfe96ab6c4fb28925bb88f251e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.017601343
+      value: -0.9998882
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59d72fdfe96ab6c4fb28925bb88f251e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -16580,7 +16581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59d72fdfe96ab6c4fb28925bb88f251e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.99984515
+      value: 0.014958594
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59d72fdfe96ab6c4fb28925bb88f251e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -16592,7 +16593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59d72fdfe96ab6c4fb28925bb88f251e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -177.983
+      value: -361.714
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59d72fdfe96ab6c4fb28925bb88f251e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -19084,7 +19085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b46d3c2f9f9a9849840e47b9ddef1b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Mediator: {fileID: 0}
+  m_Mediator: {fileID: 1764082003}
   m_TransformationPriority: 10
   m_UseGravity: 1
   m_UseLocalSpaceGravity: 1
@@ -20904,6 +20905,7 @@ MonoBehaviour:
   _effectAnimator: {fileID: 768900867}
   _effectTrigger: playGlitch
   _effectTime: 2.1
+  _locomotion: {fileID: 1764082002}
 --- !u!1 &589195942
 GameObject:
   m_ObjectHideFlags: 0
@@ -50816,6 +50818,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 271374641204478560, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+      propertyPath: m_UseCharacterControllerIfExists
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 288592545844809758, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -51394,15 +51400,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8260570746176586278, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8260570746176586278, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8260570746176586278, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8260570746176586278, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
       propertyPath: m_LocalPosition.x
@@ -62500,7 +62506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1579510908
 RectTransform:
   m_ObjectHideFlags: 0
@@ -69817,6 +69823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StoryTrigger
   voiceLine: {fileID: 8300000, guid: 90a4ae676d246434f8d3577900418093, type: 3}
+  puzzleKey: Weights
 --- !u!1001 &1660590648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74718,6 +74725,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2507449136877137539, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
   m_PrefabInstance: {fileID: 1345906324}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1764082003 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4130381987325502035, guid: ddd618bf8a5cb364393a05dfcceb9a37, type: 3}
+  m_PrefabInstance: {fileID: 1345906324}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764082002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa7b4195685c3846be746c74f0ab2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1764998040
 PrefabInstance:
   m_ObjectHideFlags: 0
