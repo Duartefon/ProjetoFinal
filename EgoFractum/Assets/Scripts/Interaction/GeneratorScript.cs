@@ -101,6 +101,8 @@ namespace Gameplay
             OnEnergyEstablished?.Invoke();
         }
 
+    
+
         private void PlayAmbientSound()
         {
             if (audioSource && !audioSource.isPlaying)

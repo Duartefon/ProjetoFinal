@@ -28,32 +28,19 @@ public class TransitionEffectManager : MonoBehaviour
 
     public void TransitionPlayerTo(Transform player, PlayerTransferData destinyData)
     {
-        var cc = player.GetComponent<CharacterController>();
-        var gravity = _locomotion.GetComponentInChildren<GravityProvider>();
+        var _characterController = player.GetComponent<CharacterController>();
 
-        // 1. Take the controller offline BEFORE moving/scaling,
-        //    so PhysX doesn't try to resolve a giant overlap mid-teleport.
-        cc.enabled = false;
+        _locomotion.GetComponentInChildren<GravityProvider>().ResetFallForce();
 
-        player.position = destinyData.position;
-        player.eulerAngles = destinyData.rotation;
-        player.localScale = destinyData.scale;   // keep this uniform!
+        player.transform.position = destinyData.position;
+        player.transform.eulerAngles = destinyData.rotation;
+        player.transform.localScale = destinyData.scale;
 
-        cc.stepOffset = destinyData.stepOffset;
+        _characterController.stepOffset = destinyData.stepOffset;
 
-        // 2. Re-push the shape params so the native controller is rebuilt
-        //    with the new lossyScale.
-        cc.radius = cc.radius;
-        cc.height = cc.height;
-        cc.center = cc.center;
-
-        // 3. Flush the transform change into the physics scene.
-        Physics.SyncTransforms();
-
-        cc.enabled = true;
-
-        gravity.ResetFallForce();
+        _locomotion.GetComponentInChildren<GravityProvider>().ResetFallForce();
     }
+
 
     public void TransitionPlayerToPositionRotation(Transform player, PlayerTransferData destinyData)
     {
