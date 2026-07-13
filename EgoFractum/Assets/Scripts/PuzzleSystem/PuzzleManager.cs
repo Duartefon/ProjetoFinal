@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Gameplay;
+using Palmmedia.ReportGenerator.Core;
 using UnityEngine;
 
 namespace PuzzleSystem
@@ -12,7 +14,7 @@ namespace PuzzleSystem
         private Dictionary<string, bool> _puzzles = new Dictionary<string, bool>();
 
         public static event Action OnPuzzleCompleted;
-
+       
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -44,7 +46,9 @@ namespace PuzzleSystem
         public void CompletePuzzle(string key)
         {
             _puzzles[key] = true;
+           
             OnPuzzleCompleted?.Invoke();
+            
         }
 
         public bool IsPuzzleCompleted(string key)

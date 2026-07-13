@@ -1,3 +1,4 @@
+using Gameplay;
 using UnityEngine;
 
 namespace PuzzleSystem
@@ -7,10 +8,12 @@ namespace PuzzleSystem
         [SerializeField] private ScalePlate leftScalePlate, rightScalePlate;
         [SerializeField] private float leftScaleMultiplier, rightScaleMultiplier;
         [SerializeField] private TMPro.TMP_Text diffText;
+        [SerializeField] private GeneratorScript _generator;
 
         public void OnCompletePuzzle()
         {
             PuzzleManager.Instance.CompletePuzzle(puzzleKey);
+            _generator.RemoveFuse();
             UnlockDoors();
         }
 

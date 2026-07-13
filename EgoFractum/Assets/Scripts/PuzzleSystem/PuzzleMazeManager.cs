@@ -14,7 +14,6 @@ namespace PuzzleSystem
         [SerializeField] private DoorController _doorController;
         [SerializeField] private GameObject _miniPlayerModel;
 
-
         //for debbuging to delete
         public bool resetPuzzle = false;
 
@@ -24,7 +23,7 @@ namespace PuzzleSystem
             _miniPlayerModel.SetActive(false);
             DisableInteractorComponents();
             _introSequenceManager.OnPlayMazeSequence();
-
+            
             UnlockDoors();
         }
 
@@ -51,7 +50,8 @@ namespace PuzzleSystem
 
 
             PuzzleManager.Instance.CompletePuzzle(puzzleKey);
-
+            
+            
             _introSequenceManager.StartEnding();
         }
 

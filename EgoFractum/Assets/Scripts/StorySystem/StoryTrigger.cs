@@ -19,6 +19,7 @@ namespace StorySystem
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log("Is puzzle completed: " + PuzzleManager.Instance.IsPuzzleCompleted(puzzleKey));
             if (!PuzzleManager.Instance.IsPuzzleCompleted(puzzleKey)) return;
           
             if (other.CompareTag("Player"))
