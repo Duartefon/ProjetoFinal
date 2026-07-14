@@ -79,6 +79,13 @@ public class HandAnimator : MonoBehaviour
         }
     }
 
+    public void ResetAnim()
+    {
+        foreach (var finger in Enum.GetNames(typeof(Fingers)))
+        {
+            handAnimator.SetFloat(finger, 0);
+        }
+    }
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
         //   Debug.Log("Hello");

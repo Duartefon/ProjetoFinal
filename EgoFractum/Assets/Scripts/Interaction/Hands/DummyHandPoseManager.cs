@@ -65,6 +65,7 @@ public class DummyHandPoseManager : MonoBehaviour
     private void OnUngrab(SelectExitEventArgs arg0)
     {
         ShowHand(arg0.interactorObject, false);
+        
     }
 
     private void ShowHand(IXRSelectInteractor interactor, bool showDummy)
@@ -84,12 +85,15 @@ public class DummyHandPoseManager : MonoBehaviour
         {
             rightDummyHand.SetActive(showDummy);
             rightPlayerHand.SetActive(!showDummy);
+            
         }
         else if (isLeft)
         {
             leftDummyHand.SetActive(showDummy);
             leftPlayerHand.SetActive(!showDummy);
         }
+        
+        
     }
 
     private void ShowHandPosition(IXRSelectInteractor interactor, IXRSelectInteractable interactable, bool showDummy)
@@ -119,7 +123,9 @@ public class DummyHandPoseManager : MonoBehaviour
             rightDummyHand.SetActive(showDummy);
             rightDummyHand.transform.position = new Vector3(hit.point.x, rightDummyHand.transform.position.y,
                 rightDummyHand.transform.position.z);
+            
             rightPlayerHand.SetActive(!showDummy);
+            
         }
 
         if (isLeft)
