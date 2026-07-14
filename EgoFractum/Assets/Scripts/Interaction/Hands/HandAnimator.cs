@@ -44,12 +44,19 @@ public class HandAnimator : MonoBehaviour
     public void OnEnable()
     {
         gripPressAction.action.performed += OnMove;
+        ResetAnim();
+        Debug.Log("[HANDANIMATOR] Was enabled");
     }
 
 
     public void OnDisable()
     {
         gripPressAction.action.performed -= OnMove;
+    }
+
+    private void Start()
+    {
+
     }
 
     private void Update()

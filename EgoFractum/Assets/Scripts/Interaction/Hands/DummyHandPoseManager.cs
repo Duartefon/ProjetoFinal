@@ -66,16 +66,17 @@ public class DummyHandPoseManager : MonoBehaviour
     {
         ShowHand(arg0.interactorObject, false);
         
+        
     }
 
     private void ShowHand(IXRSelectInteractor interactor, bool showDummy)
     {
-        Transform transform = interactor?.transform;
+        Transform _transform = interactor?.transform;
         //Debug.Log("[SHOW HAND] Interactor: " + interactor);
-        if (transform == null) return;
+        if (_transform == null) return;
 
-        bool isRight = transform.CompareTag("RightHand");
-        bool isLeft = transform.CompareTag("LeftHand");
+        bool isRight = _transform.CompareTag("RightHand");
+        bool isLeft = _transform.CompareTag("LeftHand");
 
         //Debug.Log("Is Right? " + isRight + " | " + "Is Left? " +  isLeft);
 
@@ -85,15 +86,19 @@ public class DummyHandPoseManager : MonoBehaviour
         {
             rightDummyHand.SetActive(showDummy);
             rightPlayerHand.SetActive(!showDummy);
+            if(!showDummy)
+                rightPlayerHand.GetComponent<HandAnimator>().ResetAnim();
             
         }
         else if (isLeft)
         {
             leftDummyHand.SetActive(showDummy);
             leftPlayerHand.SetActive(!showDummy);
+            if(!showDummy)
+                leftPlayerHand.GetComponent<HandAnimator>().ResetAnim();
         }
-        
-        
+  
+       
     }
 
     private void ShowHandPosition(IXRSelectInteractor interactor, IXRSelectInteractable interactable, bool showDummy)
@@ -114,7 +119,7 @@ public class DummyHandPoseManager : MonoBehaviour
             {
                 didHit = Physics.Raycast(raycastOrigin.position, -Vector3.up, out hit, rayLenght, grabbableMask);
                 Debug.DrawRay(raycastOrigin.position, -Vector3.up * rayLenght, didHit ? Color.green : Color.red,
-                    2f); // stays visible 2 seconds
+                    2f);
                 if (didHit) break;
             }
 
@@ -125,6 +130,9 @@ public class DummyHandPoseManager : MonoBehaviour
                 rightDummyHand.transform.position.z);
             
             rightPlayerHand.SetActive(!showDummy);
+            
+           
+            
             
         }
 
@@ -143,6 +151,10 @@ public class DummyHandPoseManager : MonoBehaviour
             rightDummyHand.transform.position = new Vector3(hit.point.x, leftDummyHand.transform.position.y,
                 leftDummyHand.transform.position.z);
             leftPlayerHand.SetActive(!showDummy);
+            
+         
+            
+ 
         }
     }
 }
