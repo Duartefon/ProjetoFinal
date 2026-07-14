@@ -1,0 +1,21 @@
+Neste ficheiro está o exemplo de alguns prompts feitos. A AI foi sempre utilizada como ferramenta de pesquisa e não para pensar por nós.
+
+1. Runtime rig scaling breaks CharacterController collision
+
+In a Unity 6 project using XR Interaction Toolkit and SteamVR, uniformly scaling the XR Origin from 1.0 to 0.1 at runtime causes the CharacterController's collision volume to desynchronise from the visual rig. Setting the scale to 0.1 before entering Play mode works correctly; changing it during play does not. Symptoms include failure to register poke interactions with UI buttons. What is the correct procedure for rescaling an XR rig at runtime so the physics representation updates accordingly?
+
+2. Distinguishing the gizmo from the actual physics shape
+
+When the XR Origin GameObject is selected, a large yellow wireframe capsule is drawn in the Scene view, offset in position from the correctly scaled green capsule. The yellow capsule cannot be selected by clicking. How can I determine which component is drawing this gizmo, and how do I verify whether the underlying PhysX collision geometry is actually incorrect rather than only the gizmo being drawn with unscaled values?
+
+
+4. IL2CPP toolchain missing
+
+Unity reports "Currently selected scripting backend (IL2CPP) is not installed" for the Windows target, and a subsequent build fails with a ToolchainNotFoundException stating that no compatible Visual Studio installation or Windows SDK (10.0.19041.0 or newer) could be detected. The IL2CPP module was installed via Unity Hub. What additional dependencies are required?
+
+5. Statistical analysis:
+
+"In the attached Python script, which performs a descriptive analysis of questionnaire data (median and mode per item and per subscale), add standard deviation as an additional dispersion measure, both to the per-item statistics and to the aggregated subscale scores."
+
+6. Correcting an older script:
+"I am developing a VR game in Unity 6. The attached C# script (KnobRotator.cs), based on an older tutorial, uses a deprecated version of the XR Interaction Toolkit's grab system. Update the script to comply with the current XR Interaction Toolkit 3.x standards, including the interface-based interactor API, and explain the changes made."
